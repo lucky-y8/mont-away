@@ -2,18 +2,18 @@ from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Query, status
 from fastapi.responses import RedirectResponse
-from sqlalchemy import select
+from sqlalchemy import select, update
 from sqlalchemy.exc import IntegrityError
 
 from ..config import settings
 from ..deps import CurrentUser, DbSession
 from ..errors import APIError
 from ..i18n import Locale, translate
-from ..models import ExternalIdentity, OAuthLoginCode, Session, User
-from ..schemas import EmailCredentials, Message, RefreshRequest, RegistrationResponse, TokenPair, UserRead, VerifyEmailRequest, WeChatExchangeRequest
+from ..models import EmailVerification, ExternalIdentity, OAuthLoginCode, PasswordReset, Session, User
+from ..schemas import EmailCredentials, EmailRequest, Message, PasswordResetRequest, PasswordResetStartResponse, RefreshRequest, RegistrationResponse, TokenPair, UserRead, VerifyEmailRequest, WeChatExchangeRequest
 from ..security import create_signed_token, decode_signed_token, hash_password, new_opaque_token, token_hash, verify_password
 from ..services import wechat
-from ..services.email import send_verification_email
+from ..services.email import send_password_reset_email, send_verification_email
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -36,7 +36,7 @@ async def issue_tokens(db: DbSession, user: User) -> TokenPair:
 
 
 @router.post("/email/register", response_model=RegistrationResponse, status_code=status.HTTP_201_CREATED)
-async def register(payload: EmailCredentials, db: DbSession) -> RegistrationResponse:
+async def register(payload: EmailCredentials, db: DbSession, locale: Locale) -> RegistrationResponse:
     email = payload.email.lower()
     if await db.scalar(select(User).where(User.email == email)):
         raise APIError(status.HTTP_409_CONFLICT, "email_exists")
@@ -44,8 +44,10 @@ async def register(payload: EmailCredentials, db: DbSession) -> RegistrationResp
     db.add(user)
     try:
         await db.flush()
-        verification = create_signed_token(user.id, "verify_email", timedelta(minutes=settings.verification_token_minutes))
-        await send_verification_email(email, verification)
+        verification_lifetime = timedelta(minutes=settings.verification_token_minutes)
+        verification = create_signed_token(user.id, "verify_email", verification_lifetime)
+        db.add(EmailVerification(user_id=user.id, token_hash=token_hash(verification), expires_at=db_now() + verification_lifetime))
+        await send_verification_email(email, verification, locale)
         await db.commit()
     except IntegrityError as exc:
         await db.rollback()
@@ -56,10 +58,15 @@ async def register(payload: EmailCredentials, db: DbSession) -> RegistrationResp
 
 @router.post("/email/verify", response_model=Message)
 async def verify_email(payload: VerifyEmailRequest, db: DbSession, locale: Locale) -> Message:
-    user = await db.get(User, decode_signed_token(payload.token, "verify_email"))
+    user_id = decode_signed_token(payload.token, "verify_email")
+    verification = await db.scalar(select(EmailVerification).where(EmailVerification.token_hash == token_hash(payload.token)))
+    if verification is None or verification.used_at is not None or expired(verification.expires_at) or verification.user_id != user_id:
+        raise APIError(status.HTTP_401_UNAUTHORIZED, "invalid_verification_token")
+    user = await db.get(User, user_id)
     if user is None:
         raise APIError(status.HTTP_404_NOT_FOUND, "user_not_found")
     user.is_email_verified = True
+    verification.used_at = db_now()
     await db.commit()
     return Message(code="email_verified", message=translate(locale, "email_verified"))
 
@@ -74,6 +81,37 @@ async def login(payload: EmailCredentials, db: DbSession) -> TokenPair:
     if not user.is_email_verified:
         raise APIError(status.HTTP_403_FORBIDDEN, "email_unverified")
     return await issue_tokens(db, user)
+
+
+@router.post("/email/password/forgot", response_model=PasswordResetStartResponse)
+async def forgot_password(payload: EmailRequest, db: DbSession, locale: Locale) -> PasswordResetStartResponse:
+    """Return the same public response to prevent account enumeration. / 始终返回相同公开响应，防止探测注册邮箱。"""
+    user = await db.scalar(select(User).where(User.email == payload.email.lower()))
+    reset_token = None
+    if user is not None and user.password_hash is not None and user.is_active:
+        await db.execute(update(PasswordReset).where(PasswordReset.user_id == user.id, PasswordReset.used_at.is_(None)).values(used_at=db_now()))
+        lifetime = timedelta(minutes=settings.password_reset_token_minutes)
+        reset_token = create_signed_token(user.id, "password_reset", lifetime)
+        db.add(PasswordReset(user_id=user.id, token_hash=token_hash(reset_token), expires_at=db_now() + lifetime))
+        await send_password_reset_email(user.email, reset_token, locale)
+        await db.commit()
+    return PasswordResetStartResponse(code="password_reset_requested", message=translate(locale, "password_reset_requested"), reset_token=reset_token if settings.expose_debug_tokens else None)
+
+
+@router.post("/email/password/reset", response_model=Message)
+async def reset_password(payload: PasswordResetRequest, db: DbSession, locale: Locale) -> Message:
+    user_id = decode_signed_token(payload.token, "password_reset")
+    reset = await db.scalar(select(PasswordReset).where(PasswordReset.token_hash == token_hash(payload.token)))
+    if reset is None or reset.used_at is not None or expired(reset.expires_at) or reset.user_id != user_id:
+        raise APIError(status.HTTP_401_UNAUTHORIZED, "invalid_password_reset_token")
+    user = await db.get(User, user_id)
+    if user is None or not user.is_active:
+        raise APIError(status.HTTP_401_UNAUTHORIZED, "user_unavailable")
+    user.password_hash = hash_password(payload.password)
+    reset.used_at = db_now()
+    await db.execute(update(Session).where(Session.user_id == user.id, Session.revoked_at.is_(None)).values(revoked_at=db_now()))
+    await db.commit()
+    return Message(code="password_reset", message=translate(locale, "password_reset"))
 
 
 @router.post("/refresh", response_model=TokenPair)

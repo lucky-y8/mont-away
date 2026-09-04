@@ -45,6 +45,17 @@ export async function verifyEmail(token, locale) {
   return request('/api/v1/auth/email/verify', { method: 'POST', locale, body: JSON.stringify({ token }) })
 }
 
+export function requestPasswordReset(email, locale) {
+  return request('/api/v1/auth/email/password/forgot', { method: 'POST', locale, body: JSON.stringify({ email }) })
+}
+
+export async function resetPassword(token, password, locale) {
+  const result = await request('/api/v1/auth/email/password/reset', { method: 'POST', locale, retry: false, body: JSON.stringify({ token, password }) })
+  // Password reset revokes every server session, so remove stale browser credentials too. / 重置密码会撤销服务端全部会话，同时清理浏览器旧凭据。
+  clearSession()
+  return result
+}
+
 export async function loginEmail(email, password, locale) {
   const tokens = await request('/api/v1/auth/email/login', { method: 'POST', locale, body: JSON.stringify({ email, password }) })
   return saveTokens(tokens)

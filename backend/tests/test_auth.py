@@ -21,6 +21,9 @@ def test_email_authentication_flow():
 
         verified = client.post("/api/v1/auth/email/verify", json={"token": verification_token})
         assert verified.status_code == 200
+        reused = client.post("/api/v1/auth/email/verify", json={"token": verification_token})
+        assert reused.status_code == 401
+        assert reused.json()["error"]["code"] == "invalid_verification_token"
 
         login = client.post("/api/v1/auth/email/login", json={"email": email, "password": password})
         assert login.status_code == 200
@@ -35,6 +38,38 @@ def test_email_authentication_flow():
         assert refreshed.status_code == 200
         assert refreshed.json()["refresh_token"] != tokens["refresh_token"]
         assert client.post("/api/v1/auth/refresh", json={"refresh_token": tokens["refresh_token"]}).status_code == 401
+
+
+def test_password_reset_is_one_time_and_revokes_existing_sessions():
+    email = f"reset-{uuid.uuid4()}@example.com"
+    old_password = "old-secure-test-password"
+    new_password = "new-secure-test-password"
+    with TestClient(app) as client:
+        registration = client.post("/api/v1/auth/email/register", json={"email": email, "password": old_password}).json()
+        client.post("/api/v1/auth/email/verify", json={"token": registration["verification_token"]})
+        old_session = client.post("/api/v1/auth/email/login", json={"email": email, "password": old_password}).json()
+
+        requested = client.post("/api/v1/auth/email/password/forgot", headers={"Accept-Language": "en"}, json={"email": email})
+        assert requested.status_code == 200
+        assert requested.json()["code"] == "password_reset_requested"
+        reset_token = requested.json()["reset_token"]
+        assert reset_token
+
+        reset = client.post("/api/v1/auth/email/password/reset", json={"token": reset_token, "password": new_password})
+        assert reset.status_code == 200
+        assert reset.json()["code"] == "password_reset"
+        reused = client.post("/api/v1/auth/email/password/reset", json={"token": reset_token, "password": old_password})
+        assert reused.status_code == 401
+        assert reused.json()["error"]["code"] == "invalid_password_reset_token"
+        assert client.post("/api/v1/auth/refresh", json={"refresh_token": old_session["refresh_token"]}).status_code == 401
+        assert client.post("/api/v1/auth/email/login", json={"email": email, "password": old_password}).status_code == 401
+        assert client.post("/api/v1/auth/email/login", json={"email": email, "password": new_password}).status_code == 200
+
+        # Unknown accounts receive the same public response and never expose a token. / 未注册邮箱也返回同样文案，且不会暴露令牌。
+        unknown = client.post("/api/v1/auth/email/password/forgot", headers={"Accept-Language": "en"}, json={"email": f"missing-{uuid.uuid4()}@example.com"})
+        assert unknown.status_code == 200
+        assert unknown.json()["message"] == requested.json()["message"]
+        assert unknown.json()["reset_token"] is None
 
 
 def test_wechat_requires_configuration():

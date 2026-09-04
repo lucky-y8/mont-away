@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, Languages, Mail, Lock, LogOut } from 'lucide-react'
 import { detectLocale, localeOptions, messages } from './i18n'
-import { addComment, approvePost, beginWeChatLogin, createPost, exchangeWeChatCode, getCurrentUser, getModerationQueue, getMyPosts, getNotifications, getPointAccount, getReportQueue, hasStoredSession, listComments, listPosts, loginEmail, logout, registerEmail, removePost, reportPost, resolveReport, restoreCurrentUser, setPostBookmark, setPostLike, updatePost, uploadMedia, verifyEmail } from './api'
+import { addComment, approvePost, beginWeChatLogin, createPost, exchangeWeChatCode, getCurrentUser, getModerationQueue, getMyPosts, getNotifications, getPointAccount, getReportQueue, hasStoredSession, listComments, listPosts, loginEmail, logout, registerEmail, removePost, reportPost, requestPasswordReset, resetPassword, resolveReport, restoreCurrentUser, setPostBookmark, setPostLike, updatePost, uploadMedia, verifyEmail } from './api'
 import './styles.css'
 
 const navIds = ['home', 'map', 'publish', 'messages', 'profile']
@@ -257,22 +257,64 @@ function AdminPage({ t, locale, openRoute }) {
   return <div className="surface admin-page"><h1>{t.adminTitle}</h1>{notice && <p className="auth-notice">{notice}</p>}{posts === null ? <p className="feed-status">{t.loadingFeed}</p> : posts.length === 0 ? <p className="feed-status">{t.noReview}</p> : <div className="review-list">{posts.map(post => <article key={post.id}><div><b>{post.title}</b><span><MapPin/>{post.place.name} · {post.author_name}</span><p>{post.body}</p></div><div><button className="secondary" onClick={() => openRoute(post)}>{t.viewRoute}</button><button className="primary" onClick={() => approve(post)}>{t.approve}</button><button className="secondary danger" onClick={() => remove(post)}>{t.remove}</button></div></article>)}</div>}<h2 className="admin-subtitle">{t.reportQueue}</h2>{reports === null ? <p className="feed-status">{t.loadingFeed}</p> : reports.length === 0 ? <p className="feed-status">{t.noReports}</p> : <div className="report-list">{reports.map(report => <article key={report.id}><div><b>{report.category}</b><p>{report.reason}</p></div><button className="secondary" onClick={() => resolve(report)}>{t.resolve}</button></article>)}</div>}</div>
 }
 
-function AuthPage({ t, locale, onSignedIn }) {
-  const [register, setRegister] = useState(false)
+function VerifyEmailPage({ t, locale, onLogin }) {
+  const [notice, setNotice] = useState(t.auth.loading)
+  const [success, setSuccess] = useState(false)
+  useEffect(() => {
+    const token = new URLSearchParams(window.location.search).get('token')
+    if (!token) return setNotice(t.auth.verifyTitle)
+    verifyEmail(token, locale).then(() => { setSuccess(true); setNotice(t.auth.verifySuccess) }).catch(error => setNotice(error.message))
+  }, [locale])
+  return <div className="surface empty verify-email"><Mail/><h1>{t.auth.verifyTitle}</h1><p>{notice}</p>{success && <button className="primary centered" onClick={onLogin}>{t.auth.backToLogin}</button>}</div>
+}
+
+function ResetPasswordPage({ t, locale, onLogin }) {
+  const [notice, setNotice] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const token = new URLSearchParams(window.location.search).get('token')
+  const submit = async event => {
+    event.preventDefault()
+    const data = new FormData(event.currentTarget)
+    const password = String(data.get('password'))
+    if (!token) return setNotice(t.auth.invalidResetLink)
+    if (password.length < 8) return setNotice(t.auth.invalidPassword)
+    if (password !== data.get('passwordConfirm')) return setNotice(t.auth.passwordMismatch)
+    setLoading(true)
+    setNotice('')
+    try {
+      const result = await resetPassword(token, password, locale)
+      setSuccess(true)
+      setNotice(result.message)
+    } catch (error) {
+      setNotice(error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+  return <div className="surface empty auth-action-page"><Lock/><h1>{t.auth.resetTitle}</h1>{!success && <form onSubmit={submit}><label>{t.auth.newPassword}<input name="password" type="password" autoComplete="new-password" placeholder={t.auth.passwordHint}/></label><label>{t.auth.confirmPassword}<input name="passwordConfirm" type="password" autoComplete="new-password" placeholder={t.auth.passwordHint}/></label><button className="primary" disabled={loading}>{loading ? t.auth.loading : t.auth.resetAction}</button></form>}{notice && <p className="auth-notice" role="status">{notice}</p>}{success && <button className="primary centered" onClick={onLogin}>{t.auth.backToLogin}</button>}</div>
+}
+
+function AuthPage({ t, locale, onSignedIn, onLocalReset }) {
+  const [mode, setMode] = useState('login')
   const [notice, setNotice] = useState('')
   const [loading, setLoading] = useState(false)
   const submit = async event => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     if (!/^\S+@\S+\.\S+$/.test(data.get('email'))) return setNotice(t.auth.invalidEmail)
-    if (String(data.get('password')).length < 8) return setNotice(t.auth.invalidPassword)
+    if (mode !== 'forgot' && String(data.get('password')).length < 8) return setNotice(t.auth.invalidPassword)
     setLoading(true)
     setNotice('')
     try {
-      if (register) {
+      if (mode === 'forgot') {
+        const result = await requestPasswordReset(data.get('email'), locale)
+        if (result.reset_token) return onLocalReset(result.reset_token)
+        setNotice(result.message)
+      } else if (mode === 'register') {
         const result = await registerEmail(data.get('email'), data.get('password'), locale)
         if (result.verification_token) await verifyEmail(result.verification_token, locale)
-        setRegister(false)
+        setMode('login')
         setNotice(result.verification_token ? t.auth.localVerified : t.auth.checkEmail)
       } else {
         await loginEmail(data.get('email'), data.get('password'), locale)
@@ -286,15 +328,16 @@ function AuthPage({ t, locale, onSignedIn }) {
       setLoading(false)
     }
   }
-  return <div className="auth-shell"><section className="auth-visual"><Logo/><div><span className="auth-kicker">MONT AWAY</span><h2>{t.auth.intro}</h2></div></section><section className="auth-card"><h1>{register ? t.auth.register : t.auth.welcome}</h1><div className="providers"><button onClick={beginWeChatLogin}><i className="wechat">微</i>{t.auth.wechat}</button></div><div className="auth-divider"><span>{t.auth.divider}</span></div><form onSubmit={submit} noValidate><label><span><Mail/>{t.auth.email}</span><input name="email" type="email" autoComplete="email" placeholder={t.auth.emailHint}/></label><label><span><Lock/>{t.auth.password}</span><input name="password" type="password" autoComplete={register ? 'new-password' : 'current-password'} placeholder={t.auth.passwordHint}/></label><button className="primary" type="submit" disabled={loading}>{loading ? t.auth.loading : register ? t.auth.register : t.auth.signIn}</button></form><button className="auth-switch" onClick={() => { setRegister(!register); setNotice('') }}>{register ? t.auth.switchIn : t.auth.switchUp}</button>{notice && <p className="auth-notice" role="status">{notice}</p>}<p className="terms">{t.auth.terms}</p></section></div>
+  const heading = mode === 'register' ? t.auth.register : mode === 'forgot' ? t.auth.forgotTitle : t.auth.welcome
+  return <div className="auth-shell"><section className="auth-visual"><Logo/><div><span className="auth-kicker">MONT AWAY</span><h2>{t.auth.intro}</h2></div></section><section className="auth-card"><h1>{heading}</h1>{mode === 'login' && <><div className="providers"><button onClick={beginWeChatLogin}><i className="wechat">微</i>{t.auth.wechat}</button></div><div className="auth-divider"><span>{t.auth.divider}</span></div></>}<form onSubmit={submit} noValidate><label><span><Mail/>{t.auth.email}</span><input name="email" type="email" autoComplete="email" placeholder={t.auth.emailHint}/></label>{mode !== 'forgot' && <label><span><Lock/>{t.auth.password}</span><input name="password" type="password" autoComplete={mode === 'register' ? 'new-password' : 'current-password'} placeholder={t.auth.passwordHint}/></label>}<button className="primary" type="submit" disabled={loading}>{loading ? t.auth.loading : mode === 'register' ? t.auth.register : mode === 'forgot' ? t.auth.sendReset : t.auth.signIn}</button></form>{mode === 'login' && <button className="auth-switch compact" onClick={() => { setMode('forgot'); setNotice('') }}>{t.auth.forgotPassword}</button>}<button className="auth-switch" onClick={() => { setMode(mode === 'register' ? 'login' : mode === 'forgot' ? 'login' : 'register'); setNotice('') }}>{mode === 'register' || mode === 'forgot' ? t.auth.switchIn : t.auth.switchUp}</button>{notice && <p className="auth-notice" role="status">{notice}</p>}<p className="terms">{t.auth.terms}</p></section></div>
 }
 
-function ProfilePage({ t, locale, user, setUser, onAdmin, onEdit }) {
+function ProfilePage({ t, locale, user, setUser, onAdmin, onEdit, onLocalReset }) {
   const [posts, setPosts] = useState(null)
   useEffect(() => {
     if (user) getMyPosts(locale).then(setPosts).catch(() => setPosts([]))
   }, [locale, user])
-  if (!user) return <AuthPage t={t} locale={locale} onSignedIn={setUser}/>
+  if (!user) return <AuthPage t={t} locale={locale} onSignedIn={setUser} onLocalReset={onLocalReset}/>
   const signOut = async () => {
     try { await logout(locale) } finally { setUser(null) }
   }
@@ -307,7 +350,8 @@ function Placeholder({ title, t }) {
 }
 
 function App() {
-  const [page, setPage] = useState('home')
+  const initialPage = window.location.pathname.startsWith('/auth/verify') ? 'verify-email' : window.location.pathname.startsWith('/auth/reset-password') ? 'reset-password' : 'home'
+  const [page, setPage] = useState(initialPage)
   const [locale, setLocale] = useState(detectLocale)
   const [user, setUser] = useState(null)
   const [selectedPost, setSelectedPost] = useState(null)
@@ -331,6 +375,8 @@ function App() {
   const go = id => { if (id === 'publish') setEditingPost(null); setPage(id); window.scrollTo(0, 0) }
   const openRoute = post => { setSelectedPost(post); go('route') }
   const editPost = post => { setEditingPost(post); setPage('publish'); window.scrollTo(0, 0) }
+  const openLocalReset = token => { window.history.replaceState({}, '', `/auth/reset-password?token=${encodeURIComponent(token)}`); setPage('reset-password'); window.scrollTo(0, 0) }
+  const returnToLogin = () => { setUser(null); window.history.replaceState({}, '', '/'); go('profile') }
   const requireAuth = () => go('profile')
   const content = page === 'home'
     ? <Home openRoute={openRoute} t={t} locale={locale} user={user} onRequireAuth={requireAuth} refreshKey={feedVersion}/>
@@ -338,11 +384,13 @@ function App() {
       : page === 'route' ? <RoutePage t={t} post={selectedPost}/>
         : page === 'publish' ? <Publish key={editingPost?.id || 'new'} t={t} locale={locale} user={user} initialPost={editingPost} onRequireAuth={requireAuth} onPublished={() => { setEditingPost(null); setFeedVersion(value => value + 1); go('home') }}/>
           : page === 'messages' ? <ActivityPage t={t} locale={locale} user={user} onRequireAuth={requireAuth}/>
-            : page === 'profile' ? <ProfilePage t={t} locale={locale} user={user} setUser={setUser} onAdmin={() => go('admin')} onEdit={editPost}/>
+            : page === 'profile' ? <ProfilePage t={t} locale={locale} user={user} setUser={setUser} onAdmin={() => go('admin')} onEdit={editPost} onLocalReset={openLocalReset}/>
             : page === 'search' ? <SearchPage t={t} locale={locale} openRoute={openRoute} user={user} onRequireAuth={requireAuth}/>
               : page === 'ranking' ? <RankingPage t={t} locale={locale} openRoute={openRoute} user={user} onRequireAuth={requireAuth}/>
                 : page === 'admin' ? <AdminPage t={t} locale={locale} openRoute={openRoute}/>
-                  : <Placeholder title={t.nav[3]} t={t}/>
+                  : page === 'verify-email' ? <VerifyEmailPage t={t} locale={locale} onLogin={returnToLogin}/>
+                    : page === 'reset-password' ? <ResetPasswordPage t={t} locale={locale} onLogin={returnToLogin}/>
+                      : <Placeholder title={t.nav[3]} t={t}/>
 
   return <div className="app"><aside className="desktop-nav"><Logo/><nav>{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={page === id ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/>{name}</button> })}</nav><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><div className="account"><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span>{user?.display_name || t.auth.welcome}</span></div></aside><header className="mobile-head"><Logo/><div><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><button aria-label="Search" onClick={() => go('search')}><Search/></button><button aria-label="Ranking" onClick={() => go('ranking')}><Trophy/></button></div></header><main className="main">{content}</main><aside className="right-rail"><div className="profile"><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span><b>{user?.display_name || t.auth.welcome}</b><small>{t.bio}</small></span></div><button className="rail-search" onClick={() => go('search')}><Search/>{t.searchHint}</button><button className="rail-ranking" onClick={() => go('ranking')}><Trophy/>{t.weekly}</button>{t.names.map((name, index) => <div className="mini" key={name}><i>{index + 1}</i><span><b>{name}</b><small>{24 - index * 6} {t.routes}</small></span></div>)}<small className="muted">{t.sampleData}</small></aside><nav className="mobile-nav">{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={page === id ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/><small>{name}</small></button> })}</nav></div>
 }

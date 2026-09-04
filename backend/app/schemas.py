@@ -27,6 +27,15 @@ class VerifyEmailRequest(BaseModel):
     token: str
 
 
+class EmailRequest(BaseModel):
+    email: EmailStr
+
+
+class PasswordResetRequest(BaseModel):
+    token: str
+    password: str = Field(min_length=8, max_length=128)
+
+
 class RefreshRequest(BaseModel):
     refresh_token: str
 
@@ -41,6 +50,10 @@ class TokenPair(BaseModel):
 class Message(BaseModel):
     code: str
     message: str
+
+
+class PasswordResetStartResponse(Message):
+    reset_token: str | None = None
 
 
 class WeChatExchangeRequest(BaseModel):
