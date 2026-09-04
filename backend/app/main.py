@@ -4,11 +4,12 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from .config import settings
 from .database import create_tables
 from .i18n import MESSAGES, resolve_locale, translate
-from .routers import account, admin, auth, health, posts
+from .routers import account, admin, auth, health, media, posts
 
 
 @asynccontextmanager
@@ -22,14 +23,18 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origin_list,
     allow_credentials=True,
-    allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
+    allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["Authorization", "Content-Type"],
 )
 app.include_router(health.router)
 app.include_router(auth.router, prefix=settings.api_prefix)
 app.include_router(posts.router, prefix=settings.api_prefix)
+app.include_router(media.router, prefix=settings.api_prefix)
 app.include_router(admin.router, prefix=settings.api_prefix)
 app.include_router(account.router, prefix=settings.api_prefix)
+if settings.media_backend == "local":
+    # Local files are development-only. / 本地文件服务仅用于开发环境。
+    app.mount("/media", StaticFiles(directory=settings.media_local_dir, check_dir=False), name="media")
 
 
 @app.exception_handler(HTTPException)

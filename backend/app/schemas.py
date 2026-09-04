@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
 
 
 class EmailCredentials(BaseModel):
@@ -76,6 +76,8 @@ class PostCreate(BaseModel):
     content_language: str = Field(default="zh-CN", max_length=16)
     transport_mode: str | None = Field(default=None, max_length=30)
     route_source: str = Field(default="manual", pattern="^(gps|manual|mixed)$")
+    publish: bool = True
+    media_ids: list[str] = Field(default_factory=list, max_length=20)
     place: PlaceCreate
     route: RouteCreate
 
@@ -97,6 +99,15 @@ class PlaceRead(PlaceCreate):
     id: str
 
 
+class MediaAssetRead(BaseModel):
+    id: str
+    media_type: str
+    content_type: str
+    url: str
+    size_bytes: int
+    position: int
+
+
 class PostRead(BaseModel):
     id: str
     author_id: str
@@ -111,13 +122,63 @@ class PostRead(BaseModel):
     reward_status: str
     like_count: int
     liked_by_me: bool
+    comment_count: int
+    bookmarked_by_me: bool
     place: PlaceRead
     route: RouteRead
+    media: list[MediaAssetRead] = Field(default_factory=list)
     created_at: datetime
 
 
 class ModerationRequest(BaseModel):
     reason: str = Field(default="", max_length=2000)
+
+
+class CommentCreate(BaseModel):
+    body: str = Field(min_length=1, max_length=2000)
+
+    @field_validator("body")
+    @classmethod
+    def meaningful_body(cls, value: str) -> str:
+        """Reject whitespace-only comments. / 拒绝只有空白字符的评论。"""
+        if not value.strip():
+            raise ValueError("comment body cannot be blank")
+        return value.strip()
+
+
+class CommentRead(BaseModel):
+    id: str
+    author_id: str
+    author_name: str
+    body: str
+    created_at: datetime
+
+
+class ReportCreate(BaseModel):
+    category: str = Field(default="other", pattern="^(spam|unsafe|copyright|harassment|other)$")
+    reason: str = Field(min_length=1, max_length=2000)
+
+    @field_validator("reason")
+    @classmethod
+    def meaningful_reason(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("report reason cannot be blank")
+        return value.strip()
+
+
+class ReportRead(BaseModel):
+    id: str
+    post_id: str
+    reporter_id: str
+    category: str
+    reason: str
+    status: str
+    resolution: str
+    created_at: datetime
+
+
+class ReportResolution(BaseModel):
+    resolution: str = Field(min_length=1, max_length=2000)
 
 
 class RemovalRequest(BaseModel):

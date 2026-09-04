@@ -7,8 +7,9 @@ from sqlalchemy import func, select
 
 from ..deps import CurrentUser, DbSession
 from ..i18n import Locale, translate
-from ..models import Notification, PointLedger
-from ..schemas import NotificationRead, PointAccountRead, PointEntryRead
+from ..models import Notification, PointLedger, Post, PostBookmark
+from ..schemas import NotificationRead, PointAccountRead, PointEntryRead, PostRead
+from .posts import serialize_post
 
 router = APIRouter(prefix="/account", tags=["account"])
 
@@ -29,3 +30,10 @@ async def notifications(db: DbSession, user: CurrentUser, locale: Locale) -> lis
         template = translate(locale, f"notification_{row.event_type}")
         result.append(NotificationRead(id=row.id, event_type=row.event_type, resource_id=row.resource_id, payload=payload, message=template.format(**payload), read_at=row.read_at, created_at=row.created_at))
     return result
+
+
+@router.get("/bookmarks", response_model=list[PostRead])
+async def bookmarks(db: DbSession, user: CurrentUser) -> list[PostRead]:
+    """Return visible saved posts only. / 仅返回仍然公开的收藏帖子。"""
+    posts = list((await db.scalars(select(Post).join(PostBookmark, PostBookmark.post_id == Post.id).where(PostBookmark.user_id == user.id, Post.visibility_status == "public").order_by(PostBookmark.created_at.desc()))).all())
+    return [await serialize_post(db, post, user.id) for post in posts]

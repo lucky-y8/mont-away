@@ -12,7 +12,9 @@ function saveTokens(tokens) {
 }
 
 async function request(path, { locale = 'zh-CN', retry = true, ...options } = {}) {
-  const headers = { 'Content-Type': 'application/json', 'Accept-Language': locale, ...options.headers }
+  const headers = { 'Accept-Language': locale, ...options.headers }
+  // The browser supplies multipart boundaries for FormData. / FormData 的分隔符交给浏览器生成。
+  if (!(options.body instanceof FormData)) headers['Content-Type'] = 'application/json'
   if (session.accessToken) headers.Authorization = `Bearer ${session.accessToken}`
   const response = await fetch(`${API_BASE}${path}`, { ...options, headers })
   const body = await response.json().catch(() => ({}))
@@ -102,6 +104,14 @@ export function getModerationQueue(locale) {
   return request('/api/v1/admin/posts', { locale })
 }
 
+export function getReportQueue(locale) {
+  return request('/api/v1/admin/reports', { locale })
+}
+
+export function resolveReport(reportId, resolution, locale) {
+  return request(`/api/v1/admin/reports/${reportId}/resolve`, { method: 'POST', locale, body: JSON.stringify({ resolution }) })
+}
+
 export function approvePost(postId, reason, locale) {
   return request(`/api/v1/admin/posts/${postId}/approve`, { method: 'POST', locale, body: JSON.stringify({ reason }) })
 }
@@ -114,8 +124,42 @@ export function createPost(payload, locale) {
   return request('/api/v1/posts', { method: 'POST', locale, body: JSON.stringify(payload) })
 }
 
+export function getMyPosts(locale) {
+  return request('/api/v1/posts/mine', { locale })
+}
+
+export function updatePost(postId, payload, locale) {
+  return request(`/api/v1/posts/${postId}`, { method: 'PATCH', locale, body: JSON.stringify(payload) })
+}
+
+export function uploadMedia(file, locale) {
+  const body = new FormData()
+  body.append('file', file)
+  return request('/api/v1/media', { method: 'POST', locale, body })
+}
+
 export function setPostLike(postId, liked, locale) {
   return request(`/api/v1/posts/${postId}/likes`, { method: liked ? 'POST' : 'DELETE', locale })
+}
+
+export function listComments(postId, locale) {
+  return request(`/api/v1/posts/${postId}/comments`, { locale })
+}
+
+export function addComment(postId, body, locale) {
+  return request(`/api/v1/posts/${postId}/comments`, { method: 'POST', locale, body: JSON.stringify({ body }) })
+}
+
+export function setPostBookmark(postId, bookmarked, locale) {
+  return request(`/api/v1/posts/${postId}/bookmarks`, { method: bookmarked ? 'POST' : 'DELETE', locale })
+}
+
+export function reportPost(postId, reason, locale) {
+  return request(`/api/v1/posts/${postId}/reports`, { method: 'POST', locale, body: JSON.stringify({ category: 'other', reason }) })
+}
+
+export function getBookmarks(locale) {
+  return request('/api/v1/account/bookmarks', { locale })
 }
 
 export function beginWeChatLogin() {

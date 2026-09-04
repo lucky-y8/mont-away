@@ -90,12 +90,20 @@ def test_publish_search_and_idempotent_like_flow():
     with TestClient(app) as client:
         tokens = verified_user(client)
         headers = {"Authorization": f"Bearer {tokens['access_token']}"}
+        uploaded = client.post(
+            "/api/v1/media",
+            headers=headers,
+            files={"file": ("route.webp", b"test-image-bytes", "image/webp")},
+        )
+        assert uploaded.status_code == 201
+        assert uploaded.json()["url"].startswith("http://testserver/media/")
         payload = {
             "title": "湖边测试路线",
             "body": "这是一条用于自动测试的路线。",
             "content_language": "zh-CN",
             "transport_mode": "walk",
             "route_source": "mixed",
+            "media_ids": [uploaded.json()["id"]],
             "place": {"name": "测试湖", "city": "杭州", "country_code": "CN", "latitude": 30.25, "longitude": 120.15},
             "route": {
                 "start": {"name": "环线入口", "latitude": 30.25, "longitude": 120.15},
@@ -111,6 +119,24 @@ def test_publish_search_and_idempotent_like_flow():
         assert post["moderation_status"] == "pending"
         assert post["reward_status"] == "pending"
         assert post["route"]["start"] == post["route"]["end"]
+        assert post["media"][0]["id"] == uploaded.json()["id"]
+
+        updated_payload = {**payload, "title": "湖边测试路线（已编辑）"}
+        updated = client.patch(f"/api/v1/posts/{post['id']}", headers=headers, json=updated_payload)
+        assert updated.status_code == 200
+        assert updated.json()["title"].endswith("（已编辑）")
+        assert updated.json()["media"][0]["url"] == post["media"][0]["url"]
+        assert updated.json()["media"][0]["id"] != post["media"][0]["id"]
+
+        reader_tokens = verified_user(client)
+        reader_headers = {"Authorization": f"Bearer {reader_tokens['access_token']}"}
+        comment = client.post(f"/api/v1/posts/{post['id']}/comments", headers=reader_headers, json={"body": "路线很实用"})
+        assert comment.status_code == 201
+        assert client.get(f"/api/v1/posts/{post['id']}/comments").json()[0]["body"] == "路线很实用"
+        assert client.post(f"/api/v1/posts/{post['id']}/bookmarks", headers=reader_headers).status_code == 200
+        assert client.get("/api/v1/account/bookmarks", headers=reader_headers).json()[0]["bookmarked_by_me"] is True
+        assert client.post(f"/api/v1/posts/{post['id']}/reports", headers=reader_headers, json={"category": "other", "reason": "自动测试举报"}).status_code == 201
+        assert client.delete(f"/api/v1/posts/{post['id']}/comments/{comment.json()['id']}", headers=reader_headers).status_code == 200
 
         results = client.get("/api/v1/posts", params={"search": "测试湖"}).json()
         assert any(item["id"] == post["id"] for item in results)
@@ -122,6 +148,15 @@ def test_publish_search_and_idempotent_like_flow():
         assert ranked[0]["liked_by_me"] is True
         unliked = client.delete(f"/api/v1/posts/{post['id']}/likes", headers=headers).json()
         assert unliked["like_count"] == 0
+
+        draft_payload = {**payload, "title": "尚未发布的草稿", "publish": False, "media_ids": []}
+        draft = client.post("/api/v1/posts", headers=headers, json=draft_payload).json()
+        assert draft["visibility_status"] == "draft"
+        assert all(item["id"] != draft["id"] for item in client.get("/api/v1/posts").json())
+        assert any(item["id"] == draft["id"] for item in client.get("/api/v1/posts/mine", headers=headers).json())
+        published = client.patch(f"/api/v1/posts/{draft['id']}", headers=headers, json={**draft_payload, "publish": True}).json()
+        assert published["visibility_status"] == "public"
+        assert published["moderation_status"] == "pending"
 
 
 def test_admin_approval_notifies_and_rewards_once():
@@ -144,6 +179,10 @@ def test_admin_approval_notifies_and_rewards_once():
         }
         post = client.post("/api/v1/posts", headers=author_headers, json=post_payload).json()
         assert client.get("/api/v1/auth/me", headers=admin_headers).json()["is_admin"] is True
+        client.post(f"/api/v1/posts/{post['id']}/reports", headers=author_headers, json={"category": "other", "reason": "Review this"})
+        report = client.get("/api/v1/admin/reports", headers=admin_headers).json()[0]
+        resolved = client.post(f"/api/v1/admin/reports/{report['id']}/resolve", headers=admin_headers, json={"resolution": "Reviewed"})
+        assert resolved.status_code == 200
         settings.post_reward_points = 25
         try:
             approved = client.post(f"/api/v1/admin/posts/{post['id']}/approve", headers=admin_headers, json={"reason": "Looks good"})

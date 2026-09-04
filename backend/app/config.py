@@ -28,6 +28,10 @@ class Settings(BaseSettings):
     smtp_starttls: bool = True
     initial_admin_email: str = ""
     post_reward_points: int | None = None
+    media_backend: str = "local"
+    media_local_dir: str = "uploads"
+    media_public_url: str = "http://127.0.0.1:8000/media"
+    max_upload_bytes: int = 52_428_800
     wechat_app_id: str = ""
     wechat_app_secret: str = ""
     wechat_redirect_uri: str = "http://127.0.0.1:8000/api/v1/auth/wechat/callback"
@@ -46,6 +50,8 @@ class Settings(BaseSettings):
                 raise ValueError("EXPOSE_DEBUG_TOKENS must be false in production")
             if self.email_backend != "smtp" or not self.smtp_host:
                 raise ValueError("Production requires an SMTP email backend")
+            if self.media_backend == "local":
+                raise ValueError("Production requires an object-storage media backend")
         return self
 
 

@@ -8,6 +8,7 @@ output/
 *.log
 *.db
 backend/.venv/
+backend/uploads/
 __pycache__/
 .pytest_cache/
 .DS_Store

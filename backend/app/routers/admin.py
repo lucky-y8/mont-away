@@ -1,6 +1,7 @@
 """Moderation endpoints. / 内容审核接口。"""
 
 import json
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, Query, status
 from sqlalchemy import select
@@ -9,11 +10,33 @@ from ..config import settings
 from ..deps import AdminUser, DbSession
 from ..errors import APIError
 from ..i18n import Locale, translate
-from ..models import ModerationAction, Notification, PointLedger, Post
-from ..schemas import Message, ModerationRequest, PostRead, RemovalRequest
+from ..models import ModerationAction, Notification, PointLedger, Post, PostReport
+from ..schemas import Message, ModerationRequest, PostRead, RemovalRequest, ReportRead, ReportResolution
 from .posts import serialize_post
 
 router = APIRouter(prefix="/admin", tags=["admin"])
+
+
+@router.get("/reports", response_model=list[ReportRead])
+async def report_queue(db: DbSession, _: AdminUser, report_status: str | None = Query(default="pending")) -> list[ReportRead]:
+    statement = select(PostReport)
+    if report_status:
+        statement = statement.where(PostReport.status == report_status)
+    reports = list((await db.scalars(statement.order_by(PostReport.created_at.asc()).limit(100))).all())
+    return [ReportRead(id=item.id, post_id=item.post_id, reporter_id=item.reporter_id, category=item.category, reason=item.reason, status=item.status, resolution=item.resolution, created_at=item.created_at) for item in reports]
+
+
+@router.post("/reports/{report_id}/resolve", response_model=Message)
+async def resolve_report(report_id: str, payload: ReportResolution, db: DbSession, admin: AdminUser, locale: Locale) -> Message:
+    report = await db.get(PostReport, report_id)
+    if report is None:
+        raise APIError(status.HTTP_404_NOT_FOUND, "report_not_found")
+    report.status = "resolved"
+    report.resolution = payload.resolution.strip()
+    report.resolved_by = admin.id
+    report.resolved_at = datetime.now(timezone.utc)
+    await db.commit()
+    return Message(code="report_resolved", message=translate(locale, "report_resolved"))
 
 
 @router.get("/posts", response_model=list[PostRead])
