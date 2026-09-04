@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, Languages, Mail, Lock, LogOut } from 'lucide-react'
 import { detectLocale, localeOptions, messages } from './i18n'
 import { addComment, approvePost, banUser, beginWeChatLogin, createPost, exchangeWeChatCode, getAdminUsers, getCurrentUser, getModerationQueue, getMyPosts, getNotifications, getPointAccount, getReportQueue, hasStoredSession, listComments, listPosts, loginEmail, logout, registerEmail, removePost, reportPost, requestPasswordReset, resetPassword, resolveReport, restoreCurrentUser, setPostBookmark, setPostLike, unbanUser, updatePost, uploadMedia, verifyEmail } from './api'
+import AmapRouteMap, { amapConfigured } from './AmapRouteMap'
 import './styles.css'
 
 const navIds = ['home', 'map', 'publish', 'messages', 'profile']
@@ -20,8 +21,12 @@ function LanguageSwitch({ locale, setLocale, t }) {
 }
 
 function MapView({ t, route }) {
-  const points = route ? [route.start, ...route.nodes, route.end].slice(0, 4) : t.nodes.map(name => ({ name }))
-  return <div className="map-view"><div className="lake"/><div className="track"/>{points.map((point, index) => <button title={point.name} className={'pin p' + index} key={`${point.name}-${index}`}>{index === 0 ? t.start : index === points.length - 1 ? t.end : index}</button>)}<small>{t.mapSample}</small></div>
+  const [amapFailed, setAmapFailed] = useState(false)
+  const fallbackCoordinates = [[120.1439, 30.2465], [120.1451, 30.2471], [120.147, 30.2459], [120.1482, 30.2448]]
+  const points = (route ? [route.start, ...route.nodes, route.end] : t.nodes.map(name => ({ name }))).slice(0, 20).map((point, index) => ({ ...point, longitude: point.longitude ?? fallbackCoordinates[index % fallbackCoordinates.length][0], latitude: point.latitude ?? fallbackCoordinates[index % fallbackCoordinates.length][1] }))
+  if (amapConfigured && !amapFailed) return <AmapRouteMap points={points} loadingText={t.mapLoading} onError={() => setAmapFailed(true)}/>
+  const fallbackPoints = points.slice(0, 4)
+  return <div className="map-view"><div className="lake"/><div className="track"/>{fallbackPoints.map((point, index) => <button title={point.name} className={'pin p' + index} key={`${point.name}-${index}`}>{index === 0 ? t.start : index === fallbackPoints.length - 1 ? t.end : index}</button>)}<small>{t.mapSample}</small></div>
 }
 
 function samplePost(t) {
