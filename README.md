@@ -1,2 +1,36 @@
-# mont-away
-Montaway is a travel‑lifestyle community for explorers. Escape crowded tourist spots, wander to remote hills, ancient villages and hidden corners.
+# 山遥（Mont Away）
+
+山遥是一个面向小众旅行地点的图片、视频与路线分享社区。当前仓库处于前端基础开发阶段，包含 Instagram 风格的响应式页面和多语言框架。
+
+## 已实现
+
+- React + Vite 前端工程
+- PC 与移动端响应式布局
+- 首页信息流、地图发现、路线详情、游记编辑页面
+- 简体中文、English、日本語切换
+- 浏览器语言检测与语言偏好保存
+- 本地演示状态：页面导航、点赞、收藏
+
+## 尚未实现
+
+真实账号、地图 SDK、GPS 轨迹采集、媒体上传、后端 API、数据库、审核、积分和礼品兑换均尚未接入。页面中的地图、用户和内容是开发示例。
+
+## 本地开发
+
+```bash
+npm install
+npm run dev
+```
+
+生产构建：
+
+```bash
+npm run build
+```
+
+## 文档
+
+- `CODEX_HANDOFF.md`：已确认需求、状态规则和待定事项
+- `CHAT_CONTEXT.md`：需求讨论的上下文摘要
+- `docs/I18N.md`：多语言设计与扩展约定
+- `ui/`：前期 HTML 交互原型，仅作设计参考
