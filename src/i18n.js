@@ -16,6 +16,7 @@ export const messages = {
     walk: '步行', ride: '骑行', addMedia: '添加图片或视频', draft: '保存草稿', publish: '立即发布', publishHint: '发布后立即公开，积分审核通过后到账。',
     weekly: '本周热门地点', bio: '把走过的路分享给你', sampleData: '页面数据均为开发示例', mapSample: '示意地图 · 非真实导航数据',
     empty: '此页面将在下一阶段接入真实数据和业务状态。', names: ['曲院风荷', '九溪古道', '茅家埠水岸'], start: '起', end: '终', language: '语言', sampleTitle: '把周末留给湖边的慢时光',
+    auth: { welcome: '登录山遥', intro: '收藏远方，也记录自己的路。', wechat: '微信登录', qq: 'QQ 登录', google: 'Google 登录', quick: '快捷登录', divider: '或使用邮箱', email: '邮箱', password: '密码', emailHint: 'name@example.com', passwordHint: '至少 8 位', signIn: '邮箱登录', register: '注册账号', switchIn: '已有账号？登录', switchUp: '没有账号？注册', phone: '手机号登录', later: '后续开放', terms: '继续即表示你同意服务条款和隐私政策。', demoProvider: '等待配置第三方平台 App ID 与后端 OAuth 服务。', invalidEmail: '请输入有效的邮箱地址。', invalidPassword: '密码至少需要 8 位。', demoEmail: '表单验证通过，等待连接后端认证 API。' },
   },
   en: {
     nav: ['Home', 'Map', 'Create', 'Activity', 'Profile'], tabs: ['For you', 'Nearby', 'Following'], follow: 'Follow',
@@ -28,6 +29,7 @@ export const messages = {
     walk: 'Walking', ride: 'Cycling', addMedia: 'Add photos or videos', draft: 'Save draft', publish: 'Publish now', publishHint: 'Visible immediately. Points become available after review.',
     weekly: 'Popular this week', bio: 'Sharing the paths I have walked', sampleData: 'All data on this page is for development only', mapSample: 'Demo map · Not navigation data',
     empty: 'Real data and business states will be connected in the next phase.', names: ['Quyuan Garden', 'Nine Creeks Trail', 'Maojiabu Waterfront'], start: 'S', end: 'E', language: 'Language', sampleTitle: 'A slow weekend by the lake',
+    auth: { welcome: 'Sign in to Shanyao', intro: 'Save distant places and trace your own path.', wechat: 'Continue with WeChat', qq: 'Continue with QQ', google: 'Continue with Google', quick: 'Quick sign-in', divider: 'or use email', email: 'Email', password: 'Password', emailHint: 'name@example.com', passwordHint: 'At least 8 characters', signIn: 'Sign in with email', register: 'Create account', switchIn: 'Already registered? Sign in', switchUp: 'New here? Create account', phone: 'Phone sign-in', later: 'Coming later', terms: 'By continuing, you agree to the Terms and Privacy Policy.', demoProvider: 'Requires provider App IDs and the backend OAuth service.', invalidEmail: 'Enter a valid email address.', invalidPassword: 'Password must contain at least 8 characters.', demoEmail: 'Validation passed. Waiting for the authentication API.' },
   },
   ja: {
     nav: ['ホーム', '地図', '投稿', 'お知らせ', 'マイページ'], tabs: ['おすすめ', '近く', 'フォロー中'], follow: 'フォロー',
@@ -40,6 +42,7 @@ export const messages = {
     walk: '徒歩', ride: '自転車', addMedia: '写真・動画を追加', draft: '下書き保存', publish: '今すぐ公開', publishHint: '投稿後すぐ公開され、審査後にポイントが付与されます。',
     weekly: '今週の人気スポット', bio: '歩いた道をシェアします', sampleData: '画面のデータは開発用サンプルです', mapSample: 'サンプル地図 · ナビデータではありません',
     empty: '実データと業務状態は次の段階で接続します。', names: ['曲院風荷', '九渓古道', '茅家埠水辺'], start: '始', end: '終', language: '言語', sampleTitle: '湖畔で過ごす静かな週末',
+    auth: { welcome: '山遥にログイン', intro: '遠い景色を保存し、自分の道を記録しよう。', wechat: 'WeChatでログイン', qq: 'QQでログイン', google: 'Googleでログイン', quick: 'クイックログイン', divider: 'またはメールを使用', email: 'メール', password: 'パスワード', emailHint: 'name@example.com', passwordHint: '8文字以上', signIn: 'メールでログイン', register: 'アカウント登録', switchIn: '登録済みですか？ログイン', switchUp: '初めてですか？登録', phone: '電話番号でログイン', later: '今後対応', terms: '続行すると、利用規約とプライバシーポリシーに同意したものとみなされます。', demoProvider: '各サービスのApp IDとバックエンドOAuth設定が必要です。', invalidEmail: '有効なメールアドレスを入力してください。', invalidPassword: 'パスワードは8文字以上必要です。', demoEmail: '入力確認完了。認証APIへの接続待ちです。' },
   },
 }
 

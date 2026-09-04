@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, Languages } from 'lucide-react'
+import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, Languages, Mail, Lock } from 'lucide-react'
 import { detectLocale, localeOptions, messages } from './i18n'
 import './styles.css'
 
@@ -31,6 +31,19 @@ function RoutePage({ t }) {
 function Publish({ t }) {
   return <div className="surface editor"><aside className="editor-list"><h2>{t.editorNodes}</h2>{t.nodes.map((n, i) => <button className="node" key={n}><i>{i === 0 ? t.start : i === 3 ? t.end : i}</i><span><b>{n}</b></span></button>)}<button className="secondary">{t.addNode}</button></aside><MapView t={t}/><aside className="form"><h1>{t.editor}</h1><label>{t.title}<input defaultValue={t.sampleTitle} key={'title-' + t.sampleTitle}/></label><label>{t.intro}<textarea defaultValue={t.introText} key={'intro-' + t.introText}/></label><label>{t.transport}<select><option>{t.none}</option><option>{t.walk}</option><option>{t.ride}</option></select></label><button className="upload"><Camera/><Video/>{t.addMedia}</button><div className="form-actions"><button className="secondary">{t.draft}</button><button className="primary">{t.publish}</button></div><small className="muted">{t.publishHint}</small></aside></div>
 }
+function AuthPage({ t }) {
+  const [register, setRegister] = useState(false)
+  const [notice, setNotice] = useState('')
+  const provider = name => setNotice(`${name}：${t.auth.demoProvider}`)
+  const submit = event => {
+    event.preventDefault()
+    const data = new FormData(event.currentTarget)
+    if (!/^\S+@\S+\.\S+$/.test(data.get('email'))) return setNotice(t.auth.invalidEmail)
+    if (String(data.get('password')).length < 8) return setNotice(t.auth.invalidPassword)
+    setNotice(t.auth.demoEmail)
+  }
+  return <div className="auth-shell"><section className="auth-visual"><Logo/><div><span className="auth-kicker">MONT AWAY</span><h2>{t.auth.intro}</h2><div className="auth-sun"/></div></section><section className="auth-card"><h1>{register ? t.auth.register : t.auth.welcome}</h1><div className="providers"><button onClick={() => provider(t.auth.wechat)}><i className="wechat">微</i>{t.auth.wechat}</button></div><div className="auth-divider"><span>{t.auth.divider}</span></div><form onSubmit={submit} noValidate><label><span><Mail/>{t.auth.email}</span><input name="email" type="email" autoComplete="email" placeholder={t.auth.emailHint}/></label><label><span><Lock/>{t.auth.password}</span><input name="password" type="password" autoComplete={register ? 'new-password' : 'current-password'} placeholder={t.auth.passwordHint}/></label><button className="primary" type="submit">{register ? t.auth.register : t.auth.signIn}</button></form><button className="auth-switch" onClick={() => { setRegister(!register); setNotice('') }}>{register ? t.auth.switchIn : t.auth.switchUp}</button>{notice && <p className="auth-notice" role="status">{notice}</p>}<p className="terms">{t.auth.terms}</p></section></div>
+}
 function Placeholder({ title, t }) {
   return <div className="surface empty"><h1>{title}</h1><p>{t.empty}</p></div>
 }
@@ -40,7 +53,7 @@ function App() {
   const t = messages[locale]
   useEffect(() => { localStorage.setItem('shanyao-locale', locale); document.documentElement.lang = locale }, [locale])
   const go = id => { setPage(id); scrollTo(0, 0) }
-  const content = page === 'home' ? <Home openRoute={() => go('route')} t={t}/> : page === 'map' ? <Discover openRoute={() => go('route')} t={t}/> : page === 'route' ? <RoutePage t={t}/> : page === 'publish' ? <Publish t={t}/> : <Placeholder title={page === 'messages' ? t.nav[3] : t.nav[4]} t={t}/>
+  const content = page === 'home' ? <Home openRoute={() => go('route')} t={t}/> : page === 'map' ? <Discover openRoute={() => go('route')} t={t}/> : page === 'route' ? <RoutePage t={t}/> : page === 'publish' ? <Publish t={t}/> : page === 'profile' ? <AuthPage t={t}/> : <Placeholder title={t.nav[3]} t={t}/>
   return <div className="app"><aside className="desktop-nav"><Logo/><nav>{t.nav.map((name, i) => { const Icon = navIcons[i]; const id = navIds[i]; return <button className={page === id ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/>{name}</button> })}</nav><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><div className="account"><div className="avatar">林</div><span>小林去走走</span></div></aside><header className="mobile-head"><Logo/><div><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><button aria-label="Search"><Search/></button><button aria-label="Ranking"><Trophy/></button></div></header><main className="main">{content}</main><aside className="right-rail"><div className="profile"><div className="avatar">林</div><span><b>小林去走走</b><small>{t.bio}</small></span></div><h3>{t.weekly}</h3>{t.names.map((x, i) => <div className="mini" key={x}><i>{i + 1}</i><span><b>{x}</b><small>{24 - i * 6} {t.routes}</small></span></div>)}<small className="muted">{t.sampleData}</small></aside><nav className="mobile-nav">{t.nav.map((name, i) => { const Icon = navIcons[i]; const id = navIds[i]; return <button className={page === id ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/><small>{name}</small></button> })}</nav></div>
 }
 
