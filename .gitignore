@@ -4,6 +4,10 @@ dist/
 .env.*
 !.env.example
 *.log
+*.db
+backend/.venv/
+__pycache__/
+.pytest_cache/
 .DS_Store
 .idea/
 .vscode/
