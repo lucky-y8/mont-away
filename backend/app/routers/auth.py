@@ -1,16 +1,19 @@
 from datetime import datetime, timedelta, timezone
 
-from fastapi import APIRouter, HTTPException, Query, status
+from fastapi import APIRouter, Query, status
 from fastapi.responses import RedirectResponse
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 
 from ..config import settings
 from ..deps import CurrentUser, DbSession
+from ..errors import APIError
+from ..i18n import Locale, translate
 from ..models import ExternalIdentity, OAuthLoginCode, Session, User
 from ..schemas import EmailCredentials, Message, RefreshRequest, RegistrationResponse, TokenPair, UserRead, VerifyEmailRequest, WeChatExchangeRequest
 from ..security import create_signed_token, decode_signed_token, hash_password, new_opaque_token, token_hash, verify_password
 from ..services import wechat
+from ..services.email import send_verification_email
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -36,38 +39,40 @@ async def issue_tokens(db: DbSession, user: User) -> TokenPair:
 async def register(payload: EmailCredentials, db: DbSession) -> RegistrationResponse:
     email = payload.email.lower()
     if await db.scalar(select(User).where(User.email == email)):
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email is already registered")
-    user = User(email=email, password_hash=hash_password(payload.password), display_name=email.split("@", 1)[0])
+        raise APIError(status.HTTP_409_CONFLICT, "email_exists")
+    user = User(email=email, password_hash=hash_password(payload.password), display_name=email.split("@", 1)[0], is_admin=bool(settings.initial_admin_email and email == settings.initial_admin_email.lower()))
     db.add(user)
     try:
+        await db.flush()
+        verification = create_signed_token(user.id, "verify_email", timedelta(minutes=settings.verification_token_minutes))
+        await send_verification_email(email, verification)
         await db.commit()
     except IntegrityError as exc:
         await db.rollback()
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email is already registered") from exc
+        raise APIError(status.HTTP_409_CONFLICT, "email_exists") from exc
     await db.refresh(user)
-    verification = create_signed_token(user.id, "verify_email", timedelta(minutes=settings.verification_token_minutes))
     return RegistrationResponse(user=UserRead.model_validate(user), verification_token=verification if settings.expose_debug_tokens else None)
 
 
 @router.post("/email/verify", response_model=Message)
-async def verify_email(payload: VerifyEmailRequest, db: DbSession) -> Message:
+async def verify_email(payload: VerifyEmailRequest, db: DbSession, locale: Locale) -> Message:
     user = await db.get(User, decode_signed_token(payload.token, "verify_email"))
     if user is None:
-        raise HTTPException(status_code=404, detail="User not found")
+        raise APIError(status.HTTP_404_NOT_FOUND, "user_not_found")
     user.is_email_verified = True
     await db.commit()
-    return Message(message="Email verified")
+    return Message(code="email_verified", message=translate(locale, "email_verified"))
 
 
 @router.post("/email/login", response_model=TokenPair)
 async def login(payload: EmailCredentials, db: DbSession) -> TokenPair:
     user = await db.scalar(select(User).where(User.email == payload.email.lower()))
     if user is None or user.password_hash is None or not verify_password(payload.password, user.password_hash):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid email or password")
+        raise APIError(status.HTTP_401_UNAUTHORIZED, "invalid_credentials")
     if not user.is_active:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Account is disabled")
+        raise APIError(status.HTTP_403_FORBIDDEN, "account_disabled")
     if not user.is_email_verified:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Email is not verified")
+        raise APIError(status.HTTP_403_FORBIDDEN, "email_unverified")
     return await issue_tokens(db, user)
 
 
@@ -75,22 +80,22 @@ async def login(payload: EmailCredentials, db: DbSession) -> TokenPair:
 async def refresh(payload: RefreshRequest, db: DbSession) -> TokenPair:
     session = await db.scalar(select(Session).where(Session.refresh_token_hash == token_hash(payload.refresh_token)))
     if session is None or session.revoked_at is not None or expired(session.expires_at):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid refresh token")
+        raise APIError(status.HTTP_401_UNAUTHORIZED, "invalid_refresh_token")
     user = await db.get(User, session.user_id)
     if user is None or not user.is_active:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User is unavailable")
+        raise APIError(status.HTTP_401_UNAUTHORIZED, "user_unavailable")
     session.revoked_at = db_now()
     await db.flush()
     return await issue_tokens(db, user)
 
 
 @router.post("/logout", response_model=Message)
-async def logout(payload: RefreshRequest, db: DbSession) -> Message:
+async def logout(payload: RefreshRequest, db: DbSession, locale: Locale) -> Message:
     session = await db.scalar(select(Session).where(Session.refresh_token_hash == token_hash(payload.refresh_token)))
     if session and session.revoked_at is None:
         session.revoked_at = db_now()
         await db.commit()
-    return Message(message="Logged out")
+    return Message(code="logged_out", message=translate(locale, "logged_out"))
 
 
 @router.get("/me", response_model=UserRead)
@@ -126,10 +131,10 @@ async def wechat_callback(db: DbSession, code: str = Query(min_length=1), state_
 async def wechat_exchange(payload: WeChatExchangeRequest, db: DbSession) -> TokenPair:
     login_code = await db.scalar(select(OAuthLoginCode).where(OAuthLoginCode.code_hash == token_hash(payload.code)))
     if login_code is None or login_code.used_at is not None or expired(login_code.expires_at):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid login code")
+        raise APIError(status.HTTP_401_UNAUTHORIZED, "invalid_login_code")
     user = await db.get(User, login_code.user_id)
     if user is None or not user.is_active:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User is unavailable")
+        raise APIError(status.HTTP_401_UNAUTHORIZED, "user_unavailable")
     login_code.used_at = db_now()
     await db.flush()
     return await issue_tokens(db, user)

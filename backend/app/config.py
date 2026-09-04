@@ -17,10 +17,25 @@ class Settings(BaseSettings):
     verification_token_minutes: int = 30
     oauth_code_minutes: int = 5
     frontend_url: str = "http://127.0.0.1:5173"
+    cors_origins: str = "http://127.0.0.1:5173,http://localhost:5173,http://127.0.0.1:5174"
     expose_debug_tokens: bool = True
+    email_backend: str = "console"
+    smtp_host: str = ""
+    smtp_port: int = 587
+    smtp_username: str = ""
+    smtp_password: str = ""
+    smtp_from: str = "noreply@shanyao.local"
+    smtp_starttls: bool = True
+    initial_admin_email: str = ""
+    post_reward_points: int | None = None
     wechat_app_id: str = ""
     wechat_app_secret: str = ""
     wechat_redirect_uri: str = "http://127.0.0.1:8000/api/v1/auth/wechat/callback"
+
+    @property
+    def cors_origin_list(self) -> list[str]:
+        """Parse configured origins. / 解析允许的前端来源。"""
+        return [origin.strip() for origin in self.cors_origins.split(",") if origin.strip()]
 
     @model_validator(mode="after")
     def validate_production_secrets(self):
@@ -29,6 +44,8 @@ class Settings(BaseSettings):
                 raise ValueError("JWT_SECRET must be a strong production secret")
             if self.expose_debug_tokens:
                 raise ValueError("EXPOSE_DEBUG_TOKENS must be false in production")
+            if self.email_backend != "smtp" or not self.smtp_host:
+                raise ValueError("Production requires an SMTP email backend")
         return self
 
 

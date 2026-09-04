@@ -1,0 +1,124 @@
+"""Localized API messages. / API 多语言消息。"""
+
+from typing import Annotated
+
+from fastapi import Depends, Header
+
+DEFAULT_LOCALE = "zh-CN"
+SUPPORTED_LOCALES = {"zh-CN", "en", "ja"}
+
+MESSAGES = {
+    "zh-CN": {
+        "authentication_required": "请先登录。",
+        "invalid_token": "令牌无效或已过期。",
+        "invalid_token_purpose": "令牌用途无效。",
+        "user_unavailable": "用户不存在或账号不可用。",
+        "email_exists": "该邮箱已经注册。",
+        "user_not_found": "用户不存在。",
+        "email_verified": "邮箱验证成功。",
+        "invalid_credentials": "邮箱或密码错误。",
+        "account_disabled": "账号已被停用。",
+        "email_unverified": "邮箱尚未验证。",
+        "email_delivery_failed": "验证邮件暂时无法发送，请稍后重试。",
+        "invalid_refresh_token": "刷新令牌无效或已过期。",
+        "logged_out": "已退出登录。",
+        "wechat_not_configured": "微信登录尚未配置。",
+        "wechat_auth_failed": "微信授权失败。",
+        "wechat_profile_failed": "无法读取微信用户资料。",
+        "invalid_login_code": "登录交换码无效或已过期。",
+        "post_not_found": "帖子不存在或当前不可见。",
+        "post_created": "帖子已发布并进入审核队列。",
+        "admin_required": "需要管理员权限。",
+        "post_approved": "帖子审核通过。",
+        "post_removed": "帖子已下架并通知作者。",
+        "notification_post_approved": "你的帖子《{title}》已通过审核。",
+        "notification_post_removed": "你的帖子《{title}》已下架。原因：{reason}",
+        "validation_error": "请求参数不符合要求。",
+        "not_found": "请求的资源不存在。",
+        "internal_error": "服务器暂时无法处理请求。",
+    },
+    "en": {
+        "authentication_required": "Please sign in first.",
+        "invalid_token": "The token is invalid or has expired.",
+        "invalid_token_purpose": "The token has an invalid purpose.",
+        "user_unavailable": "The user does not exist or the account is unavailable.",
+        "email_exists": "This email address is already registered.",
+        "user_not_found": "The user was not found.",
+        "email_verified": "Email verified successfully.",
+        "invalid_credentials": "The email or password is incorrect.",
+        "account_disabled": "This account has been disabled.",
+        "email_unverified": "The email address has not been verified.",
+        "email_delivery_failed": "The verification email could not be sent. Please try again later.",
+        "invalid_refresh_token": "The refresh token is invalid or has expired.",
+        "logged_out": "Signed out successfully.",
+        "wechat_not_configured": "WeChat sign-in is not configured.",
+        "wechat_auth_failed": "WeChat authorization failed.",
+        "wechat_profile_failed": "Unable to read the WeChat profile.",
+        "invalid_login_code": "The login exchange code is invalid or has expired.",
+        "post_not_found": "The post was not found or is not currently visible.",
+        "post_created": "The post is public and has entered the review queue.",
+        "admin_required": "Administrator access is required.",
+        "post_approved": "The post has been approved.",
+        "post_removed": "The post has been removed and the author was notified.",
+        "notification_post_approved": "Your post “{title}” has been approved.",
+        "notification_post_removed": "Your post “{title}” was removed. Reason: {reason}",
+        "validation_error": "The request parameters are invalid.",
+        "not_found": "The requested resource was not found.",
+        "internal_error": "The server could not process the request.",
+    },
+    "ja": {
+        "authentication_required": "先にログインしてください。",
+        "invalid_token": "トークンが無効か、有効期限が切れています。",
+        "invalid_token_purpose": "トークンの用途が無効です。",
+        "user_unavailable": "ユーザーが存在しないか、アカウントを利用できません。",
+        "email_exists": "このメールアドレスは既に登録されています。",
+        "user_not_found": "ユーザーが見つかりません。",
+        "email_verified": "メールアドレスを確認しました。",
+        "invalid_credentials": "メールアドレスまたはパスワードが正しくありません。",
+        "account_disabled": "このアカウントは停止されています。",
+        "email_unverified": "メールアドレスが確認されていません。",
+        "email_delivery_failed": "確認メールを送信できませんでした。後でもう一度お試しください。",
+        "invalid_refresh_token": "更新トークンが無効か、有効期限が切れています。",
+        "logged_out": "ログアウトしました。",
+        "wechat_not_configured": "WeChatログインはまだ設定されていません。",
+        "wechat_auth_failed": "WeChat認証に失敗しました。",
+        "wechat_profile_failed": "WeChatのプロフィールを取得できません。",
+        "invalid_login_code": "ログイン交換コードが無効か、有効期限が切れています。",
+        "post_not_found": "投稿が存在しないか、現在表示できません。",
+        "post_created": "投稿を公開し、審査待ちになりました。",
+        "admin_required": "管理者権限が必要です。",
+        "post_approved": "投稿を承認しました。",
+        "post_removed": "投稿を非公開にし、投稿者へ通知しました。",
+        "notification_post_approved": "投稿「{title}」が承認されました。",
+        "notification_post_removed": "投稿「{title}」が非公開になりました。理由：{reason}",
+        "validation_error": "リクエストの項目が正しくありません。",
+        "not_found": "指定されたリソースが見つかりません。",
+        "internal_error": "サーバーはリクエストを処理できませんでした。",
+    },
+}
+
+
+def resolve_locale(accept_language: str | None) -> str:
+    """Select a supported locale from Accept-Language. / 从请求语言中选择受支持语言。"""
+    if not accept_language:
+        return DEFAULT_LOCALE
+    for item in accept_language.split(","):
+        code = item.split(";", 1)[0].strip().lower()
+        if code.startswith("zh"):
+            return "zh-CN"
+        if code.startswith("en"):
+            return "en"
+        if code.startswith("ja"):
+            return "ja"
+    return DEFAULT_LOCALE
+
+
+def translate(locale: str, code: str) -> str:
+    return MESSAGES.get(locale, MESSAGES[DEFAULT_LOCALE]).get(code, MESSAGES[DEFAULT_LOCALE].get(code, code))
+
+
+async def get_locale(accept_language: Annotated[str | None, Header()] = None) -> str:
+    return resolve_locale(accept_language)
+
+
+Locale = Annotated[str, Depends(get_locale)]

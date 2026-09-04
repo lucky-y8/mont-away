@@ -3,10 +3,11 @@ import secrets
 from datetime import datetime, timedelta, timezone
 
 import jwt
-from fastapi import HTTPException, status
+from fastapi import status
 from pwdlib import PasswordHash
 
 from .config import settings
+from .errors import APIError
 
 password_hasher = PasswordHash.recommended()
 
@@ -28,9 +29,9 @@ def decode_signed_token(token: str, purpose: str) -> str:
     try:
         payload = jwt.decode(token, settings.jwt_secret, algorithms=["HS256"])
     except jwt.PyJWTError as exc:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid or expired token") from exc
+        raise APIError(status.HTTP_401_UNAUTHORIZED, "invalid_token") from exc
     if payload.get("purpose") != purpose or not payload.get("sub"):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token purpose")
+        raise APIError(status.HTTP_401_UNAUTHORIZED, "invalid_token_purpose")
     return str(payload["sub"])
 
 

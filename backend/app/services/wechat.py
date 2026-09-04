@@ -1,9 +1,10 @@
 from urllib.parse import urlencode
 
 import httpx
-from fastapi import HTTPException, status
+from fastapi import status
 
 from ..config import settings
+from ..errors import APIError
 
 AUTHORIZE_URL = "https://open.weixin.qq.com/connect/qrconnect"
 TOKEN_URL = "https://api.weixin.qq.com/sns/oauth2/access_token"
@@ -12,7 +13,7 @@ USERINFO_URL = "https://api.weixin.qq.com/sns/userinfo"
 
 def ensure_configured() -> None:
     if not settings.wechat_app_id or not settings.wechat_app_secret:
-        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="WeChat login is not configured")
+        raise APIError(status.HTTP_503_SERVICE_UNAVAILABLE, "wechat_not_configured")
 
 
 def authorization_url(state: str) -> str:
@@ -28,10 +29,10 @@ async def fetch_identity(code: str) -> dict:
         token_response.raise_for_status()
         token = token_response.json()
         if "errcode" in token:
-            raise HTTPException(status_code=400, detail="WeChat authorization failed")
+            raise APIError(status.HTTP_400_BAD_REQUEST, "wechat_auth_failed")
         user_response = await client.get(USERINFO_URL, params={"access_token": token["access_token"], "openid": token["openid"], "lang": "zh_CN"})
         user_response.raise_for_status()
         profile = user_response.json()
         if "errcode" in profile:
-            raise HTTPException(status_code=400, detail="Unable to read WeChat profile")
+            raise APIError(status.HTTP_400_BAD_REQUEST, "wechat_profile_failed")
         return {"subject": profile["openid"], "union_id": profile.get("unionid"), "display_name": profile.get("nickname") or "微信用户"}

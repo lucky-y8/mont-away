@@ -7,19 +7,20 @@
 - 微信登录：移动 App 使用微信开放平台授权；PC Web 使用网站应用扫码授权。
 - QQ、Google、快捷登录和手机号登录暂不开发。
 
-当前提交只实现登录界面和前端校验。由于尚未配置服务端、数据库、邮件服务、微信开放平台资质及 App ID，不能进行真实登录。
+邮箱认证前后端闭环已实现并通过自动化与浏览器回归。本地开发使用控制台验证链接并可暴露调试令牌；生产环境必须关闭调试令牌并配置 SMTP。微信 OAuth 流程和安全交换码已实现，但真实授权仍需要微信开放平台网站应用资质、App ID、AppSecret 和备案回调域名。
 
 ## 建议 API
 
 ```text
-POST /api/auth/email/register
-POST /api/auth/email/verify
-POST /api/auth/email/login
-POST /api/auth/refresh
-POST /api/auth/logout
-GET  /api/auth/wechat/start
-GET  /api/auth/wechat/callback
-GET  /api/me
+POST /api/v1/auth/email/register
+POST /api/v1/auth/email/verify
+POST /api/v1/auth/email/login
+POST /api/v1/auth/refresh
+POST /api/v1/auth/logout
+GET  /api/v1/auth/wechat/start
+GET  /api/v1/auth/wechat/callback
+POST /api/v1/auth/wechat/exchange
+GET  /api/v1/auth/me
 ```
 
 ## 安全要求
