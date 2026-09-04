@@ -1,20 +1,75 @@
 """Moderation endpoints. / 内容审核接口。"""
 
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Query, status
-from sqlalchemy import select
+from sqlalchemy import or_, select, update
 
 from ..config import settings
 from ..deps import AdminUser, DbSession
 from ..errors import APIError
 from ..i18n import Locale, translate
-from ..models import ModerationAction, Notification, PointLedger, Post, PostReport
-from ..schemas import Message, ModerationRequest, PostRead, RemovalRequest, ReportRead, ReportResolution
+from ..models import AccountModerationAction, ModerationAction, Notification, PointLedger, Post, PostReport, Session, User
+from ..schemas import AdminUserRead, Message, ModerationRequest, PostRead, RemovalRequest, ReportRead, ReportResolution, UserBanRequest
+from ..services.account_status import clear_expired_ban
 from .posts import serialize_post
 
 router = APIRouter(prefix="/admin", tags=["admin"])
+
+
+def admin_user_read(user: User) -> AdminUserRead:
+    banned_until = user.banned_until if user.banned_until is None or user.banned_until.tzinfo else user.banned_until.replace(tzinfo=timezone.utc)
+    return AdminUserRead(id=user.id, email=user.email, display_name=user.display_name, is_admin=user.is_admin, is_banned=user.is_banned, banned_until=banned_until, ban_reason=user.ban_reason, created_at=user.created_at)
+
+
+@router.get("/users", response_model=list[AdminUserRead])
+async def user_queue(db: DbSession, _: AdminUser, search: str | None = Query(default=None, max_length=100), limit: int = Query(default=100, ge=1, le=200)) -> list[AdminUserRead]:
+    statement = select(User)
+    if search and search.strip():
+        term = f"%{search.strip()}%"
+        statement = statement.where(or_(User.email.ilike(term), User.display_name.ilike(term)))
+    users = list((await db.scalars(statement.order_by(User.created_at.desc()).limit(limit))).all())
+    changed = False
+    for user in users:
+        changed = clear_expired_ban(user) or changed
+    if changed:
+        await db.commit()
+    return [admin_user_read(user) for user in users]
+
+
+@router.post("/users/{user_id}/ban", response_model=Message)
+async def ban_user(user_id: str, payload: UserBanRequest, db: DbSession, admin: AdminUser, locale: Locale) -> Message:
+    """Ban permanently by default, or until a configured hour limit. / 默认永久封禁，也可按小时限时封禁。"""
+    user = await db.get(User, user_id)
+    if user is None:
+        raise APIError(status.HTTP_404_NOT_FOUND, "user_not_found")
+    if user.is_admin:
+        raise APIError(status.HTTP_409_CONFLICT, "cannot_ban_admin")
+    now = datetime.now(timezone.utc).replace(tzinfo=None)
+    banned_until = now + timedelta(hours=payload.duration_hours) if payload.duration_hours else None
+    user.is_banned = True
+    user.banned_until = banned_until
+    user.ban_reason = payload.reason
+    await db.execute(update(Session).where(Session.user_id == user.id, Session.revoked_at.is_(None)).values(revoked_at=now))
+    db.add(AccountModerationAction(user_id=user.id, admin_id=admin.id, action="ban", reason=payload.reason, banned_until=banned_until))
+    db.add(Notification(user_id=user.id, event_type="account_banned", payload_json=json.dumps({"reason": payload.reason, "until": banned_until.replace(tzinfo=timezone.utc).isoformat() if banned_until else None}, ensure_ascii=False)))
+    await db.commit()
+    return Message(code="user_banned", message=translate(locale, "user_banned"))
+
+
+@router.post("/users/{user_id}/unban", response_model=Message)
+async def unban_user(user_id: str, db: DbSession, admin: AdminUser, locale: Locale) -> Message:
+    user = await db.get(User, user_id)
+    if user is None:
+        raise APIError(status.HTTP_404_NOT_FOUND, "user_not_found")
+    user.is_banned = False
+    user.banned_until = None
+    user.ban_reason = ""
+    db.add(AccountModerationAction(user_id=user.id, admin_id=admin.id, action="unban"))
+    db.add(Notification(user_id=user.id, event_type="account_unbanned", payload_json="{}"))
+    await db.commit()
+    return Message(code="user_unbanned", message=translate(locale, "user_unbanned"))
 
 
 @router.get("/reports", response_model=list[ReportRead])

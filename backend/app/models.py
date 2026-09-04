@@ -21,6 +21,9 @@ class User(Base):
     is_email_verified: Mapped[bool] = mapped_column(Boolean, default=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
+    is_banned: Mapped[bool] = mapped_column(Boolean, default=False)
+    banned_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    ban_reason: Mapped[str] = mapped_column(Text, default="")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
@@ -209,6 +212,19 @@ class ModerationAction(Base):
     admin_id: Mapped[str] = mapped_column(ForeignKey("users.id"), index=True)
     action: Mapped[str] = mapped_column(String(30), index=True)
     reason: Mapped[str] = mapped_column(Text, default="")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class AccountModerationAction(Base):
+    """Immutable administrator account action. / 不可变的管理员账号操作记录。"""
+
+    __tablename__ = "account_moderation_actions"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    admin_id: Mapped[str] = mapped_column(ForeignKey("users.id"), index=True)
+    action: Mapped[str] = mapped_column(String(30), index=True)
+    reason: Mapped[str] = mapped_column(Text, default="")
+    banned_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 

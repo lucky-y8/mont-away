@@ -119,6 +119,19 @@ export function getReportQueue(locale) {
   return request('/api/v1/admin/reports', { locale })
 }
 
+export function getAdminUsers(locale, search = '') {
+  const params = search ? `?search=${encodeURIComponent(search)}` : ''
+  return request(`/api/v1/admin/users${params}`, { locale })
+}
+
+export function banUser(userId, reason, durationHours, locale) {
+  return request(`/api/v1/admin/users/${userId}/ban`, { method: 'POST', locale, body: JSON.stringify({ reason, duration_hours: durationHours }) })
+}
+
+export function unbanUser(userId, locale) {
+  return request(`/api/v1/admin/users/${userId}/unban`, { method: 'POST', locale })
+}
+
 export function resolveReport(reportId, resolution, locale) {
   return request(`/api/v1/admin/reports/${reportId}/resolve`, { method: 'POST', locale, body: JSON.stringify({ resolution }) })
 }

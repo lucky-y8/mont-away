@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, Languages, Mail, Lock, LogOut } from 'lucide-react'
 import { detectLocale, localeOptions, messages } from './i18n'
-import { addComment, approvePost, beginWeChatLogin, createPost, exchangeWeChatCode, getCurrentUser, getModerationQueue, getMyPosts, getNotifications, getPointAccount, getReportQueue, hasStoredSession, listComments, listPosts, loginEmail, logout, registerEmail, removePost, reportPost, requestPasswordReset, resetPassword, resolveReport, restoreCurrentUser, setPostBookmark, setPostLike, updatePost, uploadMedia, verifyEmail } from './api'
+import { addComment, approvePost, banUser, beginWeChatLogin, createPost, exchangeWeChatCode, getAdminUsers, getCurrentUser, getModerationQueue, getMyPosts, getNotifications, getPointAccount, getReportQueue, hasStoredSession, listComments, listPosts, loginEmail, logout, registerEmail, removePost, reportPost, requestPasswordReset, resetPassword, resolveReport, restoreCurrentUser, setPostBookmark, setPostLike, unbanUser, updatePost, uploadMedia, verifyEmail } from './api'
 import './styles.css'
 
 const navIds = ['home', 'map', 'publish', 'messages', 'profile']
@@ -238,9 +238,10 @@ function ActivityPage({ t, locale, user, onRequireAuth }) {
 function AdminPage({ t, locale, openRoute }) {
   const [posts, setPosts] = useState(null)
   const [reports, setReports] = useState(null)
+  const [users, setUsers] = useState(null)
   const [notice, setNotice] = useState('')
-  const load = () => Promise.all([getModerationQueue(locale), getReportQueue(locale)]).then(([postItems, reportItems]) => { setPosts(postItems); setReports(reportItems) }).catch(error => { setPosts([]); setReports([]); setNotice(error.message) })
-  useEffect(load, [locale])
+  const load = () => Promise.all([getModerationQueue(locale), getReportQueue(locale), getAdminUsers(locale)]).then(([postItems, reportItems, userItems]) => { setPosts(postItems); setReports(reportItems); setUsers(userItems) }).catch(error => { setPosts([]); setReports([]); setUsers([]); setNotice(error.message) })
+  useEffect(() => { load() }, [locale])
   const approve = async post => {
     try { setNotice((await approvePost(post.id, '', locale)).message); load() } catch (error) { setNotice(error.message) }
   }
@@ -254,7 +255,20 @@ function AdminPage({ t, locale, openRoute }) {
     if (!resolution?.trim()) return
     try { setNotice((await resolveReport(report.id, resolution.trim(), locale)).message); load() } catch (error) { setNotice(error.message) }
   }
-  return <div className="surface admin-page"><h1>{t.adminTitle}</h1>{notice && <p className="auth-notice">{notice}</p>}{posts === null ? <p className="feed-status">{t.loadingFeed}</p> : posts.length === 0 ? <p className="feed-status">{t.noReview}</p> : <div className="review-list">{posts.map(post => <article key={post.id}><div><b>{post.title}</b><span><MapPin/>{post.place.name} · {post.author_name}</span><p>{post.body}</p></div><div><button className="secondary" onClick={() => openRoute(post)}>{t.viewRoute}</button><button className="primary" onClick={() => approve(post)}>{t.approve}</button><button className="secondary danger" onClick={() => remove(post)}>{t.remove}</button></div></article>)}</div>}<h2 className="admin-subtitle">{t.reportQueue}</h2>{reports === null ? <p className="feed-status">{t.loadingFeed}</p> : reports.length === 0 ? <p className="feed-status">{t.noReports}</p> : <div className="report-list">{reports.map(report => <article key={report.id}><div><b>{report.category}</b><p>{report.reason}</p></div><button className="secondary" onClick={() => resolve(report)}>{t.resolve}</button></article>)}</div>}</div>
+  const ban = async user => {
+    const reason = window.prompt(t.banReason)
+    if (!reason?.trim()) return
+    const durationInput = window.prompt(t.banDurationPrompt, '')
+    if (durationInput === null) return
+    const duration = durationInput.trim() ? Number(durationInput) : null
+    if (duration !== null && (!Number.isInteger(duration) || duration < 1 || duration > 8760)) return setNotice(t.invalidBanDuration)
+    try { setNotice((await banUser(user.id, reason.trim(), duration, locale)).message); load() } catch (error) { setNotice(error.message) }
+  }
+  const unban = async user => {
+    try { setNotice((await unbanUser(user.id, locale)).message); load() } catch (error) { setNotice(error.message) }
+  }
+  const accountStatus = user => user.is_banned ? user.banned_until ? `${t.bannedUntil} ${new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(user.banned_until))}` : t.bannedPermanent : t.accountActive
+  return <div className="surface admin-page"><h1>{t.adminTitle}</h1>{notice && <p className="auth-notice">{notice}</p>}{posts === null ? <p className="feed-status">{t.loadingFeed}</p> : posts.length === 0 ? <p className="feed-status">{t.noReview}</p> : <div className="review-list">{posts.map(post => <article key={post.id}><div><b>{post.title}</b><span><MapPin/>{post.place.name} · {post.author_name}</span><p>{post.body}</p></div><div><button className="secondary" onClick={() => openRoute(post)}>{t.viewRoute}</button><button className="primary" onClick={() => approve(post)}>{t.approve}</button><button className="secondary danger" onClick={() => remove(post)}>{t.remove}</button></div></article>)}</div>}<h2 className="admin-subtitle">{t.reportQueue}</h2>{reports === null ? <p className="feed-status">{t.loadingFeed}</p> : reports.length === 0 ? <p className="feed-status">{t.noReports}</p> : <div className="report-list">{reports.map(report => <article key={report.id}><div><b>{report.category}</b><p>{report.reason}</p></div><button className="secondary" onClick={() => resolve(report)}>{t.resolve}</button></article>)}</div>}<h2 className="admin-subtitle">{t.userManagement}</h2>{users === null ? <p className="feed-status">{t.loadingFeed}</p> : <div className="user-list">{users.map(user => <article key={user.id}><div><b>{user.display_name}</b><span>{user.email}</span><small className={user.is_banned ? 'account-banned' : ''}>{accountStatus(user)}</small>{user.ban_reason && <p>{user.ban_reason}</p>}</div>{!user.is_admin && (user.is_banned ? <button className="secondary" onClick={() => unban(user)}>{t.unban}</button> : <button className="secondary danger" onClick={() => ban(user)}>{t.ban}</button>)}</article>)}</div>}</div>
 }
 
 function VerifyEmailPage({ t, locale, onLogin }) {

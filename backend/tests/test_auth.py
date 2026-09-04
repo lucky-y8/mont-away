@@ -232,3 +232,39 @@ def test_admin_approval_notifies_and_rewards_once():
             assert "审核" in notifications[0]["message"]
         finally:
             settings.post_reward_points = None
+
+
+def test_admin_can_ban_and_unban_a_non_admin_account():
+    with TestClient(app) as client:
+        user_email = f"ban-target-{uuid.uuid4()}@example.com"
+        user_password = "a-secure-user-password"
+        registration = client.post("/api/v1/auth/email/register", json={"email": user_email, "password": user_password}).json()
+        client.post("/api/v1/auth/email/verify", json={"token": registration["verification_token"]})
+        user_tokens = client.post("/api/v1/auth/email/login", json={"email": user_email, "password": user_password}).json()
+        user_headers = {"Authorization": f"Bearer {user_tokens['access_token']}", "Accept-Language": "en"}
+        user_id = client.get("/api/v1/auth/me", headers=user_headers).json()["id"]
+
+        admin_payload = {"email": "admin@example.com", "password": "a-secure-admin-password"}
+        admin_registration = client.post("/api/v1/auth/email/register", json=admin_payload)
+        if admin_registration.status_code == 201:
+            client.post("/api/v1/auth/email/verify", json={"token": admin_registration.json()["verification_token"]})
+        admin_tokens = client.post("/api/v1/auth/email/login", json=admin_payload).json()
+        admin_headers = {"Authorization": f"Bearer {admin_tokens['access_token']}", "Accept-Language": "en"}
+
+        banned = client.post(f"/api/v1/admin/users/{user_id}/ban", headers=admin_headers, json={"reason": "Repeated unsafe content", "duration_hours": 24})
+        assert banned.status_code == 200
+        assert banned.json()["code"] == "user_banned"
+        blocked = client.get("/api/v1/auth/me", headers=user_headers)
+        assert blocked.status_code == 403
+        assert blocked.json()["error"]["code"] == "account_banned_until"
+        assert blocked.json()["error"]["details"]["reason"] == "Repeated unsafe content"
+        assert client.post("/api/v1/auth/refresh", json={"refresh_token": user_tokens["refresh_token"]}).status_code == 401
+        assert client.post("/api/v1/auth/email/login", headers={"Accept-Language": "en"}, json={"email": user_email, "password": user_password}).status_code == 403
+        users = client.get("/api/v1/admin/users", headers=admin_headers).json()
+        assert next(item for item in users if item["id"] == user_id)["is_banned"] is True
+
+        unbanned = client.post(f"/api/v1/admin/users/{user_id}/unban", headers=admin_headers)
+        assert unbanned.status_code == 200
+        fresh_tokens = client.post("/api/v1/auth/email/login", json={"email": user_email, "password": user_password}).json()
+        notifications = client.get("/api/v1/account/notifications", headers={"Authorization": f"Bearer {fresh_tokens['access_token']}", "Accept-Language": "en"}).json()
+        assert [item["event_type"] for item in notifications[:2]] == ["account_unbanned", "account_banned"]

@@ -8,6 +8,7 @@ from .database import get_db
 from .errors import APIError
 from .models import User
 from .security import decode_signed_token
+from .services.account_status import clear_expired_ban, raise_if_banned
 
 bearer = HTTPBearer(auto_error=False)
 DbSession = Annotated[AsyncSession, Depends(get_db)]
@@ -20,6 +21,9 @@ async def current_user(db: DbSession, credentials: Annotated[HTTPAuthorizationCr
     user = await db.get(User, user_id)
     if user is None or not user.is_active:
         raise APIError(status.HTTP_401_UNAUTHORIZED, "user_unavailable")
+    if clear_expired_ban(user):
+        await db.commit()
+    raise_if_banned(user)
     return user
 
 
@@ -34,6 +38,9 @@ async def optional_current_user(db: DbSession, credentials: Annotated[HTTPAuthor
     user = await db.get(User, user_id)
     if user is None or not user.is_active:
         raise APIError(status.HTTP_401_UNAUTHORIZED, "user_unavailable")
+    if clear_expired_ban(user):
+        await db.commit()
+    raise_if_banned(user)
     return user
 
 

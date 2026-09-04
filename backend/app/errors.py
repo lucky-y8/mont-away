@@ -4,6 +4,7 @@ from fastapi import HTTPException
 
 
 class APIError(HTTPException):
-    def __init__(self, status_code: int, code: str):
+    def __init__(self, status_code: int, code: str, context: dict | None = None):
         self.code = code
+        self.context = context or {}
         super().__init__(status_code=status_code, detail=code)

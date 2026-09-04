@@ -13,6 +13,7 @@ from ..models import EmailVerification, ExternalIdentity, OAuthLoginCode, Passwo
 from ..schemas import EmailCredentials, EmailRequest, Message, PasswordResetRequest, PasswordResetStartResponse, RefreshRequest, RegistrationResponse, TokenPair, UserRead, VerifyEmailRequest, WeChatExchangeRequest
 from ..security import create_signed_token, decode_signed_token, hash_password, new_opaque_token, token_hash, verify_password
 from ..services import wechat
+from ..services.account_status import clear_expired_ban, raise_if_banned
 from ..services.email import send_password_reset_email, send_verification_email
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -78,6 +79,9 @@ async def login(payload: EmailCredentials, db: DbSession) -> TokenPair:
         raise APIError(status.HTTP_401_UNAUTHORIZED, "invalid_credentials")
     if not user.is_active:
         raise APIError(status.HTTP_403_FORBIDDEN, "account_disabled")
+    if clear_expired_ban(user):
+        await db.commit()
+    raise_if_banned(user)
     if not user.is_email_verified:
         raise APIError(status.HTTP_403_FORBIDDEN, "email_unverified")
     return await issue_tokens(db, user)
@@ -122,6 +126,9 @@ async def refresh(payload: RefreshRequest, db: DbSession) -> TokenPair:
     user = await db.get(User, session.user_id)
     if user is None or not user.is_active:
         raise APIError(status.HTTP_401_UNAUTHORIZED, "user_unavailable")
+    if clear_expired_ban(user):
+        await db.commit()
+    raise_if_banned(user)
     session.revoked_at = db_now()
     await db.flush()
     return await issue_tokens(db, user)
@@ -173,6 +180,9 @@ async def wechat_exchange(payload: WeChatExchangeRequest, db: DbSession) -> Toke
     user = await db.get(User, login_code.user_id)
     if user is None or not user.is_active:
         raise APIError(status.HTTP_401_UNAUTHORIZED, "user_unavailable")
+    if clear_expired_ban(user):
+        await db.commit()
+    raise_if_banned(user)
     login_code.used_at = db_now()
     await db.flush()
     return await issue_tokens(db, user)

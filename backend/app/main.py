@@ -43,7 +43,12 @@ async def http_error_handler(request: Request, exc: HTTPException) -> JSONRespon
     locale = resolve_locale(request.headers.get("accept-language"))
     known_codes = MESSAGES["zh-CN"]
     code = str(exc.detail) if isinstance(exc.detail, str) and exc.detail in known_codes else ("not_found" if exc.status_code == 404 else "internal_error")
-    return JSONResponse(status_code=exc.status_code, content={"error": {"code": code, "message": translate(locale, code)}}, headers={**(exc.headers or {}), "Content-Language": locale})
+    context = getattr(exc, "context", {})
+    message = translate(locale, code).format(**context)
+    error = {"code": code, "message": message}
+    if context:
+        error["details"] = context
+    return JSONResponse(status_code=exc.status_code, content={"error": error}, headers={**(exc.headers or {}), "Content-Language": locale})
 
 
 @app.exception_handler(RequestValidationError)

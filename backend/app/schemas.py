@@ -18,6 +18,30 @@ class UserRead(BaseModel):
     created_at: datetime
 
 
+class AdminUserRead(BaseModel):
+    id: str
+    email: EmailStr | None
+    display_name: str
+    is_admin: bool
+    is_banned: bool
+    banned_until: datetime | None
+    ban_reason: str
+    created_at: datetime
+
+
+class UserBanRequest(BaseModel):
+    reason: str = Field(min_length=1, max_length=2000)
+    duration_hours: int | None = Field(default=None, ge=1, le=24 * 365)
+
+    @field_validator("reason")
+    @classmethod
+    def meaningful_reason(cls, value: str) -> str:
+        """Reject empty moderation reasons. / 拒绝空白的封禁原因。"""
+        if not value.strip():
+            raise ValueError("ban reason cannot be blank")
+        return value.strip()
+
+
 class RegistrationResponse(BaseModel):
     user: UserRead
     verification_token: str | None = None
