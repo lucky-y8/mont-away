@@ -27,7 +27,7 @@ async def serialize_redemption(db: DbSession, redemption: GiftRedemption, locale
     return RedemptionRead(
         id=redemption.id, user_id=redemption.user_id, gift=serialize_gift(gift, locale),
         quantity=redemption.quantity, points_cost=redemption.points_cost,
-        recipient_name=redemption.recipient_name, contact=redemption.contact,
+        recipient_name=redemption.recipient_name, phone=redemption.phone,
         shipping_address=redemption.shipping_address, status=redemption.status,
         tracking_number=redemption.tracking_number, created_at=redemption.created_at,
         updated_at=redemption.updated_at,
@@ -66,8 +66,8 @@ async def redeem_gift(gift_id: str, payload: RedemptionCreate, db: DbSession, us
         raise APIError(status.HTTP_409_CONFLICT, "insufficient_points")
     redemption = GiftRedemption(
         user_id=user.id, gift_id=gift.id, quantity=payload.quantity, points_cost=total_cost,
-        recipient_name=payload.recipient_name.strip(), contact=payload.contact.strip(),
-        shipping_address=payload.shipping_address.strip(),
+        recipient_name=payload.recipient_name, phone=payload.phone,
+        shipping_address=payload.shipping_address,
     )
     gift.stock -= payload.quantity
     db.add(redemption)

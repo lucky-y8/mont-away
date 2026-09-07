@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
 
@@ -294,7 +295,7 @@ class GiftCreate(BaseModel):
     description_zh: str = Field(default="", max_length=4000)
     description_en: str = Field(default="", max_length=4000)
     description_ja: str = Field(default="", max_length=4000)
-    point_cost: int = Field(ge=1, le=10_000_000)
+    point_cost: Literal[20, 40, 60, 80, 100]
     stock: int = Field(ge=0, le=10_000_000)
     image_url: str | None = Field(default=None, max_length=1000)
     is_active: bool = True
@@ -307,7 +308,7 @@ class GiftUpdate(BaseModel):
     description_zh: str | None = Field(default=None, max_length=4000)
     description_en: str | None = Field(default=None, max_length=4000)
     description_ja: str | None = Field(default=None, max_length=4000)
-    point_cost: int | None = Field(default=None, ge=1, le=10_000_000)
+    point_cost: Literal[20, 40, 60, 80, 100] | None = None
     stock: int | None = Field(default=None, ge=0, le=10_000_000)
     image_url: str | None = Field(default=None, max_length=1000)
     is_active: bool | None = None
@@ -316,8 +317,27 @@ class GiftUpdate(BaseModel):
 class RedemptionCreate(BaseModel):
     quantity: int = Field(default=1, ge=1, le=10)
     recipient_name: str = Field(min_length=1, max_length=120)
-    contact: str = Field(min_length=1, max_length=200)
+    phone: str = Field(min_length=7, max_length=32)
     shipping_address: str = Field(min_length=1, max_length=2000)
+
+    @field_validator("recipient_name", "shipping_address", "phone")
+    @classmethod
+    def strip_delivery_fields(cls, value: str) -> str:
+        """Normalize delivery text before persistence. / 收货信息入库前去除首尾空白。"""
+        normalized = value.strip()
+        if not normalized:
+            raise ValueError("delivery field cannot be blank")
+        return normalized
+
+    @field_validator("phone")
+    @classmethod
+    def valid_phone(cls, value: str) -> str:
+        """Accept common mobile and landline formatting. / 兼容常见手机及座机书写格式。"""
+        digits = "".join(character for character in value if character.isdigit())
+        allowed = all(character.isdigit() or character in "+-() " for character in value)
+        if not allowed or not 7 <= len(digits) <= 15:
+            raise ValueError("phone number format is invalid")
+        return value
 
 
 class RedemptionRead(BaseModel):
@@ -327,7 +347,7 @@ class RedemptionRead(BaseModel):
     quantity: int
     points_cost: int
     recipient_name: str
-    contact: str
+    phone: str
     shipping_address: str
     status: str
     tracking_number: str | None

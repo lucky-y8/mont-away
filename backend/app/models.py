@@ -270,7 +270,7 @@ class Gift(Base):
 
     __tablename__ = "gifts"
     __table_args__ = (
-        CheckConstraint("point_cost > 0", name="ck_gift_positive_cost"),
+        CheckConstraint("point_cost IN (20, 40, 60, 80, 100)", name="ck_gift_point_tier"),
         CheckConstraint("stock >= 0", name="ck_gift_nonnegative_stock"),
     )
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
@@ -303,7 +303,7 @@ class GiftRedemption(Base):
     quantity: Mapped[int] = mapped_column(Integer, default=1)
     points_cost: Mapped[int] = mapped_column(Integer)
     recipient_name: Mapped[str] = mapped_column(String(120))
-    contact: Mapped[str] = mapped_column(String(200))
+    phone: Mapped[str] = mapped_column(String(32))
     shipping_address: Mapped[str] = mapped_column(Text)
     status: Mapped[str] = mapped_column(String(30), default="pending_fulfillment", index=True)
     tracking_number: Mapped[str | None] = mapped_column(String(160), nullable=True)

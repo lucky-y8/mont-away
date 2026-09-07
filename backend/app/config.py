@@ -36,7 +36,7 @@ class Settings(BaseSettings):
     smtp_starttls: bool = True
     smtp_ssl: bool = False
     initial_admin_email: str = ""
-    post_reward_points: int | None = None
+    post_reward_points: int = 5
     media_backend: str = "local"
     media_local_dir: str = "uploads"
     media_public_url: str = "http://127.0.0.1:8000/media"

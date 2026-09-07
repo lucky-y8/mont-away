@@ -115,11 +115,9 @@ async def approve_post(post_id: str, payload: ModerationRequest, db: DbSession, 
     existing_reward = await db.scalar(select(PointLedger).where(PointLedger.reference_type == "post", PointLedger.reference_id == post.id, PointLedger.entry_type == "post_reward"))
     if existing_reward:
         post.reward_status = "granted"
-    elif settings.post_reward_points and settings.post_reward_points > 0:
+    else:
         db.add(PointLedger(user_id=post.author_id, amount=settings.post_reward_points, entry_type="post_reward", reference_type="post", reference_id=post.id))
         post.reward_status = "granted"
-    else:
-        post.reward_status = "pending_configuration"
     db.add(ModerationAction(post_id=post.id, post_version_id=post.current_version_id, admin_id=admin.id, action="approve", reason=payload.reason))
     db.add(Notification(user_id=post.author_id, event_type="post_approved", resource_id=post.id, payload_json=json.dumps({"title": detail.title}, ensure_ascii=False)))
     await db.commit()

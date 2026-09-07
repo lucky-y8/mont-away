@@ -236,20 +236,20 @@ def test_admin_approval_notifies_and_rewards_once():
         report = client.get("/api/v1/admin/reports", headers=admin_headers).json()[0]
         resolved = client.post(f"/api/v1/admin/reports/{report['id']}/resolve", headers=admin_headers, json={"resolution": "Reviewed"})
         assert resolved.status_code == 200
-        settings.post_reward_points = 25
+        settings.post_reward_points = 5
         try:
             approved = client.post(f"/api/v1/admin/posts/{post['id']}/approve", headers=admin_headers, json={"reason": "Looks good"})
             assert approved.status_code == 200
             assert approved.json()["message"] == "The post has been approved."
             client.post(f"/api/v1/admin/posts/{post['id']}/approve", headers=admin_headers, json={"reason": "Second review"})
             points = client.get("/api/v1/account/points", headers=author_headers).json()
-            assert points["balance"] == 25
+            assert points["balance"] == 5
             assert len(points["entries"]) == 1
             notifications = client.get("/api/v1/account/notifications", headers={**author_headers, "Accept-Language": "zh-CN"}).json()
             assert notifications[0]["event_type"] == "post_approved"
             assert "审核" in notifications[0]["message"]
         finally:
-            settings.post_reward_points = None
+            settings.post_reward_points = 5
 
 
 def test_admin_can_ban_and_unban_a_non_admin_account():
@@ -341,17 +341,31 @@ def test_gift_redemption_refunds_or_moves_to_fulfillment():
             gift = client.post("/api/v1/admin/gifts", headers=admin_headers, json={
                 "slug": slug, "name_zh": "山径徽章", "name_en": "Trail badge", "name_ja": "トレイルバッジ",
                 "description_zh": "测试礼品", "description_en": "Test gift", "description_ja": "テストギフト",
-                "point_cost": 40, "stock": 2, "is_active": True,
+                "point_cost": 40, "stock": 2, "image_url": "http://127.0.0.1:8000/media/test/gift.webp", "is_active": True,
             })
             assert gift.status_code == 201
             gift_id = gift.json()["id"]
+            assert gift.json()["image_url"].endswith("gift.webp")
+            invalid_tier = client.post("/api/v1/admin/gifts", headers=admin_headers, json={
+                "slug": f"invalid-tier-{uuid.uuid4().hex[:8]}", "name_zh": "无效", "name_en": "Invalid", "name_ja": "無効",
+                "point_cost": 30, "stock": 1,
+            })
+            assert invalid_tier.status_code == 422
             localized = client.get("/api/v1/gifts", headers={"Accept-Language": "ja"}).json()
             assert next(item for item in localized if item["id"] == gift_id)["name"] == "トレイルバッジ"
 
-            delivery = {"quantity": 1, "recipient_name": "测试用户", "contact": "test@example.com", "shipping_address": "测试地址 1 号"}
+            delivery = {"quantity": 1, "recipient_name": "测试用户", "phone": "+86 138-0013-8000", "shipping_address": "测试地址 1 号"}
+            invalid_delivery = client.post(
+                f"/api/v1/gifts/{gift_id}/redeem",
+                headers={**user_headers, "Accept-Language": "en"},
+                json={**delivery, "phone": "not-a-phone"},
+            )
+            assert invalid_delivery.status_code == 422
+            assert invalid_delivery.json()["error"]["message"] == "The request parameters are invalid."
             redemption = client.post(f"/api/v1/gifts/{gift_id}/redeem", headers=user_headers, json=delivery)
             assert redemption.status_code == 201
             assert redemption.json()["points_cost"] == 40
+            assert redemption.json()["phone"] == "+86 138-0013-8000"
             assert client.get("/api/v1/account/points", headers=user_headers).json()["balance"] == 60
             cancelled = client.post(f"/api/v1/account/redemptions/{redemption.json()['id']}/cancel", headers=user_headers)
             assert cancelled.status_code == 200
@@ -365,4 +379,4 @@ def test_gift_redemption_refunds_or_moves_to_fulfillment():
             assert cannot_cancel.status_code == 409
             assert cannot_cancel.json()["error"]["code"] == "redemption_not_cancellable"
         finally:
-            settings.post_reward_points = None
+            settings.post_reward_points = 5
