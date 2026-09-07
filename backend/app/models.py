@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, Float, ForeignKey, Integer, String, Text, UniqueConstraint
+from sqlalchemy import Boolean, CheckConstraint, DateTime, Float, ForeignKey, Integer, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
 from .database import Base
@@ -77,6 +77,20 @@ class PasswordReset(Base):
     token_hash: Mapped[str] = mapped_column(String(64), unique=True, index=True)
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     used_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class UserFollow(Base):
+    """Directed user relationship. / 用户之间的单向关注关系。"""
+
+    __tablename__ = "user_follows"
+    __table_args__ = (
+        UniqueConstraint("follower_id", "following_id", name="uq_user_follow_pair"),
+        CheckConstraint("follower_id <> following_id", name="ck_user_follow_not_self"),
+    )
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    follower_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    following_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
@@ -249,3 +263,49 @@ class PointLedger(Base):
     reference_type: Mapped[str] = mapped_column(String(30))
     reference_id: Mapped[str] = mapped_column(String(36))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class Gift(Base):
+    """Administrator-managed reward catalog item. / 管理员维护的积分礼品。"""
+
+    __tablename__ = "gifts"
+    __table_args__ = (
+        CheckConstraint("point_cost > 0", name="ck_gift_positive_cost"),
+        CheckConstraint("stock >= 0", name="ck_gift_nonnegative_stock"),
+    )
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    slug: Mapped[str] = mapped_column(String(80), unique=True, index=True)
+    name_zh: Mapped[str] = mapped_column(String(120))
+    name_en: Mapped[str] = mapped_column(String(120))
+    name_ja: Mapped[str] = mapped_column(String(120))
+    description_zh: Mapped[str] = mapped_column(Text, default="")
+    description_en: Mapped[str] = mapped_column(Text, default="")
+    description_ja: Mapped[str] = mapped_column(Text, default="")
+    point_cost: Mapped[int] = mapped_column(Integer)
+    stock: Mapped[int] = mapped_column(Integer, default=0)
+    image_url: Mapped[str | None] = mapped_column(String(1000), nullable=True)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, onupdate=utcnow)
+
+
+class GiftRedemption(Base):
+    """Point and stock snapshot for fulfillment. / 用于履约的积分与库存兑换快照。"""
+
+    __tablename__ = "gift_redemptions"
+    __table_args__ = (
+        CheckConstraint("quantity > 0", name="ck_redemption_positive_quantity"),
+        CheckConstraint("points_cost > 0", name="ck_redemption_positive_cost"),
+    )
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    gift_id: Mapped[str] = mapped_column(ForeignKey("gifts.id"), index=True)
+    quantity: Mapped[int] = mapped_column(Integer, default=1)
+    points_cost: Mapped[int] = mapped_column(Integer)
+    recipient_name: Mapped[str] = mapped_column(String(120))
+    contact: Mapped[str] = mapped_column(String(200))
+    shipping_address: Mapped[str] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(String(30), default="pending_fulfillment", index=True)
+    tracking_number: Mapped[str | None] = mapped_column(String(160), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, onupdate=utcnow)

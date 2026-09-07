@@ -1,17 +1,22 @@
 const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
 
 // Access tokens stay in memory on the web. / Web 端访问令牌仅保存在内存中。
-const session = { accessToken: null, refreshToken: sessionStorage.getItem('shanyao-refresh-token') }
+const session = { accessToken: null, accessTokenExpiresAt: 0, refreshToken: sessionStorage.getItem('shanyao-refresh-token') }
 let refreshPromise = null
 
 function saveTokens(tokens) {
   session.accessToken = tokens.access_token
+  // Refresh shortly before expiry so an expected rotation does not appear as a failed request in the UI. / 提前轮换令牌，避免正常过期在界面中表现为失败请求。
+  session.accessTokenExpiresAt = Date.now() + tokens.expires_in * 1000
   session.refreshToken = tokens.refresh_token
   sessionStorage.setItem('shanyao-refresh-token', tokens.refresh_token)
   return tokens
 }
 
 async function request(path, { locale = 'zh-CN', retry = true, ...options } = {}) {
+  if (retry && path !== '/api/v1/auth/refresh' && session.accessToken && session.accessTokenExpiresAt - Date.now() < 15_000 && session.refreshToken) {
+    await refreshSession(locale)
+  }
   const headers = { 'Accept-Language': locale, ...options.headers }
   // The browser supplies multipart boundaries for FormData. / FormData 的分隔符交给浏览器生成。
   if (!(options.body instanceof FormData)) headers['Content-Type'] = 'application/json'
@@ -33,6 +38,7 @@ async function request(path, { locale = 'zh-CN', retry = true, ...options } = {}
 
 function clearSession() {
   session.accessToken = null
+  session.accessTokenExpiresAt = 0
   session.refreshToken = null
   sessionStorage.removeItem('shanyao-refresh-token')
 }
@@ -82,8 +88,14 @@ export function getCurrentUser(locale) {
 }
 
 export async function restoreCurrentUser(locale) {
-  if (!session.accessToken) await refreshSession(locale)
-  return session.accessToken ? getCurrentUser(locale) : null
+  try {
+    if (!session.accessToken) await refreshSession(locale)
+    return session.accessToken ? getCurrentUser(locale) : null
+  } catch (error) {
+    // A revoked or expired persisted refresh token should not poison later public requests. / 已撤销或过期的持久刷新令牌不应影响后续公开请求。
+    clearSession()
+    throw error
+  }
 }
 
 export function hasStoredSession() {
@@ -97,10 +109,24 @@ export async function logout(locale) {
   clearSession()
 }
 
-export function listPosts(locale, search = '', sort = 'recent') {
+export function listPosts(locale, search = '', sort = 'recent', feed = 'all', location = null) {
   const params = new URLSearchParams({ sort })
   if (search) params.set('search', search)
+  if (feed !== 'all') params.set('feed', feed)
+  if (location) {
+    params.set('latitude', location.latitude)
+    params.set('longitude', location.longitude)
+    params.set('radius_km', location.radiusKm || 50)
+  }
   return request(`/api/v1/posts?${params}`, { locale })
+}
+
+export function getPost(postId, locale) {
+  return request(`/api/v1/posts/${postId}`, { locale })
+}
+
+export function setUserFollow(userId, following, locale) {
+  return request(`/api/v1/users/${userId}/follow`, { method: following ? 'POST' : 'DELETE', locale })
 }
 
 export function getNotifications(locale) {
@@ -109,6 +135,22 @@ export function getNotifications(locale) {
 
 export function getPointAccount(locale) {
   return request('/api/v1/account/points', { locale })
+}
+
+export function listGifts(locale) {
+  return request('/api/v1/gifts', { locale })
+}
+
+export function redeemGift(giftId, payload, locale) {
+  return request(`/api/v1/gifts/${giftId}/redeem`, { method: 'POST', locale, body: JSON.stringify(payload) })
+}
+
+export function getRedemptions(locale) {
+  return request('/api/v1/account/redemptions', { locale })
+}
+
+export function cancelRedemption(redemptionId, locale) {
+  return request(`/api/v1/account/redemptions/${redemptionId}/cancel`, { method: 'POST', locale })
 }
 
 export function getModerationQueue(locale) {
@@ -122,6 +164,31 @@ export function getReportQueue(locale) {
 export function getAdminUsers(locale, search = '') {
   const params = search ? `?search=${encodeURIComponent(search)}` : ''
   return request(`/api/v1/admin/users${params}`, { locale })
+}
+
+export function getAdminGifts(locale) {
+  return request('/api/v1/admin/gifts', { locale })
+}
+
+export function createGift(payload, locale) {
+  return request('/api/v1/admin/gifts', { method: 'POST', locale, body: JSON.stringify(payload) })
+}
+
+export function updateGift(giftId, payload, locale) {
+  return request(`/api/v1/admin/gifts/${giftId}`, { method: 'PATCH', locale, body: JSON.stringify(payload) })
+}
+
+export function getAdminRedemptions(locale, status = '') {
+  const params = status ? `?redemption_status=${encodeURIComponent(status)}` : '?redemption_status='
+  return request(`/api/v1/admin/redemptions${params}`, { locale })
+}
+
+export function shipRedemption(redemptionId, trackingNumber, locale) {
+  return request(`/api/v1/admin/redemptions/${redemptionId}/ship`, { method: 'POST', locale, body: JSON.stringify({ tracking_number: trackingNumber }) })
+}
+
+export function adminCancelRedemption(redemptionId, locale) {
+  return request(`/api/v1/admin/redemptions/${redemptionId}/cancel`, { method: 'POST', locale })
 }
 
 export function banUser(userId, reason, durationHours, locale) {

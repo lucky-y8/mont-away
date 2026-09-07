@@ -132,6 +132,12 @@ def test_publish_search_and_idempotent_like_flow():
         )
         assert uploaded.status_code == 201
         assert uploaded.json()["url"].startswith("http://testserver/media/")
+        node_upload = client.post(
+            "/api/v1/media",
+            headers=headers,
+            files={"file": ("route-node.webp", b"test-node-image-bytes", "image/webp")},
+        )
+        assert node_upload.status_code == 201
         payload = {
             "title": "湖边测试路线",
             "body": "这是一条用于自动测试的路线。",
@@ -144,7 +150,7 @@ def test_publish_search_and_idempotent_like_flow():
                 "start": {"name": "环线入口", "latitude": 30.25, "longitude": 120.15},
                 "end": {"name": "环线入口", "latitude": 30.25, "longitude": 120.15},
                 "distance_meters": 1800,
-                "nodes": [{"name": "休息点", "description": "树荫下", "latitude": 30.251, "longitude": 120.151, "source": "edited"}],
+                "nodes": [{"name": "休息点", "description": "树荫下", "latitude": 30.251, "longitude": 120.151, "source": "edited", "media_ids": [node_upload.json()["id"]]}],
             },
         }
         created = client.post("/api/v1/posts", headers=headers, json=payload)
@@ -155,6 +161,7 @@ def test_publish_search_and_idempotent_like_flow():
         assert post["reward_status"] == "pending"
         assert post["route"]["start"] == post["route"]["end"]
         assert post["media"][0]["id"] == uploaded.json()["id"]
+        assert post["route"]["nodes"][0]["media"][0]["id"] == node_upload.json()["id"]
 
         updated_payload = {**payload, "title": "湖边测试路线（已编辑）"}
         updated = client.patch(f"/api/v1/posts/{post['id']}", headers=headers, json=updated_payload)
@@ -162,6 +169,8 @@ def test_publish_search_and_idempotent_like_flow():
         assert updated.json()["title"].endswith("（已编辑）")
         assert updated.json()["media"][0]["url"] == post["media"][0]["url"]
         assert updated.json()["media"][0]["id"] != post["media"][0]["id"]
+        assert updated.json()["route"]["nodes"][0]["media"][0]["url"] == post["route"]["nodes"][0]["media"][0]["url"]
+        assert updated.json()["route"]["nodes"][0]["media"][0]["id"] != post["route"]["nodes"][0]["media"][0]["id"]
 
         reader_tokens = verified_user(client)
         reader_headers = {"Authorization": f"Bearer {reader_tokens['access_token']}"}
@@ -175,6 +184,12 @@ def test_publish_search_and_idempotent_like_flow():
 
         results = client.get("/api/v1/posts", params={"search": "测试湖"}).json()
         assert any(item["id"] == post["id"] for item in results)
+        nearby = client.get("/api/v1/posts", params={"latitude": 30.2465, "longitude": 120.1439, "radius_km": 2}).json()
+        assert nearby[0]["id"] == post["id"]
+        assert client.get("/api/v1/posts", params={"latitude": 39.9, "longitude": 116.4, "radius_km": 2}).json() == []
+        incomplete_location = client.get("/api/v1/posts", params={"latitude": 30.2465}, headers={"Accept-Language": "en"})
+        assert incomplete_location.status_code == 422
+        assert incomplete_location.json()["error"] == {"code": "location_pair_required", "message": "Latitude and longitude must be provided together."}
         first_like = client.post(f"/api/v1/posts/{post['id']}/likes", headers=headers).json()
         second_like = client.post(f"/api/v1/posts/{post['id']}/likes", headers=headers).json()
         assert first_like["like_count"] == second_like["like_count"] == 1
@@ -184,7 +199,10 @@ def test_publish_search_and_idempotent_like_flow():
         unliked = client.delete(f"/api/v1/posts/{post['id']}/likes", headers=headers).json()
         assert unliked["like_count"] == 0
 
-        draft_payload = {**payload, "title": "尚未发布的草稿", "publish": False, "media_ids": []}
+        draft_payload = {
+            **payload, "title": "尚未发布的草稿", "publish": False, "media_ids": [],
+            "route": {**payload["route"], "nodes": [{**payload["route"]["nodes"][0], "media_ids": []}]},
+        }
         draft = client.post("/api/v1/posts", headers=headers, json=draft_payload).json()
         assert draft["visibility_status"] == "draft"
         assert all(item["id"] != draft["id"] for item in client.get("/api/v1/posts").json())
@@ -268,3 +286,83 @@ def test_admin_can_ban_and_unban_a_non_admin_account():
         fresh_tokens = client.post("/api/v1/auth/email/login", json={"email": user_email, "password": user_password}).json()
         notifications = client.get("/api/v1/account/notifications", headers={"Authorization": f"Bearer {fresh_tokens['access_token']}", "Accept-Language": "en"}).json()
         assert [item["event_type"] for item in notifications[:2]] == ["account_unbanned", "account_banned"]
+
+
+def test_following_feed_is_real_and_idempotent():
+    with TestClient(app) as client:
+        author_tokens = verified_user(client)
+        reader_tokens = verified_user(client)
+        author_headers = {"Authorization": f"Bearer {author_tokens['access_token']}"}
+        reader_headers = {"Authorization": f"Bearer {reader_tokens['access_token']}"}
+        author_id = client.get("/api/v1/auth/me", headers=author_headers).json()["id"]
+        reader_id = client.get("/api/v1/auth/me", headers=reader_headers).json()["id"]
+        post = client.post("/api/v1/posts", headers=author_headers, json={
+            "title": "Following feed test", "body": "Visible only after following in the selected feed.",
+            "content_language": "en", "route_source": "manual",
+            "place": {"name": "Follow Hill", "city": "Hangzhou", "country_code": "CN", "latitude": 30.3, "longitude": 120.2},
+            "route": {"start": {"name": "Start", "latitude": 30.3, "longitude": 120.2}, "end": {"name": "End", "latitude": 30.31, "longitude": 120.21}},
+        }).json()
+
+        followed = client.post(f"/api/v1/users/{author_id}/follow", headers=reader_headers)
+        assert followed.status_code == 200
+        assert followed.json()["following"] is True
+        assert client.post(f"/api/v1/users/{author_id}/follow", headers=reader_headers).json()["follower_count"] == 1
+        feed = client.get("/api/v1/posts", params={"feed": "following"}, headers=reader_headers).json()
+        assert [item["id"] for item in feed] == [post["id"]]
+        assert feed[0]["following_author"] is True
+        assert client.get("/api/v1/posts", params={"feed": "following"}).status_code == 401
+        assert client.post(f"/api/v1/users/{reader_id}/follow", headers=reader_headers).status_code == 409
+        assert client.delete(f"/api/v1/users/{author_id}/follow", headers=reader_headers).json()["following"] is False
+        assert client.get("/api/v1/posts", params={"feed": "following"}, headers=reader_headers).json() == []
+
+
+def test_gift_redemption_refunds_or_moves_to_fulfillment():
+    with TestClient(app) as client:
+        user_tokens = verified_user(client)
+        user_headers = {"Authorization": f"Bearer {user_tokens['access_token']}"}
+        admin_payload = {"email": "admin@example.com", "password": "a-secure-admin-password"}
+        registered = client.post("/api/v1/auth/email/register", json=admin_payload)
+        if registered.status_code == 201:
+            client.post("/api/v1/auth/email/verify", json={"token": registered.json()["verification_token"]})
+        admin_tokens = client.post("/api/v1/auth/email/login", json=admin_payload).json()
+        admin_headers = {"Authorization": f"Bearer {admin_tokens['access_token']}"}
+
+        # Earn points through the confirmed moderation rule. / 按已确认的审核规则获得积分。
+        post = client.post("/api/v1/posts", headers=user_headers, json={
+            "title": "Reward source", "body": "Approved content earns configurable points.",
+            "content_language": "en", "route_source": "manual",
+            "place": {"name": "Reward Lake", "city": "Hangzhou", "country_code": "CN", "latitude": 30.4, "longitude": 120.3},
+            "route": {"start": {"name": "Start", "latitude": 30.4, "longitude": 120.3}, "end": {"name": "End", "latitude": 30.41, "longitude": 120.31}},
+        }).json()
+        settings.post_reward_points = 100
+        try:
+            client.post(f"/api/v1/admin/posts/{post['id']}/approve", headers=admin_headers, json={"reason": "test credit"})
+            slug = f"trail-badge-{uuid.uuid4().hex[:8]}"
+            gift = client.post("/api/v1/admin/gifts", headers=admin_headers, json={
+                "slug": slug, "name_zh": "山径徽章", "name_en": "Trail badge", "name_ja": "トレイルバッジ",
+                "description_zh": "测试礼品", "description_en": "Test gift", "description_ja": "テストギフト",
+                "point_cost": 40, "stock": 2, "is_active": True,
+            })
+            assert gift.status_code == 201
+            gift_id = gift.json()["id"]
+            localized = client.get("/api/v1/gifts", headers={"Accept-Language": "ja"}).json()
+            assert next(item for item in localized if item["id"] == gift_id)["name"] == "トレイルバッジ"
+
+            delivery = {"quantity": 1, "recipient_name": "测试用户", "contact": "test@example.com", "shipping_address": "测试地址 1 号"}
+            redemption = client.post(f"/api/v1/gifts/{gift_id}/redeem", headers=user_headers, json=delivery)
+            assert redemption.status_code == 201
+            assert redemption.json()["points_cost"] == 40
+            assert client.get("/api/v1/account/points", headers=user_headers).json()["balance"] == 60
+            cancelled = client.post(f"/api/v1/account/redemptions/{redemption.json()['id']}/cancel", headers=user_headers)
+            assert cancelled.status_code == 200
+            assert client.get("/api/v1/account/points", headers=user_headers).json()["balance"] == 100
+            assert next(item for item in client.get("/api/v1/gifts").json() if item["id"] == gift_id)["stock"] == 2
+
+            second = client.post(f"/api/v1/gifts/{gift_id}/redeem", headers=user_headers, json=delivery).json()
+            shipped = client.post(f"/api/v1/admin/redemptions/{second['id']}/ship", headers=admin_headers, json={"tracking_number": "TEST-10001"})
+            assert shipped.status_code == 200
+            cannot_cancel = client.post(f"/api/v1/account/redemptions/{second['id']}/cancel", headers=user_headers)
+            assert cannot_cancel.status_code == 409
+            assert cannot_cancel.json()["error"]["code"] == "redemption_not_cancellable"
+        finally:
+            settings.post_reward_points = None

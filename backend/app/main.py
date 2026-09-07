@@ -9,7 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from .config import settings
 from .database import create_tables
 from .i18n import MESSAGES, resolve_locale, translate
-from .routers import account, admin, auth, health, media, posts
+from .routers import account, admin, auth, gifts, health, media, posts, users
 
 
 @asynccontextmanager
@@ -32,6 +32,8 @@ app.include_router(posts.router, prefix=settings.api_prefix)
 app.include_router(media.router, prefix=settings.api_prefix)
 app.include_router(admin.router, prefix=settings.api_prefix)
 app.include_router(account.router, prefix=settings.api_prefix)
+app.include_router(gifts.router, prefix=settings.api_prefix)
+app.include_router(users.router, prefix=settings.api_prefix)
 if settings.media_backend == "local":
     # Local files are development-only. / 本地文件服务仅用于开发环境。
     app.mount("/media", StaticFiles(directory=settings.media_local_dir, check_dir=False), name="media")

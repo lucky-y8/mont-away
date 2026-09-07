@@ -1,6 +1,7 @@
 """Travel post and route endpoints. / 游记与路线接口。"""
 
 import json
+import math
 
 from fastapi import APIRouter, Query, status
 from sqlalchemy import delete, func, or_, select
@@ -9,7 +10,7 @@ from sqlalchemy.exc import IntegrityError
 from ..deps import CurrentUser, DbSession, OptionalCurrentUser
 from ..errors import APIError
 from ..i18n import Locale, translate
-from ..models import MediaAsset, Notification, Place, Post, PostBookmark, PostComment, PostLike, PostReport, PostVersion, RouteNode, TravelRoute, User
+from ..models import MediaAsset, Notification, Place, Post, PostBookmark, PostComment, PostLike, PostReport, PostVersion, RouteNode, TravelRoute, User, UserFollow
 from ..schemas import CommentCreate, CommentRead, Coordinate, MediaAssetRead, Message, PlaceRead, PostCreate, PostRead, ReportCreate, RouteNodeRead, RouteRead
 from ..services.media import public_media_url
 
@@ -27,14 +28,24 @@ async def serialize_post(db: DbSession, post: Post, viewer_id: str | None = None
     liked = bool(viewer_id and await db.scalar(select(PostLike.id).where(PostLike.post_id == post.id, PostLike.user_id == viewer_id)))
     comment_count = int(await db.scalar(select(func.count(PostComment.id)).where(PostComment.post_id == post.id, PostComment.is_deleted.is_(False))) or 0)
     bookmarked = bool(viewer_id and await db.scalar(select(PostBookmark.id).where(PostBookmark.post_id == post.id, PostBookmark.user_id == viewer_id)))
+    following_author = bool(viewer_id and viewer_id != post.author_id and await db.scalar(select(UserFollow.id).where(UserFollow.follower_id == viewer_id, UserFollow.following_id == post.author_id)))
     media = list((await db.scalars(select(MediaAsset).where(MediaAsset.post_version_id == version.id, MediaAsset.route_node_id.is_(None)).order_by(MediaAsset.position))).all())
+    node_reads = []
+    for node in nodes:
+        node_media = list((await db.scalars(select(MediaAsset).where(MediaAsset.route_node_id == node.id).order_by(MediaAsset.position))).all())
+        node_reads.append(RouteNodeRead(
+            id=node.id, sequence=node.sequence, name=node.name, description=node.description,
+            latitude=node.latitude, longitude=node.longitude, source=node.source,
+            media_ids=[item.id for item in node_media],
+            media=[MediaAssetRead(id=item.id, media_type=item.media_type, content_type=item.content_type, url=public_media_url(item.object_key), size_bytes=item.size_bytes, position=item.position) for item in node_media],
+        ))
     return PostRead(
         id=post.id, author_id=post.author_id, author_name=author.display_name, title=version.title, body=version.body,
         content_language=version.content_language, transport_mode=version.transport_mode, route_source=version.route_source,
         visibility_status=post.visibility_status, moderation_status=post.moderation_status, reward_status=post.reward_status,
-        like_count=like_count, liked_by_me=liked, comment_count=comment_count, bookmarked_by_me=bookmarked,
+        like_count=like_count, liked_by_me=liked, comment_count=comment_count, bookmarked_by_me=bookmarked, following_author=following_author,
         place=PlaceRead(id=place.id, name=place.name, city=place.city, country_code=place.country_code, latitude=place.latitude, longitude=place.longitude),
-        route=RouteRead(id=route.id, start=Coordinate(name=route.start_name, latitude=route.start_latitude, longitude=route.start_longitude), end=Coordinate(name=route.end_name, latitude=route.end_latitude, longitude=route.end_longitude), distance_meters=route.distance_meters, nodes=[RouteNodeRead(id=n.id, sequence=n.sequence, name=n.name, description=n.description, latitude=n.latitude, longitude=n.longitude, source=n.source) for n in nodes]),
+        route=RouteRead(id=route.id, start=Coordinate(name=route.start_name, latitude=route.start_latitude, longitude=route.start_longitude), end=Coordinate(name=route.end_name, latitude=route.end_latitude, longitude=route.end_longitude), distance_meters=route.distance_meters, nodes=node_reads),
         media=[MediaAssetRead(id=item.id, media_type=item.media_type, content_type=item.content_type, url=public_media_url(item.object_key), size_bytes=item.size_bytes, position=item.position) for item in media],
         created_at=post.created_at,
     )
@@ -66,7 +77,7 @@ async def find_or_create_place(db: DbSession, payload: PostCreate) -> Place:
     return place
 
 
-async def append_version(db: DbSession, post: Post, payload: PostCreate, version_number: int, assets: list[MediaAsset]) -> PostVersion:
+async def append_version(db: DbSession, post: Post, payload: PostCreate, version_number: int, assets: dict[str, MediaAsset]) -> PostVersion:
     """Persist one immutable content snapshot. / 持久化一个不可变内容版本。"""
     version = PostVersion(post_id=post.id, version_number=version_number, title=payload.title, body=payload.body, content_language=payload.content_language, transport_mode=payload.transport_mode, route_source=payload.route_source)
     db.add(version)
@@ -74,10 +85,19 @@ async def append_version(db: DbSession, post: Post, payload: PostCreate, version
     route = TravelRoute(post_version_id=version.id, start_name=payload.route.start.name, start_latitude=payload.route.start.latitude, start_longitude=payload.route.start.longitude, end_name=payload.route.end.name, end_latitude=payload.route.end.latitude, end_longitude=payload.route.end.longitude, distance_meters=payload.route.distance_meters)
     db.add(route)
     await db.flush()
-    for sequence, node in enumerate(payload.route.nodes, start=1):
-        db.add(RouteNode(route_id=route.id, sequence=sequence, name=node.name, description=node.description, latitude=node.latitude, longitude=node.longitude, source=node.source))
-    for position, asset in enumerate(assets):
+    for sequence, node_payload in enumerate(payload.route.nodes, start=1):
+        node = RouteNode(route_id=route.id, sequence=sequence, name=node_payload.name, description=node_payload.description, latitude=node_payload.latitude, longitude=node_payload.longitude, source=node_payload.source)
+        db.add(node)
+        await db.flush()
+        for position, asset_id in enumerate(node_payload.media_ids):
+            asset = assets[asset_id]
+            asset.post_version_id = version.id
+            asset.route_node_id = node.id
+            asset.position = position
+    for position, asset_id in enumerate(payload.media_ids):
+        asset = assets[asset_id]
         asset.post_version_id = version.id
+        asset.route_node_id = None
         asset.position = position
     post.current_version_id = version.id
     return version
@@ -85,7 +105,11 @@ async def append_version(db: DbSession, post: Post, payload: PostCreate, version
 
 @router.post("", response_model=PostRead, status_code=status.HTTP_201_CREATED)
 async def create_post(payload: PostCreate, db: DbSession, user: CurrentUser) -> PostRead:
-    assets = await available_assets(db, user.id, payload.media_ids)
+    requested_media = [*payload.media_ids, *(asset_id for node in payload.route.nodes for asset_id in node.media_ids)]
+    if len(requested_media) != len(set(requested_media)):
+        raise APIError(status.HTTP_422_UNPROCESSABLE_ENTITY, "media_duplicate")
+    resolved_assets = await available_assets(db, user.id, requested_media)
+    assets = dict(zip(requested_media, resolved_assets))
     place = await find_or_create_place(db, payload)
     post = Post(author_id=user.id, place_id=place.id, visibility_status="public" if payload.publish else "draft", moderation_status="pending" if payload.publish else "not_submitted", reward_status="pending" if payload.publish else "not_eligible")
     db.add(post)
@@ -101,7 +125,11 @@ async def update_post(post_id: str, payload: PostCreate, db: DbSession, user: Cu
     post = await db.get(Post, post_id)
     if post is None or post.author_id != user.id:
         raise APIError(status.HTTP_404_NOT_FOUND, "post_not_found")
-    assets = await available_assets(db, user.id, payload.media_ids, post.current_version_id)
+    requested_media = [*payload.media_ids, *(asset_id for node in payload.route.nodes for asset_id in node.media_ids)]
+    if len(requested_media) != len(set(requested_media)):
+        raise APIError(status.HTTP_422_UNPROCESSABLE_ENTITY, "media_duplicate")
+    resolved_assets = await available_assets(db, user.id, requested_media, post.current_version_id)
+    assets = dict(zip(requested_media, resolved_assets))
     place = await find_or_create_place(db, payload)
     post.place_id = place.id
     next_version = int(await db.scalar(select(func.coalesce(func.max(PostVersion.version_number), 0)).where(PostVersion.post_id == post.id)) or 0) + 1
@@ -122,8 +150,24 @@ async def update_post(post_id: str, payload: PostCreate, db: DbSession, user: Cu
 
 
 @router.get("", response_model=list[PostRead])
-async def list_posts(db: DbSession, viewer: OptionalCurrentUser, search: str | None = Query(default=None, max_length=100), sort: str = Query(default="recent", pattern="^(recent|popular)$"), limit: int = Query(default=20, ge=1, le=50)) -> list[PostRead]:
+async def list_posts(
+    db: DbSession,
+    viewer: OptionalCurrentUser,
+    search: str | None = Query(default=None, max_length=100),
+    sort: str = Query(default="recent", pattern="^(recent|popular)$"),
+    feed: str = Query(default="all", pattern="^(all|following)$"),
+    limit: int = Query(default=20, ge=1, le=50),
+    latitude: float | None = Query(default=None, ge=-90, le=90),
+    longitude: float | None = Query(default=None, ge=-180, le=180),
+    radius_km: float = Query(default=50, gt=0, le=500),
+) -> list[PostRead]:
+    if (latitude is None) != (longitude is None):
+        raise APIError(status.HTTP_422_UNPROCESSABLE_ENTITY, "location_pair_required")
     statement = select(Post).where(Post.visibility_status == "public")
+    if feed == "following":
+        if viewer is None:
+            raise APIError(status.HTTP_401_UNAUTHORIZED, "authentication_required")
+        statement = statement.join(UserFollow, UserFollow.following_id == Post.author_id).where(UserFollow.follower_id == viewer.id)
     if search:
         term = f"%{search.strip()}%"
         statement = statement.join(PostVersion, PostVersion.id == Post.current_version_id).join(Place, Place.id == Post.place_id).where(or_(PostVersion.title.ilike(term), PostVersion.body.ilike(term), Place.name.ilike(term), Place.city.ilike(term)))
@@ -132,7 +176,25 @@ async def list_posts(db: DbSession, viewer: OptionalCurrentUser, search: str | N
         statement = statement.outerjoin(PostLike, PostLike.post_id == Post.id).group_by(Post.id).order_by(func.count(PostLike.id).desc(), Post.created_at.desc())
     else:
         statement = statement.order_by(Post.created_at.desc())
-    posts = list((await db.scalars(statement.limit(limit))).all())
+    # Nearby filtering is done in Python for identical SQLite/PostgreSQL behavior at this scale. / 小规模附近筛选放在 Python，保证 SQLite 与 PostgreSQL 行为一致。
+    candidate_limit = 200 if latitude is not None else limit
+    posts = list((await db.scalars(statement.limit(candidate_limit))).all())
+    if latitude is not None and longitude is not None:
+        def distance_km(place: Place) -> float:
+            earth_radius_km = 6371.0088
+            lat1, lat2 = math.radians(latitude), math.radians(place.latitude)
+            delta_lat = math.radians(place.latitude - latitude)
+            delta_lng = math.radians(place.longitude - longitude)
+            haversine = math.sin(delta_lat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(delta_lng / 2) ** 2
+            return earth_radius_km * 2 * math.asin(math.sqrt(haversine))
+
+        nearby = []
+        for post in posts:
+            place = await db.get(Place, post.place_id)
+            distance = distance_km(place)
+            if distance <= radius_km:
+                nearby.append((distance, post))
+        posts = [post for _, post in sorted(nearby, key=lambda item: (item[0], -item[1].created_at.timestamp()))[:limit]]
     return [await serialize_post(db, post, viewer.id if viewer else None) for post in posts]
 
 

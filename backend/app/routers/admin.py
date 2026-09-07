@@ -10,9 +10,10 @@ from ..config import settings
 from ..deps import AdminUser, DbSession
 from ..errors import APIError
 from ..i18n import Locale, translate
-from ..models import AccountModerationAction, ModerationAction, Notification, PointLedger, Post, PostReport, Session, User
-from ..schemas import AdminUserRead, Message, ModerationRequest, PostRead, RemovalRequest, ReportRead, ReportResolution, UserBanRequest
+from ..models import AccountModerationAction, Gift, GiftRedemption, ModerationAction, Notification, PointLedger, Post, PostReport, Session, User
+from ..schemas import AdminGiftRead, AdminUserRead, GiftCreate, GiftUpdate, Message, ModerationRequest, PostRead, RedemptionRead, RedemptionShipRequest, RemovalRequest, ReportRead, ReportResolution, UserBanRequest
 from ..services.account_status import clear_expired_ban
+from .gifts import cancel_and_refund, serialize_redemption
 from .posts import serialize_post
 
 router = APIRouter(prefix="/admin", tags=["admin"])
@@ -137,3 +138,66 @@ async def remove_post(post_id: str, payload: RemovalRequest, db: DbSession, admi
     db.add(Notification(user_id=post.author_id, event_type="post_removed", resource_id=post.id, payload_json=json.dumps({"title": detail.title, "reason": payload.reason}, ensure_ascii=False)))
     await db.commit()
     return Message(code="post_removed", message=translate(locale, "post_removed"))
+
+
+@router.get("/gifts", response_model=list[AdminGiftRead])
+async def gift_catalog(db: DbSession, _: AdminUser) -> list[AdminGiftRead]:
+    gifts = list((await db.scalars(select(Gift).order_by(Gift.created_at.desc()))).all())
+    return [AdminGiftRead.model_validate(gift) for gift in gifts]
+
+
+@router.post("/gifts", response_model=AdminGiftRead, status_code=status.HTTP_201_CREATED)
+async def create_gift(payload: GiftCreate, db: DbSession, _: AdminUser) -> AdminGiftRead:
+    if await db.scalar(select(Gift.id).where(Gift.slug == payload.slug)):
+        raise APIError(status.HTTP_409_CONFLICT, "gift_slug_exists")
+    gift = Gift(**payload.model_dump())
+    db.add(gift)
+    await db.commit()
+    await db.refresh(gift)
+    return AdminGiftRead.model_validate(gift)
+
+
+@router.patch("/gifts/{gift_id}", response_model=AdminGiftRead)
+async def update_gift(gift_id: str, payload: GiftUpdate, db: DbSession, _: AdminUser) -> AdminGiftRead:
+    gift = await db.get(Gift, gift_id)
+    if gift is None:
+        raise APIError(status.HTTP_404_NOT_FOUND, "gift_not_found")
+    for field, value in payload.model_dump(exclude_unset=True).items():
+        setattr(gift, field, value)
+    await db.commit()
+    await db.refresh(gift)
+    return AdminGiftRead.model_validate(gift)
+
+
+@router.get("/redemptions", response_model=list[RedemptionRead])
+async def redemption_queue(db: DbSession, _: AdminUser, locale: Locale, redemption_status: str | None = Query(default="pending_fulfillment")) -> list[RedemptionRead]:
+    statement = select(GiftRedemption)
+    if redemption_status:
+        statement = statement.where(GiftRedemption.status == redemption_status)
+    rows = list((await db.scalars(statement.order_by(GiftRedemption.created_at.asc()).limit(200))).all())
+    return [await serialize_redemption(db, item, locale) for item in rows]
+
+
+@router.post("/redemptions/{redemption_id}/ship", response_model=Message)
+async def ship_redemption(redemption_id: str, payload: RedemptionShipRequest, db: DbSession, _: AdminUser, locale: Locale) -> Message:
+    redemption = await db.scalar(select(GiftRedemption).where(GiftRedemption.id == redemption_id).with_for_update())
+    if redemption is None:
+        raise APIError(status.HTTP_404_NOT_FOUND, "redemption_not_found")
+    if redemption.status != "pending_fulfillment":
+        raise APIError(status.HTTP_409_CONFLICT, "redemption_not_fulfillable")
+    redemption.status = "shipped"
+    redemption.tracking_number = payload.tracking_number.strip()
+    db.add(Notification(user_id=redemption.user_id, event_type="gift_shipped", resource_id=redemption.id, payload_json=json.dumps({"tracking": redemption.tracking_number}, ensure_ascii=False)))
+    await db.commit()
+    return Message(code="redemption_shipped", message=translate(locale, "redemption_shipped"))
+
+
+@router.post("/redemptions/{redemption_id}/cancel", response_model=Message)
+async def admin_cancel_redemption(redemption_id: str, db: DbSession, _: AdminUser, locale: Locale) -> Message:
+    redemption = await db.scalar(select(GiftRedemption).where(GiftRedemption.id == redemption_id).with_for_update())
+    if redemption is None:
+        raise APIError(status.HTTP_404_NOT_FOUND, "redemption_not_found")
+    await cancel_and_refund(db, redemption)
+    db.add(Notification(user_id=redemption.user_id, event_type="gift_cancelled", resource_id=redemption.id, payload_json="{}"))
+    await db.commit()
+    return Message(code="redemption_cancelled", message=translate(locale, "redemption_cancelled"))

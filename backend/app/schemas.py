@@ -93,6 +93,7 @@ class Coordinate(BaseModel):
 class RouteNodeCreate(Coordinate):
     description: str = Field(default="", max_length=1000)
     source: str = Field(default="manual", pattern="^(gps|manual|edited)$")
+    media_ids: list[str] = Field(default_factory=list, max_length=10)
 
 
 class RouteCreate(BaseModel):
@@ -119,9 +120,19 @@ class PostCreate(BaseModel):
     route: RouteCreate
 
 
+class MediaAssetRead(BaseModel):
+    id: str
+    media_type: str
+    content_type: str
+    url: str
+    size_bytes: int
+    position: int
+
+
 class RouteNodeRead(RouteNodeCreate):
     id: str
     sequence: int
+    media: list[MediaAssetRead] = Field(default_factory=list)
 
 
 class RouteRead(BaseModel):
@@ -134,15 +145,6 @@ class RouteRead(BaseModel):
 
 class PlaceRead(PlaceCreate):
     id: str
-
-
-class MediaAssetRead(BaseModel):
-    id: str
-    media_type: str
-    content_type: str
-    url: str
-    size_bytes: int
-    position: int
 
 
 class PostRead(BaseModel):
@@ -161,6 +163,7 @@ class PostRead(BaseModel):
     liked_by_me: bool
     comment_count: int
     bookmarked_by_me: bool
+    following_author: bool
     place: PlaceRead
     route: RouteRead
     media: list[MediaAssetRead] = Field(default_factory=list)
@@ -246,3 +249,91 @@ class NotificationRead(BaseModel):
     message: str
     read_at: datetime | None
     created_at: datetime
+
+
+class FollowStateRead(BaseModel):
+    user_id: str
+    following: bool
+    follower_count: int
+
+
+class GiftRead(BaseModel):
+    id: str
+    slug: str
+    name: str
+    description: str
+    point_cost: int
+    stock: int
+    image_url: str | None
+    is_active: bool
+
+
+class AdminGiftRead(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: str
+    slug: str
+    name_zh: str
+    name_en: str
+    name_ja: str
+    description_zh: str
+    description_en: str
+    description_ja: str
+    point_cost: int
+    stock: int
+    image_url: str | None
+    is_active: bool
+    created_at: datetime
+    updated_at: datetime
+
+
+class GiftCreate(BaseModel):
+    slug: str = Field(min_length=2, max_length=80, pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+    name_zh: str = Field(min_length=1, max_length=120)
+    name_en: str = Field(min_length=1, max_length=120)
+    name_ja: str = Field(min_length=1, max_length=120)
+    description_zh: str = Field(default="", max_length=4000)
+    description_en: str = Field(default="", max_length=4000)
+    description_ja: str = Field(default="", max_length=4000)
+    point_cost: int = Field(ge=1, le=10_000_000)
+    stock: int = Field(ge=0, le=10_000_000)
+    image_url: str | None = Field(default=None, max_length=1000)
+    is_active: bool = True
+
+
+class GiftUpdate(BaseModel):
+    name_zh: str | None = Field(default=None, min_length=1, max_length=120)
+    name_en: str | None = Field(default=None, min_length=1, max_length=120)
+    name_ja: str | None = Field(default=None, min_length=1, max_length=120)
+    description_zh: str | None = Field(default=None, max_length=4000)
+    description_en: str | None = Field(default=None, max_length=4000)
+    description_ja: str | None = Field(default=None, max_length=4000)
+    point_cost: int | None = Field(default=None, ge=1, le=10_000_000)
+    stock: int | None = Field(default=None, ge=0, le=10_000_000)
+    image_url: str | None = Field(default=None, max_length=1000)
+    is_active: bool | None = None
+
+
+class RedemptionCreate(BaseModel):
+    quantity: int = Field(default=1, ge=1, le=10)
+    recipient_name: str = Field(min_length=1, max_length=120)
+    contact: str = Field(min_length=1, max_length=200)
+    shipping_address: str = Field(min_length=1, max_length=2000)
+
+
+class RedemptionRead(BaseModel):
+    id: str
+    user_id: str
+    gift: GiftRead
+    quantity: int
+    points_cost: int
+    recipient_name: str
+    contact: str
+    shipping_address: str
+    status: str
+    tracking_number: str | None
+    created_at: datetime
+    updated_at: datetime
+
+
+class RedemptionShipRequest(BaseModel):
+    tracking_number: str = Field(min_length=1, max_length=160)
