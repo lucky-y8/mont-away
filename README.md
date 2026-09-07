@@ -28,6 +28,12 @@
 
 ## 本地开发
 
+```powershell
+Copy-Item .env.example .env
+```
+
+仓库根目录的 `.env` 同时供 Vite 前端和 FastAPI 后端使用；文件已被 Git 忽略，不要提交真实密钥。
+
 ```bash
 npm install
 npm run dev

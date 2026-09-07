@@ -1,11 +1,16 @@
 from functools import lru_cache
+from pathlib import Path
 
 from pydantic import AliasChoices, Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    # Frontend and backend share one root environment file. / 前后端统一读取仓库根目录的环境变量文件。
+    model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", env_ignore_empty=True, extra="ignore")
 
     app_name: str = "Shanyao API"
     environment: str = "local"
