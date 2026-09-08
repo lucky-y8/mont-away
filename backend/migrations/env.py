@@ -12,7 +12,9 @@ from app.database import Base
 from app import models  # noqa: F401 - register models / 注册模型元数据
 
 config = context.config
-config.set_main_option("sqlalchemy.url", settings.database_url)
+# ConfigParser treats percent signs in URL-encoded passwords as interpolation.
+# ConfigParser 会把 URL 编码密码中的百分号误认为插值符，因此写入 Alembic 配置前必须转义。
+config.set_main_option("sqlalchemy.url", settings.database_url.replace("%", "%%"))
 if config.config_file_name:
     fileConfig(config.config_file_name)
 target_metadata = Base.metadata
