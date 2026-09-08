@@ -534,14 +534,17 @@ function ResetPasswordPage({ t, locale, onLogin }) {
 function AuthPage({ t, locale, onSignedIn, onLocalReset }) {
   const [mode, setMode] = useState('login')
   const [notice, setNotice] = useState('')
+  const [noticeIsError, setNoticeIsError] = useState(false)
   const [loading, setLoading] = useState(false)
+  const showError = message => { setNoticeIsError(true); setNotice(message) }
+  const clearNotice = () => { setNoticeIsError(false); setNotice('') }
   const submit = async event => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    if (!/^\S+@\S+\.\S+$/.test(data.get('email'))) return setNotice(t.auth.invalidEmail)
-    if (mode !== 'forgot' && String(data.get('password')).length < 8) return setNotice(t.auth.invalidPassword)
+    if (!/^\S+@\S+\.\S+$/.test(data.get('email'))) return showError(t.auth.invalidEmail)
+    if (mode !== 'forgot' && String(data.get('password')).length < 8) return showError(t.auth.invalidPassword)
     setLoading(true)
-    setNotice('')
+    clearNotice()
     try {
       if (mode === 'forgot') {
         const result = await requestPasswordReset(data.get('email'), locale)
@@ -559,13 +562,13 @@ function AuthPage({ t, locale, onSignedIn, onLocalReset }) {
         setNotice(t.auth.signedIn)
       }
     } catch (error) {
-      setNotice(error.message)
+      showError(error.message)
     } finally {
       setLoading(false)
     }
   }
   const heading = mode === 'register' ? t.auth.register : mode === 'forgot' ? t.auth.forgotTitle : t.auth.welcome
-  return <div className="auth-shell"><section className="auth-visual"><Logo/><div><span className="auth-kicker">MONT AWAY</span><h2>{t.auth.intro}</h2></div></section><section className="auth-card"><h1>{heading}</h1>{mode === 'login' && <><div className="providers"><button onClick={beginWeChatLogin}><i className="wechat">微</i>{t.auth.wechat}</button></div><div className="auth-divider"><span>{t.auth.divider}</span></div></>}<form onSubmit={submit} noValidate><label><span><Mail/>{t.auth.email}</span><input name="email" type="email" autoComplete="email" placeholder={t.auth.emailHint}/></label>{mode !== 'forgot' && <label><span><Lock/>{t.auth.password}</span><input name="password" type="password" autoComplete={mode === 'register' ? 'new-password' : 'current-password'} placeholder={t.auth.passwordHint}/></label>}<button className="primary" type="submit" disabled={loading}>{loading ? t.auth.loading : mode === 'register' ? t.auth.register : mode === 'forgot' ? t.auth.sendReset : t.auth.signIn}</button></form>{mode === 'login' && <button className="auth-switch compact" onClick={() => { setMode('forgot'); setNotice('') }}>{t.auth.forgotPassword}</button>}<button className="auth-switch" onClick={() => { setMode(mode === 'register' ? 'login' : mode === 'forgot' ? 'login' : 'register'); setNotice('') }}>{mode === 'register' || mode === 'forgot' ? t.auth.switchIn : t.auth.switchUp}</button>{notice && <p className="auth-notice" role="status">{notice}</p>}<p className="terms">{t.auth.terms}</p></section></div>
+  return <div className="auth-shell"><section className="auth-visual"><Logo/><div><span className="auth-kicker">MONT AWAY</span><h2>{t.auth.intro}</h2></div></section><section className="auth-card"><h1>{heading}</h1>{mode === 'login' && <><div className="providers"><button onClick={beginWeChatLogin}><i className="wechat">微</i>{t.auth.wechat}</button></div><div className="auth-divider"><span>{t.auth.divider}</span></div></>}<form onSubmit={submit} noValidate><label><span><Mail/>{t.auth.email}</span><input name="email" type="email" autoComplete="email" placeholder={t.auth.emailHint}/></label>{mode !== 'forgot' && <label><span><Lock/>{t.auth.password}</span><input name="password" type="password" autoComplete={mode === 'register' ? 'new-password' : 'current-password'} placeholder={t.auth.passwordHint}/></label>}<button className="primary" type="submit" disabled={loading}>{loading ? t.auth.loading : mode === 'register' ? t.auth.register : mode === 'forgot' ? t.auth.sendReset : t.auth.signIn}</button></form>{notice && <p className={`auth-notice ${noticeIsError ? 'error' : ''}`} role="status" aria-live="polite">{notice}</p>}{mode === 'login' && <button className="auth-switch compact" onClick={() => { setMode('forgot'); clearNotice() }}>{t.auth.forgotPassword}</button>}<button className="auth-switch" onClick={() => { setMode(mode === 'register' ? 'login' : mode === 'forgot' ? 'login' : 'register'); clearNotice() }}>{mode === 'register' || mode === 'forgot' ? t.auth.switchIn : t.auth.switchUp}</button><p className="terms">{t.auth.terms}</p></section></div>
 }
 
 function PlacePage({ detail, error, openRoute, openPlace, t, locale, user, onRequireAuth }) {
@@ -705,7 +708,13 @@ function App() {
                       : <Placeholder title={t.nav[3]} t={t}/>
 
   const navActive = id => page === id || (id === 'messages' && page === 'gifts')
-  return <div className={`app ${page === 'publish' ? 'editor-active' : ''}`}><aside className="desktop-nav"><Logo/><nav>{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={navActive(id) ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/>{name}</button> })}</nav><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><div className="account"><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span>{user?.display_name || t.auth.welcome}</span></div></aside><header className="mobile-head"><Logo/><div><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><button aria-label="Search" onClick={() => go('search')}><Search/></button><button aria-label="Ranking" onClick={() => go('ranking')}><Trophy/></button></div></header><main className="main">{content}</main><aside className="right-rail"><div className="profile"><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span><b>{user?.display_name || t.auth.welcome}</b><small>{t.bio}</small></span></div><button className="rail-search" onClick={() => go('search')}><Search/>{t.searchHint}</button>{user && <button className="rail-search rail-gift" onClick={() => go('gifts')}><Gift/>{t.openGifts}</button>}<TrendingRail t={t} locale={locale} openPlace={openPlace} onOpenRanking={() => go('ranking')}/></aside><nav className="mobile-nav">{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={navActive(id) ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/><small>{name}</small></button> })}</nav></div>
+  return <div className={`app ${page === 'publish' ? 'editor-active' : ''}`}>
+    <aside className="desktop-nav"><Logo/><nav>{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={navActive(id) ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/>{name}</button> })}</nav><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><button className="account account-button" type="button" onClick={() => go('profile')} aria-label={user ? t.profileTitle : t.auth.welcome}><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span>{user?.display_name || t.auth.welcome}</span></button></aside>
+    <header className="mobile-head"><Logo/><div><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><button aria-label="Search" onClick={() => go('search')}><Search/></button><button aria-label="Ranking" onClick={() => go('ranking')}><Trophy/></button></div></header>
+    <main className="main">{content}</main>
+    <aside className="right-rail"><button className="profile profile-button" type="button" onClick={() => go('profile')} aria-label={user ? t.profileTitle : t.auth.welcome}><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span><b>{user?.display_name || t.auth.welcome}</b><small>{t.bio}</small></span></button><button className="rail-search" onClick={() => go('search')}><Search/>{t.searchHint}</button>{user && <button className="rail-search rail-gift" onClick={() => go('gifts')}><Gift/>{t.openGifts}</button>}<TrendingRail t={t} locale={locale} openPlace={openPlace} onOpenRanking={() => go('ranking')}/></aside>
+    <nav className="mobile-nav">{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={navActive(id) ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/><small>{name}</small></button> })}</nav>
+  </div>
 }
 
 // Reuse the development root across hot updates. / 开发热更新时复用 React 根节点。
