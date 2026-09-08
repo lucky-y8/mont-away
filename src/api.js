@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
+const API_BASE = import.meta.env.VITE_SHANYAO_API_URL || 'http://127.0.0.1:8000'
 
 // Access tokens stay in memory on the web. / Web 端访问令牌仅保存在内存中。
 const session = { accessToken: null, accessTokenExpiresAt: 0, refreshToken: sessionStorage.getItem('shanyao-refresh-token') }

@@ -1,7 +1,7 @@
 from functools import lru_cache
 from pathlib import Path
 
-from pydantic import AliasChoices, Field, model_validator
+from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -10,7 +10,12 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 class Settings(BaseSettings):
     # Frontend and backend share one root environment file. / 前后端统一读取仓库根目录的环境变量文件。
-    model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", env_ignore_empty=True, extra="ignore")
+    model_config = SettingsConfigDict(
+        env_file=PROJECT_ROOT / ".env",
+        env_prefix="SHANYAO_",
+        env_ignore_empty=True,
+        extra="ignore",
+    )
 
     app_name: str = "Shanyao API"
     environment: str = "local"
@@ -30,9 +35,9 @@ class Settings(BaseSettings):
     email_dry_run: bool = True
     smtp_host: str = ""
     smtp_port: int = 587
-    smtp_username: str = Field(default="", validation_alias=AliasChoices("SMTP_USERNAME", "SMTP_USER"))
+    smtp_username: str = ""
     smtp_password: str = ""
-    smtp_from: str = Field(default="noreply@shanyao.local", validation_alias=AliasChoices("SMTP_FROM", "SMTP_MAIL_FROM"))
+    smtp_from: str = "noreply@shanyao.local"
     smtp_starttls: bool = True
     smtp_ssl: bool = False
     initial_admin_email: str = ""
@@ -54,9 +59,9 @@ class Settings(BaseSettings):
     def validate_production_secrets(self):
         if self.environment == "production":
             if len(self.jwt_secret) < 32 or self.jwt_secret.startswith("local-"):
-                raise ValueError("JWT_SECRET must be a strong production secret")
+                raise ValueError("SHANYAO_JWT_SECRET must be a strong production secret")
             if self.expose_debug_tokens:
-                raise ValueError("EXPOSE_DEBUG_TOKENS must be false in production")
+                raise ValueError("SHANYAO_EXPOSE_DEBUG_TOKENS must be false in production")
             if not self.email_notifications or self.email_backend != "smtp" or not self.smtp_host:
                 raise ValueError("Production requires an SMTP email backend")
             if self.email_dry_run:

@@ -7,8 +7,8 @@
 复制根目录 `.env.example` 为 `.env`，填写：
 
 ```text
-VITE_AMAP_KEY=Web端JS API Key
-VITE_AMAP_SECURITY_JS_CODE=安全密钥
+VITE_SHANYAO_AMAP_KEY=Web端JS API Key
+VITE_SHANYAO_AMAP_SECURITY_JS_CODE=安全密钥
 ```
 
 只申请 Web 端（JS API）Key，不需要 Android/iOS Key。新 Key 需要配合安全密钥；修改环境变量后重启 Vite。
@@ -18,8 +18,8 @@ VITE_AMAP_SECURITY_JS_CODE=安全密钥
 高德官方建议不要在生产前端明文放置安全密钥。部署时配置服务端反向代理，并把代理地址写入：
 
 ```text
-VITE_AMAP_KEY=Web端JS API Key
-VITE_AMAP_SERVICE_HOST=https://你的域名/_AMapService
+VITE_SHANYAO_AMAP_KEY=Web端JS API Key
+VITE_SHANYAO_AMAP_SERVICE_HOST=https://你的域名/_AMapService
 ```
 
 反向代理要按高德官方规则在服务端附加安全密钥，并限制 Key 的可用域名。“导航到入口”已通过高德 URI API 跳转实现；浏览器端已使用 Walking/Riding 插件预览节点间道路方案。当前尚未把规划结果、距离和耗时持久化到后端，也没有实现轨迹纠偏或全程可通行性审核。

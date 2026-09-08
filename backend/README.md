@@ -14,7 +14,7 @@ python -m venv .venv
 
 本地默认使用 SQLite，并在启动时补齐开发表。生产环境应使用 PostgreSQL、Alembic 数据库迁移、独立密钥管理及邮件服务。开发模式为了测试邮箱验证和密码重置，可在响应中返回调试令牌；生产配置强制禁止这一行为。
 
-前后端共用仓库根目录的 `.env`，FastAPI 会按项目绝对路径读取，因此从根目录或 `backend` 目录启动都不会读错文件。QQ 邮箱使用 `smtp.qq.com:465`、`SMTP_SSL=true`、`SMTP_STARTTLS=false`；保持 `EMAIL_DRY_RUN=true` 时邮件仅演练、不真实发送。不要把 `.env` 或授权码提交到仓库。
+前后端共用仓库根目录的 `.env`，FastAPI 会按项目绝对路径读取，因此从根目录或 `backend` 目录启动都不会读错文件。后端与运维变量统一使用 `SHANYAO_` 前缀，Vite 前端变量统一使用 `VITE_SHANYAO_` 前缀。QQ 邮箱使用 `smtp.qq.com:465`、`SHANYAO_SMTP_SSL=true`、`SHANYAO_SMTP_STARTTLS=false`；保持 `SHANYAO_EMAIL_DRY_RUN=true` 时邮件仅演练、不真实发送。不要把 `.env` 或授权码提交到仓库。
 
 数据库迁移：
 

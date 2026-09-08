@@ -5,6 +5,11 @@ output/
 .env
 .env.*
 !.env.example
+
+# WeChat review forms may contain legal-entity data. / 微信审核表与扫描件可能包含主体敏感信息。
+docs/wechat-application/Website_Information_Form.doc
+docs/wechat-application/scans/
+docs/wechat-application/~$*
 *.log
 *.db
 backend/.venv/

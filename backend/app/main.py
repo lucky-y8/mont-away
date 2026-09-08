@@ -14,7 +14,9 @@ from .routers import account, admin, auth, gifts, health, media, places, posts, 
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    await create_tables()
+    # Local development may bootstrap tables; deployed environments must use Alembic migrations. / 本地开发可自动建表；部署环境必须使用 Alembic 迁移。
+    if settings.environment == "local":
+        await create_tables()
     yield
 
 

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import AMapLoader from '@amap/amap-jsapi-loader'
 
-const amapKey = import.meta.env.VITE_AMAP_KEY || ''
-const securityCode = import.meta.env.VITE_AMAP_SECURITY_JS_CODE || ''
-const serviceHost = import.meta.env.VITE_AMAP_SERVICE_HOST || ''
+const amapKey = import.meta.env.VITE_SHANYAO_AMAP_KEY || ''
+const securityCode = import.meta.env.VITE_SHANYAO_AMAP_SECURITY_JS_CODE || ''
+const serviceHost = import.meta.env.VITE_SHANYAO_AMAP_SERVICE_HOST || ''
 
 export const amapConfigured = Boolean(amapKey)
 

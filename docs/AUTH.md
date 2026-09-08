@@ -48,6 +48,6 @@ auth_audit_logs
 
 ## QQ 邮箱 SMTP
 
-当前适配 QQ 邮箱的隐式 TLS 配置为 `smtp.qq.com:465`、`SMTP_SSL=true`、`SMTP_STARTTLS=false`。兼容 `SMTP_USER`/`SMTP_USERNAME` 与 `SMTP_MAIL_FROM`/`SMTP_FROM` 两组变量名。开发环境保持 `EMAIL_DRY_RUN=true` 时不会建立网络连接；真实发送前需在不提交 Git 的根目录 `.env` 中填写 `SMTP_PASSWORD`（QQ 邮箱 SMTP 授权码，而非网页登录密码），然后改为 `EMAIL_DRY_RUN=false`。
+当前适配 QQ 邮箱的隐式 TLS 配置为 `smtp.qq.com:465`、`SHANYAO_SMTP_SSL=true`、`SHANYAO_SMTP_STARTTLS=false`。所有后端变量统一使用 `SHANYAO_` 前缀，不再兼容无前缀旧名称。开发环境保持 `SHANYAO_EMAIL_DRY_RUN=true` 时不会建立网络连接；真实发送前需在不提交 Git 的根目录 `.env` 中填写 `SHANYAO_SMTP_PASSWORD`（QQ 邮箱 SMTP 授权码，而非网页登录密码），然后改为 `SHANYAO_EMAIL_DRY_RUN=false`。
 
 手机号字段本阶段不加入必填约束；未来增加手机号登录时，通过新的 identity 记录关联到现有用户。
