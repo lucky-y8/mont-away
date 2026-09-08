@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, Languages, Mail, Lock, LogOut, Gift, PackageCheck } from 'lucide-react'
+import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, ChevronLeft, Images, FilePenLine, Languages, Mail, Lock, LogOut, Gift, PackageCheck } from 'lucide-react'
 import { detectLocale, localeOptions, messages } from './i18n'
 import { addComment, adminCancelRedemption, approvePost, banUser, beginWeChatLogin, cancelRedemption, createGift, createPost, exchangeWeChatCode, getAdminGifts, getAdminRedemptions, getAdminUsers, getBookmarks, getCurrentUser, getModerationQueue, getMyPosts, getNotifications, getPlace, getPointAccount, getPost, getRedemptions, getReportQueue, hasStoredSession, listComments, listGifts, listPosts, loginEmail, logout, redeemGift, registerEmail, removePost, reportPost, requestPasswordReset, resetPassword, resolveReport, restoreCurrentUser, setPostBookmark, setPostLike, setUserFollow, shipRedemption, unbanUser, updateGift, updatePost, uploadMedia, verifyEmail } from './api'
 import AmapRouteMap, { amapConfigured } from './AmapRouteMap'
@@ -22,11 +22,12 @@ function LanguageSwitch({ locale, setLocale, t }) {
   return <label className="language"><Languages/><span>{t.language}</span><select aria-label={t.language} value={locale} onChange={event => setLocale(event.target.value)}>{localeOptions.map(option => <option value={option.code} key={option.code}>{option.label}</option>)}</select></label>
 }
 
-function MapView({ t, route }) {
+function MapView({ t, route, routeMode = null, onPick, onPointMove, pickHint = '', showLocate = false }) {
   const [amapFailed, setAmapFailed] = useState(false)
   const fallbackCoordinates = [[120.1439, 30.2465], [120.1451, 30.2471], [120.147, 30.2459], [120.1482, 30.2448]]
-  const points = (route ? [route.start, ...route.nodes, route.end] : t.nodes.map(name => ({ name }))).slice(0, 20).map((point, index) => ({ ...point, longitude: point.longitude ?? fallbackCoordinates[index % fallbackCoordinates.length][0], latitude: point.latitude ?? fallbackCoordinates[index % fallbackCoordinates.length][1] }))
-  if (amapConfigured && !amapFailed) return <AmapRouteMap points={points} loadingText={t.mapLoading} onError={() => setAmapFailed(true)}/>
+  const points = useMemo(() => (route ? [route.start, ...route.nodes, route.end] : t.nodes.map(name => ({ name }))).slice(0, 20).map((point, index) => ({ ...point, longitude: Number(point.longitude ?? fallbackCoordinates[index % fallbackCoordinates.length][0]), latitude: Number(point.latitude ?? fallbackCoordinates[index % fallbackCoordinates.length][1]) })), [route, t.nodes])
+  const handleAmapError = useCallback(() => setAmapFailed(true), [])
+  if (amapConfigured && !amapFailed) return <AmapRouteMap points={points} loadingText={t.mapLoading} pickHint={pickHint} routeMode={routeMode} routeReadyText={t.roadRouteReady} routeFallbackText={t.roadRouteFallback} locateText={showLocate ? t.useCurrentLocation : ''} locatingText={t.locatingCurrent} locationErrorText={t.currentLocationError} onPick={onPick} onPointMove={onPointMove} onError={handleAmapError}/>
   const fallbackPoints = points.slice(0, 4)
   return <div className="map-view"><div className="lake"/><div className="track"/>{fallbackPoints.map((point, index) => <button title={point.name} className={'pin p' + index} key={`${point.name}-${index}`}>{index === 0 ? t.start : index === fallbackPoints.length - 1 ? t.end : index}</button>)}<small>{t.mapSample}</small></div>
 }
@@ -175,37 +176,73 @@ function RoutePage({ t, post, openPlace }) {
     const params = new URLSearchParams({ to: `${route.start.longitude},${route.start.latitude},${route.start.name}`, mode, src: 'shanyao-web', callnative: '1' })
     window.open(`https://uri.amap.com/navigation?${params}`, '_blank', 'noopener,noreferrer')
   }
-  return <div className="surface split route-page"><MapView t={t} route={route}/><aside className="panel"><button className="place static" onClick={() => openPlace(post.place)}><MapPin/>{post?.place.name || t.names[0]}</button><h1>{post?.title || t.routeTitle}</h1><p className="muted">{route?.distance_meters ? `${(route.distance_meters / 1000).toFixed(1)} km` : t.duration}</p><div className="node-list">{nodes.map((node, index) => <article className="node-detail" key={`${node.name}-${index}`}><div className="node"><i>{index === 0 ? t.start : index === nodes.length - 1 ? t.end : index}</i><span><b>{node.name}</b><small>{node.description || (node.media?.length ? `${node.media.length} ${t.nodeMedia}` : '')}</small></span><ChevronRight/></div>{node.media?.length > 0 && <div className="media-previews">{node.media.map(item => item.media_type === 'image' ? <img src={item.url} alt="" key={item.id}/> : <video src={item.url} controls key={item.id}/>)}</div>}</article>)}</div><button className="primary" disabled={!route} onClick={navigate}><Navigation/>{t.navigate}</button>{route && <small className="muted">{t.navigateHint}</small>}</aside></div>
+  return <div className="surface split route-page"><MapView t={t} route={route} routeMode={post?.transport_mode}/><aside className="panel"><button className="place static" onClick={() => openPlace(post.place)}><MapPin/>{post?.place.name || t.names[0]}</button><h1>{post?.title || t.routeTitle}</h1><p className="muted">{route?.distance_meters ? `${(route.distance_meters / 1000).toFixed(1)} km` : t.duration}</p><div className="node-list">{nodes.map((node, index) => <article className="node-detail" key={`${node.name}-${index}`}><div className="node"><i>{index === 0 ? t.start : index === nodes.length - 1 ? t.end : index}</i><span><b>{node.name}</b><small>{node.description || (node.media?.length ? `${node.media.length} ${t.nodeMedia}` : '')}</small></span><ChevronRight/></div>{node.media?.length > 0 && <div className="media-previews">{node.media.map(item => item.media_type === 'image' ? <img src={item.url} alt="" key={item.id}/> : <video src={item.url} controls key={item.id}/>)}</div>}</article>)}</div><button className="primary" disabled={!route} onClick={navigate}><Navigation/>{t.navigate}</button>{route && <small className="muted">{post?.transport_mode ? t.roadRouteHint : t.navigateHint}</small>}</aside></div>
 }
 
 function Publish({ t, locale, user, initialPost, onRequireAuth, onPublished }) {
-  const startName = initialPost?.route.start.name || t.startName
-  const endName = initialPost?.route.end.name || t.endName
+  const [flow, setFlow] = useState(initialPost ? 'edit' : 'choice')
   const [notice, setNotice] = useState('')
   const [loading, setLoading] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [media, setMedia] = useState(initialPost?.media || [])
   const [nodes, setNodes] = useState(() => initialPost?.route.nodes.map(node => ({ name: node.name, description: node.description || '', latitude: node.latitude, longitude: node.longitude, media: node.media || [] })) || [])
   const [draftId, setDraftId] = useState(initialPost?.id || null)
+  const [placeName, setPlaceName] = useState(initialPost?.place.name || '')
+  const [cityName, setCityName] = useState(initialPost?.place.city || '')
+  const [transportMode, setTransportMode] = useState(initialPost?.transport_mode || '')
+  const [startPoint, setStartPoint] = useState(() => ({ name: initialPost?.route.start.name || '', latitude: initialPost?.route.start.latitude ?? 30.2465, longitude: initialPost?.route.start.longitude ?? 120.1439 }))
+  const [endPoint, setEndPoint] = useState(() => ({ name: initialPost?.route.end.name || '', latitude: initialPost?.route.end.latitude ?? 30.2448, longitude: initialPost?.route.end.longitude ?? 120.1482 }))
+  const [pickTarget, setPickTarget] = useState({ type: 'start' })
+  const mapRoute = useMemo(() => ({
+    start: { ...startPoint, name: startPoint.name || t.startName },
+    nodes: nodes.map(node => ({ ...node, latitude: Number(node.latitude), longitude: Number(node.longitude) })),
+    end: { ...endPoint, name: endPoint.name || t.endName },
+  }), [endPoint, nodes, startPoint, t.endName, t.startName])
+  const activePickLabel = pickTarget.type === 'start' ? t.pickingStart : pickTarget.type === 'end' ? t.pickingEnd : `${t.pickingNode} ${pickTarget.index + 1}`
+  const handleMapPick = useCallback(point => {
+    const name = point.name || t.pickedPoint
+    if (pickTarget.type === 'start') {
+      setStartPoint(current => ({ ...current, name, latitude: point.latitude, longitude: point.longitude }))
+      setPlaceName(current => current || name)
+      setCityName(current => current || point.city)
+    } else if (pickTarget.type === 'end') {
+      setEndPoint(current => ({ ...current, name, latitude: point.latitude, longitude: point.longitude }))
+    } else {
+      setNodes(current => current.map((node, index) => index === pickTarget.index ? { ...node, name: node.name || name, latitude: point.latitude, longitude: point.longitude } : node))
+    }
+    setNotice(`${t.pointPicked}: ${name}`)
+  }, [pickTarget, t.pickedPoint, t.pointPicked])
+  const handlePointMove = useCallback((index, point) => {
+    if (index === 0) {
+      setStartPoint(current => ({ ...current, latitude: point.latitude, longitude: point.longitude }))
+      setPickTarget({ type: 'start' })
+    } else if (index === nodes.length + 1) {
+      setEndPoint(current => ({ ...current, latitude: point.latitude, longitude: point.longitude }))
+      setPickTarget({ type: 'end' })
+    } else {
+      setNodes(current => current.map((node, nodeIndex) => nodeIndex === index - 1 ? { ...node, latitude: point.latitude, longitude: point.longitude } : node))
+      setPickTarget({ type: 'node', index: index - 1 })
+    }
+    setNotice(`${t.pointMoved}: ${point.name || t.pickedPoint}`)
+  }, [nodes.length, t.pickedPoint, t.pointMoved])
   if (!user) return <div className="surface empty"><h1>{t.editor}</h1><p>{t.loginRequired}</p><button className="primary centered" onClick={onRequireAuth}>{t.goLogin}</button></div>
   const submit = async event => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     const publishing = event.nativeEvent.submitter?.value !== 'draft'
-    const number = name => {
-      const value = Number(data.get(name))
-      if (!initialPost) return value
-      const sampleValues = { startLat: 30.2465, startLng: 120.1439, endLat: 30.2448, endLng: 120.1482 }
-      const originalValues = { startLat: initialPost.route.start.latitude, startLng: initialPost.route.start.longitude, endLat: initialPost.route.end.latitude, endLng: initialPost.route.end.longitude }
-      return value === sampleValues[name] ? originalValues[name] : value
+    if (!placeName.trim() || !cityName.trim() || !startPoint.name.trim() || !endPoint.name.trim()) {
+      setPickTarget({ type: 'start' })
+      setFlow('location')
+      setNotice(t.locationRequiredError)
+      return
     }
     const payload = {
       title: data.get('title'), body: data.get('body'), content_language: locale, publish: publishing,
-      transport_mode: data.get('transport') || null, route_source: 'manual', media_ids: media.map(item => item.id),
-      place: { name: data.get('place'), city: initialPost && ['杭州', 'Hangzhou'].includes(data.get('city')) ? initialPost.place.city : data.get('city'), country_code: initialPost?.place.country_code || 'CN', latitude: number('startLat'), longitude: number('startLng') },
+      transport_mode: transportMode || null, route_source: 'manual', media_ids: media.map(item => item.id),
+      place: { name: placeName, city: cityName, country_code: initialPost?.place.country_code || 'CN', latitude: Number(startPoint.latitude), longitude: Number(startPoint.longitude) },
       route: {
-        start: { name: data.get('startName'), latitude: number('startLat'), longitude: number('startLng') },
-        end: { name: data.get('endName'), latitude: number('endLat'), longitude: number('endLng') },
+        start: { name: startPoint.name, latitude: Number(startPoint.latitude), longitude: Number(startPoint.longitude) },
+        end: { name: endPoint.name, latitude: Number(endPoint.latitude), longitude: Number(endPoint.longitude) },
         nodes: nodes.map(node => ({ name: node.name, description: node.description, latitude: Number(node.latitude), longitude: Number(node.longitude), source: 'edited', media_ids: node.media.map(item => item.id) })),
       },
     }
@@ -242,9 +279,17 @@ function Publish({ t, locale, user, initialPost, onRequireAuth, onPublished }) {
       event.target.value = ''
     }
   }
-  const addNode = () => setNodes(current => [...current, { name: '', description: '', latitude: 30.2465, longitude: 120.1439, media: [] }])
+  const addNode = () => {
+    setPickTarget({ type: 'node', index: nodes.length })
+    setNodes(current => [...current, { name: '', description: '', latitude: startPoint.latitude, longitude: startPoint.longitude, media: [] }])
+    setFlow('location')
+  }
   const updateNode = (index, field, value) => setNodes(current => current.map((node, nodeIndex) => nodeIndex === index ? { ...node, [field]: value } : node))
-  const removeNode = index => setNodes(current => current.filter((_, nodeIndex) => nodeIndex !== index))
+  const removeNode = index => {
+    setNodes(current => current.filter((_, nodeIndex) => nodeIndex !== index))
+    setPickTarget(current => current.type !== 'node' ? current : current.index === index ? { type: 'start' } : current.index > index ? { type: 'node', index: current.index - 1 } : current)
+    setFlow('edit')
+  }
   const selectNodeMedia = async (index, event) => {
     const currentMedia = nodes[index].media
     const files = [...event.target.files].slice(0, 10 - currentMedia.length)
@@ -257,14 +302,49 @@ function Publish({ t, locale, user, initialPost, onRequireAuth, onPublished }) {
       setNodes(current => current.map((node, nodeIndex) => nodeIndex === index ? { ...node, media: [...node.media, ...uploaded] } : node))
     } catch (error) { setNotice(error.message) } finally { setUploading(false); event.target.value = '' }
   }
-  const mapRoute = { start: { name: startName, latitude: initialPost?.route.start.latitude ?? 30.2465, longitude: initialPost?.route.start.longitude ?? 120.1439 }, nodes, end: { name: endName, latitude: initialPost?.route.end.latitude ?? 30.2448, longitude: initialPost?.route.end.longitude ?? 120.1482 } }
-  return <div className="surface editor">
-    <aside className="editor-list"><h2>{t.editorNodes}</h2><div className="node"><i>{t.start}</i><span><b>{startName}</b></span></div>{nodes.map((node, index) => <div className="node" key={`${index}-${node.name}`}><i>{index + 1}</i><span><b>{node.name || t.nodeName}</b></span></div>)}<div className="node"><i>{t.end}</i><span><b>{endName}</b></span></div><button className="secondary" type="button" onClick={addNode}>{t.addNode}</button></aside>
-    <MapView t={t} route={mapRoute}/>
-    <form className="form" onSubmit={submit}><h1>{t.editor}</h1><label>{t.title}<input name="title" required maxLength="120" defaultValue={initialPost?.title || ''} placeholder={t.sampleTitle}/></label><label>{t.intro}<textarea name="body" required maxLength="20000" defaultValue={initialPost?.body || ''} placeholder={t.introText}/></label><div className="field-grid"><label>{t.placeName}<input name="place" required defaultValue={initialPost?.place.name || ''}/></label><label>{t.city}<input name="city" required defaultValue={initialPost?.place.city || ''}/></label></div><label>{t.transport}<select name="transport" defaultValue={initialPost?.transport_mode || ''}><option value="">{t.none}</option><option value="walking">{t.walk}</option><option value="cycling">{t.ride}</option></select></label><div className="field-grid"><label>{t.startName}<input name="startName" required defaultValue={initialPost?.route.start.name || ''}/></label><label>{t.endName}<input name="endName" required defaultValue={initialPost?.route.end.name || ''}/></label><label>{t.latitude} · {t.start}<input name="startLat" type="number" step="any" min="-90" max="90" required defaultValue={initialPost?.route.start.latitude ?? 30.2465}/></label><label>{t.longitude} · {t.start}<input name="startLng" type="number" step="any" min="-180" max="180" required defaultValue={initialPost?.route.start.longitude ?? 120.1439}/></label><label>{t.latitude} · {t.end}<input name="endLat" type="number" step="any" min="-90" max="90" required defaultValue={initialPost?.route.end.latitude ?? 30.2448}/></label><label>{t.longitude} · {t.end}<input name="endLng" type="number" step="any" min="-180" max="180" required defaultValue={initialPost?.route.end.longitude ?? 120.1482}/></label></div><small className="muted">{t.coordinateHint}</small>
-      <section className="route-node-editor"><div className="section-heading"><h2>{t.editorNodes}</h2><button className="secondary" type="button" onClick={addNode}>{t.addNode}</button></div>{nodes.map((node, index) => <article key={index}><div className="section-heading"><b>{index + 1}</b><button className="danger text-button" type="button" onClick={() => removeNode(index)}>{t.removeNode}</button></div><label>{t.nodeName}<input required value={node.name} onChange={event => updateNode(index, 'name', event.target.value)}/></label><label>{t.nodeDescription}<textarea value={node.description} onChange={event => updateNode(index, 'description', event.target.value)}/></label><div className="field-grid"><label>{t.latitude}<input type="number" step="any" min="-90" max="90" required value={node.latitude} onChange={event => updateNode(index, 'latitude', event.target.value)}/></label><label>{t.longitude}<input type="number" step="any" min="-180" max="180" required value={node.longitude} onChange={event => updateNode(index, 'longitude', event.target.value)}/></label></div><label className="upload compact"><Camera/><Video/>{uploading ? t.uploading : t.nodeMedia}<input type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime" multiple onChange={event => selectNodeMedia(index, event)} disabled={uploading}/></label>{node.media.length > 0 && <div className="media-previews">{node.media.map(item => item.media_type === 'image' ? <img src={item.url} alt="" key={item.id}/> : <video src={item.url} key={item.id}/>)}</div>}</article>)}</section>
-      <label className="upload"><Camera/><Video/>{uploading ? t.uploading : t.addMedia}<input type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime" multiple onChange={selectMedia} disabled={uploading}/></label>{media.length > 0 && <div className="media-previews"><b>{t.uploadedMedia} · {media.length}</b>{media.map(item => item.media_type === 'image' ? <img src={item.url} alt="" key={item.id}/> : <video src={item.url} key={item.id}/>)}</div>}<div className="form-actions"><button className="secondary" type="submit" name="intent" value="draft" disabled={loading || uploading}>{t.draft}</button><button className="primary" type="submit" name="intent" value="publish" disabled={loading || uploading}>{loading ? t.auth.loading : t.publish}</button></div>{notice && <p className="auth-notice" role="status">{notice}</p>}<small className="muted">{t.publishHint}</small></form>
+  // Keep the prototype's three-step publishing flow. / 保持原型的三步发布流程。
+  const openLocation = target => { setPickTarget(target); setFlow('location'); setNotice('') }
+  const activePoint = pickTarget.type === 'start' ? startPoint : pickTarget.type === 'end' ? endPoint : nodes[pickTarget.index]
+  const updateActivePoint = (field, value) => {
+    if (pickTarget.type === 'start') setStartPoint(current => ({ ...current, [field]: value }))
+    else if (pickTarget.type === 'end') setEndPoint(current => ({ ...current, [field]: value }))
+    else updateNode(pickTarget.index, field, value)
+  }
+  const nodeRows = <div className="prototype-node-list">
+    <button className="node" type="button" onClick={() => openLocation({ type: 'start' })}><i>{t.start}</i><span><b>{startPoint.name || t.startName}</b><small>{t.requiredPoint}</small></span><ChevronRight/></button>
+    {nodes.map((node, index) => <button className="node" type="button" onClick={() => openLocation({ type: 'node', index })} key={`${index}-${node.name}`}><i>{index + 1}</i><span><b>{node.name || t.nodeName}</b><small>{node.media.length ? `${node.media.length} ${t.nodeMediaCount}` : t.manualPoint}</small></span><ChevronRight/></button>)}
+    <button className="node" type="button" onClick={() => openLocation({ type: 'end' })}><i>{t.end}</i><span><b>{endPoint.name || t.endName}</b><small>{t.requiredPoint}</small></span><ChevronRight/></button>
   </div>
+  if (flow === 'choice') return <section className="surface publish-workflow publish-choice">
+    <header className="publish-flow-head"><span/><strong>{t.publishEntry}</strong><span/></header>
+    <div className="prototype-pad prototype-stack"><div className="publish-intro"><h1>{t.createStoryTitle}</h1><p className="muted">{t.createStoryIntro}</p></div>
+      <button className="publish-choice-card unavailable" type="button" onClick={() => setNotice(t.recordUnavailable)}><span className="choice-symbol"><Navigation/></span><span><strong>{t.fullRecord}</strong><small>{t.fullRecordDescription}</small><em>{t.auth.later}</em></span></button>
+      <button className="publish-choice-card" type="button" onClick={() => setFlow('edit')}><span className="choice-symbol"><Images/></span><span><strong>{t.organizeStory}</strong><small>{t.organizeStoryDescription}</small></span></button>
+      <button className="publish-draft-row" type="button" disabled={!initialPost} onClick={() => setFlow('edit')}><FilePenLine/><span>{t.continueDraft}</span><small>{initialPost ? 1 : 0} {t.storyUnit}</small></button>
+      {notice && <p className="auth-notice" role="status">{notice}</p>}
+    </div>
+  </section>
+  if (flow === 'location' && activePoint) return <section className="surface publish-workflow editing location-step">
+    <header className="publish-flow-head"><button type="button" onClick={() => setFlow('edit')} aria-label={t.back}><ChevronLeft/></button><strong>{t.locationEditorTitle}</strong><span/></header>
+    <MapView t={t} route={mapRoute} onPick={handleMapPick} onPointMove={handlePointMove} pickHint={`${t.mapPickActive}: ${activePickLabel}`} showLocate/>
+    <div className="prototype-pad prototype-stack"><label className="prototype-field">{pickTarget.type === 'node' ? t.nodeName : pickTarget.type === 'start' ? t.startName : t.endName}<input required value={activePoint.name} onChange={event => updateActivePoint('name', event.target.value)}/></label>
+      <div className="point-method"><span>{t.manualPoint}</span><small>{t.clickMapAdjust}</small></div>
+      {pickTarget.type === 'start' && <div className="prototype-grid"><label className="prototype-field">{t.placeName}<input required value={placeName} onChange={event => setPlaceName(event.target.value)}/></label><label className="prototype-field">{t.city}<input required value={cityName} onChange={event => setCityName(event.target.value)}/></label></div>}
+      {pickTarget.type === 'node' && <label className="prototype-field">{t.nodeDescription}<textarea value={activePoint.description} onChange={event => updateActivePoint('description', event.target.value)}/></label>}
+      <details className="coordinate-details"><summary>{t.coordinateDetails}</summary><div className="prototype-grid"><label className="prototype-field">{t.latitude}<input type="number" step="any" min="-90" max="90" required value={activePoint.latitude} onChange={event => updateActivePoint('latitude', event.target.value)}/></label><label className="prototype-field">{t.longitude}<input type="number" step="any" min="-180" max="180" required value={activePoint.longitude} onChange={event => updateActivePoint('longitude', event.target.value)}/></label></div></details>
+      {pickTarget.type === 'node' && <><label className="prototype-media-button"><Camera/><Video/>{uploading ? t.uploading : t.addMedia}<input type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime" multiple onChange={event => selectNodeMedia(pickTarget.index, event)} disabled={uploading}/></label>{activePoint.media.length > 0 && <div className="media-previews">{activePoint.media.map(item => item.media_type === 'image' ? <img src={item.url} alt="" key={item.id}/> : <video src={item.url} key={item.id}/>)}</div>}<button className="danger text-button" type="button" onClick={() => removeNode(pickTarget.index)}>{t.removeNode}</button></>}
+      <button className="primary full-button" type="button" onClick={() => setFlow('edit')}>{t.savePoint}</button>{notice && <p className="auth-notice" role="status">{notice}</p>}
+    </div>
+  </section>
+  return <section className="surface publish-workflow editing">
+    <header className="publish-flow-head"><button type="button" onClick={() => setFlow('choice')} aria-label={t.back}><ChevronLeft/></button><strong>{t.editor}</strong><span/></header>
+    <form className="prototype-pad prototype-stack" onSubmit={submit}><label className="prototype-field">{t.title}<input name="title" required maxLength="120" defaultValue={initialPost?.title || ''} placeholder={t.sampleTitle}/></label><label className="prototype-field">{t.intro}<textarea name="body" required maxLength="20000" defaultValue={initialPost?.body || ''} placeholder={t.introText}/></label>
+      <label className="prototype-media-button"><Camera/><Video/>{uploading ? t.uploading : t.addMedia}<input type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime" multiple onChange={selectMedia} disabled={uploading}/></label>{media.length > 0 && <div className="media-previews"><b>{t.uploadedMedia} · {media.length}</b>{media.map(item => item.media_type === 'image' ? <img src={item.url} alt="" key={item.id}/> : <video src={item.url} key={item.id}/>)}</div>}
+      <label className="prototype-field">{t.transport}<select value={transportMode} onChange={event => setTransportMode(event.target.value)}><option value="">{t.none}</option><option value="walking">{t.walk}</option><option value="cycling">{t.ride}</option></select></label>
+      <div className="route-edit-heading"><strong>{t.editorNodes}</strong><button type="button" onClick={() => openLocation({ type: 'start' })}>{t.editLocation}</button></div>{nodeRows}<button className="secondary full-button" type="button" onClick={addNode}>{t.addNode}</button>
+      <p className="muted prototype-hint">{t.routeRequiredHint}</p><p className="muted prototype-hint">{t.publishHint}</p><div className="form-actions"><button className="secondary" type="submit" name="intent" value="draft" disabled={loading || uploading}>{t.draft}</button><button className="primary" type="submit" name="intent" value="publish" disabled={loading || uploading}>{loading ? t.auth.loading : t.publish}</button></div>{notice && <p className="auth-notice" role="status">{notice}</p>}
+    </form>
+  </section>
 }
 
 function SearchPage({ t, locale, openRoute, openPlace, user, onRequireAuth }) {
@@ -625,7 +705,7 @@ function App() {
                       : <Placeholder title={t.nav[3]} t={t}/>
 
   const navActive = id => page === id || (id === 'messages' && page === 'gifts')
-  return <div className="app"><aside className="desktop-nav"><Logo/><nav>{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={navActive(id) ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/>{name}</button> })}</nav><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><div className="account"><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span>{user?.display_name || t.auth.welcome}</span></div></aside><header className="mobile-head"><Logo/><div><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><button aria-label="Search" onClick={() => go('search')}><Search/></button><button aria-label="Ranking" onClick={() => go('ranking')}><Trophy/></button></div></header><main className="main">{content}</main><aside className="right-rail"><div className="profile"><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span><b>{user?.display_name || t.auth.welcome}</b><small>{t.bio}</small></span></div><button className="rail-search" onClick={() => go('search')}><Search/>{t.searchHint}</button>{user && <button className="rail-search rail-gift" onClick={() => go('gifts')}><Gift/>{t.openGifts}</button>}<TrendingRail t={t} locale={locale} openPlace={openPlace} onOpenRanking={() => go('ranking')}/></aside><nav className="mobile-nav">{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={navActive(id) ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/><small>{name}</small></button> })}</nav></div>
+  return <div className={`app ${page === 'publish' ? 'editor-active' : ''}`}><aside className="desktop-nav"><Logo/><nav>{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={navActive(id) ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/>{name}</button> })}</nav><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><div className="account"><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span>{user?.display_name || t.auth.welcome}</span></div></aside><header className="mobile-head"><Logo/><div><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><button aria-label="Search" onClick={() => go('search')}><Search/></button><button aria-label="Ranking" onClick={() => go('ranking')}><Trophy/></button></div></header><main className="main">{content}</main><aside className="right-rail"><div className="profile"><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span><b>{user?.display_name || t.auth.welcome}</b><small>{t.bio}</small></span></div><button className="rail-search" onClick={() => go('search')}><Search/>{t.searchHint}</button>{user && <button className="rail-search rail-gift" onClick={() => go('gifts')}><Gift/>{t.openGifts}</button>}<TrendingRail t={t} locale={locale} openPlace={openPlace} onOpenRanking={() => go('ranking')}/></aside><nav className="mobile-nav">{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={navActive(id) ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/><small>{name}</small></button> })}</nav></div>
 }
 
 // Reuse the development root across hot updates. / 开发热更新时复用 React 根节点。
