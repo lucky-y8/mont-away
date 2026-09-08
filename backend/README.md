@@ -23,3 +23,11 @@ python -m venv .venv
 ```
 
 Alembic 应用于空库或已经带有 `alembic_version` 版本号的迁移库。早期由 ORM 自动建表的本地 `shanyao.db` 可能没有有效版本号，不能直接执行 `upgrade head`；请先备份并使用新数据库，或在确认实际结构对应哪个迁移版本后再 `stamp`，不要盲目标记版本。生产环境不得使用自动建表代替迁移。
+
+若确认是本项目早期自动建表生成的本地数据库，可先复制备份，再运行兼容修复脚本。脚本会校验全部预期数据表、补齐旧表字段并写入当前迁移版本；它不用于生产数据库。
+
+```powershell
+Copy-Item shanyao.db shanyao.db.backup
+.venv\Scripts\python repair_legacy_sqlite.py
+.venv\Scripts\python -m alembic current
+```
