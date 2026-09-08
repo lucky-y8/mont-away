@@ -125,6 +125,10 @@ export function getPost(postId, locale) {
   return request(`/api/v1/posts/${postId}`, { locale })
 }
 
+export function getPlace(placeId, locale) {
+  return request(`/api/v1/places/${placeId}`, { locale })
+}
+
 export function setUserFollow(userId, following, locale) {
   return request(`/api/v1/users/${userId}/follow`, { method: following ? 'POST' : 'DELETE', locale })
 }

@@ -9,7 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from .config import settings
 from .database import create_tables
 from .i18n import MESSAGES, resolve_locale, translate
-from .routers import account, admin, auth, gifts, health, media, posts, users
+from .routers import account, admin, auth, gifts, health, media, places, posts, users
 
 
 @asynccontextmanager
@@ -29,6 +29,7 @@ app.add_middleware(
 app.include_router(health.router)
 app.include_router(auth.router, prefix=settings.api_prefix)
 app.include_router(posts.router, prefix=settings.api_prefix)
+app.include_router(places.router, prefix=settings.api_prefix)
 app.include_router(media.router, prefix=settings.api_prefix)
 app.include_router(admin.router, prefix=settings.api_prefix)
 app.include_router(account.router, prefix=settings.api_prefix)

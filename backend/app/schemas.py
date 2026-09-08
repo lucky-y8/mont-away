@@ -171,6 +171,14 @@ class PostRead(BaseModel):
     created_at: datetime
 
 
+class PlaceDetailRead(BaseModel):
+    """Public place aggregate. / 对外公开的景点聚合数据。"""
+
+    place: PlaceRead
+    post_count: int
+    posts: list[PostRead]
+
+
 class ModerationRequest(BaseModel):
     reason: str = Field(default="", max_length=2000)
 

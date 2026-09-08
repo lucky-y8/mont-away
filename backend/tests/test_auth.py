@@ -179,6 +179,14 @@ def test_publish_search_and_idempotent_like_flow():
         assert client.get(f"/api/v1/posts/{post['id']}/comments").json()[0]["body"] == "路线很实用"
         assert client.post(f"/api/v1/posts/{post['id']}/bookmarks", headers=reader_headers).status_code == 200
         assert client.get("/api/v1/account/bookmarks", headers=reader_headers).json()[0]["bookmarked_by_me"] is True
+        place_detail = client.get(f"/api/v1/places/{post['place']['id']}", headers=reader_headers)
+        assert place_detail.status_code == 200
+        assert place_detail.json()["place"]["name"] == "测试湖"
+        assert place_detail.json()["post_count"] == 1
+        assert place_detail.json()["posts"][0]["bookmarked_by_me"] is True
+        missing_place = client.get(f"/api/v1/places/{uuid.uuid4()}", headers={"Accept-Language": "en"})
+        assert missing_place.status_code == 404
+        assert missing_place.json()["error"] == {"code": "place_not_found", "message": "The place was not found."}
         assert client.post(f"/api/v1/posts/{post['id']}/reports", headers=reader_headers, json={"category": "other", "reason": "自动测试举报"}).status_code == 201
         assert client.delete(f"/api/v1/posts/{post['id']}/comments/{comment.json()['id']}", headers=reader_headers).status_code == 200
 
@@ -207,9 +215,13 @@ def test_publish_search_and_idempotent_like_flow():
         assert draft["visibility_status"] == "draft"
         assert all(item["id"] != draft["id"] for item in client.get("/api/v1/posts").json())
         assert any(item["id"] == draft["id"] for item in client.get("/api/v1/posts/mine", headers=headers).json())
+        place_with_draft = client.get(f"/api/v1/places/{post['place']['id']}").json()
+        assert place_with_draft["post_count"] == 1
+        assert all(item["id"] != draft["id"] for item in place_with_draft["posts"])
         published = client.patch(f"/api/v1/posts/{draft['id']}", headers=headers, json={**draft_payload, "publish": True}).json()
         assert published["visibility_status"] == "public"
         assert published["moderation_status"] == "pending"
+        assert client.get(f"/api/v1/places/{post['place']['id']}").json()["post_count"] == 2
 
 
 def test_admin_approval_notifies_and_rewards_once():
