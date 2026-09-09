@@ -61,11 +61,16 @@ async def register(payload: EmailCredentials, db: DbSession, locale: Locale) -> 
 async def verify_email(payload: VerifyEmailRequest, db: DbSession, locale: Locale) -> Message:
     user_id = decode_signed_token(payload.token, "verify_email")
     verification = await db.scalar(select(EmailVerification).where(EmailVerification.token_hash == token_hash(payload.token)))
-    if verification is None or verification.used_at is not None or expired(verification.expires_at) or verification.user_id != user_id:
+    if verification is None or expired(verification.expires_at) or verification.user_id != user_id:
         raise APIError(status.HTTP_401_UNAUTHORIZED, "invalid_verification_token")
     user = await db.get(User, user_id)
     if user is None:
         raise APIError(status.HTTP_404_NOT_FOUND, "user_not_found")
+    # Browser previews or repeated page effects may submit the same valid link twice. / 浏览器预览或页面副作用可能重复提交同一有效链接。
+    if verification.used_at is not None:
+        if user.is_email_verified:
+            return Message(code="email_verified", message=translate(locale, "email_verified"))
+        raise APIError(status.HTTP_401_UNAUTHORIZED, "invalid_verification_token")
     user.is_email_verified = True
     verification.used_at = db_now()
     await db.commit()

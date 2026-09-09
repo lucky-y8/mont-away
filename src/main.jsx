@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, ChevronLeft, Images, FilePenLine, Languages, Mail, Lock, LogOut, Gift, PackageCheck } from 'lucide-react'
 import { detectLocale, localeOptions, messages } from './i18n'
@@ -497,11 +497,15 @@ function AdminPage({ t, locale, openRoute }) {
 function VerifyEmailPage({ t, locale, onLogin }) {
   const [notice, setNotice] = useState(t.auth.loading)
   const [success, setSuccess] = useState(false)
+  const verificationStarted = useRef(false)
   useEffect(() => {
+    // A verification link is single-use; locale changes must not submit it twice. / 验证链接仅使用一次，语言变化不能重复提交。
+    if (verificationStarted.current) return
+    verificationStarted.current = true
     const token = new URLSearchParams(window.location.search).get('token')
     if (!token) return setNotice(t.auth.verifyTitle)
     verifyEmail(token, locale).then(() => { setSuccess(true); setNotice(t.auth.verifySuccess) }).catch(error => setNotice(error.message))
-  }, [locale])
+  }, [])
   return <div className="surface empty verify-email"><Mail/><h1>{t.auth.verifyTitle}</h1><p>{notice}</p>{success && <button className="primary centered" onClick={onLogin}>{t.auth.backToLogin}</button>}</div>
 }
 

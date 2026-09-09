@@ -22,8 +22,8 @@ def test_email_authentication_flow():
         verified = client.post("/api/v1/auth/email/verify", json={"token": verification_token})
         assert verified.status_code == 200
         reused = client.post("/api/v1/auth/email/verify", json={"token": verification_token})
-        assert reused.status_code == 401
-        assert reused.json()["error"]["code"] == "invalid_verification_token"
+        assert reused.status_code == 200
+        assert reused.json()["code"] == "email_verified"
 
         login = client.post("/api/v1/auth/email/login", json={"email": email, "password": password})
         assert login.status_code == 200
