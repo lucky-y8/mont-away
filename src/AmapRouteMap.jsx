@@ -39,7 +39,17 @@ async function planRoadPath(AMap, points, routeMode) {
   return segments.flatMap((segment, index) => index ? segment.slice(1) : segment)
 }
 
-export default function AmapRouteMap({ points, loadingText, pickHint = '', routeMode = null, routeReadyText = '', routeFallbackText = '', locateText = '', locatingText = '', locationErrorText = '', showPointMarkers = true, onPick, onPointMove, onError }) {
+function createRouteMarkerContent(label) {
+  // Match the approved prototype's outlined marker without injecting HTML. / 安全复刻已确认原型中的描边圆形节点，不拼接 HTML 字符串。
+  const pin = document.createElement('span')
+  pin.className = 'route-node-pin'
+  const text = document.createElement('span')
+  text.textContent = label
+  pin.append(text)
+  return pin
+}
+
+export default function AmapRouteMap({ points, loadingText, pickHint = '', routeMode = null, routeReadyText = '', routeFallbackText = '', locateText = '', locatingText = '', locationErrorText = '', markerStart = 'S', markerEnd = 'E', showPointMarkers = true, onPick, onPointMove, onError }) {
   const containerRef = useRef(null)
   const locateRef = useRef(null)
   const [statusText, setStatusText] = useState(loadingText)
@@ -77,7 +87,8 @@ export default function AmapRouteMap({ points, loadingText, pickHint = '', route
           })
         }
         const markers = showPointMarkers ? points.map((point, index) => {
-          const marker = new AMap.Marker({ position: path[index], title: point.name, draggable: Boolean(onPointMove), label: { content: `${index === 0 ? 'S' : index === points.length - 1 ? 'E' : index}`, direction: 'top' } })
+          const label = index === 0 ? markerStart : index === points.length - 1 ? markerEnd : String(index)
+          const marker = new AMap.Marker({ position: path[index], title: point.name, draggable: Boolean(onPointMove), anchor: 'center', content: createRouteMarkerContent(label) })
           if (onPointMove) marker.on('dragend', event => resolvePoint(event.lnglat, resolved => onPointMove(index, resolved)))
           return marker
         }) : []
@@ -136,7 +147,7 @@ export default function AmapRouteMap({ points, loadingText, pickHint = '', route
       locateRef.current = null
       map?.destroy()
     }
-  }, [loadingText, locateText, locatingText, locationErrorText, onError, onPick, onPointMove, pickHint, points, routeFallbackText, routeMode, routeReadyText, showPointMarkers])
+  }, [loadingText, locateText, locatingText, locationErrorText, markerEnd, markerStart, onError, onPick, onPointMove, pickHint, points, routeFallbackText, routeMode, routeReadyText, showPointMarkers])
 
   return <div className="map-view amap-view"><div ref={containerRef} className="amap-container"/>{locateText && <button className="map-locate-button" type="button" disabled={locating || !locateRef.current} onClick={() => locateRef.current?.()}>{locating ? locatingText : locateText}</button>}{statusText && <small>{statusText}</small>}</div>
 }
