@@ -5,11 +5,12 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from .config import settings
 from .database import create_tables
 from .i18n import MESSAGES, resolve_locale, translate
-from .routers import account, admin, auth, gifts, health, media, places, posts, users
+from .routers import account, admin, auth, gifts, health, media, places, posts, seo, users
 
 
 @asynccontextmanager
@@ -21,6 +22,7 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(title=settings.app_name, version="0.1.0", lifespan=lifespan)
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=settings.allowed_host_list)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origin_list,
@@ -28,6 +30,19 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["Authorization", "Content-Type"],
 )
+
+
+@app.middleware("http")
+async def security_headers(request: Request, call_next):
+    """Apply browser protections and prevent sensitive API caching. / 添加浏览器保护并禁止缓存敏感 API。"""
+    response = await call_next(request)
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    response.headers.setdefault("X-Frame-Options", "SAMEORIGIN")
+    response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+    response.headers.setdefault("Permissions-Policy", "camera=(), microphone=(), geolocation=(self), payment=()")
+    if request.url.path.startswith(settings.api_prefix):
+        response.headers["Cache-Control"] = "no-store"
+    return response
 app.include_router(health.router)
 app.include_router(auth.router, prefix=settings.api_prefix)
 app.include_router(posts.router, prefix=settings.api_prefix)
@@ -37,6 +52,7 @@ app.include_router(admin.router, prefix=settings.api_prefix)
 app.include_router(account.router, prefix=settings.api_prefix)
 app.include_router(gifts.router, prefix=settings.api_prefix)
 app.include_router(users.router, prefix=settings.api_prefix)
+app.include_router(seo.router)
 if settings.media_backend == "local":
     # Local files are development-only. / 本地文件服务仅用于开发环境。
     app.mount("/media", StaticFiles(directory=settings.media_local_dir, check_dir=False), name="media")

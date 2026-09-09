@@ -1,6 +1,6 @@
 # 山遥 Ubuntu 原生部署手册 / Shanyao Native Ubuntu Deployment
 
-本文档面向服务器 `43.155.160.136` 和域名 `sy.chexi.tech`，不使用 Docker。前端由 Caddy 提供静态文件，FastAPI 由 systemd 托管，PostgreSQL 使用 Ubuntu 系统服务。
+本文档使用域名 `sy.chexi.tech` 和 `<SERVER_PUBLIC_IP>` 占位符，不记录实际服务器公网 IP。部署不使用 Docker；前端由 Caddy 提供静态文件，FastAPI 由 systemd 托管，PostgreSQL 使用 Ubuntu 系统服务。
 
 > 当前媒体文件仍保存到服务器本地目录，因此首轮公网部署使用 `SHANYAO_ENVIRONMENT=staging`。这适合联调和微信审核前测试，但不等于已经完成对象存储、异地备份和视频转码的正式生产架构。
 
@@ -21,7 +21,7 @@ Caddy
                               `-> PostgreSQL 127.0.0.1:5432
 ```
 
-公网只开放 80/443。FastAPI 8000 和 PostgreSQL 5432 默认只监听或放行本机；文末另有临时开放 PostgreSQL 测试端口的步骤。
+公网只开放 80/443。FastAPI 8000 和 PostgreSQL 5432 仅监听本机；远程数据库维护通过 SSH 隧道完成，禁止直接开放 5432。
 
 ## 2. DNS 与腾讯云安全组 / DNS and security group
 
@@ -30,7 +30,7 @@ Caddy
 ```text
 记录类型：A
 主机记录：sy
-记录值：43.155.160.136
+记录值：<SERVER_PUBLIC_IP>
 TTL：600（或使用服务商默认值）
 ```
 
@@ -38,8 +38,8 @@ TTL：600（或使用服务商默认值）
 
 ```text
 TCP 22   来源：你的固定公网 IP（SSH）
-TCP 80   来源：0.0.0.0/0 和 ::/0
-TCP 443  来源：0.0.0.0/0 和 ::/0
+TCP 80   来源：需要访问网站的公网 IPv4/IPv6 范围
+TCP 443  来源：需要访问网站的公网 IPv4/IPv6 范围
 ```
 
 解析生效后检查：
@@ -48,7 +48,7 @@ TCP 443  来源：0.0.0.0/0 和 ::/0
 getent hosts sy.chexi.tech
 ```
 
-结果应包含 `43.155.160.136`。
+结果应包含当前部署服务器的公网 IP。不要把实际公网 IP、SSH 用户名或密钥写入仓库。
 
 ## 3. 安装系统依赖 / System packages
 
@@ -152,6 +152,7 @@ SHANYAO_PASSWORD_RESET_TOKEN_MINUTES=30
 SHANYAO_OAUTH_CODE_MINUTES=5
 SHANYAO_FRONTEND_URL=https://sy.chexi.tech
 SHANYAO_CORS_ORIGINS=https://sy.chexi.tech
+SHANYAO_ALLOWED_HOSTS=sy.chexi.tech,127.0.0.1,localhost
 SHANYAO_EXPOSE_DEBUG_TOKENS=false
 
 # Native PostgreSQL / 原生 PostgreSQL
@@ -307,7 +308,7 @@ sudo systemctl reload caddy
 sudo systemctl status caddy --no-pager
 ```
 
-Caddy 申请证书要求 `sy.chexi.tech` 已解析到 `43.155.160.136`，并且腾讯云安全组和 Ubuntu 防火墙都允许 80/443。
+Caddy 申请证书要求 `sy.chexi.tech` 已解析到当前部署服务器，并且云安全组和 Ubuntu 防火墙都允许 80/443。
 
 ## 11. Ubuntu 防火墙 / UFW
 
@@ -363,51 +364,28 @@ SHANYAO_WECHAT_APP_SECRET=审核得到的AppSecret
 sudo systemctl restart shanyao
 ```
 
-## 14. 临时允许所有 IP 访问 PostgreSQL / Temporary public database access
+## 14. 通过 SSH 隧道维护 PostgreSQL / Secure database access
 
-此配置仅用于短时测试。先查询实际配置路径：
-
-```bash
-sudo -u postgres psql -tAc "SHOW config_file;"
-sudo -u postgres psql -tAc "SHOW hba_file;"
-```
-
-在 `postgresql.conf` 设置：
+PostgreSQL 必须保持仅监听回环地址：
 
 ```conf
-listen_addresses = '*'
+listen_addresses = '127.0.0.1,::1'
 port = 5432
 ```
 
-在 `pg_hba.conf` 末尾添加，仅开放山遥数据库和应用账号：
-
-```conf
-host    shanyao_prod    shanyao_app    0.0.0.0/0    scram-sha-256
-host    shanyao_prod    shanyao_app    ::/0         scram-sha-256
-```
-
-重启并临时开放防火墙：
+云安全组和 UFW 均不得开放 TCP 5432。需要从管理员电脑连接时，先建立 SSH 本地端口转发：
 
 ```bash
-sudo systemctl restart postgresql
-sudo ufw allow 5432/tcp
-sudo ss -lntp | grep ':5432'
+ssh -N -L 15432:127.0.0.1:5432 <SSH_USER>@<SERVER_PUBLIC_IP>
 ```
 
-腾讯云安全组也需要临时添加 TCP 5432、来源 `0.0.0.0/0`。外部机器测试：
+随后在管理员电脑的另一个终端连接隧道端口：
 
 ```bash
-psql -h 43.155.160.136 -U shanyao_app -d shanyao_prod
+psql -h 127.0.0.1 -p 15432 -U shanyao_app -d shanyao_prod
 ```
 
-测试完成后，把 `pg_hba.conf` 的 `0.0.0.0/0` 改为指定公网 IP `/32`，或删除这两行，然后执行：
-
-```bash
-sudo ufw delete allow 5432/tcp
-sudo systemctl restart postgresql
-```
-
-同时删除腾讯云安全组中的 5432 公网规则。
+结束维护后关闭 SSH 隧道即可。不要让 PostgreSQL 监听所有网卡，也不要向全网开放 5432。
 
 ## 15. 更新版本 / Updating
 

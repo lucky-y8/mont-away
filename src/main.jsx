@@ -4,6 +4,7 @@ import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, Message
 import { detectLocale, localeOptions, messages } from './i18n'
 import { addComment, adminCancelRedemption, approvePost, banUser, beginWeChatLogin, cancelRedemption, createGift, createPost, exchangeWeChatCode, getAdminGifts, getAdminRedemptions, getAdminUsers, getBookmarks, getCurrentUser, getModerationQueue, getMyPosts, getNotifications, getPlace, getPointAccount, getPost, getRedemptions, getReportQueue, hasStoredSession, listComments, listGifts, listPosts, loginEmail, logout, redeemGift, registerEmail, removePost, reportPost, requestPasswordReset, resetPassword, resolveReport, restoreCurrentUser, setPostBookmark, setPostLike, setUserFollow, shipRedemption, unbanUser, updateGift, updatePost, uploadMedia, verifyEmail } from './api'
 import AmapRouteMap, { amapConfigured } from './AmapRouteMap'
+import { localizePath, localeFromPath, stripLocalePrefix, useSeo } from './seo'
 import './styles.css'
 
 const navIds = ['home', 'map', 'publish', 'messages', 'profile']
@@ -105,7 +106,7 @@ function PostCard({ initialPost, openRoute, openPlace, t, locale, user, onRequir
   }
   const sharePost = async () => {
     if (!post.id) return
-    const url = `${window.location.origin}/posts/${post.id}`
+    const url = `${window.location.origin}${localizePath(`/posts/${post.id}`, locale)}`
     try {
       if (navigator.share) {
         await navigator.share({ title: post.title, text: post.body.slice(0, 140), url })
@@ -610,7 +611,7 @@ function TrendingRail({ t, locale, openPlace, onOpenRanking }) {
 const pagePaths = { home: '/', map: '/map', publish: '/publish', messages: '/messages', gifts: '/gifts', profile: '/profile', search: '/search', ranking: '/ranking', admin: '/admin' }
 
 function locationState() {
-  const path = window.location.pathname
+  const path = stripLocalePrefix(window.location.pathname)
   if (path.startsWith('/auth/verify')) return { page: 'verify-email' }
   if (path.startsWith('/auth/reset-password')) return { page: 'reset-password' }
   if (path.startsWith('/auth/callback')) return { page: 'home' }
@@ -636,14 +637,20 @@ function App() {
   const [feedVersion, setFeedVersion] = useState(0)
   const t = messages[locale]
 
+  useSeo({ page, locale, post: selectedPost, place: selectedPlace, hasError: Boolean(postError || placeError) })
+
   useEffect(() => {
     localStorage.setItem('shanyao-locale', locale)
     document.documentElement.lang = locale
+    const localizedPath = localizePath(window.location.pathname, locale)
+    if (localizedPath !== window.location.pathname) window.history.replaceState({}, '', `${localizedPath}${window.location.search}${window.location.hash}`)
     if (hasStoredSession()) restoreCurrentUser(locale).then(setUser).catch(() => setUser(null))
   }, [locale])
 
   useEffect(() => {
     const applyLocation = () => {
+      const pathLocale = localeFromPath(window.location.pathname)
+      if (pathLocale && pathLocale !== locale) setLocale(pathLocale)
       const next = locationState()
       setPage(next.page)
       if (next.postId) {
@@ -666,7 +673,7 @@ function App() {
   // Complete the one-time OAuth exchange after WeChat redirects back. / 微信回跳后完成一次性交换码登录。
   useEffect(() => {
     const code = new URLSearchParams(window.location.search).get('code')
-    if (!window.location.pathname.startsWith('/auth/callback') || !code) return
+    if (!stripLocalePrefix(window.location.pathname).startsWith('/auth/callback') || !code) return
     exchangeWeChatCode(code, locale).then(() => getCurrentUser(locale)).then(current => { setUser(current); setPage('profile') }).finally(() => window.history.replaceState({}, '', '/'))
   }, [])
 
@@ -674,7 +681,8 @@ function App() {
     if (id === 'publish') setEditingPost(null)
     setPage(id)
     const path = explicitPath || pagePaths[id]
-    if (path && window.location.pathname !== path) window.history.pushState({}, '', path)
+    const localizedPath = path ? localizePath(path, locale) : ''
+    if (localizedPath && window.location.pathname !== localizedPath) window.history.pushState({}, '', localizedPath)
     window.scrollTo(0, 0)
   }
   const openRoute = post => { setSelectedPost(post); setPostError(''); go('route', post?.id ? `/posts/${post.id}/route` : undefined) }
@@ -687,8 +695,8 @@ function App() {
     getPlace(place.id, locale).then(setSelectedPlace).catch(error => setPlaceError(error.message))
   }
   const editPost = post => { setEditingPost(post); setPage('publish'); window.scrollTo(0, 0) }
-  const openLocalReset = token => { window.history.replaceState({}, '', `/auth/reset-password?token=${encodeURIComponent(token)}`); setPage('reset-password'); window.scrollTo(0, 0) }
-  const returnToLogin = () => { setUser(null); window.history.replaceState({}, '', '/'); go('profile') }
+  const openLocalReset = token => { window.history.replaceState({}, '', `${localizePath('/auth/reset-password', locale)}?token=${encodeURIComponent(token)}`); setPage('reset-password'); window.scrollTo(0, 0) }
+  const returnToLogin = () => { setUser(null); window.history.replaceState({}, '', localizePath('/', locale)); go('profile') }
   const requireAuth = () => go('profile')
   const content = page === 'home'
     ? <Home openRoute={openRoute} openPlace={openPlace} t={t} locale={locale} user={user} onRequireAuth={requireAuth} refreshKey={feedVersion}/>

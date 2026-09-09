@@ -29,6 +29,7 @@ class Settings(BaseSettings):
     oauth_code_minutes: int = 5
     frontend_url: str = "http://127.0.0.1:5173"
     cors_origins: str = "http://127.0.0.1:5173,http://localhost:5173,http://127.0.0.1:5174"
+    allowed_hosts: str = "127.0.0.1,localhost,testserver"
     expose_debug_tokens: bool = True
     email_notifications: bool = True
     email_backend: str = "console"
@@ -55,13 +56,33 @@ class Settings(BaseSettings):
         """Parse configured origins. / 解析允许的前端来源。"""
         return [origin.strip() for origin in self.cors_origins.split(",") if origin.strip()]
 
+    @property
+    def allowed_host_list(self) -> list[str]:
+        """Parse trusted HTTP Host values. / 解析可信 HTTP Host。"""
+        return [host.strip() for host in self.allowed_hosts.split(",") if host.strip()]
+
     @model_validator(mode="after")
     def validate_production_secrets(self):
-        if self.environment == "production":
+        if self.environment not in {"local", "staging", "production"}:
+            raise ValueError("SHANYAO_ENVIRONMENT must be local, staging, or production")
+        if self.environment != "local":
             if len(self.jwt_secret) < 32 or self.jwt_secret.startswith("local-"):
-                raise ValueError("SHANYAO_JWT_SECRET must be a strong production secret")
+                raise ValueError("Non-local environments require a strong SHANYAO_JWT_SECRET")
             if self.expose_debug_tokens:
-                raise ValueError("SHANYAO_EXPOSE_DEBUG_TOKENS must be false in production")
+                raise ValueError("Non-local environments must disable SHANYAO_EXPOSE_DEBUG_TOKENS")
+            if not self.frontend_url.startswith("https://"):
+                raise ValueError("Non-local SHANYAO_FRONTEND_URL must use HTTPS")
+            if any(not origin.startswith("https://") or "*" in origin for origin in self.cors_origin_list):
+                raise ValueError("Non-local SHANYAO_CORS_ORIGINS must use explicit HTTPS origins")
+            if "*" in self.allowed_host_list or not self.allowed_host_list:
+                raise ValueError("Non-local SHANYAO_ALLOWED_HOSTS must list explicit trusted hosts")
+            if not self.database_url.startswith("postgresql+asyncpg://"):
+                raise ValueError("Non-local environments require PostgreSQL with asyncpg")
+            if self.media_backend == "local" and not self.media_public_url.startswith("https://"):
+                raise ValueError("Non-local media URLs must use HTTPS")
+            if self.wechat_app_id and not self.wechat_redirect_uri.startswith("https://"):
+                raise ValueError("Configured WeChat callbacks must use HTTPS")
+        if self.environment == "production":
             if not self.email_notifications or self.email_backend != "smtp" or not self.smtp_host:
                 raise ValueError("Production requires an SMTP email backend")
             if self.email_dry_run:

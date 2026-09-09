@@ -58,5 +58,6 @@ cd backend
 - `docs/AUTH.md`：邮箱与微信认证的接口、安全和数据设计
 - `docs/STATUS.md`：已验证功能、开发边界和下一阶段依赖
 - `docs/DEPLOY_UBUNTU.md`：`sy.chexi.tech` 的 Ubuntu 原生部署、PostgreSQL、systemd 与 Caddy 操作手册
+- `docs/DEPLOY_NGINX.md`：`sy.chexi.tech` 的 Nginx、9005 后端端口与动态 SEO 部署配置
 - `docs/CODING_STANDARDS.md`：中英文注释与多语言 API 约定
 - `ui/`：前期 HTML 交互原型，仅作设计参考

@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /profile
+Disallow: /publish
+Disallow: /messages
+Disallow: /gifts
+Disallow: /auth/
+Disallow: /en/admin
+Disallow: /en/profile
+Disallow: /en/publish
+Disallow: /en/messages
+Disallow: /en/gifts
+Disallow: /en/auth/
+Disallow: /ja/admin
+Disallow: /ja/profile
+Disallow: /ja/publish
+Disallow: /ja/messages
+Disallow: /ja/gifts
+Disallow: /ja/auth/
+
+Sitemap: https://sy.chexi.tech/sitemap.xml

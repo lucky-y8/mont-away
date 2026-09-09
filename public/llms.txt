@@ -1,0 +1,21 @@
+# 山遥 · Mont Away
+
+> 山遥是一个发现和分享小众旅行地点、徒步与骑行路线、地图游记、图片和视频的社区。
+> Mont Away is a community for discovering and sharing lesser-known travel places, walking and cycling routes, map stories, photos and videos.
+
+Canonical site: https://sy.chexi.tech/
+Chinese: https://sy.chexi.tech/
+English: https://sy.chexi.tech/en/
+
+## Public sections
+
+- Home / 首页: https://sy.chexi.tech/
+- Map discovery / 地图发现: https://sy.chexi.tech/map
+- Popular stories / 热门游记: https://sy.chexi.tech/ranking
+
+## Content notes
+
+- Public posts contain traveler-authored titles, descriptions, places, route stops and media.
+- Place pages aggregate public stories for a geographic place.
+- Private account, administration, messaging and publishing pages should not be indexed.
+- API responses are available under `/api/v1/`, but public website pages are the preferred citation targets.
