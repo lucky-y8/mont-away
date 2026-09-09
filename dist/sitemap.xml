@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://sy.chexi.tech/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sy.chexi.tech/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sy.chexi.tech/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/" />
+  </url>
+  <url>
+    <loc>https://sy.chexi.tech/en/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sy.chexi.tech/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sy.chexi.tech/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/" />
+  </url>
+  <url>
+    <loc>https://sy.chexi.tech/ja/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sy.chexi.tech/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sy.chexi.tech/en/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/" />
+  </url>
+  <url>
+    <loc>https://sy.chexi.tech/map</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sy.chexi.tech/map" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sy.chexi.tech/en/map" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/map" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/map" />
+  </url>
+  <url>
+    <loc>https://sy.chexi.tech/en/map</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sy.chexi.tech/map" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sy.chexi.tech/en/map" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/map" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/map" />
+  </url>
+  <url>
+    <loc>https://sy.chexi.tech/ja/map</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sy.chexi.tech/map" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sy.chexi.tech/en/map" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/map" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/map" />
+  </url>
+  <url>
+    <loc>https://sy.chexi.tech/ranking</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sy.chexi.tech/ranking" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sy.chexi.tech/en/ranking" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/ranking" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/ranking" />
+  </url>
+  <url>
+    <loc>https://sy.chexi.tech/en/ranking</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sy.chexi.tech/ranking" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sy.chexi.tech/en/ranking" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/ranking" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/ranking" />
+  </url>
+  <url>
+    <loc>https://sy.chexi.tech/ja/ranking</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sy.chexi.tech/ranking" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sy.chexi.tech/en/ranking" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/ranking" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/ranking" />
+  </url>
+</urlset>
