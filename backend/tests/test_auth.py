@@ -1,9 +1,15 @@
 import uuid
+from datetime import timezone
 
 from fastapi.testclient import TestClient
 
 from app.main import app
 from app.config import settings
+from app.routers.auth import db_now
+
+
+def test_authentication_timestamps_use_aware_utc():
+    assert db_now().tzinfo == timezone.utc
 
 
 def test_email_authentication_flow():

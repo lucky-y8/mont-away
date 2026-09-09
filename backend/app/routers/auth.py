@@ -20,11 +20,13 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 
 
 def db_now() -> datetime:
-    return datetime.now(timezone.utc).replace(tzinfo=None)
+    # PostgreSQL TIMESTAMPTZ requires an aware UTC value. / PostgreSQL 时区时间字段必须写入带时区的 UTC 时间。
+    return datetime.now(timezone.utc)
 
 
 def expired(value: datetime) -> bool:
-    now = datetime.now(value.tzinfo) if value.tzinfo else db_now()
+    # SQLite may deserialize timezone columns as naive values in tests. / SQLite 测试可能把时区字段读取为无时区时间。
+    now = datetime.now(value.tzinfo) if value.tzinfo else datetime.now(timezone.utc).replace(tzinfo=None)
     return value <= now
 
 
