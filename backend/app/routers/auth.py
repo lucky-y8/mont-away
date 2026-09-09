@@ -10,7 +10,7 @@ from ..deps import CurrentUser, DbSession
 from ..errors import APIError
 from ..i18n import Locale, translate
 from ..models import EmailVerification, ExternalIdentity, OAuthLoginCode, PasswordReset, Session, User
-from ..schemas import EmailCredentials, EmailRequest, Message, PasswordResetRequest, PasswordResetStartResponse, RefreshRequest, RegistrationResponse, TokenPair, UserRead, VerifyEmailRequest, WeChatExchangeRequest
+from ..schemas import EmailCredentials, EmailRequest, Message, PasswordResetRequest, PasswordResetStartResponse, RefreshRequest, RegistrationResponse, TokenPair, UserRead, VerificationResendResponse, VerifyEmailRequest, WeChatExchangeRequest
 from ..security import create_signed_token, decode_signed_token, hash_password, new_opaque_token, token_hash, verify_password
 from ..services import wechat
 from ..services.account_status import clear_expired_ban, raise_if_banned
@@ -48,13 +48,32 @@ async def register(payload: EmailCredentials, db: DbSession, locale: Locale) -> 
         verification_lifetime = timedelta(minutes=settings.verification_token_minutes)
         verification = create_signed_token(user.id, "verify_email", verification_lifetime)
         db.add(EmailVerification(user_id=user.id, token_hash=token_hash(verification), expires_at=db_now() + verification_lifetime))
-        await send_verification_email(email, verification, locale)
         await db.commit()
     except IntegrityError as exc:
         await db.rollback()
         raise APIError(status.HTTP_409_CONFLICT, "email_exists") from exc
+    # Persist the recovery state before external SMTP delivery. / 调用外部 SMTP 前先持久化可恢复的账号和令牌。
+    await send_verification_email(email, verification, locale)
     await db.refresh(user)
     return RegistrationResponse(user=UserRead.model_validate(user), verification_token=verification if settings.expose_debug_tokens else None)
+
+
+@router.post("/email/verification/resend", response_model=VerificationResendResponse)
+async def resend_verification(payload: EmailRequest, db: DbSession, locale: Locale) -> VerificationResendResponse:
+    """Issue a fresh link without revealing account existence. / 重发新链接且不泄露账号是否存在。"""
+    user = await db.scalar(select(User).where(User.email == payload.email.lower()))
+    verification = None
+    if user is not None and user.password_hash is not None and user.is_active and not user.is_email_verified:
+        lifetime = timedelta(minutes=settings.verification_token_minutes)
+        verification = create_signed_token(user.id, "verify_email", lifetime)
+        db.add(EmailVerification(user_id=user.id, token_hash=token_hash(verification), expires_at=db_now() + lifetime))
+        await db.commit()
+        await send_verification_email(user.email, verification, locale)
+    return VerificationResendResponse(
+        code="verification_resent",
+        message=translate(locale, "verification_resent"),
+        verification_token=verification if settings.expose_debug_tokens else None,
+    )
 
 
 @router.post("/email/verify", response_model=Message)

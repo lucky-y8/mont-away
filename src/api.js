@@ -32,7 +32,12 @@ async function request(path, { locale = 'zh-CN', retry = true, ...options } = {}
       clearSession()
     }
   }
-  if (!response.ok) throw new Error(body.error?.message || `HTTP ${response.status}`)
+  if (!response.ok) {
+    const error = new Error(body.error?.message || `HTTP ${response.status}`)
+    // Preserve the stable API code so the UI can offer recovery actions. / 保留稳定错误码，供界面显示恢复操作。
+    error.code = body.error?.code
+    throw error
+  }
   return body
 }
 
@@ -49,6 +54,10 @@ export async function registerEmail(email, password, locale) {
 
 export async function verifyEmail(token, locale) {
   return request('/api/v1/auth/email/verify', { method: 'POST', locale, body: JSON.stringify({ token }) })
+}
+
+export function resendVerification(email, locale) {
+  return request('/api/v1/auth/email/verification/resend', { method: 'POST', locale, body: JSON.stringify({ email }) })
 }
 
 export function requestPasswordReset(email, locale) {

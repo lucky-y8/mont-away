@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, ChevronLeft, Images, FilePenLine, Languages, Mail, Lock, LogOut, Gift, PackageCheck } from 'lucide-react'
 import { detectLocale, localeOptions, messages } from './i18n'
-import { addComment, adminCancelRedemption, approvePost, banUser, beginWeChatLogin, cancelRedemption, createGift, createPost, exchangeWeChatCode, getAdminGifts, getAdminRedemptions, getAdminUsers, getBookmarks, getCurrentUser, getModerationQueue, getMyPosts, getNotifications, getPlace, getPointAccount, getPost, getRedemptions, getReportQueue, hasStoredSession, listComments, listGifts, listPosts, loginEmail, logout, redeemGift, registerEmail, removePost, reportPost, requestPasswordReset, resetPassword, resolveReport, restoreCurrentUser, setPostBookmark, setPostLike, setUserFollow, shipRedemption, unbanUser, updateGift, updatePost, uploadMedia, verifyEmail } from './api'
+import { addComment, adminCancelRedemption, approvePost, banUser, beginWeChatLogin, cancelRedemption, createGift, createPost, exchangeWeChatCode, getAdminGifts, getAdminRedemptions, getAdminUsers, getBookmarks, getCurrentUser, getModerationQueue, getMyPosts, getNotifications, getPlace, getPointAccount, getPost, getRedemptions, getReportQueue, hasStoredSession, listComments, listGifts, listPosts, loginEmail, logout, redeemGift, registerEmail, removePost, reportPost, requestPasswordReset, resendVerification, resetPassword, resolveReport, restoreCurrentUser, setPostBookmark, setPostLike, setUserFollow, shipRedemption, unbanUser, updateGift, updatePost, uploadMedia, verifyEmail } from './api'
 import AmapRouteMap, { amapConfigured } from './AmapRouteMap'
 import { localizePath, localeFromPath, stripLocalePrefix, useSeo } from './seo'
 import './styles.css'
@@ -540,6 +540,7 @@ function AuthPage({ t, locale, onSignedIn, onLocalReset }) {
   const [mode, setMode] = useState('login')
   const [notice, setNotice] = useState('')
   const [noticeIsError, setNoticeIsError] = useState(false)
+  const [verificationEmail, setVerificationEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const showError = message => { setNoticeIsError(true); setNotice(message) }
   const clearNotice = () => { setNoticeIsError(false); setNotice('') }
@@ -567,13 +568,28 @@ function AuthPage({ t, locale, onSignedIn, onLocalReset }) {
         setNotice(t.auth.signedIn)
       }
     } catch (error) {
+      if (error.code === 'email_unverified' || error.code === 'email_exists') setVerificationEmail(String(data.get('email')))
+      showError(error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+  const resend = async () => {
+    if (!verificationEmail) return
+    setLoading(true)
+    clearNotice()
+    try {
+      const result = await resendVerification(verificationEmail, locale)
+      setNotice(result.message)
+      setVerificationEmail('')
+    } catch (error) {
       showError(error.message)
     } finally {
       setLoading(false)
     }
   }
   const heading = mode === 'register' ? t.auth.register : mode === 'forgot' ? t.auth.forgotTitle : t.auth.welcome
-  return <div className="auth-shell"><section className="auth-visual"><Logo/><div><span className="auth-kicker">MONT AWAY</span><h2>{t.auth.intro}</h2></div></section><section className="auth-card"><h1>{heading}</h1>{mode === 'login' && <><div className="providers"><button onClick={beginWeChatLogin}><i className="wechat">微</i>{t.auth.wechat}</button></div><div className="auth-divider"><span>{t.auth.divider}</span></div></>}<form onSubmit={submit} noValidate><label><span><Mail/>{t.auth.email}</span><input name="email" type="email" autoComplete="email" placeholder={t.auth.emailHint}/></label>{mode !== 'forgot' && <label><span><Lock/>{t.auth.password}</span><input name="password" type="password" autoComplete={mode === 'register' ? 'new-password' : 'current-password'} placeholder={t.auth.passwordHint}/></label>}<button className="primary" type="submit" disabled={loading}>{loading ? t.auth.loading : mode === 'register' ? t.auth.register : mode === 'forgot' ? t.auth.sendReset : t.auth.signIn}</button></form>{notice && <p className={`auth-notice ${noticeIsError ? 'error' : ''}`} role="status" aria-live="polite">{notice}</p>}{mode === 'login' && <button className="auth-switch compact" onClick={() => { setMode('forgot'); clearNotice() }}>{t.auth.forgotPassword}</button>}<button className="auth-switch" onClick={() => { setMode(mode === 'register' ? 'login' : mode === 'forgot' ? 'login' : 'register'); clearNotice() }}>{mode === 'register' || mode === 'forgot' ? t.auth.switchIn : t.auth.switchUp}</button><p className="terms">{t.auth.terms}</p></section></div>
+  return <div className="auth-shell"><section className="auth-visual"><Logo/><div><span className="auth-kicker">MONT AWAY</span><h2>{t.auth.intro}</h2></div></section><section className="auth-card"><h1>{heading}</h1>{mode === 'login' && <><div className="providers"><button onClick={beginWeChatLogin}><i className="wechat">微</i>{t.auth.wechat}</button></div><div className="auth-divider"><span>{t.auth.divider}</span></div></>}<form onSubmit={submit} noValidate><label><span><Mail/>{t.auth.email}</span><input name="email" type="email" autoComplete="email" placeholder={t.auth.emailHint}/></label>{mode !== 'forgot' && <label><span><Lock/>{t.auth.password}</span><input name="password" type="password" autoComplete={mode === 'register' ? 'new-password' : 'current-password'} placeholder={t.auth.passwordHint}/></label>}<button className="primary" type="submit" disabled={loading}>{loading ? t.auth.loading : mode === 'register' ? t.auth.register : mode === 'forgot' ? t.auth.sendReset : t.auth.signIn}</button></form>{notice && <p className={`auth-notice ${noticeIsError ? 'error' : ''}`} role="status" aria-live="polite">{notice}</p>}{verificationEmail && <button type="button" className="auth-switch compact" disabled={loading} onClick={resend}>{t.auth.resendVerification}</button>}{mode === 'login' && <button className="auth-switch compact" onClick={() => { setMode('forgot'); setVerificationEmail(''); clearNotice() }}>{t.auth.forgotPassword}</button>}<button className="auth-switch" onClick={() => { setMode(mode === 'register' ? 'login' : mode === 'forgot' ? 'login' : 'register'); setVerificationEmail(''); clearNotice() }}>{mode === 'register' || mode === 'forgot' ? t.auth.switchIn : t.auth.switchUp}</button><p className="terms">{t.auth.terms}</p></section></div>
 }
 
 function PlacePage({ detail, error, openRoute, openPlace, t, locale, user, onRequireAuth }) {

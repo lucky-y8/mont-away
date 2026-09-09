@@ -77,6 +77,10 @@ class Message(BaseModel):
     message: str
 
 
+class VerificationResendResponse(Message):
+    verification_token: str | None = None
+
+
 class PasswordResetStartResponse(Message):
     reset_token: str | None = None
 

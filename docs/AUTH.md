@@ -7,13 +7,14 @@
 - 微信登录：当前只做 Web 网站应用扫码授权；原生移动 App 已暂停。
 - QQ、Google、快捷登录和手机号登录暂不开发。
 
-邮箱认证及找回密码的前后端闭环已实现。邮箱验证和密码重置令牌均在数据库中保存哈希、短时有效并只能使用一次；重置密码会撤销该账号的所有现有会话。本地开发可使用邮件演练模式并暴露调试令牌；生产环境必须关闭演练和调试令牌。微信 OAuth 流程和安全交换码已实现，但真实授权仍需要微信开放平台网站应用资质、App ID、AppSecret 和备案回调域名。
+邮箱认证及找回密码的前后端闭环已实现。邮箱验证和密码重置令牌均在数据库中保存哈希且短时有效；验证成功后的同一链接按幂等成功处理，未验证账号可安全重发验证邮件。重置密码令牌仍严格单次使用，并会撤销该账号的所有现有会话。本地开发可使用邮件演练模式并暴露调试令牌；生产环境必须关闭演练和调试令牌。微信 OAuth 流程和安全交换码已实现，但真实授权仍需要微信开放平台网站应用资质、App ID、AppSecret 和备案回调域名。
 
 ## 建议 API
 
 ```text
 POST /api/v1/auth/email/register
 POST /api/v1/auth/email/verify
+POST /api/v1/auth/email/verification/resend
 POST /api/v1/auth/email/login
 POST /api/v1/auth/email/password/forgot
 POST /api/v1/auth/email/password/reset

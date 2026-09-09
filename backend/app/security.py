@@ -22,7 +22,8 @@ def verify_password(password: str, password_hash: str) -> bool:
 
 def create_signed_token(subject: str, purpose: str, lifetime: timedelta) -> str:
     now = datetime.now(timezone.utc)
-    return jwt.encode({"sub": subject, "purpose": purpose, "iat": now, "exp": now + lifetime}, settings.jwt_secret, algorithm="HS256")
+    # A nonce keeps two tokens issued in the same second distinct. / 随机标识确保同一秒签发的两个令牌也不相同。
+    return jwt.encode({"sub": subject, "purpose": purpose, "jti": secrets.token_urlsafe(16), "iat": now, "exp": now + lifetime}, settings.jwt_secret, algorithm="HS256")
 
 
 def decode_signed_token(token: str, purpose: str) -> str:

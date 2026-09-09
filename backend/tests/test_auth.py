@@ -40,6 +40,23 @@ def test_email_authentication_flow():
         assert client.post("/api/v1/auth/refresh", json={"refresh_token": tokens["refresh_token"]}).status_code == 401
 
 
+def test_unverified_account_can_request_a_fresh_verification_link():
+    email = f"resend-{uuid.uuid4()}@example.com"
+    password = "a-secure-test-password"
+    with TestClient(app) as client:
+        registered = client.post("/api/v1/auth/email/register", json={"email": email, "password": password})
+        original_token = registered.json()["verification_token"]
+
+        resent = client.post("/api/v1/auth/email/verification/resend", json={"email": email})
+        assert resent.status_code == 200
+        assert resent.json()["code"] == "verification_resent"
+        assert resent.json()["verification_token"] != original_token
+        assert client.post("/api/v1/auth/email/verify", json={"token": resent.json()["verification_token"]}).status_code == 200
+
+        unknown = client.post("/api/v1/auth/email/verification/resend", json={"email": f"missing-{uuid.uuid4()}@example.com"})
+        assert unknown.status_code == 200
+        assert unknown.json()["verification_token"] is None
+
 def test_password_reset_is_one_time_and_revokes_existing_sessions():
     email = f"reset-{uuid.uuid4()}@example.com"
     old_password = "old-secure-test-password"
