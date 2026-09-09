@@ -101,11 +101,19 @@ class RouteNodeCreate(Coordinate):
     media_ids: list[str] = Field(default_factory=list, max_length=10)
 
 
+class TrackPointCreate(BaseModel):
+    latitude: float = Field(ge=-90, le=90)
+    longitude: float = Field(ge=-180, le=180)
+    accuracy_meters: float | None = Field(default=None, ge=0, le=10_000)
+    recorded_at: datetime
+
+
 class RouteCreate(BaseModel):
     start: Coordinate
     end: Coordinate
     distance_meters: int | None = Field(default=None, ge=0)
     nodes: list[RouteNodeCreate] = Field(default_factory=list, max_length=100)
+    track_points: list[TrackPointCreate] = Field(default_factory=list, max_length=5_000)
 
 
 class PlaceCreate(Coordinate):
@@ -140,12 +148,17 @@ class RouteNodeRead(RouteNodeCreate):
     media: list[MediaAssetRead] = Field(default_factory=list)
 
 
+class TrackPointRead(TrackPointCreate):
+    sequence: int
+
+
 class RouteRead(BaseModel):
     id: str
     start: Coordinate
     end: Coordinate
     distance_meters: int | None
     nodes: list[RouteNodeRead]
+    track_points: list[TrackPointRead] = Field(default_factory=list)
 
 
 class PlaceRead(PlaceCreate):

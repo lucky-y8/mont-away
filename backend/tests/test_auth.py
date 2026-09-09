@@ -173,6 +173,10 @@ def test_publish_search_and_idempotent_like_flow():
                 "start": {"name": "环线入口", "latitude": 30.25, "longitude": 120.15},
                 "end": {"name": "环线入口", "latitude": 30.25, "longitude": 120.15},
                 "distance_meters": 1800,
+                "track_points": [
+                    {"latitude": 30.25, "longitude": 120.15, "accuracy_meters": 8.0, "recorded_at": "2026-09-09T08:00:00Z"},
+                    {"latitude": 30.251, "longitude": 120.151, "accuracy_meters": 7.0, "recorded_at": "2026-09-09T08:01:00Z"},
+                ],
                 "nodes": [{"name": "休息点", "description": "树荫下", "latitude": 30.251, "longitude": 120.151, "source": "edited", "media_ids": [node_upload.json()["id"]]}],
             },
         }
@@ -183,6 +187,8 @@ def test_publish_search_and_idempotent_like_flow():
         assert post["moderation_status"] == "pending"
         assert post["reward_status"] == "pending"
         assert post["route"]["start"] == post["route"]["end"]
+        assert len(post["route"]["track_points"]) == 2
+        assert post["route"]["track_points"][1]["accuracy_meters"] == 7.0
         assert post["media"][0]["id"] == uploaded.json()["id"]
         assert post["route"]["nodes"][0]["media"][0]["id"] == node_upload.json()["id"]
 

@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, ChevronLeft, Images, FilePenLine, Languages, Mail, Lock, LogOut, Gift, PackageCheck } from 'lucide-react'
+import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, ChevronLeft, Images, FilePenLine, Languages, Mail, Lock, LogOut, Gift, PackageCheck, Play, Pause, Square, LocateFixed, AlertTriangle } from 'lucide-react'
 import { detectLocale, localeOptions, messages } from './i18n'
 import { addComment, adminCancelRedemption, approvePost, banUser, beginWeChatLogin, cancelRedemption, createGift, createPost, exchangeWeChatCode, getAdminGifts, getAdminRedemptions, getAdminUsers, getBookmarks, getCurrentUser, getModerationQueue, getMyPosts, getNotifications, getPlace, getPointAccount, getPost, getRedemptions, getReportQueue, hasStoredSession, listComments, listGifts, listPosts, loginEmail, logout, redeemGift, registerEmail, removePost, reportPost, requestPasswordReset, resendVerification, resetPassword, resolveReport, restoreCurrentUser, setPostBookmark, setPostLike, setUserFollow, shipRedemption, unbanUser, updateGift, updatePost, uploadMedia, verifyEmail } from './api'
 import AmapRouteMap, { amapConfigured } from './AmapRouteMap'
 import { localizePath, localeFromPath, stripLocalePrefix, useSeo } from './seo'
+import { appendTrackPoint, formatDuration, trackDistance } from './tripRecording'
 import './styles.css'
 
 const navIds = ['home', 'map', 'publish', 'messages', 'profile']
@@ -26,9 +27,10 @@ function LanguageSwitch({ locale, setLocale, t }) {
 function MapView({ t, route, routeMode = null, onPick, onPointMove, pickHint = '', showLocate = false }) {
   const [amapFailed, setAmapFailed] = useState(false)
   const fallbackCoordinates = [[120.1439, 30.2465], [120.1451, 30.2471], [120.147, 30.2459], [120.1482, 30.2448]]
-  const points = useMemo(() => (route ? [route.start, ...route.nodes, route.end] : t.nodes.map(name => ({ name }))).slice(0, 20).map((point, index) => ({ ...point, longitude: Number(point.longitude ?? fallbackCoordinates[index % fallbackCoordinates.length][0]), latitude: Number(point.latitude ?? fallbackCoordinates[index % fallbackCoordinates.length][1]) })), [route, t.nodes])
+  const hasRecordedTrack = route?.track_points?.length > 1
+  const points = useMemo(() => (hasRecordedTrack ? route.track_points : route ? [route.start, ...route.nodes, route.end] : t.nodes.map(name => ({ name }))).map((point, index) => ({ ...point, name: point.name || '', longitude: Number(point.longitude ?? fallbackCoordinates[index % fallbackCoordinates.length][0]), latitude: Number(point.latitude ?? fallbackCoordinates[index % fallbackCoordinates.length][1]) })), [hasRecordedTrack, route, t.nodes])
   const handleAmapError = useCallback(() => setAmapFailed(true), [])
-  if (amapConfigured && !amapFailed) return <AmapRouteMap points={points} loadingText={t.mapLoading} pickHint={pickHint} routeMode={routeMode} routeReadyText={t.roadRouteReady} routeFallbackText={t.roadRouteFallback} locateText={showLocate ? t.useCurrentLocation : ''} locatingText={t.locatingCurrent} locationErrorText={t.currentLocationError} onPick={onPick} onPointMove={onPointMove} onError={handleAmapError}/>
+  if (amapConfigured && !amapFailed) return <AmapRouteMap points={points} loadingText={t.mapLoading} pickHint={pickHint} routeMode={hasRecordedTrack ? null : routeMode} routeReadyText={t.roadRouteReady} routeFallbackText={t.roadRouteFallback} locateText={showLocate ? t.useCurrentLocation : ''} locatingText={t.locatingCurrent} locationErrorText={t.currentLocationError} showPointMarkers={!hasRecordedTrack} onPick={onPick} onPointMove={onPointMove} onError={handleAmapError}/>
   const fallbackPoints = points.slice(0, 4)
   return <div className="map-view"><div className="lake"/><div className="track"/>{fallbackPoints.map((point, index) => <button title={point.name} className={'pin p' + index} key={`${point.name}-${index}`}>{index === 0 ? t.start : index === fallbackPoints.length - 1 ? t.end : index}</button>)}<small>{t.mapSample}</small></div>
 }
@@ -180,6 +182,101 @@ function RoutePage({ t, post, openPlace }) {
   return <div className="surface split route-page"><MapView t={t} route={route} routeMode={post?.transport_mode}/><aside className="panel"><button className="place static" onClick={() => openPlace(post.place)}><MapPin/>{post?.place.name || t.names[0]}</button><h1>{post?.title || t.routeTitle}</h1><p className="muted">{route?.distance_meters ? `${(route.distance_meters / 1000).toFixed(1)} km` : t.duration}</p><div className="node-list">{nodes.map((node, index) => <article className="node-detail" key={`${node.name}-${index}`}><div className="node"><i>{index === 0 ? t.start : index === nodes.length - 1 ? t.end : index}</i><span><b>{node.name}</b><small>{node.description || (node.media?.length ? `${node.media.length} ${t.nodeMedia}` : '')}</small></span><ChevronRight/></div>{node.media?.length > 0 && <div className="media-previews">{node.media.map(item => item.media_type === 'image' ? <img src={item.url} alt="" key={item.id}/> : <video src={item.url} controls key={item.id}/>)}</div>}</article>)}</div><button className="primary" disabled={!route} onClick={navigate}><Navigation/>{t.navigate}</button>{route && <small className="muted">{post?.transport_mode ? t.roadRouteHint : t.navigateHint}</small>}</aside></div>
 }
 
+function TripRecorder({ t, onCancel, onComplete }) {
+  const [status, setStatus] = useState('idle')
+  const [points, setPoints] = useState([])
+  const [elapsedSeconds, setElapsedSeconds] = useState(0)
+  const [notice, setNotice] = useState('')
+  const watchRef = useRef(null)
+  const distance = useMemo(() => trackDistance(points), [points])
+  const lastPoint = points.at(-1)
+  // Keep the map stable while the duration counter updates every second. / 时长每秒刷新时保持地图对象稳定。
+  const recordingRoute = useMemo(() => points.length ? {
+    start: { ...points[0], name: t.recordStartPoint },
+    nodes: [],
+    end: { ...points.at(-1), name: t.recordEndPoint },
+    track_points: points,
+  } : null, [points, t.recordEndPoint, t.recordStartPoint])
+
+  const stopWatching = useCallback(() => {
+    if (watchRef.current !== null && navigator.geolocation) navigator.geolocation.clearWatch(watchRef.current)
+    watchRef.current = null
+  }, [])
+
+  useEffect(() => {
+    if (status !== 'recording') return undefined
+    const timer = window.setInterval(() => setElapsedSeconds(value => value + 1), 1_000)
+    return () => window.clearInterval(timer)
+  }, [status])
+
+  useEffect(() => {
+    const warnWhenHidden = () => {
+      if (document.hidden && status === 'recording') setNotice(t.recordBackgroundWarning)
+    }
+    document.addEventListener('visibilitychange', warnWhenHidden)
+    return () => document.removeEventListener('visibilitychange', warnWhenHidden)
+  }, [status, t.recordBackgroundWarning])
+
+  useEffect(() => stopWatching, [stopWatching])
+
+  const beginWatching = reset => {
+    if (!navigator.geolocation) {
+      setNotice(t.locationUnavailable)
+      return
+    }
+    stopWatching()
+    if (reset) {
+      setPoints([])
+      setElapsedSeconds(0)
+    }
+    setNotice(t.recordLocating)
+    setStatus('locating')
+    watchRef.current = navigator.geolocation.watchPosition(position => {
+      const point = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        accuracy_meters: position.coords.accuracy,
+        recorded_at: new Date(position.timestamp).toISOString(),
+      }
+      setPoints(current => appendTrackPoint(current, point))
+      setStatus('recording')
+      setNotice('')
+    }, error => {
+      stopWatching()
+      setStatus(current => current === 'recording' ? 'paused' : 'idle')
+      setNotice(error.code === 1 ? t.recordPermissionDenied : error.code === 3 ? t.recordLocationTimeout : t.currentLocationError)
+    }, { enableHighAccuracy: true, maximumAge: 3_000, timeout: 15_000 })
+  }
+
+  const pause = () => {
+    stopWatching()
+    setStatus('paused')
+    setNotice(t.recordPaused)
+  }
+
+  const finish = () => {
+    stopWatching()
+    if (points.length < 2) {
+      setStatus(points.length ? 'paused' : 'idle')
+      setNotice(t.recordTooShort)
+      return
+    }
+    onComplete({ points, distanceMeters: Math.round(distance) })
+  }
+
+  return <section className="surface publish-workflow editing trip-recorder">
+    <header className="publish-flow-head"><button type="button" onClick={() => { stopWatching(); onCancel() }} aria-label={t.back}><ChevronLeft/></button><strong>{t.fullRecord}</strong><span className={`record-dot ${status === 'recording' ? 'active' : ''}`}/></header>
+    {recordingRoute ? <MapView t={t} route={recordingRoute} pickHint={status === 'paused' ? t.recordPaused : t.recordingNow}/> : <div className="record-map-empty"><LocateFixed/><strong>{t.recordReadyTitle}</strong><small>{t.recordForegroundWarning}</small></div>}
+    <div className="prototype-pad prototype-stack">
+      <div className="record-metrics"><span><b>{formatDuration(elapsedSeconds)}</b><small>{t.recordDuration}</small></span><span><b>{(distance / 1000).toFixed(2)} km</b><small>{t.recordDistance}</small></span><span><b>{points.length}</b><small>{t.recordSamples}</small></span></div>
+      {lastPoint && <div className="record-accuracy"><LocateFixed/><span>{t.recordAccuracy}: {Math.round(lastPoint.accuracy_meters || 0)} m</span></div>}
+      <p className="record-warning"><AlertTriangle/>{t.recordForegroundWarning}</p>
+      <div className="record-actions">{status === 'idle' ? <button className="primary" type="button" onClick={() => beginWatching(true)}><Play/>{t.startRecording}</button> : status === 'locating' ? <button className="primary" type="button" disabled><LocateFixed/>{t.recordLocating}</button> : status === 'recording' ? <button className="secondary" type="button" onClick={pause}><Pause/>{t.pauseRecording}</button> : <button className="primary" type="button" onClick={() => beginWatching(false)}><Play/>{t.resumeRecording}</button>}{points.length > 0 && <button className="primary" type="button" onClick={finish}><Square/>{t.finishRecording}</button>}</div>
+      {notice && <p className="auth-notice" role="status" aria-live="polite">{notice}</p>}
+    </div>
+  </section>
+}
+
 function Publish({ t, locale, user, initialPost, onRequireAuth, onPublished }) {
   const [flow, setFlow] = useState(initialPost ? 'edit' : 'choice')
   const [notice, setNotice] = useState('')
@@ -191,6 +288,9 @@ function Publish({ t, locale, user, initialPost, onRequireAuth, onPublished }) {
   const [placeName, setPlaceName] = useState(initialPost?.place.name || '')
   const [cityName, setCityName] = useState(initialPost?.place.city || '')
   const [transportMode, setTransportMode] = useState(initialPost?.transport_mode || '')
+  const [routeSource, setRouteSource] = useState(initialPost?.route_source || 'manual')
+  const [trackPoints, setTrackPoints] = useState(initialPost?.route.track_points || [])
+  const [recordedDistance, setRecordedDistance] = useState(initialPost?.route.distance_meters ?? null)
   const [startPoint, setStartPoint] = useState(() => ({ name: initialPost?.route.start.name || '', latitude: initialPost?.route.start.latitude ?? 30.2465, longitude: initialPost?.route.start.longitude ?? 120.1439 }))
   const [endPoint, setEndPoint] = useState(() => ({ name: initialPost?.route.end.name || '', latitude: initialPost?.route.end.latitude ?? 30.2448, longitude: initialPost?.route.end.longitude ?? 120.1482 }))
   const [pickTarget, setPickTarget] = useState({ type: 'start' })
@@ -211,6 +311,7 @@ function Publish({ t, locale, user, initialPost, onRequireAuth, onPublished }) {
     } else {
       setNodes(current => current.map((node, index) => index === pickTarget.index ? { ...node, name: node.name || name, latitude: point.latitude, longitude: point.longitude } : node))
     }
+    setRouteSource(current => current === 'gps' ? 'mixed' : current)
     setNotice(`${t.pointPicked}: ${name}`)
   }, [pickTarget, t.pickedPoint, t.pointPicked])
   const handlePointMove = useCallback((index, point) => {
@@ -224,6 +325,7 @@ function Publish({ t, locale, user, initialPost, onRequireAuth, onPublished }) {
       setNodes(current => current.map((node, nodeIndex) => nodeIndex === index - 1 ? { ...node, latitude: point.latitude, longitude: point.longitude } : node))
       setPickTarget({ type: 'node', index: index - 1 })
     }
+    setRouteSource(current => current === 'gps' ? 'mixed' : current)
     setNotice(`${t.pointMoved}: ${point.name || t.pickedPoint}`)
   }, [nodes.length, t.pickedPoint, t.pointMoved])
   if (!user) return <div className="surface empty"><h1>{t.editor}</h1><p>{t.loginRequired}</p><button className="primary centered" onClick={onRequireAuth}>{t.goLogin}</button></div>
@@ -239,11 +341,13 @@ function Publish({ t, locale, user, initialPost, onRequireAuth, onPublished }) {
     }
     const payload = {
       title: data.get('title'), body: data.get('body'), content_language: locale, publish: publishing,
-      transport_mode: transportMode || null, route_source: 'manual', media_ids: media.map(item => item.id),
+      transport_mode: transportMode || null, route_source: routeSource, media_ids: media.map(item => item.id),
       place: { name: placeName, city: cityName, country_code: initialPost?.place.country_code || 'CN', latitude: Number(startPoint.latitude), longitude: Number(startPoint.longitude) },
       route: {
         start: { name: startPoint.name, latitude: Number(startPoint.latitude), longitude: Number(startPoint.longitude) },
         end: { name: endPoint.name, latitude: Number(endPoint.latitude), longitude: Number(endPoint.longitude) },
+        distance_meters: recordedDistance,
+        track_points: trackPoints,
         nodes: nodes.map(node => ({ name: node.name, description: node.description, latitude: Number(node.latitude), longitude: Number(node.longitude), source: 'edited', media_ids: node.media.map(item => item.id) })),
       },
     }
@@ -303,6 +407,18 @@ function Publish({ t, locale, user, initialPost, onRequireAuth, onPublished }) {
       setNodes(current => current.map((node, nodeIndex) => nodeIndex === index ? { ...node, media: [...node.media, ...uploaded] } : node))
     } catch (error) { setNotice(error.message) } finally { setUploading(false); event.target.value = '' }
   }
+  const completeRecording = ({ points, distanceMeters }) => {
+    const first = points[0]
+    const last = points.at(-1)
+    setStartPoint({ name: t.recordStartPoint, latitude: first.latitude, longitude: first.longitude })
+    setEndPoint({ name: t.recordEndPoint, latitude: last.latitude, longitude: last.longitude })
+    setNodes([])
+    setTrackPoints(points)
+    setRecordedDistance(distanceMeters)
+    setRouteSource('gps')
+    setFlow('edit')
+    setNotice(t.recordReadyToEdit)
+  }
   // Keep the prototype's three-step publishing flow. / 保持原型的三步发布流程。
   const openLocation = target => { setPickTarget(target); setFlow('location'); setNotice('') }
   const activePoint = pickTarget.type === 'start' ? startPoint : pickTarget.type === 'end' ? endPoint : nodes[pickTarget.index]
@@ -319,12 +435,13 @@ function Publish({ t, locale, user, initialPost, onRequireAuth, onPublished }) {
   if (flow === 'choice') return <section className="surface publish-workflow publish-choice">
     <header className="publish-flow-head"><span/><strong>{t.publishEntry}</strong><span/></header>
     <div className="prototype-pad prototype-stack"><div className="publish-intro"><h1>{t.createStoryTitle}</h1><p className="muted">{t.createStoryIntro}</p></div>
-      <button className="publish-choice-card unavailable" type="button" onClick={() => setNotice(t.recordUnavailable)}><span className="choice-symbol"><Navigation/></span><span><strong>{t.fullRecord}</strong><small>{t.fullRecordDescription}</small><em>{t.auth.later}</em></span></button>
+      <button className="publish-choice-card" type="button" onClick={() => { setNotice(''); setFlow('record') }}><span className="choice-symbol"><Navigation/></span><span><strong>{t.fullRecord}</strong><small>{t.fullRecordDescription}</small><em>{t.recordForegroundOnly}</em></span></button>
       <button className="publish-choice-card" type="button" onClick={() => setFlow('edit')}><span className="choice-symbol"><Images/></span><span><strong>{t.organizeStory}</strong><small>{t.organizeStoryDescription}</small></span></button>
       <button className="publish-draft-row" type="button" disabled={!initialPost} onClick={() => setFlow('edit')}><FilePenLine/><span>{t.continueDraft}</span><small>{initialPost ? 1 : 0} {t.storyUnit}</small></button>
       {notice && <p className="auth-notice" role="status">{notice}</p>}
     </div>
   </section>
+  if (flow === 'record') return <TripRecorder t={t} onCancel={() => setFlow('choice')} onComplete={completeRecording}/>
   if (flow === 'location' && activePoint) return <section className="surface publish-workflow editing location-step">
     <header className="publish-flow-head"><button type="button" onClick={() => setFlow('edit')} aria-label={t.back}><ChevronLeft/></button><strong>{t.locationEditorTitle}</strong><span/></header>
     <MapView t={t} route={mapRoute} onPick={handleMapPick} onPointMove={handlePointMove} pickHint={`${t.mapPickActive}: ${activePickLabel}`} showLocate/>

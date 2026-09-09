@@ -160,6 +160,19 @@ class RouteNode(Base):
     source: Mapped[str] = mapped_column(String(20), default="manual")
 
 
+class TravelTrackPoint(Base):
+    """One raw foreground GPS sample. / 一条网页前台 GPS 原始采样点。"""
+    __tablename__ = "travel_track_points"
+    __table_args__ = (UniqueConstraint("route_id", "sequence", name="uq_travel_track_point_sequence"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    route_id: Mapped[str] = mapped_column(ForeignKey("travel_routes.id", ondelete="CASCADE"), index=True)
+    sequence: Mapped[int] = mapped_column(Integer)
+    latitude: Mapped[float] = mapped_column(Float)
+    longitude: Mapped[float] = mapped_column(Float)
+    accuracy_meters: Mapped[float | None] = mapped_column(Float, nullable=True)
+    recorded_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+
 class MediaAsset(Base):
     __tablename__ = "media_assets"
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))

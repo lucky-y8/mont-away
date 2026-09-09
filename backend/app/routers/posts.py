@@ -10,8 +10,8 @@ from sqlalchemy.exc import IntegrityError
 from ..deps import CurrentUser, DbSession, OptionalCurrentUser
 from ..errors import APIError
 from ..i18n import Locale, translate
-from ..models import MediaAsset, Notification, Place, Post, PostBookmark, PostComment, PostLike, PostReport, PostVersion, RouteNode, TravelRoute, User, UserFollow
-from ..schemas import CommentCreate, CommentRead, Coordinate, MediaAssetRead, Message, PlaceRead, PostCreate, PostRead, ReportCreate, RouteNodeRead, RouteRead
+from ..models import MediaAsset, Notification, Place, Post, PostBookmark, PostComment, PostLike, PostReport, PostVersion, RouteNode, TravelRoute, TravelTrackPoint, User, UserFollow
+from ..schemas import CommentCreate, CommentRead, Coordinate, MediaAssetRead, Message, PlaceRead, PostCreate, PostRead, ReportCreate, RouteNodeRead, RouteRead, TrackPointRead
 from ..services.media import public_media_url
 
 router = APIRouter(prefix="/posts", tags=["posts"])
@@ -24,6 +24,7 @@ async def serialize_post(db: DbSession, post: Post, viewer_id: str | None = None
     author = await db.get(User, post.author_id)
     route = await db.scalar(select(TravelRoute).where(TravelRoute.post_version_id == version.id))
     nodes = list((await db.scalars(select(RouteNode).where(RouteNode.route_id == route.id).order_by(RouteNode.sequence))).all())
+    track_points = list((await db.scalars(select(TravelTrackPoint).where(TravelTrackPoint.route_id == route.id).order_by(TravelTrackPoint.sequence))).all())
     like_count = int(await db.scalar(select(func.count(PostLike.id)).where(PostLike.post_id == post.id)) or 0)
     liked = bool(viewer_id and await db.scalar(select(PostLike.id).where(PostLike.post_id == post.id, PostLike.user_id == viewer_id)))
     comment_count = int(await db.scalar(select(func.count(PostComment.id)).where(PostComment.post_id == post.id, PostComment.is_deleted.is_(False))) or 0)
@@ -45,7 +46,7 @@ async def serialize_post(db: DbSession, post: Post, viewer_id: str | None = None
         visibility_status=post.visibility_status, moderation_status=post.moderation_status, reward_status=post.reward_status,
         like_count=like_count, liked_by_me=liked, comment_count=comment_count, bookmarked_by_me=bookmarked, following_author=following_author,
         place=PlaceRead(id=place.id, name=place.name, city=place.city, country_code=place.country_code, latitude=place.latitude, longitude=place.longitude),
-        route=RouteRead(id=route.id, start=Coordinate(name=route.start_name, latitude=route.start_latitude, longitude=route.start_longitude), end=Coordinate(name=route.end_name, latitude=route.end_latitude, longitude=route.end_longitude), distance_meters=route.distance_meters, nodes=node_reads),
+        route=RouteRead(id=route.id, start=Coordinate(name=route.start_name, latitude=route.start_latitude, longitude=route.start_longitude), end=Coordinate(name=route.end_name, latitude=route.end_latitude, longitude=route.end_longitude), distance_meters=route.distance_meters, nodes=node_reads, track_points=[TrackPointRead(sequence=item.sequence, latitude=item.latitude, longitude=item.longitude, accuracy_meters=item.accuracy_meters, recorded_at=item.recorded_at) for item in track_points]),
         media=[MediaAssetRead(id=item.id, media_type=item.media_type, content_type=item.content_type, url=public_media_url(item.object_key), size_bytes=item.size_bytes, position=item.position) for item in media],
         created_at=post.created_at,
     )
@@ -85,6 +86,8 @@ async def append_version(db: DbSession, post: Post, payload: PostCreate, version
     route = TravelRoute(post_version_id=version.id, start_name=payload.route.start.name, start_latitude=payload.route.start.latitude, start_longitude=payload.route.start.longitude, end_name=payload.route.end.name, end_latitude=payload.route.end.latitude, end_longitude=payload.route.end.longitude, distance_meters=payload.route.distance_meters)
     db.add(route)
     await db.flush()
+    for sequence, point in enumerate(payload.route.track_points):
+        db.add(TravelTrackPoint(route_id=route.id, sequence=sequence, latitude=point.latitude, longitude=point.longitude, accuracy_meters=point.accuracy_meters, recorded_at=point.recorded_at))
     for sequence, node_payload in enumerate(payload.route.nodes, start=1):
         node = RouteNode(route_id=route.id, sequence=sequence, name=node_payload.name, description=node_payload.description, latitude=node_payload.latitude, longitude=node_payload.longitude, source=node_payload.source)
         db.add(node)
