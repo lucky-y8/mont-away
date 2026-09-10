@@ -12,6 +12,7 @@ English: https://sy.chexi.tech/en/
 - Home / 首页: https://sy.chexi.tech/
 - Map discovery / 地图发现: https://sy.chexi.tech/map
 - Popular stories / 热门游记: https://sy.chexi.tech/ranking
+- Contact / 联系我们: https://sy.chexi.tech/contact
 
 ## Content notes
 

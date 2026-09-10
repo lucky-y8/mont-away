@@ -24,6 +24,11 @@ const seoCopy = {
       description: '查看山遥社区近期最受欢迎的小众旅行地点、路线和地图游记，找到值得收藏的下一站。',
       keywords: '热门景点,旅行榜单,热门游记,小众旅行,山遥',
     },
+    contact: {
+      title: '联系我们｜山遥',
+      description: '通过微信或 QQ 交流群联系山遥，反馈问题、提出产品建议或洽谈合作。',
+      keywords: '山遥,联系我们,微信,QQ交流群,旅行社区',
+    },
     postSuffix: '旅行游记与路线',
     placeSuffix: '旅行攻略与游玩路线',
     routeSuffix: '游玩路线',
@@ -44,6 +49,11 @@ const seoCopy = {
       title: 'Popular Travel Places and Map Stories | Mont Away',
       description: 'Explore the travel places, routes and map stories most loved by the Mont Away community.',
       keywords: 'popular travel places,travel stories,travel routes,Mont Away',
+    },
+    contact: {
+      title: 'Contact us | Shanyao',
+      description: 'Contact Shanyao on WeChat or through our QQ community group for support, suggestions, or partnerships.',
+      keywords: 'Shanyao,contact,WeChat,QQ community,travel community',
     },
     postSuffix: 'Travel Story and Route',
     placeSuffix: 'Travel Guide and Routes',
@@ -66,13 +76,18 @@ const seoCopy = {
       description: '山遥コミュニティで人気の旅先、ルート、地図旅行記を紹介します。',
       keywords: '人気旅行,旅行記,旅先ランキング,山遥',
     },
+    contact: {
+      title: 'お問い合わせ｜山遥',
+      description: 'サポート、ご意見、提携のご相談は、WeChatまたはQQコミュニティグループから山遥へお問い合わせください。',
+      keywords: '山遥,お問い合わせ,WeChat,QQコミュニティ,旅行コミュニティ',
+    },
     postSuffix: '旅行記とルート',
     placeSuffix: '旅行ガイドとルート',
     routeSuffix: '旅行ルート',
   },
 }
 
-const publicPages = new Set(['home', 'map', 'ranking', 'post', 'route', 'place'])
+const publicPages = new Set(['home', 'map', 'ranking', 'contact', 'post', 'route', 'place'])
 
 export function stripLocalePrefix(pathname) {
   const stripped = pathname.replace(/^\/(?:en|ja)(?=\/|$)/, '')
@@ -145,6 +160,7 @@ function pagePath(page, post, place) {
   if (page === 'place' && place?.place?.id) return `/places/${encodeURIComponent(place.place.id)}`
   if (page === 'map') return '/map'
   if (page === 'ranking') return '/ranking'
+  if (page === 'contact') return '/contact'
   return '/'
 }
 
@@ -217,6 +233,8 @@ function metadataFor({ page, locale, post, place, hasError }) {
     }
   } else if (page === 'map' || page === 'ranking') {
     structuredData = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url: `${SITE_URL}${localizePath(path, locale)}`, inLanguage: locale }
+  } else if (page === 'contact') {
+    structuredData = { '@context': 'https://schema.org', '@type': 'ContactPage', name: title, description, url: `${SITE_URL}${localizePath(path, locale)}`, inLanguage: locale }
   }
 
   if ((page === 'post' || page === 'route') && !post) indexable = false

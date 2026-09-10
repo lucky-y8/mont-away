@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, ChevronLeft, Images, FilePenLine, Languages, Mail, Lock, LogOut, Gift, PackageCheck, Play, Pause, Square, LocateFixed, AlertTriangle } from 'lucide-react'
+import { House, Map, PlusSquare, Bell, UserRound, Search, Trophy, Heart, MessageCircle, Bookmark, Send, MapPin, Route, MoreHorizontal, Camera, Video, Navigation, ChevronRight, ChevronLeft, Images, FilePenLine, Languages, Mail, Lock, LogOut, Gift, PackageCheck, Play, Pause, Square, LocateFixed, AlertTriangle, Copy, UsersRound } from 'lucide-react'
 import { detectLocale, localeOptions, messages } from './i18n'
 import { addComment, adminCancelRedemption, approvePost, banUser, beginWeChatLogin, cancelRedemption, createGift, createPost, exchangeWeChatCode, getAdminGifts, getAdminRedemptions, getAdminUsers, getBookmarks, getCurrentUser, getModerationQueue, getMyPosts, getNotifications, getPlace, getPointAccount, getPost, getRedemptions, getReportQueue, hasStoredSession, listComments, listGifts, listPosts, loginEmail, logout, redeemGift, registerEmail, removePost, reportPost, requestPasswordReset, resendVerification, resetPassword, resolveReport, restoreCurrentUser, setPostBookmark, setPostLike, setUserFollow, shipRedemption, unbanUser, updateGift, updatePost, uploadMedia, verifyEmail } from './api'
 import AmapRouteMap, { amapConfigured } from './AmapRouteMap'
@@ -12,6 +12,7 @@ const navIds = ['home', 'map', 'publish', 'messages', 'profile']
 const navIcons = [House, Map, PlusSquare, Bell, UserRound]
 // Confirmed gift tiers shared by the admin selector. / 管理后台共用已确认的礼品积分档位。
 const giftPointTiers = [20, 40, 60, 80, 100]
+const contactDetails = { wechat: 'at_dawn_cat', qq: '1031045943' }
 const Logo = () => <div className="logo">山遥</div>
 
 function Scenic({ small = false, t, media }) {
@@ -653,7 +654,7 @@ function ResetPasswordPage({ t, locale, onLogin }) {
   return <div className="surface empty auth-action-page"><Lock/><h1>{t.auth.resetTitle}</h1>{!success && <form onSubmit={submit}><label>{t.auth.newPassword}<input name="password" type="password" autoComplete="new-password" placeholder={t.auth.passwordHint}/></label><label>{t.auth.confirmPassword}<input name="passwordConfirm" type="password" autoComplete="new-password" placeholder={t.auth.passwordHint}/></label><button className="primary" disabled={loading}>{loading ? t.auth.loading : t.auth.resetAction}</button></form>}{notice && <p className="auth-notice" role="status">{notice}</p>}{success && <button className="primary centered" onClick={onLogin}>{t.auth.backToLogin}</button>}</div>
 }
 
-function AuthPage({ t, locale, onSignedIn, onLocalReset }) {
+function AuthPage({ t, locale, onSignedIn, onLocalReset, onContact }) {
   const [mode, setMode] = useState('login')
   const [notice, setNotice] = useState('')
   const [noticeIsError, setNoticeIsError] = useState(false)
@@ -706,7 +707,7 @@ function AuthPage({ t, locale, onSignedIn, onLocalReset }) {
     }
   }
   const heading = mode === 'register' ? t.auth.register : mode === 'forgot' ? t.auth.forgotTitle : t.auth.welcome
-  return <div className="auth-shell"><section className="auth-visual"><Logo/><div><span className="auth-kicker">MONT AWAY</span><h2>{t.auth.intro}</h2></div></section><section className="auth-card"><h1>{heading}</h1>{mode === 'login' && <><div className="providers"><button onClick={beginWeChatLogin}><i className="wechat">微</i>{t.auth.wechat}</button></div><div className="auth-divider"><span>{t.auth.divider}</span></div></>}<form onSubmit={submit} noValidate><label><span><Mail/>{t.auth.email}</span><input name="email" type="email" autoComplete="email" placeholder={t.auth.emailHint}/></label>{mode !== 'forgot' && <label><span><Lock/>{t.auth.password}</span><input name="password" type="password" autoComplete={mode === 'register' ? 'new-password' : 'current-password'} placeholder={t.auth.passwordHint}/></label>}<button className="primary" type="submit" disabled={loading}>{loading ? t.auth.loading : mode === 'register' ? t.auth.register : mode === 'forgot' ? t.auth.sendReset : t.auth.signIn}</button></form>{notice && <p className={`auth-notice ${noticeIsError ? 'error' : ''}`} role="status" aria-live="polite">{notice}</p>}{verificationEmail && <button type="button" className="auth-switch compact" disabled={loading} onClick={resend}>{t.auth.resendVerification}</button>}{mode === 'login' && <button className="auth-switch compact" onClick={() => { setMode('forgot'); setVerificationEmail(''); clearNotice() }}>{t.auth.forgotPassword}</button>}<button className="auth-switch" onClick={() => { setMode(mode === 'register' ? 'login' : mode === 'forgot' ? 'login' : 'register'); setVerificationEmail(''); clearNotice() }}>{mode === 'register' || mode === 'forgot' ? t.auth.switchIn : t.auth.switchUp}</button><p className="terms">{t.auth.terms}</p></section></div>
+  return <div className="auth-shell"><section className="auth-visual"><Logo/><div><span className="auth-kicker">MONT AWAY</span><h2>{t.auth.intro}</h2></div></section><section className="auth-card"><h1>{heading}</h1>{mode === 'login' && <><div className="providers"><button onClick={beginWeChatLogin}><i className="wechat">微</i>{t.auth.wechat}</button></div><div className="auth-divider"><span>{t.auth.divider}</span></div></>}<form onSubmit={submit} noValidate><label><span><Mail/>{t.auth.email}</span><input name="email" type="email" autoComplete="email" placeholder={t.auth.emailHint}/></label>{mode !== 'forgot' && <label><span><Lock/>{t.auth.password}</span><input name="password" type="password" autoComplete={mode === 'register' ? 'new-password' : 'current-password'} placeholder={t.auth.passwordHint}/></label>}<button className="primary" type="submit" disabled={loading}>{loading ? t.auth.loading : mode === 'register' ? t.auth.register : mode === 'forgot' ? t.auth.sendReset : t.auth.signIn}</button></form>{notice && <p className={`auth-notice ${noticeIsError ? 'error' : ''}`} role="status" aria-live="polite">{notice}</p>}{verificationEmail && <button type="button" className="auth-switch compact" disabled={loading} onClick={resend}>{t.auth.resendVerification}</button>}{mode === 'login' && <button className="auth-switch compact" onClick={() => { setMode('forgot'); setVerificationEmail(''); clearNotice() }}>{t.auth.forgotPassword}</button>}<button className="auth-switch" onClick={() => { setMode(mode === 'register' ? 'login' : mode === 'forgot' ? 'login' : 'register'); setVerificationEmail(''); clearNotice() }}>{mode === 'register' || mode === 'forgot' ? t.auth.switchIn : t.auth.switchUp}</button><p className="terms">{t.auth.terms}</p><button className="auth-contact-link" type="button" onClick={onContact}>{t.contact.title}</button></section></div>
 }
 
 function PlacePage({ detail, error, openRoute, openPlace, t, locale, user, onRequireAuth }) {
@@ -715,18 +716,42 @@ function PlacePage({ detail, error, openRoute, openPlace, t, locale, user, onReq
   return <div className="feed place-page"><header className="place-hero"><span className="place-mark"><MapPin/></span><div><small>{detail.place.city} · {detail.place.country_code}</small><h1>{detail.place.name}</h1><p>{detail.post_count} {t.placeStories}</p></div></header><h2>{t.placeLatest}</h2>{detail.posts.length ? <div className="post-stack">{detail.posts.map(post => <PostCard key={post.id} initialPost={post} openRoute={openRoute} openPlace={openPlace} t={t} locale={locale} user={user} onRequireAuth={onRequireAuth}/>)}</div> : <p className="feed-status">{t.placeEmpty}</p>}</div>
 }
 
-function ProfilePage({ t, locale, user, setUser, onAdmin, onEdit, onOpenPost, onLocalReset }) {
+function ProfilePage({ t, locale, user, setUser, onAdmin, onEdit, onOpenPost, onLocalReset, onContact }) {
   const [posts, setPosts] = useState(null)
   const [bookmarks, setBookmarks] = useState(null)
   useEffect(() => {
     if (user) Promise.all([getMyPosts(locale), getBookmarks(locale)]).then(([ownPosts, savedPosts]) => { setPosts(ownPosts); setBookmarks(savedPosts) }).catch(() => { setPosts([]); setBookmarks([]) })
   }, [locale, user])
-  if (!user) return <AuthPage t={t} locale={locale} onSignedIn={setUser} onLocalReset={onLocalReset}/>
+  if (!user) return <AuthPage t={t} locale={locale} onSignedIn={setUser} onLocalReset={onLocalReset} onContact={onContact}/>
   const signOut = async () => {
     try { await logout(locale) } finally { setUser(null) }
   }
   const statusText = post => post.visibility_status === 'draft' ? t.statusDraft : post.visibility_status === 'removed' ? t.statusRemoved : post.moderation_status === 'approved' ? t.statusApproved : t.statusPending
-  return <div className="surface profile-page"><div className="profile-avatar">{user.display_name.slice(0, 1).toUpperCase()}</div><h1>{t.profileTitle}</h1><p className="muted">{t.signedInAs}</p><b>{user.display_name}</b><span>{user.email}</span>{user.is_admin && <button className="primary profile-action" onClick={onAdmin}>{t.adminEntry}</button>}<button className="secondary danger profile-action" onClick={signOut}><LogOut/>{t.signOut}</button><section className="my-posts"><h2>{t.myPosts}</h2>{posts === null ? <p className="muted">{t.loadingFeed}</p> : posts.length ? posts.map(post => <article key={post.id}><Scenic small t={t} media={post.media?.[0]}/><div><b>{post.title}</b><small>{statusText(post)}</small><button onClick={() => onEdit(post)}>{t.editPost}</button></div></article>) : <p className="muted">{t.noMyPosts}</p>}</section><section className="my-posts saved-posts"><h2>{t.savedPosts}</h2>{bookmarks === null ? <p className="muted">{t.loadingFeed}</p> : bookmarks.length ? bookmarks.map(post => <article key={post.id}><Scenic small t={t} media={post.media?.[0]}/><div><b>{post.title}</b><small>{post.place.name}</small><button onClick={() => onOpenPost(post)}>{t.viewPost}</button></div></article>) : <p className="muted">{t.noSavedPosts}</p>}</section></div>
+  return <div className="surface profile-page"><div className="profile-avatar">{user.display_name.slice(0, 1).toUpperCase()}</div><h1>{t.profileTitle}</h1><p className="muted">{t.signedInAs}</p><b>{user.display_name}</b><span>{user.email}</span>{user.is_admin && <button className="primary profile-action" onClick={onAdmin}>{t.adminEntry}</button>}<button className="secondary danger profile-action" onClick={signOut}><LogOut/>{t.signOut}</button><section className="my-posts"><h2>{t.myPosts}</h2>{posts === null ? <p className="muted">{t.loadingFeed}</p> : posts.length ? posts.map(post => <article key={post.id}><Scenic small t={t} media={post.media?.[0]}/><div><b>{post.title}</b><small>{statusText(post)}</small><button onClick={() => onEdit(post)}>{t.editPost}</button></div></article>) : <p className="muted">{t.noMyPosts}</p>}</section><section className="my-posts saved-posts"><h2>{t.savedPosts}</h2>{bookmarks === null ? <p className="muted">{t.loadingFeed}</p> : bookmarks.length ? bookmarks.map(post => <article key={post.id}><Scenic small t={t} media={post.media?.[0]}/><div><b>{post.title}</b><small>{post.place.name}</small><button onClick={() => onOpenPost(post)}>{t.viewPost}</button></div></article>) : <p className="muted">{t.noSavedPosts}</p>}</section><section className="profile-support"><h2>{t.contact.helpTitle}</h2><button type="button" onClick={onContact}><MessageCircle/><span><b>{t.contact.title}</b><small>{t.contact.profileHint}</small></span><ChevronRight/></button></section></div>
+}
+
+function ContactPage({ t, onBack }) {
+  const [notice, setNotice] = useState('')
+  const copyContact = async (value, successMessage) => {
+    try {
+      if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(value)
+      else {
+        // Keep copying available in older webviews. / 兼容不支持 Clipboard API 的旧版浏览器。
+        const input = document.createElement('textarea')
+        input.value = value
+        input.style.position = 'fixed'
+        input.style.opacity = '0'
+        document.body.appendChild(input)
+        input.select()
+        document.execCommand('copy')
+        input.remove()
+      }
+      setNotice(successMessage)
+    } catch {
+      setNotice(t.contact.copyFailed)
+    }
+  }
+  return <div className="surface contact-page"><header className="contact-head"><button type="button" aria-label={t.contact.back} onClick={onBack}><ChevronLeft/></button><h1>{t.contact.title}</h1><span/></header><div className="contact-content"><div className="contact-mark"><MessageCircle/></div><h2>{t.contact.heading}</h2><p>{t.contact.intro}</p><div className="contact-list"><article><span className="contact-icon wechat-icon"><MessageCircle/></span><div><small>{t.contact.wechat}</small><b>{contactDetails.wechat}</b></div><button type="button" onClick={() => copyContact(contactDetails.wechat, t.contact.wechatCopied)}><Copy/>{t.contact.copy}</button></article><article><span className="contact-icon qq-icon"><UsersRound/></span><div><small>{t.contact.qq}</small><b>{contactDetails.qq}</b></div><button type="button" onClick={() => copyContact(contactDetails.qq, t.contact.qqCopied)}><Copy/>{t.contact.copy}</button></article></div>{notice && <p className="contact-notice" role="status" aria-live="polite">{notice}</p>}<small className="contact-hours">{t.contact.responseTime}</small></div></div>
 }
 
 function Placeholder({ title, t }) {
@@ -745,7 +770,7 @@ function TrendingRail({ t, locale, openPlace, onOpenRanking }) {
   return <><button className="rail-ranking" onClick={onOpenRanking}><Trophy/>{t.weekly}</button>{posts === null ? <small className="muted">{t.loadingFeed}</small> : posts.length ? posts.slice(0, 3).map((post, index) => <button className="mini" onClick={() => openPlace(post.place)} key={post.id}><i>{index + 1}</i><span><b>{post.place.name}</b><small>{post.like_count} {t.likes}</small></span></button>) : <small className="muted">{t.noPopular}</small>}</>
 }
 
-const pagePaths = { home: '/', map: '/map', publish: '/publish', messages: '/messages', gifts: '/gifts', profile: '/profile', search: '/search', ranking: '/ranking', admin: '/admin' }
+const pagePaths = { home: '/', map: '/map', publish: '/publish', messages: '/messages', gifts: '/gifts', profile: '/profile', contact: '/contact', search: '/search', ranking: '/ranking', admin: '/admin' }
 
 function locationState() {
   const path = stripLocalePrefix(window.location.pathname)
@@ -844,20 +869,21 @@ function App() {
         : page === 'publish' ? <Publish key={editingPost?.id || 'new'} t={t} locale={locale} user={user} initialPost={editingPost} onRequireAuth={requireAuth} onPublished={() => { setEditingPost(null); setFeedVersion(value => value + 1); go('home') }}/>
           : page === 'messages' ? <ActivityPage t={t} locale={locale} user={user} onRequireAuth={requireAuth} onOpenGifts={() => go('gifts')}/>
             : page === 'gifts' ? <GiftPage t={t} locale={locale} user={user} onRequireAuth={requireAuth}/>
-            : page === 'profile' ? <ProfilePage t={t} locale={locale} user={user} setUser={setUser} onAdmin={() => go('admin')} onEdit={editPost} onOpenPost={openPost} onLocalReset={openLocalReset}/>
-            : page === 'search' ? <SearchPage t={t} locale={locale} openRoute={openRoute} openPlace={openPlace} user={user} onRequireAuth={requireAuth}/>
+            : page === 'profile' ? <ProfilePage t={t} locale={locale} user={user} setUser={setUser} onAdmin={() => go('admin')} onEdit={editPost} onOpenPost={openPost} onLocalReset={openLocalReset} onContact={() => go('contact')}/>
+            : page === 'contact' ? <ContactPage t={t} onBack={() => go('profile')}/>
+              : page === 'search' ? <SearchPage t={t} locale={locale} openRoute={openRoute} openPlace={openPlace} user={user} onRequireAuth={requireAuth}/>
               : page === 'ranking' ? <RankingPage t={t} locale={locale} openRoute={openRoute} openPlace={openPlace} user={user} onRequireAuth={requireAuth}/>
                 : page === 'admin' ? <AdminPage t={t} locale={locale} openRoute={openRoute}/>
                   : page === 'verify-email' ? <VerifyEmailPage t={t} locale={locale} onLogin={returnToLogin}/>
                     : page === 'reset-password' ? <ResetPasswordPage t={t} locale={locale} onLogin={returnToLogin}/>
                       : <Placeholder title={t.nav[3]} t={t}/>
 
-  const navActive = id => page === id || (id === 'messages' && page === 'gifts')
-  return <div className={`app ${page === 'publish' ? 'editor-active' : ''}`}>
-    <aside className="desktop-nav"><Logo/><nav>{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={navActive(id) ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/>{name}</button> })}</nav><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><button className="account account-button" type="button" onClick={() => go('profile')} aria-label={user ? t.profileTitle : t.auth.welcome}><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span>{user?.display_name || t.auth.welcome}</span></button></aside>
+  const navActive = id => page === id || (id === 'messages' && page === 'gifts') || (id === 'profile' && page === 'contact')
+  return <div className={`app ${page === 'publish' ? 'editor-active' : ''} ${page === 'contact' ? 'contact-active' : ''}`}>
+    <aside className="desktop-nav"><Logo/><nav>{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={navActive(id) ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/>{name}</button> })}</nav><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><details className={`desktop-more ${page === 'contact' ? 'active' : ''}`}><summary><MoreHorizontal/>{t.more}</summary><div><button type="button" onClick={() => go('contact')}><MessageCircle/>{t.contact.title}</button></div></details><button className="account account-button" type="button" onClick={() => go('profile')} aria-label={user ? t.profileTitle : t.auth.welcome}><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span>{user?.display_name || t.auth.welcome}</span></button></aside>
     <header className="mobile-head"><Logo/><div><LanguageSwitch locale={locale} setLocale={setLocale} t={t}/><button aria-label="Search" onClick={() => go('search')}><Search/></button><button aria-label="Ranking" onClick={() => go('ranking')}><Trophy/></button></div></header>
     <main className="main">{content}</main>
-    <aside className="right-rail"><button className="profile profile-button" type="button" onClick={() => go('profile')} aria-label={user ? t.profileTitle : t.auth.welcome}><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span><b>{user?.display_name || t.auth.welcome}</b><small>{t.bio}</small></span></button><button className="rail-search" onClick={() => go('search')}><Search/>{t.searchHint}</button>{user && <button className="rail-search rail-gift" onClick={() => go('gifts')}><Gift/>{t.openGifts}</button>}<TrendingRail t={t} locale={locale} openPlace={openPlace} onOpenRanking={() => go('ranking')}/></aside>
+    <aside className="right-rail"><button className="profile profile-button" type="button" onClick={() => go('profile')} aria-label={user ? t.profileTitle : t.auth.welcome}><div className="avatar">{user ? user.display_name.slice(0, 1).toUpperCase() : '山'}</div><span><b>{user?.display_name || t.auth.welcome}</b><small>{t.bio}</small></span></button><button className="rail-search" onClick={() => go('search')}><Search/>{t.searchHint}</button>{user && <button className="rail-search rail-gift" onClick={() => go('gifts')}><Gift/>{t.openGifts}</button>}<TrendingRail t={t} locale={locale} openPlace={openPlace} onOpenRanking={() => go('ranking')}/><footer className="rail-footer">山遥 © 2026 <span>·</span><button type="button" onClick={() => go('contact')}>{t.contact.title}</button></footer></aside>
     <nav className="mobile-nav">{t.nav.map((name, index) => { const Icon = navIcons[index]; const id = navIds[index]; return <button className={navActive(id) ? 'active' : ''} onClick={() => go(id)} key={id}><Icon/><small>{name}</small></button> })}</nav>
   </div>
 }

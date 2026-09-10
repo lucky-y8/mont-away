@@ -91,4 +91,34 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/ranking" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/ranking" />
   </url>
+  <url>
+    <loc>https://sy.chexi.tech/contact</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sy.chexi.tech/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sy.chexi.tech/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/contact" />
+  </url>
+  <url>
+    <loc>https://sy.chexi.tech/en/contact</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sy.chexi.tech/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sy.chexi.tech/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/contact" />
+  </url>
+  <url>
+    <loc>https://sy.chexi.tech/ja/contact</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sy.chexi.tech/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sy.chexi.tech/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sy.chexi.tech/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sy.chexi.tech/contact" />
+  </url>
 </urlset>
