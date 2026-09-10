@@ -4,11 +4,13 @@ import uuid
 
 from fastapi.testclient import TestClient
 
+from app.config import settings
 from app.main import app
 
 
-def test_static_seo_documents_and_english_shell():
+def test_static_seo_documents_and_localized_core_shells():
     with TestClient(app) as client:
+        site_url = settings.frontend_url.rstrip("/")
         robots = client.get("/robots.txt")
         assert robots.status_code == 200
         assert "Disallow: /admin" in robots.text
@@ -20,6 +22,7 @@ def test_static_seo_documents_and_english_shell():
         assert sitemap.headers["content-type"].startswith("application/xml")
         assert "hreflang=\"zh-CN\"" in sitemap.text
         assert "hreflang=\"en\"" in sitemap.text
+        assert f"{site_url}/contact" in sitemap.text
 
         english = client.get("/en/")
         assert english.status_code == 200
@@ -27,6 +30,26 @@ def test_static_seo_documents_and_english_shell():
         assert "Mont Away | Discover Quiet Places" in english.text
         assert english.text.count('rel="canonical"') == 1
         assert 'hreflang="zh-CN"' in english.text
+        assert '<meta name="application-name" content="Mont Away"' in english.text
+        assert 'property="og:locale:alternate" content="zh_CN"' in english.text
+        assert '"@type":"WebSite"' in english.text
+
+        chinese_map = client.get("/map")
+        assert chinese_map.status_code == 200
+        assert "地图发现｜附近小众景点与旅行路线｜山遥" in chinese_map.text
+        assert f'<link rel="canonical" href="{site_url}/map"' in chinese_map.text
+        assert '"@type":"CollectionPage"' in chinese_map.text
+
+        chinese_ranking = client.get("/ranking")
+        assert chinese_ranking.status_code == 200
+        assert "热门旅行地点与游记榜单｜山遥" in chinese_ranking.text
+        assert f'<link rel="canonical" href="{site_url}/ranking"' in chinese_ranking.text
+
+        japanese_contact = client.get("/ja/contact")
+        assert japanese_contact.status_code == 200
+        assert "お問い合わせ｜山遥" in japanese_contact.text
+        assert f'<link rel="canonical" href="{site_url}/ja/contact"' in japanese_contact.text
+        assert '"@type":"ContactPage"' in japanese_contact.text
 
         api = client.get("/api/v1/posts")
         assert api.headers["cache-control"] == "no-store"

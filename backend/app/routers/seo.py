@@ -30,16 +30,19 @@ CORE_COPY = {
         "home": ("山遥｜发现小众旅行地点、路线与真实地图游记", "山遥是小众旅行地点与路线分享社区。发现真实用户发布的景点、徒步与骑行路线、地图节点、图片和视频，收藏下一次出发。"),
         "map": ("地图发现｜附近小众景点与旅行路线｜山遥", "在山遥地图中发现附近的小众景点、徒步路线、骑行路线与真实旅行记录。"),
         "ranking": ("热门旅行地点与游记榜单｜山遥", "查看山遥社区近期最受欢迎的小众旅行地点、路线和地图游记。"),
+        "contact": ("联系我们｜山遥", "通过微信或 QQ 交流群联系山遥，反馈问题、提出产品建议或洽谈合作。"),
     },
     "en": {
         "home": ("Mont Away | Discover Quiet Places, Travel Routes and Map Stories", "Discover lesser-known places, walking and cycling routes, map-based stories, photos and videos shared by real travelers."),
         "map": ("Explore Travel Places and Routes on the Map | Mont Away", "Discover nearby places, walking and cycling routes, and authentic travel stories on the Mont Away map."),
         "ranking": ("Popular Travel Places and Map Stories | Mont Away", "Explore the travel places, routes and map stories most loved by the Mont Away community."),
+        "contact": ("Contact Mont Away", "Contact Mont Away on WeChat or through our QQ community group for support, product feedback, or partnerships."),
     },
     "ja": {
         "home": ("山遥｜静かな旅先・ルート・地図旅行記を見つけよう", "知られざる旅先、徒歩・自転車ルート、地図旅行記、写真や動画を共有する旅行コミュニティです。"),
         "map": ("地図で旅先とルートを探す｜山遥", "地図から近くの静かな旅先、徒歩・自転車ルート、旅行記を見つけられます。"),
         "ranking": ("人気の旅先と旅行記｜山遥", "山遥コミュニティで人気の旅先、ルート、地図旅行記を紹介します。"),
+        "contact": ("お問い合わせ｜山遥", "サポート、ご意見、提携のご相談は、WeChatまたはQQコミュニティグループから山遥へお問い合わせください。"),
     },
 }
 
@@ -103,10 +106,22 @@ def render_shell(
         "inLanguage": locale,
     }
     json_ld = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    alternate_og_locales = "\n".join(
+        f'    <meta property="og:locale:alternate" content="{details["og_locale"]}" />'
+        for language, details in LANGUAGES.items()
+        if language != locale
+    )
+    default_image_metadata = ""
+    if image is None:
+        default_image_metadata = """
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1731" />
+    <meta property="og:image:height" content="909" />"""
     metadata = f"""
     <title>{html.escape(title)}</title>
     <meta name="description" content="{html.escape(description, quote=True)}" />
     <meta name="robots" content="{robots}" />
+    <meta name="application-name" content="{html.escape(site_name, quote=True)}" />
     <link rel="canonical" href="{html.escape(canonical, quote=True)}" />
     {alternates(path)}
     <meta property="og:title" content="{html.escape(title, quote=True)}" />
@@ -115,12 +130,15 @@ def render_shell(
     <meta property="og:url" content="{html.escape(canonical, quote=True)}" />
     <meta property="og:site_name" content="{html.escape(site_name, quote=True)}" />
     <meta property="og:locale" content="{LANGUAGES[locale]['og_locale']}" />
+{alternate_og_locales}
     <meta property="og:image" content="{html.escape(image_url, quote=True)}" />
+{default_image_metadata}
     <meta property="og:image:alt" content="{html.escape(title, quote=True)}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{html.escape(title, quote=True)}" />
     <meta name="twitter:description" content="{html.escape(description, quote=True)}" />
     <meta name="twitter:image" content="{html.escape(image_url, quote=True)}" />
+    <meta name="twitter:image:alt" content="{html.escape(title, quote=True)}" />
     <script id="shanyao-structured-data" type="application/ld+json">{json_ld}</script>
     """
 
@@ -132,7 +150,7 @@ def render_shell(
     # Remove default metadata from the built shell before inserting the route-specific version. / 去掉构建壳中的默认元数据，避免重复信号。
     patterns = [
         r"<title>.*?</title>",
-        r'<meta\s+(?:name|property)="(?:description|keywords|robots|author|og:[^"]+|twitter:[^"]+)"[^>]*>\s*',
+        r'<meta\s+(?:name|property)="(?:description|keywords|robots|author|application-name|og:[^"]+|twitter:[^"]+)"[^>]*>\s*',
         r'<link\s+rel="(?:canonical|alternate)"[^>]*>\s*',
         r'<script\s+id="shanyao-structured-data"[^>]*>.*?</script>\s*',
     ]
@@ -288,6 +306,7 @@ async def sitemap(db: DbSession) -> Response:
         ("/", "daily", "1.0", ""),
         ("/map", "daily", "0.8", ""),
         ("/ranking", "daily", "0.7", ""),
+        ("/contact", "monthly", "0.4", ""),
     ]
     rows.extend((f"/posts/{post.id}", "weekly", "0.8", post.updated_at.date().isoformat()) for post in posts)
     rows.extend((f"/places/{place.id}", "weekly", "0.7", place.created_at.date().isoformat()) for place in places.values())
@@ -349,6 +368,7 @@ async def llms() -> PlainTextResponse:
 - English: {site_url()}/en/
 - Map discovery: {site_url()}/map
 - Popular stories: {site_url()}/ranking
+- Contact: {site_url()}/contact
 - Sitemap: {site_url()}/sitemap.xml
 
 Public posts are traveler-authored. Private account, administration, messaging and publishing pages should not be indexed.
@@ -358,10 +378,78 @@ Public posts are traveler-authored. Private account, administration, messaging a
 
 def core_shell(locale: str, path: str) -> HTMLResponse:
     normalized = f"/{path.strip('/')}" if path.strip("/") else "/"
-    page = "map" if normalized == "/map" else "ranking" if normalized == "/ranking" else "home"
+    page = "map" if normalized == "/map" else "ranking" if normalized == "/ranking" else "contact" if normalized == "/contact" else "home"
     title, description = CORE_COPY[locale][page]
-    indexable = normalized in {"/", "/map", "/ranking"}
-    return render_shell(locale=locale, path=normalized if indexable else "/", title=title, description=description, indexable=indexable)
+    indexable = normalized in {"/", "/map", "/ranking", "/contact"}
+    canonical_path = normalized if indexable else "/"
+    canonical = f"{site_url()}{localized_path(canonical_path, locale)}"
+    if page == "home":
+        structured_data = {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebSite",
+                    "@id": f"{site_url()}/#website",
+                    "url": f"{site_url()}/",
+                    "name": LANGUAGES[locale]["site_name"],
+                    "alternateName": "Mont Away",
+                    "description": description,
+                    "inLanguage": locale,
+                    "publisher": {"@id": f"{site_url()}/#organization"},
+                },
+                {
+                    "@type": "Organization",
+                    "@id": f"{site_url()}/#organization",
+                    "url": f"{site_url()}/",
+                    "name": LANGUAGES[locale]["site_name"],
+                    "alternateName": "Mont Away",
+                    "logo": {"@type": "ImageObject", "url": f"{site_url()}/icon.svg"},
+                },
+            ],
+        }
+    elif page in {"map", "ranking"}:
+        structured_data = {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": title,
+            "description": description,
+            "url": canonical,
+            "inLanguage": locale,
+            "isPartOf": {"@id": f"{site_url()}/#website"},
+        }
+    else:
+        structured_data = {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": title,
+            "description": description,
+            "url": canonical,
+            "inLanguage": locale,
+            "isPartOf": {"@id": f"{site_url()}/#website"},
+        }
+    return render_shell(
+        locale=locale,
+        path=canonical_path,
+        title=title,
+        description=description,
+        indexable=indexable,
+        structured_data=structured_data,
+    )
+
+
+@router.get("/map", response_class=HTMLResponse, include_in_schema=False)
+async def chinese_map() -> HTMLResponse:
+    return core_shell("zh-CN", "/map")
+
+
+@router.get("/ranking", response_class=HTMLResponse, include_in_schema=False)
+async def chinese_ranking() -> HTMLResponse:
+    return core_shell("zh-CN", "/ranking")
+
+
+@router.get("/contact", response_class=HTMLResponse, include_in_schema=False)
+async def chinese_contact() -> HTMLResponse:
+    return core_shell("zh-CN", "/contact")
 
 
 @router.get("/en", response_class=HTMLResponse, include_in_schema=False)

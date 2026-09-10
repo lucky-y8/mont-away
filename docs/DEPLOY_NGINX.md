@@ -98,12 +98,41 @@ server {
     # sitemap.xml 会自动包含审核通过的公开游记与地点。
     location = /robots.txt {
         proxy_pass http://shanyao_backend/robots.txt;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
     location = /sitemap.xml {
         proxy_pass http://shanyao_backend/sitemap.xml;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
     location = /llms.txt {
         proxy_pass http://shanyao_backend/llms.txt;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # 中文地图和榜单页由 FastAPI 输出各自的 canonical、Open Graph 和 JSON-LD。
+    location = /map {
+        proxy_pass http://shanyao_backend/map;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    location = /ranking {
+        proxy_pass http://shanyao_backend/ranking;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    location = /contact {
+        proxy_pass http://shanyao_backend/contact;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 
     # 公开详情页交给 FastAPI 输出带动态 Meta/JSON-LD 的 HTML，随后仍由 React 接管。
@@ -179,6 +208,9 @@ curl -I https://sy.chexi.tech/
 curl -I https://sy.chexi.tech/en/
 curl -fsS https://sy.chexi.tech/robots.txt
 curl -fsS https://sy.chexi.tech/sitemap.xml
+curl -fsS https://sy.chexi.tech/map | grep -F 'href="https://sy.chexi.tech/map"'
+curl -fsS https://sy.chexi.tech/ranking | grep -F 'href="https://sy.chexi.tech/ranking"'
+curl -fsS https://sy.chexi.tech/contact | grep -F 'href="https://sy.chexi.tech/contact"'
 ```
 
 生产构建前，根目录 `.env` 至少应包含：
