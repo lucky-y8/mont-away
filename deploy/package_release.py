@@ -37,7 +37,7 @@ def main():
 
 Routes: / = question practice; /shanyao/ = existing travel website.
 Includes source, production dist, 12 PDFs, question images, CSV/JSON templates, FastAPI backend and deployment instructions.
-Study features: personal background colors, expanded original images, anonymous question/image uploads and batch import.
+Study features: personal theme colors with light/dark appearance, expanded original images, anonymous question/image uploads and batch import.
 Read docs/STUDY_INTEGRATION.md and deploy/nginx-shared.conf first.
 
 The current dist uses same-origin APIs. The public SEO domain remains sy.chexi.tech.

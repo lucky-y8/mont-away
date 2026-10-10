@@ -5,7 +5,7 @@ import { BookOpen, Layers3, Search, ChevronRight, ChevronLeft, ArrowUpRight, Shu
 import { Question, QuestionType, Revision, typeNames, sourceNames } from "./types";
 import Modal from "./Modal";
 import Select from "./Select";
-import BackgroundSettings, { useBackground } from "./BackgroundSettings";
+import ThemeSettings, { useTheme } from "./ThemeSettings";
 import UploadDialog from "./UploadDialog";
 
 type Scope = "all" | "favorites" | "wrong" | "uploads";
@@ -89,8 +89,8 @@ function HistoryDialog({ q, onClose, onRestore }: { q: Question; onClose: () => 
 
 export default function StudyApp({ initialQuestions }: { initialQuestions: Question[] }) {
   const [questions, setQuestions] = useState(initialQuestions);
-  const [background, setBackground, backgroundStyle] = useBackground();
-  const [backgroundOpen, setBackgroundOpen] = useState(false);
+  const [theme, setTheme, currentThemeStyle] = useTheme();
+  const [themeOpen, setThemeOpen] = useState(false);
   const [uploadOpen, setUploadOpen] = useState(false);
   const [personal, setPersonal] = useState<Personal>(emptyPersonal);
   const [chapter, setChapter] = useState<number | null>(null); const [scope, setScope] = useState<Scope>("all");
@@ -122,7 +122,7 @@ export default function StudyApp({ initialQuestions }: { initialQuestions: Quest
   const cardProps = { personal, onFavorite: favorite, onMark: mark, onSeen: seen, onChoice: choose, onEdit: (q: Question) => setEditing({ q }), onHistory: setHistoryQ, onImage: setImage };
   const heading = scope === "favorites" ? "我的收藏" : scope === "wrong" ? "错题再练一次" : scope === "uploads" ? "同学上传题目" : chapter !== null ? chapters.find(ch => ch.id === chapter)?.title || "自建题目" : "今天，也向前一步。";
 
-  return <div className="app-shell" style={backgroundStyle}>
+  return <div className="app-shell" style={currentThemeStyle}>
     {menuOpen && <button className="mobile-backdrop" aria-label="关闭导航" onClick={() => setMenuOpen(false)} />}
     <aside className={`sidebar ${menuOpen ? "sidebar-open" : ""}`}>
       <a className="brand" href="/" aria-label="知网自习室首页"><span className="brand-mark"><Network size={24} /></span><span><strong>知网自习室</strong><small>NETWORK STUDY ROOM</small></span></a>
@@ -133,7 +133,7 @@ export default function StudyApp({ initialQuestions }: { initialQuestions: Quest
       <div className="sidebar-bottom"><a className="shanyao-link" href="/shanyao/">山遥 · 去发现旅行目的地 <ArrowUpRight size={15} /></a><div className="open-badge"><span className="status-dot" /><span>一个开放的共同题库</span></div><p>自由学习，也欢迎留下你的解题思路。</p><button onClick={() => { setLibraryOpen(true); setMenuOpen(false); }}><FileText size={16} />浏览全部课件<ArrowUpRight size={15} /></button></div>
     </aside>
     <div className="main-shell">
-      <header className="topbar"><div className="breadcrumb"><button className="icon-button mobile-menu" aria-label="打开章节导航" onClick={() => setMenuOpen(true)}><Menu size={21} /></button><GraduationCap size={18} /><span>计算机网络与信息安全</span><ChevronRight size={14} /><span className="breadcrumb-muted">练习空间</span></div><div className="topbar-right"><button className="toolbar-button" onClick={() => setBackgroundOpen(true)} aria-label="背景颜色"><Palette size={17} /><span>背景</span></button><button className="toolbar-button upload-entry" onClick={() => setUploadOpen(true)} aria-label="上传题目"><Upload size={17} /><span>上传题目</span></button><span className={`sync-label ${sync}`}><span className="status-dot" />{sync === "ok" ? "题库已同步" : sync === "loading" ? "正在同步" : "同步暂不可用"}</span><button className="avatar" title="无需登录，个人进度保存在本机" onClick={() => setToast("免登录使用。收藏、错题和进度保存在当前浏览器。")}>同学</button></div></header>
+      <header className="topbar"><div className="breadcrumb"><button className="icon-button mobile-menu" aria-label="打开章节导航" onClick={() => setMenuOpen(true)}><Menu size={21} /></button><GraduationCap size={18} /><span>计算机网络与信息安全</span><ChevronRight size={14} /><span className="breadcrumb-muted">练习空间</span></div><div className="topbar-right"><button className="toolbar-button" onClick={() => setThemeOpen(true)} aria-label="主题颜色"><Palette size={17} /><span>主题</span></button><button className="toolbar-button upload-entry" onClick={() => setUploadOpen(true)} aria-label="上传题目"><Upload size={17} /><span>上传题目</span></button><span className={`sync-label ${sync}`}><span className="status-dot" />{sync === "ok" ? "题库已同步" : sync === "loading" ? "正在同步" : "同步暂不可用"}</span><button className="avatar" title="无需登录，个人进度保存在本机" onClick={() => setToast("免登录使用。收藏、错题和进度保存在当前浏览器。")}>同学</button></div></header>
       <main className="main-content">
         <section className="welcome"><div><div className="eyebrow"><span />LEARN A LITTLE, EVERY DAY</div><h1>{heading}</h1><p>{scope === "favorites" ? "值得再看一遍的题目，都在这里。" : scope === "wrong" ? "把每一次卡住，变成下一次进步。" : "把知识连成网络，让每一道题都有收获。"}</p></div><div className="course-label"><span>自考课程</span><strong>13017</strong><span>课件配套练习</span></div></section>
         <section className="overview" aria-label="学习概况"><div><span className="stat-icon mint"><Layers3 size={20} /></span><div><span className="stat-title">共享题库</span><strong>{questions.length}<small>道题</small></strong></div></div><div><span className="stat-icon blue"><BookOpen size={20} /></span><div><span className="stat-title">全部课件</span><strong>12<small>份 · 335 页</small></strong></div></div><div><span className="stat-icon amber"><CheckCheck size={20} /></span><div><span className="stat-title">我的已复习</span><strong>{personal.seen.length}<small>道题</small></strong></div><span className="progress-mini">慢慢来，也很快</span></div></section>
@@ -155,7 +155,7 @@ export default function StudyApp({ initialQuestions }: { initialQuestions: Quest
     {historyQ && <HistoryDialog q={historyQ} onClose={() => setHistoryQ(null)} onRestore={old => { setEditing({ q: questions.find(q => q.id === historyQ.id) || historyQ, restore: old }); setHistoryQ(null); }} />}
     {image && <Modal title="原题图片" subtitle="保留课件原图，便于核对公式、符号和配图。" wide onClose={() => setImage(null)}><div className="image-viewer"><img src={image} alt="放大的原题图片" /><a href={image} target="_blank" rel="noreferrer">打开完整分辨率<ArrowUpRight size={14} /></a></div></Modal>}
     {libraryOpen && <Modal title="课件资料库" subtitle="全部 12 份原始课件 · 共 335 页" wide onClose={() => setLibraryOpen(false)}><div className="library-grid">{fileChapters.map(ch => <a href={`/study-assets/sources/ch${String(ch.id).padStart(2, "0")}.pdf`} target="_blank" rel="noreferrer" key={ch.id}><span className="pdf-icon"><FileText size={23} /><small>PDF</small></span><div><small>{ch.id === 0 ? "课程导学" : `第 ${ch.id} 章`}</small><strong>{ch.title}</strong><span>{questions.filter(q => q.chapter === ch.id && !q.origin).length} 道课件题</span></div><ArrowUpRight size={18} /></a>)}</div></Modal>}
-    {backgroundOpen && <BackgroundSettings color={background} onChange={setBackground} onClose={() => setBackgroundOpen(false)} />}
+    {themeOpen && <ThemeSettings theme={theme} onChange={setTheme} onClose={() => setThemeOpen(false)} />}
     {uploadOpen && <UploadDialog chapters={fileChapters} onClose={() => setUploadOpen(false)} onCreated={added => {
       setQuestions(previous => [...previous.filter(q => !added.some(item => item.id === q.id)), ...added]);
       setUploadOpen(false); setScope("all"); setChapter(null); setQuery(""); setType("all"); setMode("single"); setCurrentId(added[0].id); setMenuOpen(false); setToast(`已公开添加 ${added.length} 道题目`); window.scrollTo({ top: 0 });
