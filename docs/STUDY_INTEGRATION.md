@@ -4,7 +4,7 @@
 
 | 地址 | 功能 |
 | --- | --- |
-| `/` | 知网自习室：361 道题、答案与解析、匿名编辑与历史版本 |
+| `/` | 知网自习室：361 道初始题、答案与解析、匿名上传/批量导入、编辑与历史版本 |
 | `/shanyao/` | 原山遥首页 |
 | `/shanyao/en/`、`/shanyao/ja/` | 山遥英语、日语页面 |
 | `/shanyao/posts/...`、`/shanyao/places/...` | 山遥分享、游记与景点 |
@@ -27,9 +27,21 @@
 
 此处导入的是本地初始题库；Sites/Cloudflare 上的后续在线修订没有自动迁入。本地与 Sites 的编辑各自保存，不会互相同步。原课件答案、OCR 和 AI 补充的标记均保留；个人错题/收藏仍保存在当前浏览器。
 
+## 背景、原题图与自行上传
+
+- 顶部“背景”提供 6 个预设与自选颜色，自动保存在当前浏览器；仅改变刷题页的背景。
+- 原课件题图和上传题图默认展开，可收起并点击放大。答案与解析仍需各自点击展开。
+- 顶部“上传题目”支持手动填写题干、题型、章节、选项、答案、解析和署名。文字草稿保存在当前浏览器；图片需在关闭窗口后重新选择。
+- 支持 PNG/JPG/WebP，每题最多 4 张，每张不超过 5 MB。服务端验证真实图像、移除附加元数据，并将长边超过 3200 像素的图像缩小，转为 PNG 保存。
+- 批量导入支持 UTF-8 CSV 与 JSON，一次 1–200 题、文件不超过 2 MB；下载入口内的模板，上传后校验并预览，点击“确认导入”才会写入共享题库。批量模板用于文字题；带图题使用手动录入。
+- 题目可归入原章节，也可放在“自建题目”。侧栏“同学上传”可快速筛选，所有新增题目支持原有匿名编辑、并发冲突检查和历史恢复。
+- 新增题目、图片和修改历史均保存在独立的刷题 SQLite 文件中；服务器重启或更新前端不会清空。升级自动补建新表，不覆盖既有修订。
+- 上传接口：POST /api/study/questions；预览接口：POST /api/study/import/preview?filename=...，直接发送文件内容；图片地址：GET /api/study/images/{id}。整批题目与图片统一事务保存，重复提交同一请求编号不会重复入库。
+- 反向代理需允许最大 32 MB 的 JSON 请求；示例 Nginx 已设置 55 MB，可满足 4 张图片的 Base64 请求。备份刷题数据库即可一并保留上传题图。
+
 ## 本地运行
 
-需要原工程的 Node 与 Python 环境。没有依赖时先在根目录运行 `npm ci`，并在后端虚拟环境安装 `backend/requirements.txt`。本次未添加新的 npm 或 Python 依赖。
+需要原工程的 Node 与 Python 环境。没有依赖时先在根目录运行 `npm ci`，并在后端虚拟环境安装 `backend/requirements.txt`。上传题图新增 Pillow 依赖，需重新安装后端 requirements；前端未新增 npm 依赖。
 
 先在项目根目录构建：
 
@@ -59,7 +71,7 @@ SHANYAO_STUDY_DATABASE_PATH=/srv/shanyao/shared/study.sqlite3
 确保服务账号对 `/srv/shanyao/shared` 有写权限。`SHANYAO_FRONTEND_URL` 可以继续填写原域名，也可以写带 `/shanyao` 的 URL；代码会避免重复加前缀。`VITE_SHANYAO_SITE_URL` 应填写公开域名，`VITE_SHANYAO_API_URL` 留空时使用同源接口。
 
 1. 备份原配置、代码和数据库，部署本工程全部源码及 `study-room/`。
-2. 本次 Git 提交包含已构建的 `dist/index.html`、`dist/shanyao/index.html` 和 `dist/study-assets/`，服务器可以直接使用；只有修改前端构建配置时才需运行 `npm ci`、`npm run build`。
+2. Git 仓库和发布压缩包均包含已构建的 `dist/index.html`、`dist/shanyao/index.html` 和 `dist/study-assets/`，服务器可以直接使用；只有修改前端构建配置时才需运行 `npm ci`、`npm run build`。
 3. 使用 [Nginx 配置](../deploy/nginx-shared.conf) 或 [Ubuntu 文档中的 Caddy 配置](DEPLOY_UBUNTU.md)，保留完整请求路径。后端端口必须与配置一致。
 4. 重启原 FastAPI 服务，并检查根页、`/shanyao/`、两个 API、PDF、旧游记跳转和匿名修改历史。
 
@@ -75,7 +87,13 @@ git pull --ff-only origin main
 sudo cp -a dist/. /var/www/sy.chexi.tech/
 ```
 
-刷题模块没有新增 Python 依赖，不需要修改山遥 PostgreSQL 结构。首次创建刷题数据库时，原后端运行账号必须可以写入 `/srv/shanyao/shared`；若后端由 `ubuntu` 运行且该目录尚未准备好，可执行：
+上传题图新增 Pillow 依赖。更新代码后，使用服务的 Python 环境安装：
+
+```bash
+/home/ubuntu/miniconda3/envs/shanyao/bin/python -m pip install -r backend/requirements.txt
+```
+
+不需要修改山遥 PostgreSQL 结构。首次创建刷题数据库时，原后端运行账号必须可以写入 `/srv/shanyao/shared`；若后端由 `ubuntu` 运行且该目录尚未准备好，可执行：
 
 ```bash
 sudo install -d -o ubuntu -g ubuntu -m 750 /srv/shanyao/shared
@@ -89,7 +107,7 @@ cd /home/ubuntu/prod/mont-away/backend
 /home/ubuntu/miniconda3/envs/shanyao/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 9005 --workers 1 --proxy-headers --forwarded-allow-ips=127.0.0.1
 ```
 
-接着按 [Nginx 文档](DEPLOY_NGINX.md) 合并路由，保留现有证书与高德代理，然后执行 `sudo nginx -t && sudo systemctl reload nginx`。验证首页是自习室、题库接口返回 361 题、PDF 可访问。仅同步静态文件而不更新后端和代理，不能完成本次上线。
+接着按 [Nginx 文档](DEPLOY_NGINX.md) 合并路由，保留现有证书与高德代理，然后执行 `sudo nginx -t && sudo systemctl reload nginx`。验证首页是自习室、题库接口返回至少 361 题（含原始题库与后来上传的题目）、PDF 可访问。仅同步静态文件而不更新后端和代理，不能完成本次上线。
 
 ## 验证
 
@@ -100,4 +118,4 @@ cd backend
 .\.venv\Scripts\python.exe -m pytest tests -q -p no:cacheprovider
 ```
 
-测试使用临时题库数据库和山遥内存数据库，不写现有用户数据。覆盖原山遥认证与业务流程、SEO、双页面分流、题库素材、匿名修改、持久历史、版本恢复、并发冲突和输入校验。
+测试使用临时题库数据库和山遥内存数据库，不写现有用户数据。覆盖原山遥认证与业务流程、SEO、双页面分流、题库素材、匿名修改、持久历史、版本恢复、并发冲突和输入校验；还覆盖图片上传、整批校验、重复提交、CSV/JSON 模板、图片持久化和旧数据库升级。

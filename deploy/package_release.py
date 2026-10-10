@@ -15,7 +15,7 @@ SKIP_SUFFIXES = {'.db', '.sqlite', '.sqlite3', '.log', '.pyc', '.pyo', '.pem', '
 PREFIX = 'mont-away-remote/'
 
 def main():
-    required = {'dist/index.html', 'dist/shanyao/index.html', 'backend/app/web.py', 'backend/app/study_room/router.py', 'study-room/data/questions.json', 'deploy/nginx-shared.conf', 'docs/STUDY_INTEGRATION.md'}
+    required = {'dist/index.html', 'dist/shanyao/index.html', 'backend/app/web.py', 'backend/app/study_room/router.py', 'study-room/data/questions.json', 'deploy/nginx-shared.conf', 'docs/STUDY_INTEGRATION.md', 'backend/app/study_room/importing.py', 'dist/study-assets/templates/questions.csv', 'dist/study-assets/templates/questions.json'}
     for name in required:
         if not (ROOT / name).is_file():
             raise SystemExit(f'Missing {name}; build the project first.')
@@ -36,7 +36,8 @@ def main():
     notes = '''SHANYAO + STUDY DEPLOYMENT PACKAGE
 
 Routes: / = question practice; /shanyao/ = existing travel website.
-Includes source, production dist, 12 PDFs, question images, FastAPI backend and deployment instructions.
+Includes source, production dist, 12 PDFs, question images, CSV/JSON templates, FastAPI backend and deployment instructions.
+Study features: personal background colors, expanded original images, anonymous question/image uploads and batch import.
 Read docs/STUDY_INTEGRATION.md and deploy/nginx-shared.conf first.
 
 The current dist uses same-origin APIs. The public SEO domain remains sy.chexi.tech.

@@ -5,6 +5,7 @@ export interface Question {
   stem: string; options: string[]; answer: string; explanation: string;
   answerSource: Source; explanationSource: Source; sourceFile: string; sourceUrl: string;
   pages: number[]; figures: string[]; tags: string[]; needsReview: boolean;
+  origin?: "upload";
   revision?: number; editor?: string; editedAt?: string;
 }
 export interface Revision { revision: number; editor: string; editedAt: string; question: Question }
