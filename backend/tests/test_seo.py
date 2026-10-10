@@ -10,14 +10,14 @@ from app.main import app
 
 def test_static_seo_documents_and_localized_core_shells():
     with TestClient(app) as client:
-        site_url = settings.frontend_url.rstrip("/")
+        site_url = settings.shanyao_frontend_url
         robots = client.get("/robots.txt")
         assert robots.status_code == 200
-        assert "Disallow: /admin" in robots.text
+        assert "Disallow: /shanyao/admin" in robots.text
         assert "Sitemap:" in robots.text
         assert robots.headers["x-content-type-options"] == "nosniff"
 
-        sitemap = client.get("/sitemap.xml")
+        sitemap = client.get("/shanyao/sitemap.xml")
         assert sitemap.status_code == 200
         assert sitemap.headers["content-type"].startswith("application/xml")
         assert "hreflang=\"zh-CN\"" in sitemap.text

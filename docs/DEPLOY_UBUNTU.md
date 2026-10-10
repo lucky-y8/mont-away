@@ -277,25 +277,18 @@ sudo cp /etc/caddy/Caddyfile /etc/caddy/Caddyfile.before-shanyao
 ```caddyfile
 sy.chexi.tech {
     encode zstd gzip
-
     header {
         X-Content-Type-Options nosniff
         Referrer-Policy strict-origin-when-cross-origin
         X-Frame-Options SAMEORIGIN
     }
-
-    @backend path /api/* /health
-    reverse_proxy @backend 127.0.0.1:8000
-
     handle_path /media/* {
         root * /srv/shanyao/shared/uploads
         file_server
     }
-
+    # Keep the complete path: FastAPI handles both sites and legacy redirects.
     handle {
-        root * /srv/shanyao/app/dist
-        try_files {path} /index.html
-        file_server
+        reverse_proxy 127.0.0.1:8000
     }
 }
 ```
@@ -414,3 +407,9 @@ sudo -u shanyao tar -C /srv/shanyao/shared -czf /srv/shanyao/backups/uploads.tar
 ```
 
 不要只把备份留在同一块服务器磁盘。正式生产切换前仍需完成对象存储适配、定时异地备份、恢复演练、监控和告警。
+
+## 双页面集成补充（2026-10-10）
+
+现在 `/` 为刷题页，原山遥页面位于 `/shanyao/`。运行同一条 `npm run build` 会生成两个入口。旧的仅静态 SPA 回退配置不再适用，请使用本文更新后的 Caddy 配置，或 [Nginx 配置](DEPLOY_NGINX.md)。
+
+刷题数据库独立于原 PostgreSQL，使用 `SHANYAO_STUDY_DATABASE_PATH=/srv/shanyao/shared/study.sqlite3`；运行用户需有该目录写权限。刷题数据库需单独备份。完整操作见 [STUDY_INTEGRATION.md](STUDY_INTEGRATION.md)。

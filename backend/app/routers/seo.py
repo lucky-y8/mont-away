@@ -17,7 +17,7 @@ from ..services.media import public_media_url
 
 
 router = APIRouter(tags=["seo"])
-DIST_INDEX = Path(PROJECT_ROOT) / "dist" / "index.html"
+DIST_INDEX = Path(PROJECT_ROOT) / "dist" / "shanyao" / "index.html"
 
 LANGUAGES = {
     "zh-CN": {"prefix": "", "site_name": "山遥", "og_locale": "zh_CN"},
@@ -49,11 +49,11 @@ CORE_COPY = {
 
 def site_url() -> str:
     """Use the configured public frontend origin. / 使用已配置的前端公网域名。"""
-    return settings.frontend_url.rstrip("/")
+    return settings.shanyao_frontend_url.removesuffix("/shanyao")
 
 
 def localized_path(path: str, locale: str) -> str:
-    prefix = LANGUAGES[locale]["prefix"]
+    prefix = "/shanyao" + LANGUAGES[locale]["prefix"]
     return f"{prefix}/" if path == "/" else f"{prefix}{path}"
 
 
@@ -333,24 +333,24 @@ async def robots() -> PlainTextResponse:
     document = f"""User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /admin
-Disallow: /profile
-Disallow: /publish
-Disallow: /messages
-Disallow: /gifts
-Disallow: /auth/
-Disallow: /en/admin
-Disallow: /en/profile
-Disallow: /en/publish
-Disallow: /en/messages
-Disallow: /en/gifts
-Disallow: /en/auth/
-Disallow: /ja/admin
-Disallow: /ja/profile
-Disallow: /ja/publish
-Disallow: /ja/messages
-Disallow: /ja/gifts
-Disallow: /ja/auth/
+Disallow: /shanyao/admin
+Disallow: /shanyao/profile
+Disallow: /shanyao/publish
+Disallow: /shanyao/messages
+Disallow: /shanyao/gifts
+Disallow: /shanyao/auth/
+Disallow: /shanyao/en/admin
+Disallow: /shanyao/en/profile
+Disallow: /shanyao/en/publish
+Disallow: /shanyao/en/messages
+Disallow: /shanyao/en/gifts
+Disallow: /shanyao/en/auth/
+Disallow: /shanyao/ja/admin
+Disallow: /shanyao/ja/profile
+Disallow: /shanyao/ja/publish
+Disallow: /shanyao/ja/messages
+Disallow: /shanyao/ja/gifts
+Disallow: /shanyao/ja/auth/
 
 Sitemap: {site_url()}/sitemap.xml
 """
@@ -364,11 +364,11 @@ async def llms() -> PlainTextResponse:
 > 山遥是发现和分享小众旅行地点、徒步与骑行路线、地图游记、图片和视频的社区。
 > Mont Away is a community for discovering and sharing lesser-known travel places, routes and map stories.
 
-- Chinese: {site_url()}/
-- English: {site_url()}/en/
-- Map discovery: {site_url()}/map
-- Popular stories: {site_url()}/ranking
-- Contact: {site_url()}/contact
+- Chinese: {site_url()}/shanyao/
+- English: {site_url()}/shanyao/en/
+- Map discovery: {site_url()}/shanyao/map
+- Popular stories: {site_url()}/shanyao/ranking
+- Contact: {site_url()}/shanyao/contact
 - Sitemap: {site_url()}/sitemap.xml
 
 Public posts are traveler-authored. Private account, administration, messaging and publishing pages should not be indexed.
@@ -389,18 +389,18 @@ def core_shell(locale: str, path: str) -> HTMLResponse:
             "@graph": [
                 {
                     "@type": "WebSite",
-                    "@id": f"{site_url()}/#website",
-                    "url": f"{site_url()}/",
+                    "@id": f"{site_url()}/shanyao/#website",
+                    "url": f"{site_url()}/shanyao/",
                     "name": LANGUAGES[locale]["site_name"],
                     "alternateName": "Mont Away",
                     "description": description,
                     "inLanguage": locale,
-                    "publisher": {"@id": f"{site_url()}/#organization"},
+                    "publisher": {"@id": f"{site_url()}/shanyao/#organization"},
                 },
                 {
                     "@type": "Organization",
-                    "@id": f"{site_url()}/#organization",
-                    "url": f"{site_url()}/",
+                    "@id": f"{site_url()}/shanyao/#organization",
+                    "url": f"{site_url()}/shanyao/",
                     "name": LANGUAGES[locale]["site_name"],
                     "alternateName": "Mont Away",
                     "logo": {"@type": "ImageObject", "url": f"{site_url()}/icon.svg"},
@@ -415,7 +415,7 @@ def core_shell(locale: str, path: str) -> HTMLResponse:
             "description": description,
             "url": canonical,
             "inLanguage": locale,
-            "isPartOf": {"@id": f"{site_url()}/#website"},
+            "isPartOf": {"@id": f"{site_url()}/shanyao/#website"},
         }
     else:
         structured_data = {
@@ -425,7 +425,7 @@ def core_shell(locale: str, path: str) -> HTMLResponse:
             "description": description,
             "url": canonical,
             "inLanguage": locale,
-            "isPartOf": {"@id": f"{site_url()}/#website"},
+            "isPartOf": {"@id": f"{site_url()}/shanyao/#website"},
         }
     return render_shell(
         locale=locale,
@@ -472,3 +472,8 @@ async def english_shell(path: str) -> HTMLResponse:
 @router.get("/ja/{path:path}", response_class=HTMLResponse, include_in_schema=False)
 async def japanese_shell(path: str) -> HTMLResponse:
     return core_shell("ja", path)
+
+
+@router.get("/", response_class=HTMLResponse, include_in_schema=False)
+async def chinese_home() -> HTMLResponse:
+    return core_shell("zh-CN", "/")

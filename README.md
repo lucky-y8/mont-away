@@ -1,4 +1,6 @@
-# 山遥（Mont Away）
+# 山遥（Mont Away）与知网自习室
+
+根路径 `/` 为独立刷题页，山遥入口已迁至 `/shanyao/`。刷题代码位于新目录 `study-room/`，后端位于 `backend/app/study_room/`。开发、部署、数据隔离与旧链接兼容说明见 [双页面集成文档](docs/STUDY_INTEGRATION.md)。
 
 山遥是一个面向小众旅行地点的图片、视频与路线分享社区。仓库包含 Instagram 风格响应式 Web 前端和 FastAPI 业务后端；页面原型仍只作为视觉参考，不等于对应业务已经完成。
 

@@ -1,0 +1,3662 @@
+{
+  "version": 1,
+  "sourcePdfCount": 12,
+  "sourcePageCount": 335,
+  "ocrImageCount": 478,
+  "questionCount": 361,
+  "questionsWithOriginalImages": 329,
+  "answerSourceCounts": {
+    "course": 350,
+    "ai": 11
+  },
+  "explanationSourceCounts": {
+    "ai": 341,
+    "course": 20
+  },
+  "allPagesExamined": true,
+  "allQuestionsRequireReview": true,
+  "method": "自动逐页提取并逐项检查高风险内容：处理全部 335 页文本与 478 张嵌入图像，分离题干和课件答案，重点检查公式、选项拆分、缺失答案、跨页解答及题解同图。源 PDF 和原题截图均保留；这不是教师或人工审定版本。",
+  "limitations": [
+    "OCR 文字仍可能有个别错字，以原题截图与 PDF 为准。",
+    "课件重复出现的题目按出现位置分别保留。",
+    "AI 解析是学习辅助，均明确标注待核对；未宣称教师审定。",
+    "课件自身的数值或选项冲突在相关题目解析与 reviewIssues 中列出。"
+  ],
+  "files": [
+    {
+      "chapter": 0,
+      "chapterTitle": "导学课",
+      "sourceFile": "13017计算机网络与信息安全-00导学课.pdf",
+      "sourceUrl": "/sources/ch00.pdf",
+      "pageCount": 9,
+      "questionCount": 3,
+      "questionPages": [
+        8
+      ],
+      "reviewIssues": [],
+      "pageAudit": [
+        {
+          "page": 1,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "textExtracted": true,
+          "imageCount": 5,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [
+            "ch00-q001",
+            "ch00-q002",
+            "ch00-q003"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        }
+      ],
+      "sha256": "44b31efe2ed81b534c35c054739a55aa17985969312cfe225411bb92a74ac22a"
+    },
+    {
+      "chapter": 1,
+      "chapterTitle": "计算机网络与信息安全概述",
+      "sourceFile": "13017计算机网络与信息安全-01第一章.pdf",
+      "sourceUrl": "/sources/ch01.pdf",
+      "pageCount": 59,
+      "questionCount": 76,
+      "questionPages": [
+        2,
+        4,
+        5,
+        7,
+        8,
+        13,
+        14,
+        15,
+        16,
+        17,
+        20,
+        21,
+        25,
+        26,
+        27,
+        28,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        40,
+        41,
+        42,
+        43,
+        46,
+        47,
+        49,
+        50,
+        51,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58
+      ],
+      "reviewIssues": [],
+      "pageAudit": [
+        {
+          "page": 1,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch01-q001"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q002",
+            "ch01-q003",
+            "ch01-q004"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q005",
+            "ch01-q006",
+            "ch01-q007"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q008",
+            "ch01-q009",
+            "ch01-q010"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch01-q011"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 10,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 11,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 12,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 13,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q012",
+            "ch01-q013",
+            "ch01-q014"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 14,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q015",
+            "ch01-q016",
+            "ch01-q017"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 15,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch01-q018",
+            "ch01-q019"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 16,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch01-q020"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 17,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch01-q021"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 18,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 19,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 20,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q022",
+            "ch01-q023",
+            "ch01-q024"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 21,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch01-q025"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 22,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 23,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 24,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 25,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q026",
+            "ch01-q027",
+            "ch01-q028"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 26,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q029",
+            "ch01-q030",
+            "ch01-q031"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 27,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch01-q032"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 28,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q033",
+            "ch01-q034"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 29,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 30,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 31,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 32,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 33,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q035",
+            "ch01-q036",
+            "ch01-q037"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 34,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q038",
+            "ch01-q039",
+            "ch01-q040"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 35,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch01-q041",
+            "ch01-q042"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 36,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch01-q043"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 37,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch01-q044",
+            "ch01-q045"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 38,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch01-q046"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 39,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 40,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q047",
+            "ch01-q048",
+            "ch01-q049"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 41,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch01-q050"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 42,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch01-q051"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 43,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch01-q052",
+            "ch01-q053"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 44,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 45,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 46,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q054",
+            "ch01-q055",
+            "ch01-q056"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 47,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch01-q057"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 48,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 49,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q058",
+            "ch01-q059",
+            "ch01-q060"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 50,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch01-q061",
+            "ch01-q062"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 51,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch01-q063",
+            "ch01-q064"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 52,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 53,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q065",
+            "ch01-q066",
+            "ch01-q067"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 54,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch01-q068",
+            "ch01-q069",
+            "ch01-q070"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 55,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch01-q071"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 56,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch01-q072"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 57,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch01-q073",
+            "ch01-q074"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 58,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch01-q075",
+            "ch01-q076"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 59,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        }
+      ],
+      "sha256": "dc9c94413e310cd30622fe2b99c6ad8d9383e3e4587d0ec4a1408b64bb7e99ce"
+    },
+    {
+      "chapter": 2,
+      "chapterTitle": "网络应用与应用层协议",
+      "sourceFile": "13017计算机网络与信息安全-02第二章.pdf",
+      "sourceUrl": "/sources/ch02.pdf",
+      "pageCount": 44,
+      "questionCount": 60,
+      "questionPages": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        19,
+        22,
+        23,
+        26,
+        28,
+        29,
+        30,
+        33,
+        34,
+        35,
+        36,
+        38,
+        41,
+        42,
+        43
+      ],
+      "reviewIssues": [],
+      "pageAudit": [
+        {
+          "page": 1,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch02-q001",
+            "ch02-q002"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch02-q003",
+            "ch02-q004"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch02-q005",
+            "ch02-q006",
+            "ch02-q007"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 10,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch02-q008",
+            "ch02-q009",
+            "ch02-q010"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 11,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch02-q011",
+            "ch02-q012",
+            "ch02-q013"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 12,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch02-q014",
+            "ch02-q015"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 13,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 14,
+          "textExtracted": true,
+          "imageCount": 5,
+          "questionIds": [
+            "ch02-q016",
+            "ch02-q017",
+            "ch02-q018",
+            "ch02-q019",
+            "ch02-q020"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 15,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch02-q021",
+            "ch02-q022"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 16,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 17,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 18,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 19,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch02-q023"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 20,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 21,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 22,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch02-q024",
+            "ch02-q025",
+            "ch02-q026"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 23,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch02-q027",
+            "ch02-q028"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 24,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 25,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 26,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch02-q029",
+            "ch02-q030",
+            "ch02-q031"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 27,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 28,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch02-q032",
+            "ch02-q033",
+            "ch02-q034"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 29,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch02-q035",
+            "ch02-q036"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 30,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch02-q037",
+            "ch02-q038"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 31,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 32,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 33,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch02-q039",
+            "ch02-q040",
+            "ch02-q041"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 34,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch02-q042",
+            "ch02-q043"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 35,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch02-q044",
+            "ch02-q045",
+            "ch02-q046"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 36,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch02-q047",
+            "ch02-q048",
+            "ch02-q049"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 37,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 38,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch02-q050"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 39,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 40,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 41,
+          "textExtracted": true,
+          "imageCount": 4,
+          "questionIds": [
+            "ch02-q051",
+            "ch02-q052",
+            "ch02-q053",
+            "ch02-q054"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 42,
+          "textExtracted": true,
+          "imageCount": 4,
+          "questionIds": [
+            "ch02-q055",
+            "ch02-q056",
+            "ch02-q057",
+            "ch02-q058"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 43,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch02-q059",
+            "ch02-q060"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 44,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        }
+      ],
+      "sha256": "43cb13b031b64a971c428574df4934ce6cd0c82aad2503a5b907a903b39cdbf5"
+    },
+    {
+      "chapter": 3,
+      "chapterTitle": "传输层服务与协议",
+      "sourceFile": "13017计算机网络与信息安全-03第三章.pdf",
+      "sourceUrl": "/sources/ch03.pdf",
+      "pageCount": 38,
+      "questionCount": 34,
+      "questionPages": [
+        4,
+        5,
+        7,
+        10,
+        11,
+        13,
+        16,
+        19,
+        21,
+        23,
+        25,
+        26,
+        27,
+        29,
+        30,
+        34,
+        36,
+        37
+      ],
+      "reviewIssues": [],
+      "pageAudit": [
+        {
+          "page": 1,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch03-q001",
+            "ch03-q002",
+            "ch03-q003"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch03-q004",
+            "ch03-q005",
+            "ch03-q006"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch03-q007",
+            "ch03-q008"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 10,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch03-q009",
+            "ch03-q010",
+            "ch03-q011"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 11,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch03-q012",
+            "ch03-q013"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 12,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 13,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch03-q014"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 14,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 15,
+          "textExtracted": true,
+          "imageCount": 5,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 16,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch03-q015",
+            "ch03-q016",
+            "ch03-q017"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 17,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 18,
+          "textExtracted": true,
+          "imageCount": 6,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 19,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch03-q018",
+            "ch03-q019"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 20,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 21,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch03-q020",
+            "ch03-q021",
+            "ch03-q022"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 22,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 23,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch03-q023",
+            "ch03-q024",
+            "ch03-q025"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 24,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 25,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch03-q026"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 26,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch03-q027"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 27,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch03-q028"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 28,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 29,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch03-q029"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 30,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch03-q030"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 31,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 32,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 33,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 34,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch03-q031",
+            "ch03-q032"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 35,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 36,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch03-q033"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 37,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch03-q034"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 38,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        }
+      ],
+      "sha256": "35b28ae2967223b50746f1455ed4b62a90d018a0c35cc4216a7bcb80c80af0bd"
+    },
+    {
+      "chapter": 4,
+      "chapterTitle": "网络层服务与协议",
+      "sourceFile": "13017计算机网络与信息安全-04第四章.pdf",
+      "sourceUrl": "/sources/ch04.pdf",
+      "pageCount": 44,
+      "questionCount": 67,
+      "questionPages": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        12,
+        15,
+        16,
+        17,
+        19,
+        20,
+        21,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        32,
+        33,
+        36,
+        37,
+        38,
+        40,
+        42,
+        43
+      ],
+      "reviewIssues": [
+        {
+          "questionId": "ch04-q042",
+          "page": 28,
+          "detail": "课件标注 C，但原题选项右端的第二段地址误写为 202.112.10.*，与题干 220.112.10.* 不一致。\n按 /27 划分，网络地址为 220.112.10.128，广播地址为 220.112.10.159，可分配范围应为 220.112.10.129～220.112.10.158。保留原题选项供核对，按末段范围对应 C。"
+        }
+      ],
+      "pageAudit": [
+        {
+          "page": 1,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch04-q001",
+            "ch04-q002"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch04-q003",
+            "ch04-q004"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch04-q005",
+            "ch04-q006",
+            "ch04-q007"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch04-q008",
+            "ch04-q009"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch04-q010",
+            "ch04-q011",
+            "ch04-q012"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 10,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch04-q013",
+            "ch04-q014"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 11,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch04-q015",
+            "ch04-q016",
+            "ch04-q017"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 12,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch04-q018",
+            "ch04-q019",
+            "ch04-q020"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 13,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 14,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 15,
+          "textExtracted": true,
+          "imageCount": 4,
+          "questionIds": [
+            "ch04-q021",
+            "ch04-q022",
+            "ch04-q023",
+            "ch04-q024"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 16,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch04-q025",
+            "ch04-q026",
+            "ch04-q027"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 17,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch04-q028"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 18,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 19,
+          "textExtracted": true,
+          "imageCount": 4,
+          "questionIds": [
+            "ch04-q029",
+            "ch04-q030"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 20,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch04-q031",
+            "ch04-q032"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 21,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch04-q033"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 22,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 23,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch04-q034",
+            "ch04-q035"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 24,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch04-q036"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 25,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch04-q037"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 26,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch04-q038",
+            "ch04-q039"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 27,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch04-q040",
+            "ch04-q041"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 28,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch04-q042",
+            "ch04-q043"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 29,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch04-q044"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 30,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch04-q045",
+            "ch04-q046"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 31,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 32,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch04-q047",
+            "ch04-q048",
+            "ch04-q049"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 33,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch04-q050",
+            "ch04-q051"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 34,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 35,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 36,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch04-q052",
+            "ch04-q053",
+            "ch04-q054"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 37,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch04-q055",
+            "ch04-q056"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 38,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch04-q057"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 39,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 40,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch04-q058",
+            "ch04-q059",
+            "ch04-q060"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 41,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 42,
+          "textExtracted": true,
+          "imageCount": 4,
+          "questionIds": [
+            "ch04-q061",
+            "ch04-q062",
+            "ch04-q063",
+            "ch04-q064"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 43,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch04-q065",
+            "ch04-q066",
+            "ch04-q067"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 44,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        }
+      ],
+      "sha256": "97f577a2661900faa7536c831114332d469f204595f32107e4f150f6615c2edb"
+    },
+    {
+      "chapter": 5,
+      "chapterTitle": "数据链路层服务与局域网",
+      "sourceFile": "13017计算机网络与信息安全-05第五章.pdf",
+      "sourceUrl": "/sources/ch05.pdf",
+      "pageCount": 43,
+      "questionCount": 47,
+      "questionPages": [
+        3,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        19,
+        20,
+        23,
+        24,
+        25,
+        26,
+        29,
+        31,
+        33,
+        34,
+        36,
+        37,
+        38,
+        40,
+        42
+      ],
+      "reviewIssues": [],
+      "pageAudit": [
+        {
+          "page": 1,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch05-q001",
+            "ch05-q002"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch05-q003"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch05-q004",
+            "ch05-q005",
+            "ch05-q006"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch05-q007",
+            "ch05-q008",
+            "ch05-q009"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch05-q010"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 10,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch05-q011"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 11,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch05-q012"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 12,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch05-q012"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 13,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch05-q013"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 14,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 15,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 16,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 17,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 18,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 19,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch05-q014",
+            "ch05-q015"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 20,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch05-q016",
+            "ch05-q017"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 21,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 22,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 23,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch05-q018",
+            "ch05-q019",
+            "ch05-q020"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 24,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch05-q021",
+            "ch05-q022"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 25,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch05-q023",
+            "ch05-q024"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 26,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch05-q025",
+            "ch05-q026"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 27,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 28,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 29,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch05-q027",
+            "ch05-q028"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 30,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 31,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch05-q029",
+            "ch05-q030",
+            "ch05-q031"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 32,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 33,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch05-q032",
+            "ch05-q033",
+            "ch05-q034"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 34,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch05-q035",
+            "ch05-q036"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 35,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 36,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch05-q037",
+            "ch05-q038",
+            "ch05-q039"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 37,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch05-q040",
+            "ch05-q041"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 38,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch05-q042"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 39,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 40,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch05-q043",
+            "ch05-q044"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 41,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 42,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch05-q045",
+            "ch05-q046",
+            "ch05-q047"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 43,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        }
+      ],
+      "sha256": "4eb825ecb31621793e7f4085ecd7b4ca77d5e7cecc9adadae7a5bbd0e8d408eb"
+    },
+    {
+      "chapter": 6,
+      "chapterTitle": "物理层",
+      "sourceFile": "13017计算机网络与信息安全-06第六章.pdf",
+      "sourceUrl": "/sources/ch06.pdf",
+      "pageCount": 35,
+      "questionCount": 22,
+      "questionPages": [
+        4,
+        6,
+        8,
+        9,
+        10,
+        17,
+        19,
+        20,
+        22,
+        26,
+        28,
+        29,
+        31,
+        32,
+        33,
+        34
+      ],
+      "reviewIssues": [
+        {
+          "questionId": "ch06-q006",
+          "page": 10,
+          "detail": "【课件勘误，待核对】课件标注答案 C（240Kbit/s），但同页解析代入香农公式得到约 80Kbit/s，与选项不一致。\nS/N=10^(30/10)=1000，香农上界为 8000×log2(1001)≈79.7Kbit/s；若进一步限制为八进制调制，奈奎斯特上界为 2×8000×log2(8)=48Kbit/s。原题没有与这两个结果对应的选项。这里保留课件原答案 C，不能据此视为已核实的正确选项。"
+        },
+        {
+          "questionId": "ch06-q007",
+          "page": 10,
+          "detail": "按本课件采用的香农信道容量口径：S/N=10^(30/10)=1000，C=3000×log2(1001)≈29.9Kbit/s，取约 30Kbit/s，选择 A。\n题干还写了“二进制信号”；若把这理解为严格的二电平调制限制，还需考虑奈奎斯特上限 2B=6Kbit/s。课件与选项采用的是前一种口径，复习时注意该前提。"
+        }
+      ],
+      "pageAudit": [
+        {
+          "page": 1,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch06-q001"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch06-q002"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch06-q003",
+            "ch06-q004"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch06-q005"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 10,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch06-q006",
+            "ch06-q007"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 11,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 12,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 13,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 14,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 15,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 16,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 17,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch06-q008"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 18,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 19,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch06-q009"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 20,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch06-q010",
+            "ch06-q011"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 21,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 22,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch06-q012"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 23,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 24,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 25,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 26,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch06-q013",
+            "ch06-q014"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 27,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 28,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch06-q015"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 29,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch06-q016"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 30,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 31,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch06-q017",
+            "ch06-q018"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 32,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch06-q019",
+            "ch06-q020"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 33,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch06-q021"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 34,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch06-q022"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 35,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        }
+      ],
+      "sha256": "58f30df2226d6b7e596680a3bf0e6571b8d1854c4c43c66167f04a06768c5bc0"
+    },
+    {
+      "chapter": 7,
+      "chapterTitle": "无线网络与移动网络",
+      "sourceFile": "13017计算机网络与信息安全-07第七章.pdf",
+      "sourceUrl": "/sources/ch07.pdf",
+      "pageCount": 10,
+      "questionCount": 10,
+      "questionPages": [
+        3,
+        5,
+        8,
+        9
+      ],
+      "reviewIssues": [],
+      "pageAudit": [
+        {
+          "page": 1,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch07-q001",
+            "ch07-q002",
+            "ch07-q003"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch07-q004",
+            "ch07-q005",
+            "ch07-q006"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch07-q007",
+            "ch07-q008"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch07-q009",
+            "ch07-q010"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 10,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        }
+      ],
+      "sha256": "8b8b03ef3ed38c08c31e9f906cbd653665570ddd136fadaa6de11e91bb431785"
+    },
+    {
+      "chapter": 8,
+      "chapterTitle": "密码学基础",
+      "sourceFile": "13017计算机网络与信息安全-08第八章.pdf",
+      "sourceUrl": "/sources/ch08.pdf",
+      "pageCount": 14,
+      "questionCount": 16,
+      "questionPages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13
+      ],
+      "reviewIssues": [],
+      "pageAudit": [
+        {
+          "page": 1,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch08-q001"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "textExtracted": true,
+          "imageCount": 4,
+          "questionIds": [
+            "ch08-q002",
+            "ch08-q003",
+            "ch08-q004",
+            "ch08-q005"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch08-q006"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch08-q007"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch08-q008"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch08-q009"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch08-q010"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch08-q011"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 10,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 11,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch08-q012",
+            "ch08-q013",
+            "ch08-q014"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 12,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch08-q015"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 13,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch08-q016"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 14,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        }
+      ],
+      "sha256": "80e4d219edb62a42c0552347f88b2796c399236e83dafbd29e26440bdfd2eb5f"
+    },
+    {
+      "chapter": 9,
+      "chapterTitle": "信息安全防护基本原理",
+      "sourceFile": "13017计算机网络与信息安全-09第九章.pdf",
+      "sourceUrl": "/sources/ch09.pdf",
+      "pageCount": 15,
+      "questionCount": 5,
+      "questionPages": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "reviewIssues": [],
+      "pageAudit": [
+        {
+          "page": 1,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 10,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 11,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch09-q001"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 12,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch09-q002",
+            "ch09-q003"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 13,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch09-q004"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 14,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch09-q005"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 15,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        }
+      ],
+      "sha256": "175c1d9cf04de005310d41d655d98e201c0ad15dcaa74e7f01827c1bd13b1049"
+    },
+    {
+      "chapter": 10,
+      "chapterTitle": "网络安全协议与技术措施",
+      "sourceFile": "13017计算机网络与信息安全-10第十章.pdf",
+      "sourceUrl": "/sources/ch10.pdf",
+      "pageCount": 15,
+      "questionCount": 15,
+      "questionPages": [
+        2,
+        4,
+        7,
+        10,
+        11,
+        13,
+        14
+      ],
+      "reviewIssues": [],
+      "pageAudit": [
+        {
+          "page": 1,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch10-q001",
+            "ch10-q002",
+            "ch10-q003"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch10-q004",
+            "ch10-q005"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "textExtracted": true,
+          "imageCount": 2,
+          "questionIds": [
+            "ch10-q006",
+            "ch10-q007"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 10,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch10-q008",
+            "ch10-q009",
+            "ch10-q010"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 11,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch10-q011"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 12,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 13,
+          "textExtracted": true,
+          "imageCount": 3,
+          "questionIds": [
+            "ch10-q012",
+            "ch10-q013",
+            "ch10-q014"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 14,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [
+            "ch10-q015"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 15,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        }
+      ],
+      "sha256": "a4784dca26de67931ff86c9626711c4ef8c5a543431a6211d965d0dd05f1e355"
+    },
+    {
+      "chapter": 11,
+      "chapterTitle": "信息安全管理与法律法规",
+      "sourceFile": "13017计算机网络与信息安全-11第十一章.pdf",
+      "sourceUrl": "/sources/ch11.pdf",
+      "pageCount": 9,
+      "questionCount": 6,
+      "questionPages": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      "reviewIssues": [],
+      "pageAudit": [
+        {
+          "page": 1,
+          "textExtracted": true,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch11-q001"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch11-q002"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch11-q003"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [],
+          "classification": "cover-notes-or-illustration",
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch11-q004"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch11-q005"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "textExtracted": true,
+          "imageCount": 0,
+          "questionIds": [
+            "ch11-q006"
+          ],
+          "classification": "question-or-solution",
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "textExtracted": false,
+          "imageCount": 1,
+          "questionIds": [],
+          "classification": "image-only-or-end-page",
+          "reviewed": true
+        }
+      ],
+      "sha256": "a1fe0641226160173b9eef5eaf56b8ef2a272082ea5624eeb032289541414198"
+    }
+  ],
+  "emptyAnswerCount": 0,
+  "emptyExplanationCount": 0,
+  "needsReviewCount": 361,
+  "calculationExplanationsEnrichedCount": 41,
+  "explanationDetailCounts": {
+    "aiKnowledgePointOrConceptNotes": 257,
+    "otherWorkedOrSpecificExplanations": 104
+  },
+  "typeCounts": {
+    "single": 256,
+    "short": 77,
+    "calculation": 28
+  },
+  "qualityNotes": [
+    "进行了独立只读风险抽查；修复 MAC 地址 0/O、GBN/SR 下标、密码算法条件、DNS 选项杂字及明显 OCR 串位。",
+    "题库仍全部标记待核对，未标记为教师审定。"
+  ],
+  "duplicateOccurrences": [
+    {
+      "questionId": "ch00-q001",
+      "duplicateOf": "ch01-q002",
+      "sourcePage": 8,
+      "note": "导学课重复展示第一章题目，按来源位置独立保留。"
+    },
+    {
+      "questionId": "ch00-q002",
+      "duplicateOf": "ch01-q003",
+      "sourcePage": 8,
+      "note": "导学课重复展示第一章题目，按来源位置独立保留。"
+    },
+    {
+      "questionId": "ch00-q003",
+      "duplicateOf": "ch01-q004",
+      "sourcePage": 8,
+      "note": "导学课重复展示第一章题目，按来源位置独立保留。"
+    }
+  ],
+  "validation": {
+    "uniqueIds": true,
+    "requiredFieldsNonempty": true,
+    "choiceOptionsExactlyFour": true,
+    "allSourceAssetsExist": true,
+    "sourcePdfChecksumsMatch": true,
+    "allPageCoverage335": true
+  },
+  "frozen": true
+}

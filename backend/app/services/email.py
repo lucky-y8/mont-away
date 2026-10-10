@@ -54,10 +54,10 @@ async def _send_action_email(recipient: str, url: str, locale: str, purpose: str
 
 
 async def send_verification_email(recipient: str, token: str, locale: str) -> None:
-    url = f"{settings.frontend_url.rstrip('/')}/auth/verify?token={token}"
+    url = f"{settings.shanyao_frontend_url}/auth/verify?token={token}"
     await _send_action_email(recipient, url, locale, "verify")
 
 
 async def send_password_reset_email(recipient: str, token: str, locale: str) -> None:
-    url = f"{settings.frontend_url.rstrip('/')}/auth/reset-password?token={token}"
+    url = f"{settings.shanyao_frontend_url}/auth/reset-password?token={token}"
     await _send_action_email(recipient, url, locale, "password_reset")

@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     verification_token_minutes: int = 30
     password_reset_token_minutes: int = 30
     oauth_code_minutes: int = 5
+    study_database_path: str = str(PROJECT_ROOT / "study-room" / "runtime" / "study.sqlite3")
     frontend_url: str = "http://127.0.0.1:5173"
     cors_origins: str = "http://127.0.0.1:5173,http://localhost:5173,http://127.0.0.1:5174"
     allowed_hosts: str = "127.0.0.1,localhost,testserver"
@@ -50,6 +51,12 @@ class Settings(BaseSettings):
     wechat_app_id: str = ""
     wechat_app_secret: str = ""
     wechat_redirect_uri: str = "http://127.0.0.1:8000/api/v1/auth/wechat/callback"
+
+    @property
+    def shanyao_frontend_url(self) -> str:
+        # Accept the former origin-only config as well. / 兼容原有仅域名配置。
+        base = self.frontend_url.rstrip('/')
+        return base if base.endswith('/shanyao') else base + '/shanyao'
 
     @property
     def cors_origin_list(self) -> list[str]:

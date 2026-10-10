@@ -1,9 +1,10 @@
 # 山遥 Nginx 部署配置 / Shanyao Nginx Deployment
 
-本文档适用于以下部署结构：
+本文档适用于以下部署结构（根路径 `/` 为刷题页，山遥位于 `/shanyao/`）：
 
 - 域名：`sy.chexi.tech`
-- 前端目录：`/srv/shanyao/app/dist`
+- 仓库目录：`/home/ubuntu/prod/mont-away`，后端从该目录下的 `dist` 读取两个 HTML 入口
+- Nginx 静态目录：`/var/www/sy.chexi.tech`，从仓库 `dist` 同步
 - FastAPI：`127.0.0.1:9005`
 - Nginx 对外提供 HTTP/HTTPS
 
@@ -16,178 +17,49 @@ uvicorn app.main:app --host 127.0.0.1 --port 9005 --workers 1 --proxy-headers --
 将以下内容保存到 `/etc/nginx/sites-available/sy.chexi.tech`：
 
 ```nginx
-# 山遥 FastAPI 后端，仅通过 Nginx 访问。
+# Shared host: study /, travel /shanyao/, APIs keep separate namespaces.
 upstream shanyao_backend {
     server 127.0.0.1:9005;
     keepalive 16;
 }
-
-
-# HTTP：统一跳转到 HTTPS。
 server {
     listen 80;
     listen [::]:80;
-
     server_name sy.chexi.tech;
-
     return 301 https://$host$request_uri;
 }
-
-
-# HTTPS：静态前端、API、媒体与 SEO 页面。
 server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
-
+    listen 443 ssl;
+    listen [::]:443 ssl;
     server_name sy.chexi.tech;
-
-    # Vite 构建产物。
-    root /srv/shanyao/app/dist;
-    index index.html;
-    charset utf-8;
-
-    # Certbot 为 sy.chexi.tech 生成的证书。
     ssl_certificate /etc/letsencrypt/live/sy.chexi.tech/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/sy.chexi.tech/privkey.pem;
     ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_session_timeout 10m;
-    ssl_session_cache shared:SHANYAO_SSL:10m;
     server_tokens off;
-
-    # 后端允许 50 MiB 文件；为 multipart 边界预留少量空间。
     client_max_body_size 55m;
-
-    add_header X-Content-Type-Options "nosniff" always;
-    add_header X-Frame-Options "SAMEORIGIN" always;
-    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-    add_header Permissions-Policy "camera=(), microphone=(), geolocation=(self), payment=()" always;
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-
-    # API 路径保持不变：/api/v1/... -> 127.0.0.1:9005/api/v1/...
-    location ^~ /api/ {
-        proxy_pass http://shanyao_backend;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_connect_timeout 10s;
-        proxy_read_timeout 300s;
-        proxy_send_timeout 300s;
-    }
-
-    # 健康检查。
-    location = /health {
-        proxy_pass http://shanyao_backend/health;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-    # 本地媒体由 FastAPI 提供；^~ 防止图片扩展名被静态资源规则截获。
-    location ^~ /media/ {
-        proxy_pass http://shanyao_backend;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-    # 动态 robots、站点地图和大模型站点说明。
-    # sitemap.xml 会自动包含审核通过的公开游记与地点。
-    location = /robots.txt {
-        proxy_pass http://shanyao_backend/robots.txt;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-    location = /sitemap.xml {
-        proxy_pass http://shanyao_backend/sitemap.xml;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-    location = /llms.txt {
-        proxy_pass http://shanyao_backend/llms.txt;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-    # 中文地图和榜单页由 FastAPI 输出各自的 canonical、Open Graph 和 JSON-LD。
-    location = /map {
-        proxy_pass http://shanyao_backend/map;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-    location = /ranking {
-        proxy_pass http://shanyao_backend/ranking;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-    location = /contact {
-        proxy_pass http://shanyao_backend/contact;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-    # 公开详情页交给 FastAPI 输出带动态 Meta/JSON-LD 的 HTML，随后仍由 React 接管。
-    location ^~ /posts/ {
-        proxy_pass http://shanyao_backend;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-    location ^~ /places/ {
-        proxy_pass http://shanyao_backend;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-    # 英文版和日文版使用独立 URL，确保 hreflang 与 canonical 稳定。
-    location = /en {
-        return 301 /en/;
-    }
-    location ^~ /en/ {
-        proxy_pass http://shanyao_backend;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-    location = /ja {
-        return 301 /ja/;
-    }
-    location ^~ /ja/ {
-        proxy_pass http://shanyao_backend;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-    # 指纹化前端资源可长期缓存。
+    root /var/www/sy.chexi.tech;
+    charset utf-8;
+    add_header X-Content-Type-Options nosniff always;
+    add_header Referrer-Policy strict-origin-when-cross-origin always;
     location ^~ /assets/ {
+        try_files $uri =404;
         expires 1y;
         add_header Cache-Control "public, immutable";
-        access_log off;
-        try_files $uri =404;
     }
-
-    # 其他静态资源。
-    location ~* \.(png|jpg|jpeg|gif|webp|svg|ico|woff|woff2|ttf)$ {
-        expires 7d;
-        access_log off;
+    location ^~ /study-assets/ {
         try_files $uri =404;
+        expires 1d;
     }
-
-    # 中文 SPA 页面；未知前端路径回退至 index.html。
+    location ~ /\.(?!well-known) { deny all; }
+    # FastAPI selects the right HTML, renders travel SEO, and redirects old links.
+    # Do not strip /shanyao or fall back every request to the study index.
     location / {
-        try_files $uri $uri/ /index.html;
-    }
-
-    # 禁止访问隐藏文件，但保留证书验证目录。
-    location ~ /\.(?!well-known) {
-        deny all;
+        proxy_pass http://shanyao_backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
     }
 }
 ```
@@ -205,18 +77,22 @@ sudo systemctl reload nginx
 ```bash
 curl -fsS http://127.0.0.1:9005/health
 curl -I https://sy.chexi.tech/
+curl -fsS https://sy.chexi.tech/ | grep -F '知网自习室'
+curl -fsS https://sy.chexi.tech/shanyao/ | grep -F '山遥'
+curl -fsS https://sy.chexi.tech/api/study/questions | python -c 'import json,sys; print(len(json.load(sys.stdin)["questions"]))'
+curl -I https://sy.chexi.tech/study-assets/sources/ch00.pdf
 curl -I https://sy.chexi.tech/en/
 curl -fsS https://sy.chexi.tech/robots.txt
 curl -fsS https://sy.chexi.tech/sitemap.xml
-curl -fsS https://sy.chexi.tech/map | grep -F 'href="https://sy.chexi.tech/map"'
-curl -fsS https://sy.chexi.tech/ranking | grep -F 'href="https://sy.chexi.tech/ranking"'
-curl -fsS https://sy.chexi.tech/contact | grep -F 'href="https://sy.chexi.tech/contact"'
+curl -fsS https://sy.chexi.tech/shanyao/map | grep -F 'href="https://sy.chexi.tech/shanyao/map"'
+curl -fsS https://sy.chexi.tech/shanyao/ranking | grep -F 'href="https://sy.chexi.tech/shanyao/ranking"'
+curl -fsS https://sy.chexi.tech/shanyao/contact | grep -F 'href="https://sy.chexi.tech/shanyao/contact"'
 ```
 
 生产构建前，根目录 `.env` 至少应包含：
 
 ```dotenv
-VITE_SHANYAO_API_URL=https://sy.chexi.tech
+VITE_SHANYAO_API_URL=
 VITE_SHANYAO_SITE_URL=https://sy.chexi.tech
 SHANYAO_FRONTEND_URL=https://sy.chexi.tech
 SHANYAO_CORS_ORIGINS=https://sy.chexi.tech
@@ -224,3 +100,9 @@ SHANYAO_ALLOWED_HOSTS=sy.chexi.tech,127.0.0.1,localhost
 ```
 
 前端环境变量在构建时写入；修改后必须重新运行 `npm run build`。
+
+## 刷题集成后的更新
+
+先阅读 [STUDY_INTEGRATION.md](STUDY_INTEGRATION.md)。后端仍为原来的 FastAPI 服务；新的 `/api/study/` 使用独立 SQLite 文件。设置 `SHANYAO_STUDY_DATABASE_PATH=/srv/shanyao/shared/study.sqlite3`，确保运行用户对目录有写权限。不要沿用所有 URL 回退到 `/index.html` 的旧规则；可直接采用仓库 `deploy/nginx-shared.conf`。
+
+已有 HTTPS 站点请把新的 `location` 规则合并到原站点配置，保留现有证书路径和高德 `/_AMapService` 代理。模板中的证书路径仅在该路径确实存在时适用。

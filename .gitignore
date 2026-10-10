@@ -22,3 +22,6 @@ __pycache__/
 AGENTS.md
 CHAT_CONTEXT.md
 CODEX_HANDOFF.md
+
+# Independent study database and browser verification.
+study-room/runtime/

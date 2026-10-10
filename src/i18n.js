@@ -1,3 +1,4 @@
+import { localeFromPath } from './paths'
 export const localeOptions = [
   { code: 'zh-CN', label: '简体中文' },
   { code: 'en', label: 'English' },
@@ -80,9 +81,5 @@ export const messages = {
 }
 
 export function detectLocale() {
-  // Locale-specific public URLs make each language independently crawlable. / 独立语言 URL 让搜索引擎可以分别收录。
-  if (/^\/en(?:\/|$)/.test(window.location.pathname)) return 'en'
-  if (/^\/ja(?:\/|$)/.test(window.location.pathname)) return 'ja'
-  // Unprefixed URLs are the canonical Simplified Chinese version. / 无语言前缀的地址固定为简体中文版。
-  return 'zh-CN'
+  return localeFromPath(window.location.pathname);
 }

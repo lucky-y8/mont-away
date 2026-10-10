@@ -1,0 +1,161 @@
+
+
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import { BookOpen, Layers3, Search, ChevronRight, ChevronLeft, ArrowUpRight, Shuffle, Bookmark, Check, CheckCheck, CircleAlert, FileText, Pencil, History, X, Menu, LayoutList, RectangleHorizontal, Sparkles, RefreshCw, ArrowLeft, RotateCcw, Maximize2, Network, GraduationCap, CheckCircle2, Eye, Lightbulb, Download, SlidersHorizontal, Clock3 } from "lucide-react";
+import { Question, QuestionType, Revision, typeNames, sourceNames } from "./types";
+
+type Scope = "all" | "favorites" | "wrong";
+type Personal = { favorites: string[]; wrong: string[]; mastered: string[]; seen: string[]; choices: Record<string, string[]> };
+type Draft = { stem: string; options: string; answer: string; explanation: string; type: QuestionType; revision: number; editor: string; reviewed: boolean };
+const emptyPersonal: Personal = { favorites: [], wrong: [], mastered: [], seen: [], choices: {} };
+const STORAGE = "network-study-room:v1";
+const chapterNames = ["课程导学", "计算机网络概述", "数据通信基础", "网络体系结构与网络协议", "局域网", "广域网", "网络互连与互联网", "网络操作系统", "网络管理", "网络安全", "网络应用", "网络新技术"];
+const dateText = (date: string) => date ? new Date(date).toLocaleString("zh-CN", { month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" }) : "课件整理时";
+
+function Modal({ title, subtitle, children, onClose, wide = false }: { title: string; subtitle?: string; children: React.ReactNode; onClose: () => void; wide?: boolean }) {
+  const ref = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
+  useEffect(() => { const el = ref.current; el?.showModal(); return () => el?.close(); }, []);
+  return <dialog ref={ref} aria-labelledby={titleId} className={`modal ${wide ? "modal-wide" : ""}`} onCancel={onClose} onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
+    <div className="modal-head"><div><h2 id={titleId}>{title}</h2>{subtitle && <p>{subtitle}</p>}</div><button className="icon-button" aria-label="关闭窗口" onClick={onClose}><X size={20} /></button></div>{children}
+  </dialog>;
+}
+
+function QuestionCard({ q, index, total, personal, onFavorite, onMark, onSeen, onChoice, onEdit, onHistory, onImage }: {
+  q: Question; index: number; total: number; personal: Personal;
+  onFavorite: (id: string) => void; onMark: (id: string, kind: "wrong" | "mastered") => void;
+  onSeen: (id: string) => void; onChoice: (id: string, letters: string[]) => void;
+  onEdit: (q: Question) => void; onHistory: (q: Question) => void; onImage: (url: string) => void;
+}) {
+  const [answerOpen, setAnswerOpen] = useState(false);
+  const [explanationOpen, setExplanationOpen] = useState(false);
+  const favorite = personal.favorites.includes(q.id);
+  const choice = personal.choices[q.id] || [];
+  return <article className="question-card" id={`question-${q.id}`}>
+    <div className="question-top"><div className="question-labels"><span className="type-badge">{typeNames[q.type]}</span><span className="question-number">{String(index + 1).padStart(2, "0")} <span>/ {total}</span></span>{personal.mastered.includes(q.id) && <span className="mastered-label"><CheckCircle2 size={13} /> 已掌握</span>}</div>
+      <div className="card-tools"><button className={`icon-button ${favorite ? "is-favorite" : ""}`} aria-label={favorite ? "取消收藏" : "收藏题目"} title={favorite ? "取消收藏" : "收藏题目"} onClick={() => onFavorite(q.id)}><Bookmark size={18} fill={favorite ? "currentColor" : "none"} /></button><button className="icon-button" aria-label="编辑题目" title="编辑题目" onClick={() => onEdit(q)}><Pencil size={17} /></button><button className="icon-button" aria-label="历史版本" title="历史版本" onClick={() => onHistory(q)}><History size={18} /></button></div>
+    </div>
+    <div className="question-stem">{q.stem}</div>
+    {q.figures.length > 0 && <details className="original-figure" open={q.options.length === 0 || q.type === "calculation" || q.tags.includes("含图题")}><summary><FileText size={14} /><span>对照课件原题图</span><small>公式与配图以原图为准</small><ChevronRight size={14} /></summary><div className="question-figures">{q.figures.map((url, i) => <button key={url} onClick={() => onImage(url)} className="figure-button" aria-label={`放大第 ${i + 1} 张原题图片`}><img src={url} alt={`原题配图 ${i + 1}`} loading="lazy" /><span><Maximize2 size={13} /> 放大原图</span></button>)}</div></details>}
+    {q.options.length > 0 && <div className="options" role="group" aria-label="选择你的答案">{q.options.map((option, i) => {
+      const letter = String.fromCharCode(65 + i); const selected = choice.includes(letter);
+      return <button key={i} className={`option ${selected ? "selected" : ""}`} aria-pressed={selected} onClick={() => onChoice(q.id, q.type === "multiple" ? (selected ? choice.filter(v => v !== letter) : [...choice, letter].sort()) : (selected ? [] : [letter]))}><span className="option-letter">{letter}</span><span>{option.replace(/^[A-L][.．、:：)）]\s*/, "")}</span>{selected && <Check size={17} />}</button>;
+    })}</div>}
+    {q.options.length > 0 && <p className="answer-hint">{q.type === "multiple" ? "可选择多个选项" : "点击选项记录你的选择"}，展开答案后自行核对。</p>}
+    <div className="answer-actions"><button className={`primary-button ${answerOpen ? "button-active" : ""}`} aria-expanded={answerOpen} onClick={() => { setAnswerOpen(!answerOpen); onSeen(q.id); }}><Eye size={17} />{answerOpen ? "收起答案" : "查看答案"}</button><button className={`secondary-button ${explanationOpen ? "button-active" : ""}`} aria-expanded={explanationOpen} onClick={() => { setExplanationOpen(!explanationOpen); onSeen(q.id); }}><Lightbulb size={17} />{explanationOpen ? "收起解析" : "答案解析"}</button></div>
+    {answerOpen && <section className="answer-panel"><div className="panel-caption"><CheckCheck size={16} /><strong>参考答案</strong><span>{sourceNames[q.answerSource]}{q.needsReview && q.answerSource !== "course" ? " · 待核对" : ""}</span></div><div className="text-content">{q.answer || "这道题还没有答案，欢迎点击右上角编辑补充。"}</div>{choice.length > 0 && <div className="your-choice">我的选择：{choice.join("、")}</div>}</section>}
+    {explanationOpen && <section className="explanation-panel"><div className="panel-caption"><Sparkles size={16} /><strong>思路与解析</strong><span>{sourceNames[q.explanationSource]}{q.needsReview && q.explanationSource !== "course" ? " · 待核对" : ""}</span></div><div className="text-content">{q.explanation || "解析待补充。你可以把自己的解题思路写进来。"}</div></section>}
+    <div className="question-bottom"><a href={`${q.sourceUrl}#page=${q.pages[0]}`} target="_blank" rel="noreferrer" className="source-link" title={q.sourceFile}><FileText size={14} />课件 · 第 {q.pages.join("、")} 页<ArrowUpRight size={13} /></a><div className="self-mark"><button className={personal.wrong.includes(q.id) ? "marked-wrong" : ""} aria-pressed={personal.wrong.includes(q.id)} onClick={() => onMark(q.id, "wrong")}><CircleAlert size={15} />{personal.wrong.includes(q.id) ? "已入错题" : "加入错题"}</button><button className={personal.mastered.includes(q.id) ? "marked-mastered" : ""} aria-pressed={personal.mastered.includes(q.id)} onClick={() => onMark(q.id, "mastered")}><CheckCircle2 size={15} />{personal.mastered.includes(q.id) ? "已掌握" : "我掌握了"}</button></div></div>
+  </article>;
+}
+
+function EditDialog({ q, restore, onClose, onSaved }: { q: Question; restore?: Question; onClose: () => void; onSaved: (q: Question) => void }) {
+  const makeDraft = (source: Question): Draft => ({ stem: source.stem, options: source.options.join("\n"), answer: source.answer, explanation: source.explanation, type: source.type, revision: q.revision || 0, editor: "", reviewed: !source.needsReview });
+  const [draft, setDraft] = useState<Draft>(() => makeDraft(restore || q));
+  const [ready, setReady] = useState(false); const [busy, setBusy] = useState(false); const [error, setError] = useState("");
+  const [conflict, setConflict] = useState<Question | null>(null); const [recovered, setRecovered] = useState(false);
+  useEffect(() => { try { if (!restore) { const cached = localStorage.getItem(`${STORAGE}:draft:${q.id}`); if (cached) { const parsed = JSON.parse(cached); if (typeof parsed.stem === "string" && Number.isInteger(parsed.revision)) { setDraft(parsed); setRecovered(true); } } } } catch {} setReady(true); }, [q.id, restore]);
+  useEffect(() => { if (ready) try { localStorage.setItem(`${STORAGE}:draft:${q.id}`, JSON.stringify(draft)); } catch {} }, [draft, ready, q.id]);
+  const field = (name: keyof Draft, value: string | boolean) => setDraft(d => ({ ...d, [name]: value }));
+  async function submit(e: React.FormEvent) {
+    e.preventDefault(); setBusy(true); setError("");
+    try {
+      const response = await fetch(`/api/study/questions/${q.id}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...draft, options: draft.options.split("\n").map(v => v.trim()).filter(Boolean) }) });
+      const data = await response.json() as { question: Question; current?: Question; error?: string };
+      if (!response.ok) { if (response.status === 409 && data.current) setConflict(data.current); throw new Error(data.error || "保存失败"); }
+      try { localStorage.removeItem(`${STORAGE}:draft:${q.id}`); } catch {}
+      onSaved(data.question);
+    } catch (err) { setError(err instanceof Error ? err.message : "网络连接失败，草稿已保留，请重试。"); }
+    finally { setBusy(false); }
+  }
+  return <Modal title={restore ? "恢复历史内容" : "一起完善这道题"} subtitle="无需登录 · 保存后所有人可见 · 历史版本可恢复" onClose={onClose} wide>
+    <form onSubmit={submit} className="editor-form">
+      {recovered && <div className="inline-note">已恢复你上次未提交的草稿。<button type="button" onClick={() => { setDraft(makeDraft(q)); setRecovered(false); }}>重新载入当前题目</button></div>}
+      {restore && <div className="inline-note">正在恢复所选版本的文字内容。保存会创建新版本，历史记录仍然保留。</div>}
+      <div className="form-row"><label>题目类型<select value={draft.type} onChange={e => field("type", e.target.value)}>{Object.entries(typeNames).map(([v, name]) => <option value={v} key={v}>{name}</option>)}</select></label><label>署名 <span>选填</span><input maxLength={30} placeholder="匿名同学" value={draft.editor} onChange={e => field("editor", e.target.value)} /></label></div>
+      <label>题干<textarea required rows={5} maxLength={12000} value={draft.stem} onChange={e => field("stem", e.target.value)} /></label>
+      <label>选项 <span>每行一个选项，非选择题可留空</span><textarea rows={4} value={draft.options} onChange={e => field("options", e.target.value)} /></label>
+      <label>参考答案<textarea rows={3} maxLength={8000} value={draft.answer} onChange={e => field("answer", e.target.value)} /></label>
+      <label>答案解析<textarea rows={7} maxLength={16000} value={draft.explanation} onChange={e => field("explanation", e.target.value)} /></label>
+      <label className="checkbox-label"><input type="checkbox" checked={draft.reviewed} onChange={e => field("reviewed", e.target.checked)} />我已对照课件或可靠资料核对本题</label>
+      {error && <div role="alert" className="form-error">{error}</div>}
+      {conflict && <div className="conflict-panel"><h3>其他同学刚刚更新的内容（版本 {conflict.revision}）</h3><details open><summary>展开对照最新题目、答案和解析</summary><p className="text-content">{conflict.stem}</p><p className="text-content">{conflict.options.join("\n")}</p><p className="text-content">答案：{conflict.answer}</p><p className="text-content">解析：{conflict.explanation}</p></details><button type="button" className="secondary-button" onClick={() => { setDraft(d => ({ ...d, revision: conflict.revision || 0 })); setConflict(null); setError("请在上方合并需要保留的内容，再点击保存。"); }}>已对照，保留草稿继续合并</button></div>}
+      <div className="form-footer"><span>原始题图和课件来源会保留</span><button type="button" className="secondary-button" onClick={onClose}>稍后继续</button><button className="primary-button" type="submit" disabled={busy || !!conflict}><Check size={17} />{busy ? "正在保存…" : "保存并公开"}</button></div>
+    </form>
+  </Modal>;
+}
+
+function HistoryDialog({ q, onClose, onRestore }: { q: Question; onClose: () => void; onRestore: (q: Question) => void }) {
+  const [rows, setRows] = useState<Revision[]>([]); const [error, setError] = useState(""); const [loading, setLoading] = useState(true);
+  async function reload() { setLoading(true); setError(""); try { const res = await fetch(`/api/study/questions/${q.id}`, { cache: "no-store" }); const data = await res.json() as { error?: string; history: Revision[] }; if (!res.ok) throw new Error(data.error); setRows(data.history); } catch (e) { setError(e instanceof Error ? e.message : "历史版本加载失败"); } finally { setLoading(false); } }
+  useEffect(() => { void reload(); }, [q.id]);
+  return <Modal title="每一次完善，都有记录" subtitle="可查看并恢复任意版本，原始题目始终保留。" onClose={onClose} wide><div className="history-body">{loading && <div className="loading-state">正在加载历史版本…</div>}{error && <div className="form-error">{error}<button onClick={reload}>重试</button></div>}{rows.map((row, i) => <details className="history-row" key={row.revision} open={i === 0}><summary><span className="history-dot" /><div><strong>{row.revision === 0 ? "初始版本" : `版本 ${row.revision}`}{i === 0 && <span className="current-label">当前</span>}</strong><p>{row.editor} · {dateText(row.editedAt)}</p></div><ChevronRight size={17} /></summary><div className="history-content"><span className="small-label">题干</span><p className="text-content">{row.question.stem}</p>{row.question.options.length > 0 && <p className="text-content">{row.question.options.join("\n")}</p>}<span className="small-label">答案与解析</span><p className="text-content">{row.question.answer}</p><p className="text-content">{row.question.explanation}</p><button className="secondary-button" onClick={() => onRestore(row.question)}><RotateCcw size={15} />以此版本编辑恢复</button></div></details>)}</div></Modal>;
+}
+
+export default function StudyApp({ initialQuestions }: { initialQuestions: Question[] }) {
+  const [questions, setQuestions] = useState(initialQuestions);
+  const [personal, setPersonal] = useState<Personal>(emptyPersonal);
+  const [chapter, setChapter] = useState<number | null>(null); const [scope, setScope] = useState<Scope>("all");
+  const [query, setQuery] = useState(""); const [type, setType] = useState("all"); const [mode, setMode] = useState<"single" | "list">("single");
+  const [currentId, setCurrentId] = useState(initialQuestions[0]?.id || ""); const [listLimit, setListLimit] = useState(20);
+  const [ready, setReady] = useState(false); const [sync, setSync] = useState<"loading" | "ok" | "error">("loading"); const [menuOpen, setMenuOpen] = useState(false);
+  const [editing, setEditing] = useState<{ q: Question; restore?: Question } | null>(null); const [historyQ, setHistoryQ] = useState<Question | null>(null);
+  const [libraryOpen, setLibraryOpen] = useState(false); const [image, setImage] = useState<string | null>(null); const [toast, setToast] = useState("");
+  const fileChapters = useMemo(() => Array.from({ length: 12 }, (_, i) => ({ id: i, title: questions.find(q => q.chapter === i)?.chapterTitle || chapterNames[i], count: questions.filter(q => q.chapter === i).length })), [questions]);
+  const filtered = useMemo(() => questions.filter(q => (chapter === null || q.chapter === chapter) && (type === "all" || q.type === type) && (scope === "all" || personal[scope].includes(q.id)) && (!query.trim() || `${q.stem} ${q.options.join(" ")} ${q.tags.join(" ")} ${q.id}`.toLowerCase().includes(query.trim().toLowerCase()))), [questions, chapter, type, scope, personal, query]);
+  const index = Math.max(0, filtered.findIndex(q => q.id === currentId)); const current = filtered[index];
+  useEffect(() => { try { const saved = JSON.parse(localStorage.getItem(STORAGE) || "null"); if (saved) { const p = saved.personal; if (p && ["favorites", "wrong", "mastered", "seen"].every(k => Array.isArray(p[k]))) setPersonal({ ...emptyPersonal, ...p }); if (saved.mode === "list") setMode("list"); if (Number.isInteger(saved.chapter) && saved.chapter >= 0 && saved.chapter <= 11) setChapter(saved.chapter); if (typeof saved.currentId === "string") setCurrentId(saved.currentId); if (["all", "favorites", "wrong"].includes(saved.scope)) setScope(saved.scope); } } catch { setToast("本机记录无法读取，已使用默认设置。"); } setReady(true); }, []);
+  useEffect(() => { if (ready) try { localStorage.setItem(STORAGE, JSON.stringify({ personal, mode, chapter, currentId, scope })); } catch { setToast("浏览器未允许保存记录，当前进度将在关闭页面后丢失。"); } }, [ready, personal, mode, chapter, currentId, scope]);
+  const refresh = useCallback(async () => { try { const res = await fetch("/api/study/questions", { cache: "no-store" }); const data = await res.json() as { questions: Question[] }; if (!res.ok) throw new Error(); setQuestions(data.questions); setSync("ok"); } catch { setSync("error"); } }, []);
+  useEffect(() => { void refresh(); const timer = setInterval(() => { if (document.visibilityState === "visible") void refresh(); }, 30000); const onFocus = () => { void refresh(); }; window.addEventListener("focus", onFocus); return () => { clearInterval(timer); window.removeEventListener("focus", onFocus); }; }, [refresh]);
+  useEffect(() => { if (toast) { const timer = setTimeout(() => setToast(""), 4500); return () => clearTimeout(timer); } }, [toast]);
+  useEffect(() => { setListLimit(20); }, [chapter, scope, query, type]);
+  useEffect(() => { if (mode === "list" && currentId) { const at = filtered.findIndex(q => q.id === currentId); if (at >= 20) setListLimit(Math.ceil((at + 1) / 20) * 20); const timer = setTimeout(() => document.getElementById(`question-${currentId}`)?.scrollIntoView({ block: "start" }), 50); return () => clearTimeout(timer); } }, [mode]);
+  const seen = (id: string) => setPersonal(p => p.seen.includes(id) ? p : { ...p, seen: [...p.seen, id] });
+  const favorite = (id: string) => setPersonal(p => ({ ...p, favorites: p.favorites.includes(id) ? p.favorites.filter(v => v !== id) : [...p.favorites, id] }));
+  const mark = (id: string, kind: "wrong" | "mastered") => setPersonal(p => ({ ...p, [kind]: p[kind].includes(id) ? p[kind].filter(v => v !== id) : [...p[kind], id], ...(kind === "mastered" && !p.mastered.includes(id) ? { wrong: p.wrong.filter(v => v !== id) } : {}), ...(kind === "wrong" && !p.wrong.includes(id) ? { mastered: p.mastered.filter(v => v !== id) } : {}), seen: p.seen.includes(id) ? p.seen : [...p.seen, id] }));
+  const choose = (id: string, letters: string[]) => setPersonal(p => ({ ...p, choices: { ...p.choices, [id]: letters } }));
+  const navigate = (next: number) => { if (!filtered[next]) return; setCurrentId(filtered[next].id); window.scrollTo({ top: 220, behavior: "smooth" }); };
+  const selectChapter = (id: number | null) => { setChapter(id); setCurrentId(""); setMenuOpen(false); };
+  const selectScope = (next: Scope) => { setScope(next); setChapter(null); setQuery(""); setType("all"); setCurrentId(""); setMenuOpen(false); };
+  const shuffle = () => { if (!filtered.length) return; const candidates = filtered.filter(q => q.id !== current?.id); setCurrentId((candidates[Math.floor(Math.random() * candidates.length)] || current).id); setMode("single"); setToast("已为你随机选择一道题"); };
+  const progress = questions.length ? Math.round(personal.mastered.filter(id => questions.some(q => q.id === id)).length / questions.length * 100) : 0;
+  const cardProps = { personal, onFavorite: favorite, onMark: mark, onSeen: seen, onChoice: choose, onEdit: (q: Question) => setEditing({ q }), onHistory: setHistoryQ, onImage: setImage };
+  const heading = scope === "favorites" ? "我的收藏" : scope === "wrong" ? "错题再练一次" : chapter !== null ? fileChapters[chapter].title : "今天，也向前一步。";
+
+  return <div className="app-shell">
+    {menuOpen && <button className="mobile-backdrop" aria-label="关闭导航" onClick={() => setMenuOpen(false)} />}
+    <aside className={`sidebar ${menuOpen ? "sidebar-open" : ""}`}>
+      <a className="brand" href="/" aria-label="知网自习室首页"><span className="brand-mark"><Network size={24} /></span><span><strong>知网自习室</strong><small>NETWORK STUDY ROOM</small></span></a>
+      <div className="workspace-label">你的学习空间</div>
+      <nav aria-label="题库导航" className="main-nav"><button className={scope === "all" ? "nav-active" : ""} onClick={() => selectScope("all")}><Layers3 size={18} /><span>全部题库</span><span className="nav-count">{questions.length}</span></button><button className={scope === "favorites" ? "nav-active" : ""} onClick={() => selectScope("favorites")}><Bookmark size={18} /><span>我的收藏</span><span className="nav-count">{personal.favorites.length}</span></button><button className={scope === "wrong" ? "nav-active" : ""} onClick={() => selectScope("wrong")}><CircleAlert size={18} /><span>错题本</span><span className="nav-count">{personal.wrong.length}</span></button></nav>
+      <div className="chapters-heading"><span>按章节练习</span><span>{fileChapters.length}</span></div>
+      <nav className="chapter-nav" aria-label="章节筛选"><button className={chapter === null ? "chapter-selected" : ""} onClick={() => selectChapter(null)}><span className="chapter-symbol"><BookOpen size={15} /></span><span>全部章节</span></button>{fileChapters.map(ch => <button key={ch.id} className={chapter === ch.id ? "chapter-selected" : ""} onClick={() => selectChapter(ch.id)} title={ch.title}><span className="chapter-symbol">{String(ch.id).padStart(2, "0")}</span><span className="chapter-title">{ch.title.replace(/^第[一二三四五六七八九十\d]+章\s*/, "")}</span><span className="chapter-count">{ch.count}</span></button>)}</nav>
+      <div className="sidebar-bottom"><a className="shanyao-link" href="/shanyao/">山遥 · 去发现旅行目的地 <ArrowUpRight size={15} /></a><div className="open-badge"><span className="status-dot" /><span>一个开放的共同题库</span></div><p>自由学习，也欢迎留下你的解题思路。</p><button onClick={() => { setLibraryOpen(true); setMenuOpen(false); }}><FileText size={16} />浏览全部课件<ArrowUpRight size={15} /></button></div>
+    </aside>
+    <div className="main-shell">
+      <header className="topbar"><div className="breadcrumb"><button className="icon-button mobile-menu" aria-label="打开章节导航" onClick={() => setMenuOpen(true)}><Menu size={21} /></button><GraduationCap size={18} /><span>计算机网络与信息安全</span><ChevronRight size={14} /><span className="breadcrumb-muted">练习空间</span></div><div className="topbar-right"><span className={`sync-label ${sync}`}><span className="status-dot" />{sync === "ok" ? "题库已同步" : sync === "loading" ? "正在同步" : "同步暂不可用"}</span><button className="avatar" title="无需登录，个人进度保存在本机" onClick={() => setToast("免登录使用。收藏、错题和进度保存在当前浏览器。")}>同学</button></div></header>
+      <main className="main-content">
+        <section className="welcome"><div><div className="eyebrow"><span />LEARN A LITTLE, EVERY DAY</div><h1>{heading}</h1><p>{scope === "favorites" ? "值得再看一遍的题目，都在这里。" : scope === "wrong" ? "把每一次卡住，变成下一次进步。" : "把知识连成网络，让每一道题都有收获。"}</p></div><div className="course-label"><span>自考课程</span><strong>13017</strong><span>课件配套练习</span></div></section>
+        <section className="overview" aria-label="学习概况"><div><span className="stat-icon mint"><Layers3 size={20} /></span><div><span className="stat-title">课件题库</span><strong>{questions.length}<small>道题</small></strong></div></div><div><span className="stat-icon blue"><BookOpen size={20} /></span><div><span className="stat-title">全部课件</span><strong>12<small>份 · 335 页</small></strong></div></div><div><span className="stat-icon amber"><CheckCheck size={20} /></span><div><span className="stat-title">我的已复习</span><strong>{personal.seen.length}<small>道题</small></strong></div><span className="progress-mini">慢慢来，也很快</span></div></section>
+        {sync === "error" && <div className="sync-error" role="status"><CircleAlert size={16} /><span>共享题库暂时连接不上，当前显示已载入的内容。</span><button onClick={refresh}><RefreshCw size={14} />重新连接</button></div>}
+        <section className="practice-section">
+          <div className="section-heading"><div><h2>{chapter === null ? "开始练习" : (chapter === 0 ? "导学课练习" : `第 ${chapter} 章练习`)}</h2><span>{filtered.length} 道题目</span></div><div className="view-switch" aria-label="切换刷题模式"><button className={mode === "single" ? "selected" : ""} aria-pressed={mode === "single"} onClick={() => setMode("single")}><RectangleHorizontal size={16} /><span>单题模式</span></button><button className={mode === "list" ? "selected" : ""} aria-pressed={mode === "list"} onClick={() => setMode("list")}><LayoutList size={16} /><span>列表模式</span></button></div></div>
+          <div className="filter-bar"><label className="search-box"><Search size={18} /><input aria-label="搜索题目" placeholder="搜索题目、关键词…" value={query} onChange={e => { setQuery(e.target.value); setCurrentId(""); }} />{query && <button onClick={() => setQuery("")} aria-label="清除搜索"><X size={15} /></button>}</label><label className="type-select"><SlidersHorizontal size={15} /><select aria-label="筛选题型" value={type} onChange={e => { setType(e.target.value); setCurrentId(""); }}><option value="all">全部题型</option>{Object.entries(typeNames).map(([value, name]) => <option key={value} value={value}>{name}</option>)}</select></label><button className="shuffle-button" onClick={shuffle} disabled={!filtered.length}><Shuffle size={17} />随机一题</button></div>
+          <div className="practice-layout"><div className="questions-column">
+            {!filtered.length ? <div className="empty-state"><Search size={32} /><h3>{scope === "favorites" ? "还没有收藏题目" : scope === "wrong" ? "错题本还是空的" : "这里还没有匹配的题目"}</h3><p>{scope === "favorites" ? "点击题目右上角的书签，下次就能快速找到。" : scope === "wrong" ? "遇到需要巩固的题目，点「加入错题」留给下次复习。" : "试试其他关键词、题型或章节。"}</p><button className="secondary-button" onClick={() => selectScope("all")}>回到全部题库<ChevronRight size={16} /></button></div> : mode === "single" ? <><QuestionCard key={current.id} q={current} index={index} total={filtered.length} {...cardProps} /><div className="question-pager"><button className="secondary-button" disabled={index === 0} onClick={() => navigate(index - 1)}><ChevronLeft size={17} />上一题</button><span>第 <strong>{index + 1}</strong> / {filtered.length} 题</span><button className="primary-button" disabled={index >= filtered.length - 1} onClick={() => navigate(index + 1)}>下一题<ChevronRight size={17} /></button></div></> : <><div className="list-note"><LayoutList size={15} />连续浏览，逐题展开答案与解析</div>{filtered.slice(0, listLimit).map((q, i) => <div key={q.id} onPointerDown={() => setCurrentId(q.id)}><QuestionCard q={q} index={i} total={filtered.length} {...cardProps} /></div>)}{listLimit < filtered.length && <button className="load-more secondary-button" onClick={() => setListLimit(n => n + 20)}>继续加载 {Math.min(20, filtered.length - listLimit)} 道题<ChevronRight size={16} /></button>}</>}
+          </div><aside className="study-rail"><div className="progress-card"><div className="rail-title"><span>一点一滴的进步</span><CheckCircle2 size={17} /></div><div className="progress-number">{progress}<span>%</span><small>已掌握</small></div><div className="progress-track"><span style={{ width: `${progress}%` }} /></div><p>已掌握 {personal.mastered.length} 道 / 共 {questions.length} 道</p><div className="rail-divider" /><div className="rail-row"><span><Bookmark size={14} />我的收藏</span><strong>{personal.favorites.length}</strong></div><div className="rail-row"><span><CircleAlert size={14} />待巩固错题</span><strong>{personal.wrong.length}</strong></div><small className="local-note">进度与收藏保存在当前浏览器</small></div>
+            <div className="community-card"><span className="community-icon"><Pencil size={18} /></span><h3>好题库，一起完善</h3><p>发现错字，或有更好的解法？<br />每位同学都能直接编辑。</p><div><span className="mini-avatar">你</span><span className="mini-avatar">我</span><span className="mini-avatar">他</span><span>每一份分享都有价值</span></div><small><History size={13} />所有修改均保留历史版本</small></div>
+            <div className="study-tip"><Lightbulb size={18} /><div><strong>先想一想，再看答案</strong><p>尝试独立作答，再打开解析。AI 补充内容会标注来源，欢迎对照课件核对。</p></div></div>
+            <button className="library-link" onClick={() => setLibraryOpen(true)}><FileText size={17} /><span>打开原始课件</span><ArrowUpRight size={17} /></button>
+          </aside></div>
+        </section><footer className="page-footer"><span>知网自习室 <span>·</span> 让学习发生在每一天</span><span>公开访问 · 免登录共建</span></footer>
+      </main>
+    </div>
+    {editing && <EditDialog key={editing.q.id + (editing.restore ? "-restore" : "")} {...editing} onClose={() => setEditing(null)} onSaved={q => { setQuestions(items => items.map(item => item.id === q.id ? q : item)); setEditing(null); setToast("修改已保存，其他同学也能看到这次完善。"); void refresh(); }} />}
+    {historyQ && <HistoryDialog q={historyQ} onClose={() => setHistoryQ(null)} onRestore={old => { setEditing({ q: questions.find(q => q.id === historyQ.id) || historyQ, restore: old }); setHistoryQ(null); }} />}
+    {image && <Modal title="原题图片" subtitle="保留课件原图，便于核对公式、符号和配图。" wide onClose={() => setImage(null)}><div className="image-viewer"><img src={image} alt="放大的原题图片" /><a href={image} target="_blank" rel="noreferrer">打开完整分辨率<ArrowUpRight size={14} /></a></div></Modal>}
+    {libraryOpen && <Modal title="课件资料库" subtitle="全部 12 份原始课件 · 共 335 页" wide onClose={() => setLibraryOpen(false)}><div className="library-grid">{fileChapters.map(ch => <a href={`/study-assets/sources/ch${String(ch.id).padStart(2, "0")}.pdf`} target="_blank" rel="noreferrer" key={ch.id}><span className="pdf-icon"><FileText size={23} /><small>PDF</small></span><div><small>{ch.id === 0 ? "课程导学" : `第 ${ch.id} 章`}</small><strong>{ch.title}</strong><span>{ch.count} 道练习题</span></div><ArrowUpRight size={18} /></a>)}</div></Modal>}
+    {toast && <div className="toast" role="status"><CheckCircle2 size={17} />{toast}<button aria-label="关闭提示" onClick={() => setToast("")}><X size={15} /></button></div>}
+  </div>;
+}

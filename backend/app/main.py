@@ -8,6 +8,8 @@ from fastapi.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from .config import settings
+from .study_room.router import router as study_router
+from .web import router as web_router
 from .database import create_tables
 from .i18n import MESSAGES, resolve_locale, translate
 from .routers import account, admin, auth, gifts, health, media, places, posts, seo, users
@@ -27,7 +29,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origin_list,
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    allow_methods=["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["Authorization", "Content-Type"],
 )
 
@@ -40,7 +42,7 @@ async def security_headers(request: Request, call_next):
     response.headers.setdefault("X-Frame-Options", "SAMEORIGIN")
     response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
     response.headers.setdefault("Permissions-Policy", "camera=(), microphone=(), geolocation=(self), payment=()")
-    if request.url.path.startswith(settings.api_prefix):
+    if request.url.path.startswith("/api/"):
         response.headers["Cache-Control"] = "no-store"
     return response
 app.include_router(health.router)
@@ -52,10 +54,14 @@ app.include_router(admin.router, prefix=settings.api_prefix)
 app.include_router(account.router, prefix=settings.api_prefix)
 app.include_router(gifts.router, prefix=settings.api_prefix)
 app.include_router(users.router, prefix=settings.api_prefix)
-app.include_router(seo.router)
+app.include_router(study_router)
+app.include_router(seo.router, prefix="/shanyao")
 if settings.media_backend == "local":
     # Local files are development-only. / 本地文件服务仅用于开发环境。
     app.mount("/media", StaticFiles(directory=settings.media_local_dir, check_dir=False), name="media")
+
+
+app.include_router(web_router)
 
 
 @app.exception_handler(HTTPException)

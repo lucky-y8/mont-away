@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
+import { localizePath } from './paths'
+export { localizePath, localeFromPath, stripLocalePrefix } from './paths'
 
-const SITE_URL = (import.meta.env.VITE_SHANYAO_SITE_URL || 'https://sy.chexi.tech').replace(/\/$/, '')
+const SITE_URL = (import.meta.env.VITE_SHANYAO_SITE_URL || 'https://sy.chexi.tech').replace(/\/shanyao\/?$/, '').replace(/\/$/, '')
 const DEFAULT_IMAGE = `${SITE_URL}/og-cover.png`
 
 const localePrefixes = { 'zh-CN': '', en: '/en', ja: '/ja' }
@@ -88,23 +90,6 @@ const seoCopy = {
 }
 
 const publicPages = new Set(['home', 'map', 'ranking', 'contact', 'post', 'route', 'place'])
-
-export function stripLocalePrefix(pathname) {
-  const stripped = pathname.replace(/^\/(?:en|ja)(?=\/|$)/, '')
-  return stripped || '/'
-}
-
-export function localeFromPath(pathname) {
-  if (/^\/en(?:\/|$)/.test(pathname)) return 'en'
-  if (/^\/ja(?:\/|$)/.test(pathname)) return 'ja'
-  return 'zh-CN'
-}
-
-export function localizePath(pathname, locale) {
-  const cleanPath = stripLocalePrefix(pathname)
-  const prefix = localePrefixes[locale] ?? ''
-  return cleanPath === '/' ? `${prefix}/` || '/' : `${prefix}${cleanPath}`
-}
 
 function absoluteUrl(value) {
   if (!value) return DEFAULT_IMAGE
@@ -227,8 +212,8 @@ function metadataFor({ page, locale, post, place, hasError }) {
     structuredData = {
       '@context': 'https://schema.org',
       '@graph': [
-        { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, url: `${SITE_URL}/`, name: copy.siteName, description, inLanguage: locale },
-        { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, url: `${SITE_URL}/`, name: copy.siteName, logo: `${SITE_URL}/icon.svg` },
+        { '@type': 'WebSite', '@id': `${SITE_URL}/shanyao/#website`, url: `${SITE_URL}/shanyao/`, name: copy.siteName, description, inLanguage: locale },
+        { '@type': 'Organization', '@id': `${SITE_URL}/shanyao/#organization`, url: `${SITE_URL}/shanyao/`, name: copy.siteName, logo: `${SITE_URL}/icon.svg` },
       ],
     }
   } else if (page === 'map' || page === 'ranking') {

@@ -195,7 +195,7 @@ async def wechat_callback(db: DbSession, code: str = Query(min_length=1), state_
     exchange_code = new_opaque_token()
     db.add(OAuthLoginCode(user_id=user.id, code_hash=token_hash(exchange_code), expires_at=db_now() + timedelta(minutes=settings.oauth_code_minutes)))
     await db.commit()
-    return RedirectResponse(f"{settings.frontend_url.rstrip('/')}/auth/callback?code={exchange_code}", status_code=status.HTTP_302_FOUND)
+    return RedirectResponse(f"{settings.shanyao_frontend_url}/auth/callback?code={exchange_code}", status_code=status.HTTP_302_FOUND)
 
 
 @router.post("/wechat/exchange", response_model=TokenPair)

@@ -836,7 +836,7 @@ function App() {
   useEffect(() => {
     const code = new URLSearchParams(window.location.search).get('code')
     if (!stripLocalePrefix(window.location.pathname).startsWith('/auth/callback') || !code) return
-    exchangeWeChatCode(code, locale).then(() => getCurrentUser(locale)).then(current => { setUser(current); setPage('profile') }).finally(() => window.history.replaceState({}, '', '/'))
+    exchangeWeChatCode(code, locale).then(() => getCurrentUser(locale)).then(current => { setUser(current); setPage('profile') }).finally(() => window.history.replaceState({}, '', localizePath('/profile', locale)))
   }, [])
 
   const go = (id, explicitPath) => {
