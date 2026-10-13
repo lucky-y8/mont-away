@@ -7,7 +7,8 @@
       "options": [],
       "answer": "TCP 面向连接，提供可靠传输；UDP 无连接，不保证可靠交付。",
       "explanation": "比较连接方式、可靠性与开销，并结合使用场景理解。",
-      "editor": ""
+      "editor": "",
+      "mnemonic": "TCP 先连再传，UDP 直接发。"
     },
     {
       "stem": "以下哪项属于传输层协议？",
@@ -21,7 +22,8 @@
       ],
       "answer": "A",
       "explanation": "TCP 是传输层协议；IP 属于网络层。",
-      "editor": ""
+      "editor": "",
+      "mnemonic": "传输层记 TCP 与 UDP，再与网络层 IP 对照。"
     }
   ]
 }

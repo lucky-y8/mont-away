@@ -19,17 +19,17 @@ def draft(q, **updates):
 
 def test_assets_question_bank_and_both_entrypoints(study):
     rows = study.get('/api/study/questions').json()['questions']
-    assert len(rows) == len({q['id'] for q in rows}) == 1000
-    assert len({q['chapter'] for q in rows}) == 17
+    assert len(rows) == len({q['id'] for q in rows}) == 1259
+    assert len({q['chapter'] for q in rows}) == 19
     for q in rows:
         assert q['answer'] and q['explanation']
         for url in [q['sourceUrl'], *q['figures'], *q.get('answerFigures', [])]:
             assert (PROJECT_ROOT / 'study-room/public' / url.lstrip('/').split('#')[0]).is_file()
     # Build is required for production entry verification. / 页面检查以生产构建产物为准。
     study_page = study.get('/')
-    assert study_page.status_code == 200 and '知网自习室' in study_page.text
+    assert study_page.status_code == 200 and '13017刷题' in study_page.text
     travel = study.get('/shanyao/')
-    assert travel.status_code == 200 and '山遥｜发现' in travel.text and '知网自习室' not in travel.text
+    assert travel.status_code == 200 and '山遥｜发现' in travel.text and '13017刷题' not in travel.text
     assert study.get('/study-assets/sources/ch00.pdf').headers['content-type'] == 'application/pdf'
     assert study.get('/api/v1/posts').status_code == 200
     assert study.get('/api/study/unknown').status_code == 404
@@ -103,7 +103,7 @@ def test_new_material_coverage_and_preserved_originals(study):
     old = [q for q in rows if q['chapter'] < 12]
     audit = json.loads((PROJECT_ROOT / 'study-room/data/additions-20261013-report.json').read_text(encoding='utf-8'))
     assert sha256(json.dumps(old, ensure_ascii=False, sort_keys=True).encode()).hexdigest() == audit['original361CanonicalSha256']
-    new = [q for q in rows if q['chapter'] > 12]
+    new = [q for q in rows if 12 < q['chapter'] < 18]
     assert Counter(q['materialId'] for q in new) == {'exam-2024-10':31,'exam-2025-04':31,'exam-2025-10':31,'blanks':509,'calculation':37}
     for slug in ['exam-2024-10','exam-2025-04','exam-2025-10']:
         assert {q['id'] for q in new if q['materialId'] == slug} == {f'{slug}-q{n:03}' for n in range(1,32)}

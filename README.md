@@ -1,4 +1,4 @@
-# 山遥（Mont Away）与知网自习室
+# 山遥（Mont Away）与13017刷题
 
 根路径 `/` 为独立刷题页，山遥入口已迁至 `/shanyao/`。刷题代码位于新目录 `study-room/`，后端位于 `backend/app/study_room/`。开发、部署、数据隔离与旧链接兼容说明见 [双页面集成文档](docs/STUDY_INTEGRATION.md)。
 

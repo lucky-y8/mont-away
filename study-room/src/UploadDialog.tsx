@@ -5,12 +5,12 @@ import materials from "../data/materials.json";
 import Select from "./Select";
 import { Question, QuestionType, typeNames } from "./types";
 
-type Draft = { stem: string; type: QuestionType; chapter: number; options: string; answer: string; explanation: string; editor: string; reviewed: boolean };
+type Draft = { stem: string; type: QuestionType; chapter: number; options: string; answer: string; explanation: string; mnemonic: string; editor: string; reviewed: boolean };
 type RecordInput = Omit<Draft, "options"> & { options: string[]; images: string[] };
 type ImageDraft = { name: string; data: string };
 type Preview = { questions: RecordInput[]; errors: string[]; total: number };
 const KEY = "network-study-room:upload-draft:v1";
-const blank: Draft = { stem: "", type: "short", chapter: 12, options: "", answer: "", explanation: "", editor: "", reviewed: false };
+const blank: Draft = { stem: "", type: "short", chapter: 12, options: "", answer: "", explanation: "", mnemonic: "", editor: "", reviewed: false };
 function readDraft(): Draft {
   try {
     const value = JSON.parse(localStorage.getItem(KEY) || "null");
@@ -118,15 +118,16 @@ export default function UploadDialog({ chapters, onClose, onCreated }: {
         </div>
         <label>选项 <span>每行一个选项，选择题至少两项，其他题型可留空</span><textarea rows={3} value={draft.options} maxLength={24012} placeholder={"选项 A 的内容\n选项 B 的内容"} onChange={event => field("options", event.target.value)} /></label>
         <div className="form-row"><label>参考答案 <span>选填</span><textarea rows={4} maxLength={8000} value={draft.answer} onChange={event => field("answer", event.target.value)} /></label><label>答案解析 <span>选填</span><textarea rows={4} maxLength={16000} value={draft.explanation} onChange={event => field("explanation", event.target.value)} /></label></div>
+        <label>助记 <span>选填；留空使用自动提示</span><textarea rows={3} maxLength={4000} value={draft.mnemonic} placeholder="写一句口诀、一个联想，或容易混淆的地方…" onChange={event => field("mnemonic", event.target.value)} /></label>
         <label>署名 <span>选填</span><input maxLength={30} placeholder="匿名同学" value={draft.editor} onChange={event => field("editor", event.target.value)} /></label>
         <label className="checkbox-label"><input type="checkbox" checked={draft.reviewed} onChange={event => field("reviewed", event.target.checked)} />我已对照课件或可靠资料核对本题</label>
       </fieldset>
       {error && <div className="form-error" role="alert">{error}</div>}
       <div className="form-footer"><span>文字草稿自动保留；关闭窗口后需重新选择图片</span><button type="button" className="secondary-button" disabled={locked} onClick={close}>稍后继续</button><button type="submit" className="primary-button" disabled={locked}><Upload size={16} />{busy ? "正在保存…" : reading ? "正在读取…" : "保存并公开"}</button></div>
     </form> : <div id="batch-panel" role="tabpanel" aria-labelledby="batch-tab" className="editor-form batch-form">
-      <div className="template-guide"><div><strong>先下载模板，再导入题目</strong><p>支持 CSV 与 JSON，一次 1–200 道、文件不超过 2 MB。CSV 请保存为 UTF-8；多条选项用 | 分隔。章节可填 0–11；新资料编号为 13–17，也可填“自建题目”。图片题请使用手动录入。</p></div><div className="template-links"><a href="/study-assets/templates/questions.csv" download><Download size={15} />CSV 模板</a><a href="/study-assets/templates/questions.json" download><Download size={15} />JSON 模板</a></div></div>
+      <div className="template-guide"><div><strong>先下载模板，再导入题目</strong><p>支持 CSV 与 JSON，一次 1–200 道、文件不超过 2 MB。CSV 请保存为 UTF-8；多条选项用 | 分隔。章节可填 0–11；新资料编号为 {materials.filter(m => m.chapter >= 13).map(m => m.chapter).join("、")}，也可填“自建题目”。图片题请使用手动录入。</p></div><div className="template-links"><a href="/study-assets/templates/questions.csv" download><Download size={15} />CSV 模板</a><a href="/study-assets/templates/questions.json" download><Download size={15} />JSON 模板</a></div></div>
       <label className="file-picker"><FileUp size={25} /><strong>{reading ? "正在校验文件…" : "选择要导入的文件"}</strong><span>{filename || "上传后先预览，确认后才会公开保存"}</span><input type="file" aria-label="选择批量导入文件" accept=".csv,.json" disabled={locked} onChange={event => { void readBatch(event.target.files?.[0]); event.target.value = ""; }} /></label>
-      {preview && (preview.errors.length > 0 ? <div className="form-error" role="alert"><strong>发现 {preview.errors.length} 处问题，本次尚未导入</strong><ul>{preview.errors.map((message, index) => <li key={index}>{message}</li>)}</ul><p>请修正文件后重新选择，全部通过后才能保存。</p></div> : <div className="import-preview"><div className="import-summary"><Check size={17} /><strong>校验通过 · 共 {preview.total} 道题</strong><span>等待确认</span></div><div className="import-rows">{preview.questions.map((question, index) => <details key={index}><summary><span>{index + 1}</span><strong>{question.stem}</strong><small>{typeNames[question.type]}</small></summary><div>{question.options.length > 0 && <p>{question.options.join("\n")}</p>}<p><b>答案：</b>{question.answer || "待补充"}</p><p><b>解析：</b>{question.explanation || "待补充"}</p></div></details>)}</div></div>)}
+      {preview && (preview.errors.length > 0 ? <div className="form-error" role="alert"><strong>发现 {preview.errors.length} 处问题，本次尚未导入</strong><ul>{preview.errors.map((message, index) => <li key={index}>{message}</li>)}</ul><p>请修正文件后重新选择，全部通过后才能保存。</p></div> : <div className="import-preview"><div className="import-summary"><Check size={17} /><strong>校验通过 · 共 {preview.total} 道题</strong><span>等待确认</span></div><div className="import-rows">{preview.questions.map((question, index) => <details key={index}><summary><span>{index + 1}</span><strong>{question.stem}</strong><small>{typeNames[question.type]}</small></summary><div>{question.options.length > 0 && <p>{question.options.join("\n")}</p>}<p><b>答案：</b>{question.answer || "待补充"}</p><p><b>解析：</b>{question.explanation || "待补充"}</p><p><b>助记：</b>{question.mnemonic || "保存后使用自动提示"}</p></div></details>)}</div></div>)}
       {error && <div className="form-error" role="alert">{error}</div>}
       <div className="form-footer"><span>整批校验通过后统一保存</span><button className="secondary-button" disabled={locked} onClick={close}>取消</button><button className="primary-button" disabled={locked || !preview?.questions.length || !!preview.errors.length} onClick={() => preview && void publish(preview.questions)}><Upload size={16} />{busy ? "正在导入…" : `确认导入${preview?.questions.length ? ` ${preview.questions.length} 道题` : ""}`}</button></div>
     </div>}

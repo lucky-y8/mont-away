@@ -1,0 +1,1419 @@
+{
+  "date": "2026-10-13",
+  "newQuestionCount": 259,
+  "newPageCount": 51,
+  "materialCounts": {
+    "short-summary": 133,
+    "short-homework": 126
+  },
+  "original1000CanonicalSha256": "cdc8dfa415ab3e5e313d88c312c1720192d551440210612079c7a73f833d2fd1",
+  "newReferencedImageCount": 537,
+  "sourceChecks": [
+    {
+      "materialId": "short-summary",
+      "sourceSha256": "98ac3d72abb17245c63e70f36038265db78fd289e00b24079b250c094dddab97",
+      "readableSha256": "6304f01a15e1f67210f86560880025131ad2eb9597fcce9df9baccce8d5bc56f",
+      "pageCount": 31,
+      "originalUnchanged": true
+    },
+    {
+      "materialId": "short-homework",
+      "sourceSha256": "05ad1456826506043d004c49317057947f52a98ced2cb1171ad38079903d1052",
+      "readableSha256": "88337b77151fd78d056971ade302b81efc30c612da793bf522ed57e21bbc7d22",
+      "pageCount": 20,
+      "originalUnchanged": true
+    }
+  ],
+  "materials": [
+    {
+      "materialId": "short-summary",
+      "questionCount": 133,
+      "sectionAudit": [
+        {
+          "chapter": 1,
+          "section": 1,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "count": 7
+        },
+        {
+          "chapter": 1,
+          "section": 2,
+          "numbers": [
+            1,
+            2,
+            3
+          ],
+          "count": 3
+        },
+        {
+          "chapter": 1,
+          "section": 3,
+          "numbers": [
+            1,
+            2,
+            3
+          ],
+          "count": 3
+        },
+        {
+          "chapter": 2,
+          "section": 1,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "count": 10
+        },
+        {
+          "chapter": 2,
+          "section": 2,
+          "numbers": [
+            1
+          ],
+          "count": 1
+        },
+        {
+          "chapter": 2,
+          "section": 3,
+          "numbers": [
+            1,
+            2,
+            3
+          ],
+          "count": 3
+        },
+        {
+          "chapter": 3,
+          "section": 1,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "count": 14
+        },
+        {
+          "chapter": 3,
+          "section": 2,
+          "numbers": [
+            1,
+            2,
+            3
+          ],
+          "count": 3
+        },
+        {
+          "chapter": 3,
+          "section": 3,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "count": 8
+        },
+        {
+          "chapter": 4,
+          "section": 1,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "count": 18
+        },
+        {
+          "chapter": 4,
+          "section": 2,
+          "numbers": [
+            1
+          ],
+          "count": 1
+        },
+        {
+          "chapter": 4,
+          "section": 3,
+          "numbers": [
+            1,
+            2,
+            3
+          ],
+          "count": 3
+        },
+        {
+          "chapter": 5,
+          "section": 1,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "count": 13
+        },
+        {
+          "chapter": 6,
+          "section": 1,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "count": 9
+        },
+        {
+          "chapter": 6,
+          "section": 2,
+          "numbers": [
+            1
+          ],
+          "count": 1
+        },
+        {
+          "chapter": 6,
+          "section": 3,
+          "numbers": [
+            1,
+            2
+          ],
+          "count": 2
+        },
+        {
+          "chapter": 7,
+          "section": 1,
+          "numbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "count": 4
+        },
+        {
+          "chapter": 7,
+          "section": 2,
+          "numbers": [
+            1,
+            2,
+            3
+          ],
+          "count": 3
+        },
+        {
+          "chapter": 7,
+          "section": 3,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "count": 7
+        },
+        {
+          "chapter": 8,
+          "section": 1,
+          "numbers": [
+            1,
+            2
+          ],
+          "count": 2
+        },
+        {
+          "chapter": 8,
+          "section": 2,
+          "numbers": [
+            1
+          ],
+          "count": 1
+        },
+        {
+          "chapter": 8,
+          "section": 3,
+          "numbers": [
+            1,
+            2
+          ],
+          "count": 2
+        },
+        {
+          "chapter": 9,
+          "section": 1,
+          "numbers": [
+            1,
+            2,
+            3
+          ],
+          "count": 3
+        },
+        {
+          "chapter": 9,
+          "section": 2,
+          "numbers": [
+            1
+          ],
+          "count": 1
+        },
+        {
+          "chapter": 9,
+          "section": 3,
+          "numbers": [
+            1,
+            2
+          ],
+          "count": 2
+        },
+        {
+          "chapter": 10,
+          "section": 1,
+          "numbers": [
+            1,
+            2,
+            3
+          ],
+          "count": 3
+        },
+        {
+          "chapter": 10,
+          "section": 2,
+          "numbers": [
+            1,
+            2
+          ],
+          "count": 2
+        },
+        {
+          "chapter": 10,
+          "section": 3,
+          "numbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "count": 4
+        }
+      ],
+      "headings": [
+        {
+          "page": 2,
+          "text": "第一章计算机网络与信息安全概述"
+        },
+        {
+          "page": 2,
+          "text": "1.1简答题"
+        },
+        {
+          "page": 3,
+          "text": "1.2简答题（真题）"
+        },
+        {
+          "page": 3,
+          "text": "1.3简答题（真题相关或相近）"
+        },
+        {
+          "page": 5,
+          "text": "第二章网络应用与应用层协议"
+        },
+        {
+          "page": 5,
+          "text": "2.1简答题"
+        },
+        {
+          "page": 6,
+          "text": "2.2简答题（真题"
+        },
+        {
+          "page": 7,
+          "text": "2.3简答题（真题相关或相近）"
+        },
+        {
+          "page": 8,
+          "text": "第三章传输层服务与协议"
+        },
+        {
+          "page": 8,
+          "text": "3.1简答题"
+        },
+        {
+          "page": 10,
+          "text": "3.2 简答题(真题）"
+        },
+        {
+          "page": 10,
+          "text": "3.3简答题（真题相关或相近）"
+        },
+        {
+          "page": 12,
+          "text": "第四章网络层服务与协议"
+        },
+        {
+          "page": 12,
+          "text": "4.1简答题"
+        },
+        {
+          "page": 14,
+          "text": "4.2简答题（真题"
+        },
+        {
+          "page": 15,
+          "text": "4.3简答题（真题相关或相近）"
+        },
+        {
+          "page": 16,
+          "text": "第五章数据链路层服务与局域网"
+        },
+        {
+          "page": 16,
+          "text": "5.1简答题"
+        },
+        {
+          "page": 18,
+          "text": "5.2 简答题(真题)"
+        },
+        {
+          "page": 18,
+          "text": "暂无"
+        },
+        {
+          "page": 18,
+          "text": "5.3 简答题(真题相关或相近)"
+        },
+        {
+          "page": 18,
+          "text": "暂无"
+        },
+        {
+          "page": 19,
+          "text": "第六章物理层"
+        },
+        {
+          "page": 19,
+          "text": "6.1简答题"
+        },
+        {
+          "page": 21,
+          "text": "6.2简答题（真题）"
+        },
+        {
+          "page": 21,
+          "text": "6.3简答题（真题相关或相近）"
+        },
+        {
+          "page": 22,
+          "text": "第七章无线网络与移动网络"
+        },
+        {
+          "page": 22,
+          "text": "7.1简答题"
+        },
+        {
+          "page": 22,
+          "text": "7.2 简答题(真题)"
+        },
+        {
+          "page": 23,
+          "text": "7.3简答题(真题相关或相近）"
+        },
+        {
+          "page": 25,
+          "text": "第八章密码学基础"
+        },
+        {
+          "page": 25,
+          "text": "8.1简答题"
+        },
+        {
+          "page": 25,
+          "text": "8.2简答题（真题"
+        },
+        {
+          "page": 25,
+          "text": "8.3简答题（真题相关或相近）"
+        },
+        {
+          "page": 27,
+          "text": "第九章信息安全防护基本原理"
+        },
+        {
+          "page": 27,
+          "text": "9.1简答题"
+        },
+        {
+          "page": 27,
+          "text": "9.2 简答题(真题)"
+        },
+        {
+          "page": 27,
+          "text": "9.3 简答题(真题相关或相近)"
+        },
+        {
+          "page": 29,
+          "text": "第十章网络安全协议与技术措施"
+        },
+        {
+          "page": 29,
+          "text": "10.1简答题"
+        },
+        {
+          "page": 29,
+          "text": "10.2 简答题(真题）"
+        },
+        {
+          "page": 30,
+          "text": "10.3简答题（真题相关或相近）"
+        },
+        {
+          "page": 31,
+          "text": "第十一章信息安全管理与法律法规"
+        },
+        {
+          "page": 31,
+          "text": "11.1简答题"
+        },
+        {
+          "page": 31,
+          "text": "暂无"
+        },
+        {
+          "page": 31,
+          "text": "11.2 简答题(真题）"
+        },
+        {
+          "page": 31,
+          "text": "暂无"
+        },
+        {
+          "page": 31,
+          "text": "暂无"
+        }
+      ],
+      "orphanLines": [
+        {
+          "page": 31,
+          "text": "简答题（真题相关或相近）",
+          "red": false
+        },
+        {
+          "page": 31,
+          "text": "11.3",
+          "red": false
+        }
+      ],
+      "pageAudit": [
+        {
+          "page": 1,
+          "questionIds": [],
+          "classification": "cover"
+        },
+        {
+          "page": 2,
+          "questionIds": [
+            "short-summary-c01-s1-q001",
+            "short-summary-c01-s1-q002",
+            "short-summary-c01-s1-q003",
+            "short-summary-c01-s1-q004",
+            "short-summary-c01-s1-q005"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 3,
+          "questionIds": [
+            "short-summary-c01-s1-q005",
+            "short-summary-c01-s1-q006",
+            "short-summary-c01-s1-q007",
+            "short-summary-c01-s2-q001",
+            "short-summary-c01-s2-q002",
+            "short-summary-c01-s2-q003",
+            "short-summary-c01-s3-q001",
+            "short-summary-c01-s3-q002"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 4,
+          "questionIds": [
+            "short-summary-c01-s3-q003"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 5,
+          "questionIds": [
+            "short-summary-c02-s1-q001",
+            "short-summary-c02-s1-q002",
+            "short-summary-c02-s1-q003",
+            "short-summary-c02-s1-q004",
+            "short-summary-c02-s1-q005"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 6,
+          "questionIds": [
+            "short-summary-c02-s1-q005",
+            "short-summary-c02-s1-q006",
+            "short-summary-c02-s1-q007",
+            "short-summary-c02-s1-q008",
+            "short-summary-c02-s1-q009",
+            "short-summary-c02-s1-q010",
+            "short-summary-c02-s2-q001"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 7,
+          "questionIds": [
+            "short-summary-c02-s2-q001",
+            "short-summary-c02-s3-q001",
+            "short-summary-c02-s3-q002",
+            "short-summary-c02-s3-q003"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 8,
+          "questionIds": [
+            "short-summary-c03-s1-q001",
+            "short-summary-c03-s1-q002",
+            "short-summary-c03-s1-q003",
+            "short-summary-c03-s1-q004",
+            "short-summary-c03-s1-q005",
+            "short-summary-c03-s1-q006"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 9,
+          "questionIds": [
+            "short-summary-c03-s1-q007",
+            "short-summary-c03-s1-q008",
+            "short-summary-c03-s1-q009",
+            "short-summary-c03-s1-q010",
+            "short-summary-c03-s1-q011",
+            "short-summary-c03-s1-q012",
+            "short-summary-c03-s1-q013"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 10,
+          "questionIds": [
+            "short-summary-c03-s1-q013",
+            "short-summary-c03-s1-q014",
+            "short-summary-c03-s2-q001",
+            "short-summary-c03-s2-q002",
+            "short-summary-c03-s2-q003",
+            "short-summary-c03-s3-q001"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 11,
+          "questionIds": [
+            "short-summary-c03-s3-q002",
+            "short-summary-c03-s3-q003",
+            "short-summary-c03-s3-q004",
+            "short-summary-c03-s3-q005",
+            "short-summary-c03-s3-q006",
+            "short-summary-c03-s3-q007",
+            "short-summary-c03-s3-q008"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 12,
+          "questionIds": [
+            "short-summary-c04-s1-q001",
+            "short-summary-c04-s1-q002",
+            "short-summary-c04-s1-q003",
+            "short-summary-c04-s1-q004",
+            "short-summary-c04-s1-q005",
+            "short-summary-c04-s1-q006",
+            "short-summary-c04-s1-q007"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 13,
+          "questionIds": [
+            "short-summary-c04-s1-q007",
+            "short-summary-c04-s1-q008",
+            "short-summary-c04-s1-q009",
+            "short-summary-c04-s1-q010",
+            "short-summary-c04-s1-q011",
+            "short-summary-c04-s1-q012",
+            "short-summary-c04-s1-q013"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 14,
+          "questionIds": [
+            "short-summary-c04-s1-q013",
+            "short-summary-c04-s1-q014",
+            "short-summary-c04-s1-q015",
+            "short-summary-c04-s1-q016",
+            "short-summary-c04-s1-q017",
+            "short-summary-c04-s1-q018",
+            "short-summary-c04-s2-q001"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 15,
+          "questionIds": [
+            "short-summary-c04-s3-q001",
+            "short-summary-c04-s3-q002",
+            "short-summary-c04-s3-q003"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 16,
+          "questionIds": [
+            "short-summary-c05-s1-q001",
+            "short-summary-c05-s1-q002",
+            "short-summary-c05-s1-q003",
+            "short-summary-c05-s1-q004",
+            "short-summary-c05-s1-q005",
+            "short-summary-c05-s1-q006",
+            "short-summary-c05-s1-q007"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 17,
+          "questionIds": [
+            "short-summary-c05-s1-q007",
+            "short-summary-c05-s1-q008",
+            "short-summary-c05-s1-q009",
+            "short-summary-c05-s1-q010",
+            "short-summary-c05-s1-q011",
+            "short-summary-c05-s1-q012",
+            "short-summary-c05-s1-q013"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 18,
+          "questionIds": [],
+          "classification": "empty-section-or-watermark-only"
+        },
+        {
+          "page": 19,
+          "questionIds": [
+            "short-summary-c06-s1-q001",
+            "short-summary-c06-s1-q002",
+            "short-summary-c06-s1-q003",
+            "short-summary-c06-s1-q004"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 20,
+          "questionIds": [
+            "short-summary-c06-s1-q004",
+            "short-summary-c06-s1-q005",
+            "short-summary-c06-s1-q006",
+            "short-summary-c06-s1-q007",
+            "short-summary-c06-s1-q008"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 21,
+          "questionIds": [
+            "short-summary-c06-s1-q008",
+            "short-summary-c06-s1-q009",
+            "short-summary-c06-s2-q001",
+            "short-summary-c06-s3-q001",
+            "short-summary-c06-s3-q002"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 22,
+          "questionIds": [
+            "short-summary-c07-s1-q001",
+            "short-summary-c07-s1-q002",
+            "short-summary-c07-s1-q003",
+            "short-summary-c07-s1-q004",
+            "short-summary-c07-s2-q001",
+            "short-summary-c07-s2-q002"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 23,
+          "questionIds": [
+            "short-summary-c07-s2-q002",
+            "short-summary-c07-s2-q003",
+            "short-summary-c07-s3-q001",
+            "short-summary-c07-s3-q002",
+            "short-summary-c07-s3-q003",
+            "short-summary-c07-s3-q004",
+            "short-summary-c07-s3-q005",
+            "short-summary-c07-s3-q006"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 24,
+          "questionIds": [
+            "short-summary-c07-s3-q006",
+            "short-summary-c07-s3-q007"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 25,
+          "questionIds": [
+            "short-summary-c08-s1-q001",
+            "short-summary-c08-s1-q002",
+            "short-summary-c08-s2-q001",
+            "short-summary-c08-s3-q001",
+            "short-summary-c08-s3-q002"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 26,
+          "questionIds": [],
+          "classification": "empty-section-or-watermark-only"
+        },
+        {
+          "page": 27,
+          "questionIds": [
+            "short-summary-c09-s1-q001",
+            "short-summary-c09-s1-q002",
+            "short-summary-c09-s1-q003",
+            "short-summary-c09-s2-q001",
+            "short-summary-c09-s3-q001"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 28,
+          "questionIds": [
+            "short-summary-c09-s3-q002"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 29,
+          "questionIds": [
+            "short-summary-c10-s1-q001",
+            "short-summary-c10-s1-q002",
+            "short-summary-c10-s1-q003",
+            "short-summary-c10-s2-q001"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 30,
+          "questionIds": [
+            "short-summary-c10-s2-q002",
+            "short-summary-c10-s3-q001",
+            "short-summary-c10-s3-q002",
+            "short-summary-c10-s3-q003",
+            "short-summary-c10-s3-q004"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 31,
+          "questionIds": [],
+          "classification": "empty-section-or-watermark-only"
+        }
+      ]
+    },
+    {
+      "materialId": "short-homework",
+      "questionCount": 126,
+      "sectionAudit": [
+        {
+          "chapter": 1,
+          "section": 0,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "count": 16
+        },
+        {
+          "chapter": 2,
+          "section": 0,
+          "numbers": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15
+          ],
+          "count": 12
+        },
+        {
+          "chapter": 3,
+          "section": 0,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "count": 10
+        },
+        {
+          "chapter": 4,
+          "section": 0,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            11,
+            12,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "count": 14
+        },
+        {
+          "chapter": 5,
+          "section": 0,
+          "numbers": [
+            1,
+            2,
+            3,
+            6,
+            7,
+            8,
+            9,
+            11
+          ],
+          "count": 8
+        },
+        {
+          "chapter": 6,
+          "section": 0,
+          "numbers": [
+            1,
+            2,
+            3,
+            5,
+            7,
+            11,
+            12
+          ],
+          "count": 7
+        },
+        {
+          "chapter": 7,
+          "section": 0,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "count": 15
+        },
+        {
+          "chapter": 8,
+          "section": 0,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "count": 5
+        },
+        {
+          "chapter": 9,
+          "section": 0,
+          "numbers": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "count": 14
+        },
+        {
+          "chapter": 10,
+          "section": 0,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "count": 15
+        },
+        {
+          "chapter": 11,
+          "section": 0,
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "count": 10
+        }
+      ],
+      "headings": [
+        {
+          "page": 2,
+          "text": "第一章计算机网络与信息安全概述"
+        },
+        {
+          "page": 4,
+          "text": "第二章网络应用与应用层协议"
+        },
+        {
+          "page": 6,
+          "text": "第三章传输层服务与协议"
+        },
+        {
+          "page": 8,
+          "text": "第四章网络层服务与协议"
+        },
+        {
+          "page": 10,
+          "text": "第五章数据链路层服务与局域网"
+        },
+        {
+          "page": 11,
+          "text": "第六章物理层"
+        },
+        {
+          "page": 12,
+          "text": "第七章无线网络与移动网络"
+        },
+        {
+          "page": 14,
+          "text": "第八章密码学基础"
+        },
+        {
+          "page": 15,
+          "text": "第九章信息安全防护基本原理"
+        },
+        {
+          "page": 17,
+          "text": "第十章网络安全协议与技术措施"
+        },
+        {
+          "page": 19,
+          "text": "第十一章信息安全管理与法律法规"
+        }
+      ],
+      "orphanLines": [],
+      "pageAudit": [
+        {
+          "page": 1,
+          "questionIds": [],
+          "classification": "cover"
+        },
+        {
+          "page": 2,
+          "questionIds": [
+            "short-homework-c01-s0-q001",
+            "short-homework-c01-s0-q002",
+            "short-homework-c01-s0-q003",
+            "short-homework-c01-s0-q004",
+            "short-homework-c01-s0-q005",
+            "short-homework-c01-s0-q006",
+            "short-homework-c01-s0-q007",
+            "short-homework-c01-s0-q008",
+            "short-homework-c01-s0-q009"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 3,
+          "questionIds": [
+            "short-homework-c01-s0-q009",
+            "short-homework-c01-s0-q010",
+            "short-homework-c01-s0-q011",
+            "short-homework-c01-s0-q016",
+            "short-homework-c01-s0-q017",
+            "short-homework-c01-s0-q018",
+            "short-homework-c01-s0-q019",
+            "short-homework-c01-s0-q020"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 4,
+          "questionIds": [
+            "short-homework-c02-s0-q001",
+            "short-homework-c02-s0-q002",
+            "short-homework-c02-s0-q004",
+            "short-homework-c02-s0-q005",
+            "short-homework-c02-s0-q006",
+            "short-homework-c02-s0-q007",
+            "short-homework-c02-s0-q008",
+            "short-homework-c02-s0-q010",
+            "short-homework-c02-s0-q011",
+            "short-homework-c02-s0-q012"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 5,
+          "questionIds": [
+            "short-homework-c02-s0-q012",
+            "short-homework-c02-s0-q014",
+            "short-homework-c02-s0-q015"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 6,
+          "questionIds": [
+            "short-homework-c03-s0-q001",
+            "short-homework-c03-s0-q002",
+            "short-homework-c03-s0-q003",
+            "short-homework-c03-s0-q004",
+            "short-homework-c03-s0-q005",
+            "short-homework-c03-s0-q006",
+            "short-homework-c03-s0-q007",
+            "short-homework-c03-s0-q008",
+            "short-homework-c03-s0-q009"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 7,
+          "questionIds": [
+            "short-homework-c03-s0-q009",
+            "short-homework-c03-s0-q010"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 8,
+          "questionIds": [
+            "short-homework-c04-s0-q001",
+            "short-homework-c04-s0-q002",
+            "short-homework-c04-s0-q003",
+            "short-homework-c04-s0-q004",
+            "short-homework-c04-s0-q005",
+            "short-homework-c04-s0-q006",
+            "short-homework-c04-s0-q007",
+            "short-homework-c04-s0-q011"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 9,
+          "questionIds": [
+            "short-homework-c04-s0-q011",
+            "short-homework-c04-s0-q012",
+            "short-homework-c04-s0-q014",
+            "short-homework-c04-s0-q015",
+            "short-homework-c04-s0-q016",
+            "short-homework-c04-s0-q017",
+            "short-homework-c04-s0-q018"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 10,
+          "questionIds": [
+            "short-homework-c05-s0-q001",
+            "short-homework-c05-s0-q002",
+            "short-homework-c05-s0-q003",
+            "short-homework-c05-s0-q006",
+            "short-homework-c05-s0-q007",
+            "short-homework-c05-s0-q008",
+            "short-homework-c05-s0-q009",
+            "short-homework-c05-s0-q011"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 11,
+          "questionIds": [
+            "short-homework-c06-s0-q001",
+            "short-homework-c06-s0-q002",
+            "short-homework-c06-s0-q003",
+            "short-homework-c06-s0-q005",
+            "short-homework-c06-s0-q007",
+            "short-homework-c06-s0-q011",
+            "short-homework-c06-s0-q012"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 12,
+          "questionIds": [
+            "short-homework-c07-s0-q001",
+            "short-homework-c07-s0-q002",
+            "short-homework-c07-s0-q003",
+            "short-homework-c07-s0-q004",
+            "short-homework-c07-s0-q005",
+            "short-homework-c07-s0-q006",
+            "short-homework-c07-s0-q007",
+            "short-homework-c07-s0-q008",
+            "short-homework-c07-s0-q011"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 13,
+          "questionIds": [
+            "short-homework-c07-s0-q011",
+            "short-homework-c07-s0-q012",
+            "short-homework-c07-s0-q013",
+            "short-homework-c07-s0-q014",
+            "short-homework-c07-s0-q015",
+            "short-homework-c07-s0-q016",
+            "short-homework-c07-s0-q017"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 14,
+          "questionIds": [
+            "short-homework-c08-s0-q001",
+            "short-homework-c08-s0-q002",
+            "short-homework-c08-s0-q003",
+            "short-homework-c08-s0-q004",
+            "short-homework-c08-s0-q005"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 15,
+          "questionIds": [
+            "short-homework-c09-s0-q001",
+            "short-homework-c09-s0-q002",
+            "short-homework-c09-s0-q003",
+            "short-homework-c09-s0-q005",
+            "short-homework-c09-s0-q006",
+            "short-homework-c09-s0-q007",
+            "short-homework-c09-s0-q008",
+            "short-homework-c09-s0-q009",
+            "short-homework-c09-s0-q010",
+            "short-homework-c09-s0-q011"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 16,
+          "questionIds": [
+            "short-homework-c09-s0-q011",
+            "short-homework-c09-s0-q012",
+            "short-homework-c09-s0-q013",
+            "short-homework-c09-s0-q014",
+            "short-homework-c09-s0-q015"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 17,
+          "questionIds": [
+            "short-homework-c10-s0-q001",
+            "short-homework-c10-s0-q002",
+            "short-homework-c10-s0-q003",
+            "short-homework-c10-s0-q004",
+            "short-homework-c10-s0-q005",
+            "short-homework-c10-s0-q006",
+            "short-homework-c10-s0-q007",
+            "short-homework-c10-s0-q008",
+            "short-homework-c10-s0-q009"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 18,
+          "questionIds": [
+            "short-homework-c10-s0-q009",
+            "short-homework-c10-s0-q010",
+            "short-homework-c10-s0-q011",
+            "short-homework-c10-s0-q012",
+            "short-homework-c10-s0-q013",
+            "short-homework-c10-s0-q014",
+            "short-homework-c10-s0-q015"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 19,
+          "questionIds": [
+            "short-homework-c11-s0-q001",
+            "short-homework-c11-s0-q002",
+            "short-homework-c11-s0-q003",
+            "short-homework-c11-s0-q004",
+            "short-homework-c11-s0-q005",
+            "short-homework-c11-s0-q006",
+            "short-homework-c11-s0-q007",
+            "short-homework-c11-s0-q008",
+            "short-homework-c11-s0-q009"
+          ],
+          "classification": "question-or-answer"
+        },
+        {
+          "page": 20,
+          "questionIds": [
+            "short-homework-c11-s0-q009",
+            "short-homework-c11-s0-q010"
+          ],
+          "classification": "question-or-answer"
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "按原文题号保留课后简答题中的跳号，未编造原资料未收录的题。",
+    "第 20 页顶部的差分双相码波形无 OCR 文字，已人工关联到第 19 页第 4 题。",
+    "剔除淡色水印的 OCR 杂字，原图保留完整；第 26 页仅有水印，不作为上一题答案页。",
+    "对照原图修正 DNS“迭代”、OSI、POP3、Socket API 和凯撒密码明文等识别错误。",
+    "波形标签不作为零散文字答案，改由对应答案图展示。",
+    "凯撒密码密文与 AES 固定参数两题文字答案已校正，标记 AI 辅助生成、待核对，原资料图仍保留。"
+  ],
+  "sourceHandling": "使用用户提供的密码生成可阅读副本，原始加密文件未修改。密码不写入项目。",
+  "reviewStatus": "原文转录与 AI 补充均待核对，非教师审定。"
+}

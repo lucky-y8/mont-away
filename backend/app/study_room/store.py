@@ -100,6 +100,7 @@ def create(records, request_id, fingerprint):
                 chapter = record['chapter']
                 title = next((q['chapterTitle'] for q in originals().values() if q['chapter'] == chapter), '自建题目')
                 q = {key: record[key] for key in ('stem','type','options','answer','explanation','editor')}
+                q['mnemonic'] = record.get('mnemonic', '')
                 q.update(id=question_id, chapter=chapter, chapterTitle=title, origin='upload', revision=0,
                          answerSource='community' if record['answer'] else 'missing',
                          explanationSource='community' if record['explanation'] else 'missing',
@@ -128,6 +129,8 @@ def save(question_id, body):
                 db.rollback()
                 return False, current
             content = {key: body[key].strip() for key in ('stem', 'answer', 'explanation')}
+            # Older clients may omit this field; keep the saved mnemonic. / 兼容旧客户端。
+            content['mnemonic'] = body.get('mnemonic', current.get('mnemonic', '')).strip()
             content.update(type=body['type'], options=[v.strip() for v in body['options'] if v.strip()], needsReview=body.get('reviewed') is not True)
             for field in ('answer', 'explanation'):
                 content[field + 'Source'] = current[field + 'Source'] if content[field] == current[field] else 'community' if content[field] else 'missing'

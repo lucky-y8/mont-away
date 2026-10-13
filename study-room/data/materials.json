@@ -185,5 +185,27 @@
     "questionCount": 37,
     "kind": "summary",
     "courseCode": "04741"
+  },
+  {
+    "id": "short-summary",
+    "chapter": 18,
+    "title": "简答题总结",
+    "sourceFile": "13017计算机网络与信息安全_02简答题总结(简答题)_加密2026.pdf",
+    "sourceUrl": "/sources/short-summary.pdf",
+    "pageCount": 31,
+    "questionCount": 133,
+    "kind": "summary",
+    "courseCode": "13017"
+  },
+  {
+    "id": "short-homework",
+    "chapter": 19,
+    "title": "课后简答题总结",
+    "sourceFile": "13017计算机网络与信息安全_02简答题总结(课后简答题)_加密2026.pdf",
+    "sourceUrl": "/sources/short-homework.pdf",
+    "pageCount": 20,
+    "questionCount": 126,
+    "kind": "summary",
+    "courseCode": "13017"
   }
 ]

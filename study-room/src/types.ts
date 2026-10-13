@@ -6,6 +6,7 @@ export interface Question {
   answerSource: Source; explanationSource: Source; sourceFile: string; sourceUrl: string;
   pages: number[]; figures: string[]; tags: string[]; needsReview: boolean;
   origin?: "upload";
+  mnemonic?: string;
   answerFigures?: string[]; figuresContainAnswer?: boolean; materialId?: string; sourceQuestion?: string;
   revision?: number; editor?: string; editedAt?: string;
 }

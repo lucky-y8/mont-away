@@ -1,0 +1,456 @@
+{
+  "ch01-q001": [
+    "network-basics"
+  ],
+  "ch01-q008": [
+    "network-basics"
+  ],
+  "ch01-q009": [
+    "network-basics"
+  ],
+  "ch01-q010": [
+    "network-basics"
+  ],
+  "short-summary-c01-s3-q003": [
+    "network-basics"
+  ],
+  "short-homework-c01-s0-q001": [
+    "network-basics"
+  ],
+  "ch01-q011": [
+    "topology"
+  ],
+  "ch01-q012": [
+    "topology"
+  ],
+  "ch01-q014": [
+    "topology"
+  ],
+  "ch01-q015": [
+    "topology"
+  ],
+  "ch01-q020": [
+    "topology"
+  ],
+  "ch01-q021": [
+    "topology"
+  ],
+  "ch01-q029": [
+    "topology"
+  ],
+  "ch01-q023": [
+    "network-structure"
+  ],
+  "ch01-q024": [
+    "network-structure"
+  ],
+  "ch01-q030": [
+    "switching"
+  ],
+  "ch01-q033": [
+    "performance"
+  ],
+  "ch01-q035": [
+    "performance"
+  ],
+  "ch01-q036": [
+    "performance"
+  ],
+  "ch01-q038": [
+    "performance"
+  ],
+  "ch01-q042": [
+    "performance"
+  ],
+  "ch01-q046": [
+    "performance"
+  ],
+  "ch01-q048": [
+    "performance"
+  ],
+  "ch01-q072": [
+    "security-basics"
+  ],
+  "ch10-q001": [
+    "security-basics"
+  ],
+  "ch10-q002": [
+    "security-basics"
+  ],
+  "ch10-q003": [
+    "security-basics"
+  ],
+  "ch01-q075": [
+    "history"
+  ],
+  "ch01-q076": [
+    "history"
+  ],
+  "ch02-q002": [
+    "app-structure"
+  ],
+  "ch02-q003": [
+    "app-structure"
+  ],
+  "ch02-q004": [
+    "app-structure"
+  ],
+  "ch02-q015": [
+    "dns"
+  ],
+  "ch02-q018": [
+    "http"
+  ],
+  "ch02-q023": [
+    "http"
+  ],
+  "ch03-q001": [
+    "transport"
+  ],
+  "ch03-q002": [
+    "transport"
+  ],
+  "ch03-q005": [
+    "transport"
+  ],
+  "ch03-q008": [
+    "transport"
+  ],
+  "ch03-q015": [
+    "window"
+  ],
+  "ch03-q017": [
+    "window"
+  ],
+  "ch03-q018": [
+    "window"
+  ],
+  "ch03-q019": [
+    "window"
+  ],
+  "ch04-q012": [
+    "router"
+  ],
+  "ch04-q016": [
+    "network-service"
+  ],
+  "ch04-q021": [
+    "network-congestion"
+  ],
+  "ch04-q023": [
+    "network-congestion"
+  ],
+  "ch04-q025": [
+    "network-congestion"
+  ],
+  "ch04-q028": [
+    "network-congestion"
+  ],
+  "short-summary-c04-s1-q007": [
+    "network-congestion"
+  ],
+  "short-summary-c04-s1-q009": [
+    "network-congestion"
+  ],
+  "short-summary-c04-s2-q001": [
+    "network-congestion"
+  ],
+  "short-summary-c04-s3-q001": [
+    "network-congestion"
+  ],
+  "short-summary-c04-s3-q002": [
+    "network-congestion"
+  ],
+  "ch04-q029": [
+    "ip-packet"
+  ],
+  "ch04-q030": [
+    "ip-packet"
+  ],
+  "ch04-q032": [
+    "ip-packet"
+  ],
+  "ch04-q033": [
+    "ip-packet"
+  ],
+  "ch04-q035": [
+    "ip-packet"
+  ],
+  "ch04-q059": [
+    "route-algorithm"
+  ],
+  "ch04-q065": [
+    "route-protocol"
+  ],
+  "ch04-q050": [
+    "icmp"
+  ],
+  "ch05-q010": [
+    "error-code"
+  ],
+  "ch05-q024": [
+    "random-access"
+  ],
+  "ch05-q042": [
+    "lan"
+  ],
+  "ch07-q004": [
+    "wifi"
+  ],
+  "ch07-q005": [
+    "wifi"
+  ],
+  "ch10-q015": [
+    "ids"
+  ],
+  "calculation-p043": [
+    "app-communication"
+  ],
+  "short-summary-c03-s1-q003": [
+    "layers"
+  ],
+  "short-summary-c08-s2-q001": [
+    "crypto-basics"
+  ],
+  "short-summary-c08-s3-q001": [
+    "crypto-basics"
+  ],
+  "short-summary-c08-s3-q002": [
+    "crypto-basics"
+  ],
+  "blanks-p024-q015": [
+    "crypto-basics"
+  ],
+  "blanks-p024-q016": [
+    "crypto-basics"
+  ],
+  "short-summary-c10-s1-q001": [
+    "pgp"
+  ],
+  "exam-2024-10-q025": [
+    "content"
+  ],
+  "blanks-p002-q017": [
+    "topology"
+  ],
+  "blanks-p002-q018": [
+    "topology"
+  ],
+  "blanks-p002-q019": [
+    "topology"
+  ],
+  "blanks-p002-q020": [
+    "topology"
+  ],
+  "blanks-p002-q021": [
+    "topology"
+  ],
+  "blanks-p003-q001": [
+    "topology"
+  ],
+  "blanks-p003-q002": [
+    "topology"
+  ],
+  "blanks-p003-q003": [
+    "topology"
+  ],
+  "blanks-p003-q004": [
+    "topology"
+  ],
+  "blanks-p003-q005": [
+    "topology"
+  ],
+  "blanks-p003-q006": [
+    "topology"
+  ],
+  "blanks-p003-q007": [
+    "topology"
+  ],
+  "blanks-p003-q008": [
+    "topology"
+  ],
+  "blanks-p003-q009": [
+    "topology"
+  ],
+  "blanks-p003-q010": [
+    "topology"
+  ],
+  "blanks-p003-q011": [
+    "topology"
+  ],
+  "blanks-p003-q012": [
+    "topology"
+  ],
+  "blanks-p003-q013": [
+    "topology"
+  ],
+  "blanks-p003-q014": [
+    "topology"
+  ],
+  "blanks-p003-q015": [
+    "topology"
+  ],
+  "calculation-p011": [
+    "performance"
+  ],
+  "calculation-p013": [
+    "performance"
+  ],
+  "calculation-p018": [
+    "performance"
+  ],
+  "calculation-p022": [
+    "performance"
+  ],
+  "calculation-p029": [
+    "performance"
+  ],
+  "calculation-p015": [
+    "performance",
+    "switching"
+  ],
+  "calculation-p020": [
+    "performance",
+    "switching"
+  ],
+  "calculation-p026": [
+    "performance",
+    "switching"
+  ],
+  "calculation-p034": [
+    "dns",
+    "http"
+  ],
+  "calculation-p036": [
+    "dns",
+    "http"
+  ],
+  "calculation-p041": [
+    "app-communication"
+  ],
+  "calculation-p055": [
+    "window"
+  ],
+  "calculation-p061": [
+    "window"
+  ],
+  "calculation-p063": [
+    "tcp-connection"
+  ],
+  "short-summary-c03-s1-q001": [
+    "tcp-connection"
+  ],
+  "short-summary-c03-s3-q006": [
+    "tcp-connection"
+  ],
+  "short-summary-c03-s1-q010": [
+    "tcp-congestion"
+  ],
+  "calculation-p101": [
+    "route-algorithm"
+  ],
+  "calculation-p102": [
+    "route-algorithm"
+  ],
+  "calculation-p104": [
+    "route-algorithm"
+  ],
+  "calculation-p107": [
+    "arp"
+  ],
+  "calculation-p110": [
+    "ethernet"
+  ],
+  "calculation-p116": [
+    "lan"
+  ],
+  "calculation-p118": [
+    "lan"
+  ],
+  "short-summary-c05-s1-q011": [
+    "lan"
+  ],
+  "short-summary-c05-s1-q012": [
+    "lan"
+  ],
+  "short-summary-c05-s1-q013": [
+    "lan"
+  ],
+  "short-summary-c03-s1-q005": [
+    "reliable"
+  ],
+  "ch03-q011": [
+    "reliable"
+  ],
+  "short-summary-c03-s1-q004": [
+    "transport"
+  ],
+  "short-homework-c03-s0-q002": [
+    "transport"
+  ],
+  "short-summary-c04-s1-q002": [
+    "subnet"
+  ],
+  "short-summary-c04-s1-q013": [
+    "subnet"
+  ],
+  "short-summary-c05-s1-q010": [
+    "arp",
+    "dns"
+  ],
+  "short-homework-c01-s0-q004": [
+    "topology"
+  ],
+  "short-homework-c01-s0-q017": [
+    "security-basics"
+  ],
+  "short-homework-c01-s0-q018": [
+    "security-basics"
+  ],
+  "short-homework-c01-s0-q019": [
+    "security-basics"
+  ],
+  "short-homework-c01-s0-q020": [
+    "security-basics"
+  ],
+  "short-homework-c02-s0-q001": [
+    "app-structure",
+    "p2p"
+  ],
+  "short-homework-c04-s0-q011": [
+    "dhcp"
+  ],
+  "short-homework-c06-s0-q005": [
+    "capacity"
+  ],
+  "short-homework-c07-s0-q004": [
+    "wireless"
+  ],
+  "ch06-q003": [
+    "capacity"
+  ],
+  "ch06-q004": [
+    "capacity"
+  ],
+  "ch06-q006": [
+    "capacity"
+  ],
+  "ch06-q020": [
+    "modulation"
+  ],
+  "ch11-q006": [
+    "laws"
+  ],
+  "ch07-q006": [
+    "csma-ca"
+  ],
+  "ch05-q029": [
+    "lan"
+  ],
+  "ch05-q030": [
+    "lan"
+  ],
+  "ch05-q031": [
+    "lan"
+  ]
+}

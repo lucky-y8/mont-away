@@ -77,7 +77,7 @@ sudo systemctl reload nginx
 ```bash
 curl -fsS http://127.0.0.1:9005/health
 curl -I https://sy.chexi.tech/
-curl -fsS https://sy.chexi.tech/ | grep -F '知网自习室'
+curl -fsS https://sy.chexi.tech/ | grep -F '13017刷题'
 curl -fsS https://sy.chexi.tech/shanyao/ | grep -F '山遥'
 curl -fsS https://sy.chexi.tech/api/study/questions | python -c 'import json,sys; print(len(json.load(sys.stdin)["questions"]))'
 curl -I https://sy.chexi.tech/study-assets/sources/ch00.pdf

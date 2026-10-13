@@ -21,7 +21,7 @@ def main():
             raise SystemExit(f'Missing {name}; build the project first.')
     bank = json.loads((ROOT / 'study-room/data/questions.json').read_text(encoding='utf-8'))
     materials = json.loads((ROOT / 'study-room/data/materials.json').read_text(encoding='utf-8'))
-    required.add('study-room/data/materials.json')
+    required.update({'study-room/data/materials.json', 'study-room/data/focus-priorities.json', 'study-room/src/FocusPriority.tsx', 'study-room/src/priorities.js', 'docs/STUDY_PRIORITIES.md'})
     for q in bank:
         for url in [q['sourceUrl'], *q['figures'], *q.get('answerFigures', [])]:
             required.add('dist/study-assets' + url)
@@ -46,7 +46,7 @@ def main():
 
 Routes: / = question practice; /shanyao/ = existing travel website.
 Includes source, production dist, {len(materials)} PDFs, {len(bank)} questions and original/solution images, CSV/JSON templates, FastAPI backend and deployment instructions.
-Study features: practice mode with visible answers, answer mode with instant click/typing feedback and retry, local wrong-answer notebook, per-blank checks and self assessment, saved mode preference, personal themes, expanded original images, anonymous question/image uploads and batch import.
+Study features: evidence-based 1-5 star study priorities, topic/star filters, textbook page references and deduplicated exam evidence; practice mode with visible answers, answer mode with instant click/typing feedback and retry, editable mnemonic hints that open with answers/explanations, local wrong-answer notebook, per-blank checks and self assessment, saved mode preference, personal themes, expanded original images, anonymous question/image uploads and batch import.
 Read docs/STUDY_INTEGRATION.md and deploy/nginx-shared.conf first.
 
 The current dist uses same-origin APIs. The public SEO domain remains sy.chexi.tech.

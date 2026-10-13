@@ -16,10 +16,13 @@ CHAPTER_IDS = {12, *(m['chapter'] for m in json.loads((PROJECT_ROOT / 'study-roo
 FIELDS = {'题干':'stem','题型':'type','选项':'options','答案':'answer','解析':'explanation','章节':'chapter','署名':'editor'}
 
 
+FIELDS.update({'助记':'mnemonic','助记提示':'mnemonic'})
+
+
 def normalize(record):
     if not isinstance(record, dict): raise ValueError('每道题必须是一个对象')
     row = {FIELDS.get(key, key): value for key, value in record.items()}
-    for field, title, limit in [('stem','题干',12000),('answer','答案',8000),('explanation','解析',16000),('editor','署名',30)]:
+    for field, title, limit in [('stem','题干',12000),('answer','答案',8000),('explanation','解析',16000),('mnemonic','助记',4000),('editor','署名',30)]:
         value = row.get(field, '')
         if not isinstance(value, str) or len(value) > limit: raise ValueError(f'{title}必须是文字，且不超过 {limit} 字')
         row[field] = value.strip()
@@ -43,7 +46,7 @@ def normalize(record):
     images = row.get('images', [])
     if not isinstance(images, list) or len(images)>4: raise ValueError('每道题最多上传 4 张图片')
     row['images'] = images
-    return {key: row[key] for key in ('stem','type','options','answer','explanation','chapter','editor','reviewed','images')}
+    return {key: row[key] for key in ('stem','type','options','answer','explanation','mnemonic','chapter','editor','reviewed','images')}
 
 
 def decode_image(value):
