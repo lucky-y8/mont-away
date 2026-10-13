@@ -1,0 +1,3687 @@
+{
+  "date": "2026-10-13",
+  "newQuestionCount": 639,
+  "materialCounts": {
+    "exam-2024-10": 31,
+    "exam-2025-04": 31,
+    "exam-2025-10": 31,
+    "blanks": 509,
+    "calculation": 37
+  },
+  "newReferencedImageCount": 705,
+  "original361CanonicalSha256": "a807161cb6219ec0db2364213d5e8e065805eade9950017da9e21d303f49e22e",
+  "examQuestionCoverage": {
+    "exam-2024-10": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "exam-2025-04": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "exam-2025-10": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ]
+  },
+  "blankQuestionAudit": [
+    {
+      "id": "blanks-p002-q001",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p002-q002",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 2,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p002-q003",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p002-q004",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q005",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q006",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q007",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 7,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p002-q008",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q009",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q010",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 10,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q011",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 11,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q012",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 12,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q013",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 13,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p002-q014",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 14,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q015",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 15,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q016",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 16,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q017",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 17,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p002-q018",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 18,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p002-q019",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 19,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q020",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 20,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p002-q021",
+      "page": 2,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 21,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q001",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 22,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q002",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 23,
+      "answers": 5
+    },
+    {
+      "id": "blanks-p003-q003",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 24,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p003-q004",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 25,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q005",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 26,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p003-q006",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 27,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q007",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 28,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q008",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 29,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q009",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 30,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q010",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 31,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q011",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 32,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q012",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 33,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p003-q013",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 34,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p003-q014",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 35,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q015",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第一节计算机网络基本概念",
+      "number": 36,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q016",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第二节计算机网络结构",
+      "number": 1,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p003-q017",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第二节计算机网络结构",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q018",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第二节计算机网络结构",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q019",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第二节计算机网络结构",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q020",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第二节计算机网络结构",
+      "number": 5,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p003-q021",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第三节数据交换技术",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q022",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第三节数据交换技术",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p003-q023",
+      "page": 3,
+      "section": "第一章计算机网络与信息安全概述/第三节数据交换技术",
+      "number": 3,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p004-q001",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第三节数据交换技术",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q002",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第三节数据交换技术",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q003",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第三节数据交换技术",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q004",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第三节数据交换技术",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q005",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第三节数据交换技术",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q006",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第三节数据交换技术",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q007",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第四节计算机网络主要性能指标",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p004-q008",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第四节计算机网络主要性能指标",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q009",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第四节计算机网络主要性能指标",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q010",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第四节计算机网络主要性能指标",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q011",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第四节计算机网络主要性能指标",
+      "number": 5,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p004-q012",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第四节计算机网络主要性能指标",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q013",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第四节计算机网络主要性能指标",
+      "number": 7,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p004-q014",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第四节计算机网络主要性能指标",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q015",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第四节计算机网络主要性能指标",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q016",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第四节计算机网络主要性能指标",
+      "number": 10,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p004-q017",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第四节计算机网络主要性能指标",
+      "number": 11,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q018",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第四节计算机网络主要性能指标",
+      "number": 12,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q019",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第五节计算机网络体系结构",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p004-q020",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第五节计算机网络体系结构",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p004-q021",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第五节计算机网络体系结构",
+      "number": 3,
+      "answers": 6
+    },
+    {
+      "id": "blanks-p004-q022",
+      "page": 4,
+      "section": "第一章计算机网络与信息安全概述/第五节计算机网络体系结构",
+      "number": 4,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p005-q001",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第五节计算机网络体系结构",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p005-q002",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第五节计算机网络体系结构",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p005-q003",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第五节计算机网络体系结构",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p005-q004",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第五节计算机网络体系结构",
+      "number": 8,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p005-q005",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第五节计算机网络体系结构",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p005-q006",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第五节计算机网络体系结构",
+      "number": 10,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p005-q007",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第五节计算机网络体系结构",
+      "number": 11,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p005-q008",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第六节信息安全概述",
+      "number": 1,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p005-q009",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第七节互联网的安全性",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p005-q010",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第八节信息安全体系结构",
+      "number": 1,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p005-q011",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第八节信息安全体系结构",
+      "number": 2,
+      "answers": 5
+    },
+    {
+      "id": "blanks-p005-q012",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第八节信息安全体系结构",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p005-q013",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第八节信息安全体系结构",
+      "number": 4,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p005-q014",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第八节信息安全体系结构",
+      "number": 5,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p005-q015",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第八节信息安全体系结构",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p005-q016",
+      "page": 5,
+      "section": "第一章计算机网络与信息安全概述/第八节信息安全体系结构",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p006-q001",
+      "page": 6,
+      "section": "第一章计算机网络与信息安全概述/第八节信息安全体系结构",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p006-q002",
+      "page": 6,
+      "section": "第一章计算机网络与信息安全概述/第八节信息安全体系结构",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p006-q003",
+      "page": 6,
+      "section": "第一章计算机网络与信息安全概述/第八节信息安全体系结构",
+      "number": 10,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p006-q004",
+      "page": 6,
+      "section": "第一章计算机网络与信息安全概述/第八节信息安全体系结构",
+      "number": 11,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p006-q005",
+      "page": 6,
+      "section": "第一章计算机网络与信息安全概述/第八节信息安全体系结构",
+      "number": 12,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p007-q001",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第一节网络应用体系结构",
+      "number": 1,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p007-q002",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第一节网络应用体系结构",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p007-q003",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第一节网络应用体系结构",
+      "number": 3,
+      "answers": 0
+    },
+    {
+      "id": "blanks-p007-q004",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第一节网络应用体系结构",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p007-q005",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第一节网络应用体系结构",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p007-q006",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第一节网络应用体系结构",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p007-q007",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第一节网络应用体系结构",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p007-q008",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第二节网络应用通信基本原理",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p007-q009",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第二节网络应用通信基本原理",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p007-q010",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第二节网络应用通信基本原理",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p007-q011",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第二节网络应用通信基本原理",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p007-q012",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第三节域名解析系统",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p007-q013",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第三节域名解析系统",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p007-q014",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第三节域名解析系统",
+      "number": 3,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p007-q015",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第三节域名解析系统",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p007-q016",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第三节域名解析系统",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p007-q017",
+      "page": 7,
+      "section": "第二章网络应用与应用层协议/第三节域名解析系统",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q001",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第三节域名解析系统",
+      "number": 7,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p008-q002",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第三节域名解析系统",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q003",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 1,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p008-q004",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q005",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q006",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q007",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q008",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 6,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p008-q009",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 7,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p008-q010",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 8,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p008-q011",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q012",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 10,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q013",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 11,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q014",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 12,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p008-q015",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 13,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p008-q016",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 14,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p008-q017",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 15,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q018",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 16,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q019",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 17,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p008-q020",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第四节Web应用",
+      "number": 18,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q021",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第五节Internet电子邮件",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p008-q022",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第五节Internet电子邮件",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q023",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第五节Internet电子邮件",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p008-q024",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第五节Internet电子邮件",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p008-q025",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第五节Internet电子邮件",
+      "number": 5,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p008-q026",
+      "page": 8,
+      "section": "第二章网络应用与应用层协议/第五节Internet电子邮件",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q001",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第五节Internet电子邮件",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q002",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第五节Internet电子邮件",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q003",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第六节文件传输",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q004",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第六节文件传输",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q005",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第六节文件传输",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p009-q006",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第六节文件传输",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q007",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第六节文件传输",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q008",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第六节文件传输",
+      "number": 6,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p009-q009",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第六节文件传输",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q010",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第六节文件传输",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q011",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第八节Socket编程基础",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p009-q012",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第八节Socket编程基础",
+      "number": 2,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p009-q013",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第八节Socket编程基础",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q014",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第八节Socket编程基础",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q015",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第八节Socket编程基础",
+      "number": 5,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p009-q016",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第八节Socket编程基础",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q017",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第八节Socket编程基础",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p009-q018",
+      "page": 9,
+      "section": "第二章网络应用与应用层协议/第八节Socket编程基础",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p010-q001",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第一节传输层的基本服务",
+      "number": 1,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p010-q002",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第一节传输层的基本服务",
+      "number": 2,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p010-q003",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第一节传输层的基本服务",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p010-q004",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第一节传输层的基本服务",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p010-q005",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第一节传输层的基本服务",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p010-q006",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第一节传输层的基本服务",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p010-q007",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第一节传输层的基本服务",
+      "number": 7,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p010-q008",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第一节传输层的基本服务",
+      "number": 8,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p010-q009",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第一节传输层的基本服务",
+      "number": 9,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p010-q010",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第一节传输层的基本服务",
+      "number": 10,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p010-q011",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第二节传输层的复用与分解",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p010-q012",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第二节传输层的复用与分解",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p010-q013",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第二节传输层的复用与分解",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p010-q014",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第二节传输层的复用与分解",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p010-q015",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第二节传输层的复用与分解",
+      "number": 5,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p010-q016",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第二节传输层的复用与分解",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p010-q017",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第二节传输层的复用与分解",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p010-q018",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第二节传输层的复用与分解",
+      "number": 8,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p010-q019",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第二节传输层的复用与分解",
+      "number": 9,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p010-q020",
+      "page": 10,
+      "section": "第三章传输层服务与协议/第二节传输层的复用与分解",
+      "number": 10,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q001",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第二节传输层的复用与分解",
+      "number": 11,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p011-q002",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第三节停-等协议与滑动窗口协议",
+      "number": 1,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p011-q003",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第三节停-等协议与滑动窗口协议",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p011-q004",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第三节停-等协议与滑动窗口协议",
+      "number": 3,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p011-q005",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第三节停-等协议与滑动窗口协议",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q006",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第三节停-等协议与滑动窗口协议",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q007",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第三节停-等协议与滑动窗口协议",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q008",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第三节停-等协议与滑动窗口协议",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q009",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第三节停-等协议与滑动窗口协议",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q010",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第三节停-等协议与滑动窗口协议",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q011",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第四节UDP",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p011-q012",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第四节UDP",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q013",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第四节UDP",
+      "number": 3,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p011-q014",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第四节UDP",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q015",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 1,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p011-q016",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q017",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q018",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q019",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q020",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p011-q021",
+      "page": 11,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 7,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p012-q001",
+      "page": 12,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p012-q002",
+      "page": 12,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p012-q003",
+      "page": 12,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 10,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p012-q004",
+      "page": 12,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 11,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p012-q005",
+      "page": 12,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 12,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p012-q006",
+      "page": 12,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 13,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p012-q007",
+      "page": 12,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 14,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p012-q008",
+      "page": 12,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 15,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p012-q009",
+      "page": 12,
+      "section": "第三章传输层服务与协议/第五节TCP",
+      "number": 16,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p013-q001",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第一节网络层服务",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p013-q002",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第一节网络层服务",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p013-q003",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第一节网络层服务",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p013-q004",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第一节网络层服务",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p013-q005",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第二节虚电路网络与数据报网络",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p013-q006",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第二节虚电路网络与数据报网络",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p013-q007",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第二节虚电路网络与数据报网络",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p013-q008",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第二节虚电路网络与数据报网络",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p013-q009",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第二节虚电路网络与数据报网络",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p013-q010",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第二节虚电路网络与数据报网络",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p013-q011",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第二节虚电路网络与数据报网络",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p013-q012",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第三节网络互连与网络互连设备",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p013-q013",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第三节网络互连与网络互连设备",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p013-q014",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第三节网络互连与网络互连设备",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p013-q015",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第三节网络互连与网络互连设备",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p013-q016",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第三节网络互连与网络互连设备",
+      "number": 5,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p013-q017",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第三节网络互连与网络互连设备",
+      "number": 6,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p013-q018",
+      "page": 13,
+      "section": "第四章网络层服务与协议/第三节网络互连与网络互连设备",
+      "number": 7,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p014-q001",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第三节网络互连与网络互连设备",
+      "number": 8,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p014-q002",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第三节网络互连与网络互连设备",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p014-q003",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第四节网络层拥塞控制",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p014-q004",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第四节网络层拥塞控制",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p014-q005",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第四节网络层拥塞控制",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p014-q006",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第四节网络层拥塞控制",
+      "number": 4,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p014-q007",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第四节网络层拥塞控制",
+      "number": 5,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p014-q008",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第四节网络层拥塞控制",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p014-q009",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第四节网络层拥塞控制",
+      "number": 7,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p014-q010",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第四节网络层拥塞控制",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p014-q011",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 1,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p014-q012",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p014-q013",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p014-q014",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 4,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p014-q015",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 5,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p014-q016",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 6,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p014-q017",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p014-q018",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p014-q019",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p014-q020",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 10,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p014-q021",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 11,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p014-q022",
+      "page": 14,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 12,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p015-q001",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 13,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p015-q002",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第五节Internet网络层",
+      "number": 14,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p015-q003",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p015-q004",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p015-q005",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p015-q006",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p015-q007",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 5,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p015-q008",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p015-q009",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p015-q010",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p015-q011",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 9,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p015-q012",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 10,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p015-q013",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 11,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p015-q014",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 12,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p015-q015",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 13,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p015-q016",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 14,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p015-q017",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 15,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p015-q018",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 16,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p015-q019",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 17,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p015-q020",
+      "page": 15,
+      "section": "第四章网络层服务与协议/第六节路由算法与路由协议",
+      "number": 18,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p016-q001",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第一节数据链路层服务",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p016-q002",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第一节数据链路层服务",
+      "number": 2,
+      "answers": 5
+    },
+    {
+      "id": "blanks-p016-q003",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第一节数据链路层服务",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p016-q004",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第一节数据链路层服务",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p016-q005",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第一节数据链路层服务",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p016-q006",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第二节差错控制",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p016-q007",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第二节差错控制",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p016-q008",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第二节差错控制",
+      "number": 3,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p016-q009",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第二节差错控制",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p016-q010",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第二节差错控制",
+      "number": 5,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p016-q011",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第二节差错控制",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p016-q012",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第二节差错控制",
+      "number": 7,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p016-q013",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第二节差错控制",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p016-q014",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第二节差错控制",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p016-q015",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第二节差错控制",
+      "number": 10,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p016-q016",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第三节多路访问控制协议",
+      "number": 1,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p016-q017",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第三节多路访问控制协议",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p016-q018",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第三节多路访问控制协议",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p016-q019",
+      "page": 16,
+      "section": "第五章数据链路层服务与局域网/第三节多路访问控制协议",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p017-q001",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第三节多路访问控制协议",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q002",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第三节多路访问控制协议",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q003",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第三节多路访问控制协议",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q004",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第三节多路访问控制协议",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q005",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第三节多路访问控制协议",
+      "number": 9,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p017-q006",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第三节多路访问控制协议",
+      "number": 10,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p017-q007",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第三节多路访问控制协议",
+      "number": 11,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q008",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p017-q009",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p017-q010",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q011",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 4,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p017-q012",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q013",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q014",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q015",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q016",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q017",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 10,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q018",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 11,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p017-q019",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 12,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p017-q020",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 13,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q021",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 14,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q022",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 15,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q023",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 16,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p017-q024",
+      "page": 17,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 17,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p018-q001",
+      "page": 18,
+      "section": "第五章数据链路层服务与局域网/第四节局域网",
+      "number": 18,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p018-q002",
+      "page": 18,
+      "section": "第五章数据链路层服务与局域网/第五节点对点链路协议",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p018-q003",
+      "page": 18,
+      "section": "第五章数据链路层服务与局域网/第五节点对点链路协议",
+      "number": 2,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p018-q004",
+      "page": 18,
+      "section": "第五章数据链路层服务与局域网/第五节点对点链路协议",
+      "number": 3,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p018-q005",
+      "page": 18,
+      "section": "第五章数据链路层服务与局域网/第五节点对点链路协议",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p018-q006",
+      "page": 18,
+      "section": "第五章数据链路层服务与局域网/第五节点对点链路协议",
+      "number": 5,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p019-q001",
+      "page": 19,
+      "section": "第六章 物理层/第一节数据通信基础",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p019-q002",
+      "page": 19,
+      "section": "第六章 物理层/第一节数据通信基础",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p019-q003",
+      "page": 19,
+      "section": "第六章 物理层/第一节数据通信基础",
+      "number": 3,
+      "answers": 5
+    },
+    {
+      "id": "blanks-p019-q004",
+      "page": 19,
+      "section": "第六章 物理层/第一节数据通信基础",
+      "number": 4,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p019-q005",
+      "page": 19,
+      "section": "第六章 物理层/第一节数据通信基础",
+      "number": 5,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p019-q006",
+      "page": 19,
+      "section": "第六章 物理层/第一节数据通信基础",
+      "number": 6,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p019-q007",
+      "page": 19,
+      "section": "第六章 物理层/第一节数据通信基础",
+      "number": 7,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p019-q008",
+      "page": 19,
+      "section": "第六章 物理层/第一节数据通信基础",
+      "number": 8,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p019-q009",
+      "page": 19,
+      "section": "第六章 物理层/第一节数据通信基础",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p019-q010",
+      "page": 19,
+      "section": "第六章 物理层/第一节数据通信基础",
+      "number": 10,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p019-q011",
+      "page": 19,
+      "section": "第六章 物理层/第一节数据通信基础",
+      "number": 11,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p019-q012",
+      "page": 19,
+      "section": "第六章 物理层/第二节物理介质",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p019-q013",
+      "page": 19,
+      "section": "第六章 物理层/第二节物理介质",
+      "number": 2,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p019-q014",
+      "page": 19,
+      "section": "第六章 物理层/第二节物理介质",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p019-q015",
+      "page": 19,
+      "section": "第六章 物理层/第二节物理介质",
+      "number": 4,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p019-q016",
+      "page": 19,
+      "section": "第六章 物理层/第二节物理介质",
+      "number": 5,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p019-q017",
+      "page": 19,
+      "section": "第六章 物理层/第二节物理介质",
+      "number": 6,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p020-q001",
+      "page": 20,
+      "section": "第六章 物理层/第三节信道与信道容量",
+      "number": 1,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p020-q002",
+      "page": 20,
+      "section": "第六章 物理层/第三节信道与信道容量",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p020-q003",
+      "page": 20,
+      "section": "第六章 物理层/第三节信道与信道容量",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p020-q004",
+      "page": 20,
+      "section": "第六章 物理层/第三节信道与信道容量",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p020-q005",
+      "page": 20,
+      "section": "第六章 物理层/第四节基带传输",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p020-q006",
+      "page": 20,
+      "section": "第六章 物理层/第四节基带传输",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p020-q007",
+      "page": 20,
+      "section": "第六章 物理层/第四节基带传输",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p020-q008",
+      "page": 20,
+      "section": "第六章 物理层/第四节基带传输",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p020-q009",
+      "page": 20,
+      "section": "第六章 物理层/第四节基带传输",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p020-q010",
+      "page": 20,
+      "section": "第六章 物理层/第四节基带传输",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p020-q011",
+      "page": 20,
+      "section": "第六章 物理层/第五节频带传输",
+      "number": 1,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p020-q012",
+      "page": 20,
+      "section": "第六章 物理层/第五节频带传输",
+      "number": 2,
+      "answers": 9
+    },
+    {
+      "id": "blanks-p020-q013",
+      "page": 20,
+      "section": "第六章 物理层/第五节频带传输",
+      "number": 3,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p020-q014",
+      "page": 20,
+      "section": "第六章 物理层/第五节频带传输",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p020-q015",
+      "page": 20,
+      "section": "第六章 物理层/第五节频带传输",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p020-q016",
+      "page": 20,
+      "section": "第六章 物理层/第五节频带传输",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p020-q017",
+      "page": 20,
+      "section": "第六章 物理层/第五节频带传输",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p020-q018",
+      "page": 20,
+      "section": "第六章 物理层/第六节物理层接口规程",
+      "number": 1,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p020-q019",
+      "page": 20,
+      "section": "第六章 物理层/第六节物理层接口规程",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p022-q001",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第一节无线网络",
+      "number": 1,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p022-q002",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第一节无线网络",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p022-q003",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第一节无线网络",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p022-q004",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第一节无线网络",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p022-q005",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第一节无线网络",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p022-q006",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第一节无线网络",
+      "number": 6,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p022-q007",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第一节无线网络",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p022-q008",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第二节移动网络",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p022-q009",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第二节移动网络",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p022-q010",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第二节移动网络",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p022-q011",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第二节移动网络",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p022-q012",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第二节移动网络",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p022-q013",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第二节移动网络",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p022-q014",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第二节移动网络",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p022-q015",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第二节移动网络",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p022-q016",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p022-q017",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p022-q018",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p022-q019",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p022-q020",
+      "page": 22,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 5,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p023-q001",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p023-q002",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p023-q003",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 8,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p023-q004",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p023-q005",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 10,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p023-q006",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 11,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p023-q007",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 12,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p023-q008",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 13,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p023-q009",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第三节无线局域网IEEE802.11标准",
+      "number": 14,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p023-q010",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第四节蜂窝网络",
+      "number": 1,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p023-q011",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第四节蜂窝网络",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p023-q012",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第四节蜂窝网络",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p023-q013",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第四节蜂窝网络",
+      "number": 4,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p023-q014",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第五节移动IP网络",
+      "number": 1,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p023-q015",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第五节移动IP网络",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p023-q016",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第五节移动IP网络",
+      "number": 3,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p023-q017",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第五节移动IP网络",
+      "number": 4,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p023-q018",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第五节移动IP网络",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p023-q019",
+      "page": 23,
+      "section": "第七章无线网络与移动网络/第六节其他典型无线网络简介",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p024-q001",
+      "page": 24,
+      "section": "第八章密码学基础/第一节密码学概述",
+      "number": 1,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p024-q002",
+      "page": 24,
+      "section": "第八章密码学基础/第一节密码学概述",
+      "number": 2,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p024-q003",
+      "page": 24,
+      "section": "第八章密码学基础/第一节密码学概述",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p024-q004",
+      "page": 24,
+      "section": "第八章密码学基础/第一节密码学概述",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p024-q005",
+      "page": 24,
+      "section": "第八章密码学基础/第一节密码学概述",
+      "number": 5,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p024-q006",
+      "page": 24,
+      "section": "第八章密码学基础/第一节密码学概述",
+      "number": 6,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p024-q007",
+      "page": 24,
+      "section": "第八章密码学基础/第二节传统加密算法",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p024-q008",
+      "page": 24,
+      "section": "第八章密码学基础/第二节传统加密算法",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p024-q009",
+      "page": 24,
+      "section": "第八章密码学基础/第二节传统加密算法",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p024-q010",
+      "page": 24,
+      "section": "第八章密码学基础/第二节传统加密算法",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p024-q011",
+      "page": 24,
+      "section": "第八章密码学基础/第二节传统加密算法",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p024-q012",
+      "page": 24,
+      "section": "第八章密码学基础/第二节传统加密算法",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p024-q013",
+      "page": 24,
+      "section": "第八章密码学基础/第二节传统加密算法",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p024-q014",
+      "page": 24,
+      "section": "第八章密码学基础/第三节对称密钥加密算法",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p024-q015",
+      "page": 24,
+      "section": "第八章密码学基础/第三节对称密钥加密算法",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p024-q016",
+      "page": 24,
+      "section": "第八章密码学基础/第三节对称密钥加密算法",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p024-q017",
+      "page": 24,
+      "section": "第八章密码学基础/第三节对称密钥加密算法",
+      "number": 2,
+      "answers": 6
+    },
+    {
+      "id": "blanks-p025-q001",
+      "page": 25,
+      "section": "第八章密码学基础/第三节对称密钥加密算法",
+      "number": 3,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p025-q002",
+      "page": 25,
+      "section": "第八章密码学基础/第三节对称密钥加密算法",
+      "number": 4,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p025-q003",
+      "page": 25,
+      "section": "第八章密码学基础/第三节对称密钥加密算法",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p025-q004",
+      "page": 25,
+      "section": "第八章密码学基础/第三节对称密钥加密算法",
+      "number": 5,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p025-q005",
+      "page": 25,
+      "section": "第八章密码学基础/第三节对称密钥加密算法",
+      "number": 6,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p025-q006",
+      "page": 25,
+      "section": "第八章密码学基础/第三节对称密钥加密算法",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p025-q007",
+      "page": 25,
+      "section": "第八章密码学基础/第三节对称密钥加密算法",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p025-q008",
+      "page": 25,
+      "section": "第八章密码学基础/第四节公开密钥加密算法",
+      "number": 1,
+      "answers": 0
+    },
+    {
+      "id": "blanks-p025-q009",
+      "page": 25,
+      "section": "第八章密码学基础/第四节公开密钥加密算法",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p025-q010",
+      "page": 25,
+      "section": "第八章密码学基础/第四节公开密钥加密算法",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p025-q011",
+      "page": 25,
+      "section": "第八章密码学基础/第四节公开密钥加密算法",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p025-q012",
+      "page": 25,
+      "section": "第八章密码学基础/第四节公开密钥加密算法",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p025-q013",
+      "page": 25,
+      "section": "第八章密码学基础/第四节公开密钥加密算法",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p025-q014",
+      "page": 25,
+      "section": "第八章密码学基础/第四节公开密钥加密算法",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p025-q015",
+      "page": 25,
+      "section": "第八章密码学基础/第五节散列函数",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p025-q016",
+      "page": 25,
+      "section": "第八章密码学基础/第五节散列函数",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p025-q017",
+      "page": 25,
+      "section": "第八章密码学基础/第五节散列函数",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p025-q018",
+      "page": 25,
+      "section": "第八章密码学基础/第五节散列函数",
+      "number": 4,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p025-q019",
+      "page": 25,
+      "section": "第八章密码学基础/第六节密码学新进展",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p025-q020",
+      "page": 25,
+      "section": "第八章密码学基础/第六节密码学新进展",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p026-q001",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第一节消息完整性与数字签名",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p026-q002",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第一节消息完整性与数字签名",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p026-q003",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第一节消息完整性与数字签名",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p026-q004",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第一节消息完整性与数字签名",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p026-q005",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第一节消息完整性与数字签名",
+      "number": 5,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p026-q006",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第一节消息完整性与数字签名",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p026-q007",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第一节消息完整性与数字签名",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p026-q008",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第一节消息完整性与数字签名",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p026-q009",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第一节消息完整性与数字签名",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p026-q010",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第二节身份认证",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p026-q011",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第二节身份认证",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p026-q012",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第三节密钥管理与分发",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p026-q013",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第三节密钥管理与分发",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p026-q014",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第三节密钥管理与分发",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p026-q015",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第三节密钥管理与分发",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p026-q016",
+      "page": 26,
+      "section": "第九章信息安全防护基本原理/第三节密钥管理与分发",
+      "number": 5,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p027-q001",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第四节访问控制",
+      "number": 1,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p027-q002",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第四节访问控制",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p027-q003",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第四节访问控制",
+      "number": 3,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p027-q004",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第四节访问控制",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p027-q005",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第四节访问控制",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p027-q006",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第四节访问控制",
+      "number": 6,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p027-q007",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第四节访问控制",
+      "number": 7,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p027-q008",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第四节访问控制",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p027-q009",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第五节内容安全",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p027-q010",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第五节内容安全",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p027-q011",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第五节内容安全",
+      "number": 3,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p027-q012",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第五节内容安全",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p027-q013",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第五节内容安全",
+      "number": 5,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p027-q014",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第五节内容安全",
+      "number": 6,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p027-q015",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第五节内容安全",
+      "number": 7,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p027-q016",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第五节内容安全",
+      "number": 8,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p027-q017",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第六节物理安全",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p027-q018",
+      "page": 27,
+      "section": "第九章信息安全防护基本原理/第六节物理安全",
+      "number": 2,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p028-q001",
+      "page": 28,
+      "section": "第九章信息安全防护基本原理/第六节物理安全",
+      "number": 3,
+      "answers": 5
+    },
+    {
+      "id": "blanks-p029-q001",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第一节安全电子邮件",
+      "number": 1,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p029-q002",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第一节安全电子邮件",
+      "number": 2,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p029-q003",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第一节安全电子邮件",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p029-q004",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第一节安全电子邮件",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p029-q005",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第二节SSL/TLS",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p029-q006",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第二节SSL/TLS",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p029-q007",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第二节SSL/TLS",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p029-q008",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第二节SSL/TLS",
+      "number": 4,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p029-q009",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第二节SSL/TLS",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p029-q010",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第三节虚拟专用网络（VPN）和IP安全协议（IPSeC）",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p029-q011",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第三节虚拟专用网络（VPN）和IP安全协议（IPSeC）",
+      "number": 2,
+      "answers": 5
+    },
+    {
+      "id": "blanks-p029-q012",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第三节虚拟专用网络（VPN）和IP安全协议（IPSeC）",
+      "number": 3,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p029-q013",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第三节虚拟专用网络（VPN）和IP安全协议（IPSeC）",
+      "number": 4,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p029-q014",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第三节虚拟专用网络（VPN）和IP安全协议（IPSeC）",
+      "number": 5,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p029-q015",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第三节虚拟专用网络（VPN）和IP安全协议（IPSeC）",
+      "number": 6,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p029-q016",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第三节虚拟专用网络（VPN）和IP安全协议（IPSeC）",
+      "number": 7,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p029-q017",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第三节虚拟专用网络（VPN）和IP安全协议（IPSeC）",
+      "number": 8,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p029-q018",
+      "page": 29,
+      "section": "第十章 网络安全协议与技术措施/第三节虚拟专用网络（VPN）和IP安全协议（IPSeC）",
+      "number": 9,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p030-q001",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第三节虚拟专用网络（VPN）和IP安全协议（IPSeC）",
+      "number": 10,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p030-q002",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第三节虚拟专用网络（VPN）和IP安全协议（IPSeC）",
+      "number": 11,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p030-q003",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p030-q004",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 2,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p030-q005",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 3,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p030-q006",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p030-q007",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 5,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p030-q008",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 6,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p030-q009",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 7,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p030-q010",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 8,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p030-q011",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 9,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p030-q012",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 10,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p030-q013",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 11,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p030-q014",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 12,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p030-q015",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第四节防火墙",
+      "number": 13,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p030-q016",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第五节入侵检测系统",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p030-q017",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第五节入侵检测系统",
+      "number": 2,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p030-q018",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第五节入侵检测系统",
+      "number": 3,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p030-q019",
+      "page": 30,
+      "section": "第十章 网络安全协议与技术措施/第五节入侵检测系统",
+      "number": 4,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p031-q001",
+      "page": 31,
+      "section": "第十章 网络安全协议与技术措施/第五节入侵检测系统",
+      "number": 5,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p031-q002",
+      "page": 31,
+      "section": "第十章 网络安全协议与技术措施/第五节入侵检测系统",
+      "number": 6,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p031-q003",
+      "page": 31,
+      "section": "第十章 网络安全协议与技术措施/第五节入侵检测系统",
+      "number": 7,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p031-q004",
+      "page": 31,
+      "section": "第十章 网络安全协议与技术措施/第五节入侵检测系统",
+      "number": 8,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p031-q005",
+      "page": 31,
+      "section": "第十章 网络安全协议与技术措施/第五节入侵检测系统",
+      "number": 9,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p032-q001",
+      "page": 32,
+      "section": "第十一章信息安全管理与法律法规/第一节网络风险分析与评估",
+      "number": 1,
+      "answers": 2
+    },
+    {
+      "id": "blanks-p032-q002",
+      "page": 32,
+      "section": "第十一章信息安全管理与法律法规/第一节网络风险分析与评估",
+      "number": 2,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p032-q003",
+      "page": 32,
+      "section": "第十一章信息安全管理与法律法规/第一节网络风险分析与评估",
+      "number": 3,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p032-q004",
+      "page": 32,
+      "section": "第十一章信息安全管理与法律法规/第一节网络风险分析与评估",
+      "number": 4,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p032-q005",
+      "page": 32,
+      "section": "第十一章信息安全管理与法律法规/第一节网络风险分析与评估",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p032-q006",
+      "page": 32,
+      "section": "第十一章信息安全管理与法律法规/第二节等级保护与测评",
+      "number": 1,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p032-q007",
+      "page": 32,
+      "section": "第十一章信息安全管理与法律法规/第二节等级保护与测评",
+      "number": 2,
+      "answers": 4
+    },
+    {
+      "id": "blanks-p032-q008",
+      "page": 32,
+      "section": "第十一章信息安全管理与法律法规/第四节信息安全法律法规概述",
+      "number": 1,
+      "answers": 5
+    },
+    {
+      "id": "blanks-p032-q009",
+      "page": 32,
+      "section": "第十一章信息安全管理与法律法规/第四节信息安全法律法规概述",
+      "number": 2,
+      "answers": 3
+    },
+    {
+      "id": "blanks-p032-q010",
+      "page": 32,
+      "section": "第十一章信息安全管理与法律法规/第四节信息安全法律法规概述",
+      "number": 3,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p032-q011",
+      "page": 32,
+      "section": "第十一章信息安全管理与法律法规/第四节信息安全法律法规概述",
+      "number": 4,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p032-q012",
+      "page": 32,
+      "section": "第十一章信息安全管理与法律法规/第四节信息安全法律法规概述",
+      "number": 5,
+      "answers": 1
+    },
+    {
+      "id": "blanks-p033-q001",
+      "page": 33,
+      "section": "第十一章信息安全管理与法律法规/第六节我国信息安全相关法律法规",
+      "number": 1,
+      "answers": 1
+    }
+  ],
+  "corrections": [
+    "2025 年 10 月第 19、21 题按原图补录，18、20 题与相邻题分开。",
+    "填空题两处黑字下划线答案按原图补录；原资料重复题号分别保留。",
+    "选择题页脚及分区标题 OCR 杂字清除。",
+    "计算题第 15、104 页答案更正及第 102 页图文冲突在解析中说明。"
+  ],
+  "sourceHandling": "填空题 PDF 使用用户提供的密码生成可阅读副本；原始加密 PDF 未修改，密码未写入项目。",
+  "reviewStatus": "OCR 与 AI 参考答案均待核对；未标记教师审定。"
+}

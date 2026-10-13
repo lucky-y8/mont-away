@@ -35,7 +35,7 @@ def valid(body):
     if type(body.get('revision')) is not int or not 0 <= body['revision'] <= 9007199254740991: return False
     for key, limit in [('stem', 12000), ('answer', 8000), ('explanation', 16000)]:
         if not isinstance(body.get(key), str) or len(body[key]) > limit: return False
-    if not body['stem'].strip() or body.get('type') not in ('single', 'multiple', 'short', 'calculation', 'truefalse'): return False
+    if not body['stem'].strip() or body.get('type') not in ('single', 'multiple', 'short', 'calculation', 'truefalse', 'fill'): return False
     options = body.get('options')
     if not isinstance(options, list) or len(options) > 12 or any(not isinstance(v, str) or len(v) > 2000 for v in options): return False
     if body['type'] in ('single', 'multiple') and len([v for v in options if v.strip()]) < 2: return False

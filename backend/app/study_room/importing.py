@@ -5,12 +5,14 @@ import csv
 import io
 import json
 import warnings
+from ..config import PROJECT_ROOT
 from PIL import Image, ImageOps, UnidentifiedImageError
 
 MAX_FILE = 5 * 1024 * 1024
 MAX_RECORDS = 200
-TYPE_NAMES = {'单选题':'single','多选题':'multiple','简答题':'short','计算题':'calculation','判断题':'truefalse'}
+TYPE_NAMES = {'单选题':'single','多选题':'multiple','简答题':'short','计算题':'calculation','判断题':'truefalse','填空题':'fill'}
 TYPES = set(TYPE_NAMES.values())
+CHAPTER_IDS = {12, *(m['chapter'] for m in json.loads((PROJECT_ROOT / 'study-room/data/materials.json').read_text(encoding='utf-8')))}
 FIELDS = {'题干':'stem','题型':'type','选项':'options','答案':'answer','解析':'explanation','章节':'chapter','署名':'editor'}
 
 
@@ -25,7 +27,7 @@ def normalize(record):
     kind = row.get('type', 'short')
     if not isinstance(kind, str): raise ValueError('题型格式错误')
     row['type'] = TYPE_NAMES.get(kind.strip(), kind.strip())
-    if row['type'] not in TYPES: raise ValueError('题型需为单选题、多选题、简答题、计算题或判断题')
+    if row['type'] not in TYPES: raise ValueError('题型需为单选题、多选题、简答题、计算题、判断题或填空题')
     options = row.get('options', [])
     if isinstance(options, str): options = options.split('|') if '|' in options else options.splitlines()
     if not isinstance(options, list) or len(options) > 12 or any(not isinstance(v,str) or len(v)>2000 for v in options): raise ValueError('选项最多 12 个，每项不超过 2000 字')
@@ -34,7 +36,7 @@ def normalize(record):
     chapter = row.get('chapter', 12)
     if chapter in ('', None, '自建题目'): chapter = 12
     if isinstance(chapter,str) and chapter.strip().isdigit(): chapter=int(chapter.strip())
-    if type(chapter) is not int or not 0 <= chapter <= 12: raise ValueError('章节需为 0–11，或填写“自建题目”')
+    if type(chapter) is not int or chapter not in CHAPTER_IDS: raise ValueError('请选择已有章节或资料，或填写“自建题目”')
     row['chapter'] = chapter
     row['editor'] = row['editor'] or '匿名同学'
     row['reviewed'] = row.get('reviewed') is True

@@ -1,0 +1,189 @@
+[
+  {
+    "id": "chapter-00",
+    "chapter": 0,
+    "title": "导学课",
+    "sourceFile": "13017计算机网络与信息安全-00导学课.pdf",
+    "sourceUrl": "/sources/ch00.pdf",
+    "pageCount": 9,
+    "questionCount": 3,
+    "kind": "course",
+    "courseCode": "13017"
+  },
+  {
+    "id": "chapter-01",
+    "chapter": 1,
+    "title": "计算机网络与信息安全概述",
+    "sourceFile": "13017计算机网络与信息安全-01第一章.pdf",
+    "sourceUrl": "/sources/ch01.pdf",
+    "pageCount": 59,
+    "questionCount": 76,
+    "kind": "course",
+    "courseCode": "13017"
+  },
+  {
+    "id": "chapter-02",
+    "chapter": 2,
+    "title": "网络应用与应用层协议",
+    "sourceFile": "13017计算机网络与信息安全-02第二章.pdf",
+    "sourceUrl": "/sources/ch02.pdf",
+    "pageCount": 44,
+    "questionCount": 60,
+    "kind": "course",
+    "courseCode": "13017"
+  },
+  {
+    "id": "chapter-03",
+    "chapter": 3,
+    "title": "传输层服务与协议",
+    "sourceFile": "13017计算机网络与信息安全-03第三章.pdf",
+    "sourceUrl": "/sources/ch03.pdf",
+    "pageCount": 38,
+    "questionCount": 34,
+    "kind": "course",
+    "courseCode": "13017"
+  },
+  {
+    "id": "chapter-04",
+    "chapter": 4,
+    "title": "网络层服务与协议",
+    "sourceFile": "13017计算机网络与信息安全-04第四章.pdf",
+    "sourceUrl": "/sources/ch04.pdf",
+    "pageCount": 44,
+    "questionCount": 67,
+    "kind": "course",
+    "courseCode": "13017"
+  },
+  {
+    "id": "chapter-05",
+    "chapter": 5,
+    "title": "数据链路层服务与局域网",
+    "sourceFile": "13017计算机网络与信息安全-05第五章.pdf",
+    "sourceUrl": "/sources/ch05.pdf",
+    "pageCount": 43,
+    "questionCount": 47,
+    "kind": "course",
+    "courseCode": "13017"
+  },
+  {
+    "id": "chapter-06",
+    "chapter": 6,
+    "title": "物理层",
+    "sourceFile": "13017计算机网络与信息安全-06第六章.pdf",
+    "sourceUrl": "/sources/ch06.pdf",
+    "pageCount": 35,
+    "questionCount": 22,
+    "kind": "course",
+    "courseCode": "13017"
+  },
+  {
+    "id": "chapter-07",
+    "chapter": 7,
+    "title": "无线网络与移动网络",
+    "sourceFile": "13017计算机网络与信息安全-07第七章.pdf",
+    "sourceUrl": "/sources/ch07.pdf",
+    "pageCount": 10,
+    "questionCount": 10,
+    "kind": "course",
+    "courseCode": "13017"
+  },
+  {
+    "id": "chapter-08",
+    "chapter": 8,
+    "title": "密码学基础",
+    "sourceFile": "13017计算机网络与信息安全-08第八章.pdf",
+    "sourceUrl": "/sources/ch08.pdf",
+    "pageCount": 14,
+    "questionCount": 16,
+    "kind": "course",
+    "courseCode": "13017"
+  },
+  {
+    "id": "chapter-09",
+    "chapter": 9,
+    "title": "信息安全防护基本原理",
+    "sourceFile": "13017计算机网络与信息安全-09第九章.pdf",
+    "sourceUrl": "/sources/ch09.pdf",
+    "pageCount": 15,
+    "questionCount": 5,
+    "kind": "course",
+    "courseCode": "13017"
+  },
+  {
+    "id": "chapter-10",
+    "chapter": 10,
+    "title": "网络安全协议与技术措施",
+    "sourceFile": "13017计算机网络与信息安全-10第十章.pdf",
+    "sourceUrl": "/sources/ch10.pdf",
+    "pageCount": 15,
+    "questionCount": 15,
+    "kind": "course",
+    "courseCode": "13017"
+  },
+  {
+    "id": "chapter-11",
+    "chapter": 11,
+    "title": "信息安全管理与法律法规",
+    "sourceFile": "13017计算机网络与信息安全-11第十一章.pdf",
+    "sourceUrl": "/sources/ch11.pdf",
+    "pageCount": 9,
+    "questionCount": 6,
+    "kind": "course",
+    "courseCode": "13017"
+  },
+  {
+    "id": "exam-2024-10",
+    "chapter": 13,
+    "title": "2024年10月真题",
+    "sourceFile": "13017计算机网络与信息安全_2024年10月真题.pdf",
+    "sourceUrl": "/sources/exam-2024-10.pdf",
+    "pageCount": 3,
+    "questionCount": 31,
+    "kind": "exam",
+    "courseCode": "13017"
+  },
+  {
+    "id": "exam-2025-04",
+    "chapter": 14,
+    "title": "2025年04月真题",
+    "sourceFile": "13017计算机网络与信息安全_2025年04月真题.pdf",
+    "sourceUrl": "/sources/exam-2025-04.pdf",
+    "pageCount": 1,
+    "questionCount": 31,
+    "kind": "exam",
+    "courseCode": "13017"
+  },
+  {
+    "id": "exam-2025-10",
+    "chapter": 15,
+    "title": "2025年10月真题",
+    "sourceFile": "13017计算机网络与信息安全_2025年10月真题.pdf",
+    "sourceUrl": "/sources/exam-2025-10.pdf",
+    "pageCount": 2,
+    "questionCount": 31,
+    "kind": "exam",
+    "courseCode": "13017"
+  },
+  {
+    "id": "blanks",
+    "chapter": 16,
+    "title": "填空题总结",
+    "sourceFile": "13017计算机网络与信息安全_01填空题总结(高清版)_加密2026.pdf",
+    "sourceUrl": "/sources/blanks.pdf",
+    "pageCount": 33,
+    "questionCount": 509,
+    "kind": "summary",
+    "courseCode": "13017"
+  },
+  {
+    "id": "calculation",
+    "chapter": 17,
+    "title": "计算题总结 · 04741",
+    "sourceFile": "04741计算机网络原理_计算题总结.pdf",
+    "sourceUrl": "/sources/calculation.pdf",
+    "pageCount": 122,
+    "questionCount": 37,
+    "kind": "summary",
+    "courseCode": "04741"
+  }
+]

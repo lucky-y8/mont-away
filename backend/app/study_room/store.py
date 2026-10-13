@@ -15,7 +15,8 @@ _initialization_lock = Lock()
 def originals():
     rows = json.loads((PROJECT_ROOT / 'study-room/data/questions.json').read_text(encoding='utf-8-sig'))
     return {q['id']: {**q, 'sourceUrl': '/study-assets' + q['sourceUrl'],
-                     'figures': ['/study-assets' + p for p in q['figures']], 'revision': 0} for q in rows}
+                     'figures': ['/study-assets' + p for p in q['figures']],
+                     'answerFigures': ['/study-assets' + p for p in q.get('answerFigures', [])], 'revision': 0} for q in rows}
 
 @contextmanager
 def database():

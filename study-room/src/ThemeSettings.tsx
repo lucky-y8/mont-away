@@ -59,6 +59,8 @@ export function themeStyle({ color, mode }: Theme): CSSProperties {
     "--mint": soft, "--study-on-bg": dark ? "#e9eef3" : mix(color, "#19232d", .88),
     "--study-muted-bg": muted, "--warning-bg": dark ? "#352c1f" : "#fbf4e7",
     "--warning-ink": dark ? "#ecd09b" : "#89602e", "--warning-line": dark ? "#625034" : "#ecdec0",
+    "--success-bg": dark ? "#18382d" : "#edf8f1", "--success-ink": dark ? "#8fdfb4" : "#216341",
+    "--success-line": dark ? "#3c7156" : "#bedfc9", "--error-line": dark ? "#78504b" : "#e9c4bc",
     "--error-bg": dark ? "#3b2727" : "#fbefec", "--error-ink": dark ? "#f0b4ad" : "#994d43",
   } as CSSProperties;
 }

@@ -19,6 +19,15 @@ def main():
     for name in required:
         if not (ROOT / name).is_file():
             raise SystemExit(f'Missing {name}; build the project first.')
+    bank = json.loads((ROOT / 'study-room/data/questions.json').read_text(encoding='utf-8'))
+    materials = json.loads((ROOT / 'study-room/data/materials.json').read_text(encoding='utf-8'))
+    required.add('study-room/data/materials.json')
+    for q in bank:
+        for url in [q['sourceUrl'], *q['figures'], *q.get('answerFigures', [])]:
+            required.add('dist/study-assets' + url)
+    for name in required:
+        if not (ROOT / name).is_file():
+            raise SystemExit(f'Missing {name}; build the project first.')
     files = [ROOT / name for name in ROOT_FILES]
     for directory in DIRECTORIES:
         for current, dirs, names in os.walk(ROOT / directory, followlinks=False):
@@ -33,11 +42,11 @@ def main():
     output = ROOT / 'output' / 'releases'
     output.mkdir(parents=True, exist_ok=True)
     archive = output / f'shanyao-study-{stamp}.zip'
-    notes = '''SHANYAO + STUDY DEPLOYMENT PACKAGE
+    notes = f'''SHANYAO + STUDY DEPLOYMENT PACKAGE
 
 Routes: / = question practice; /shanyao/ = existing travel website.
-Includes source, production dist, 12 PDFs, question images, CSV/JSON templates, FastAPI backend and deployment instructions.
-Study features: personal theme colors with light/dark appearance, expanded original images, anonymous question/image uploads and batch import.
+Includes source, production dist, {len(materials)} PDFs, {len(bank)} questions and original/solution images, CSV/JSON templates, FastAPI backend and deployment instructions.
+Study features: practice mode with visible answers, answer mode with instant click/typing feedback and retry, local wrong-answer notebook, per-blank checks and self assessment, saved mode preference, personal themes, expanded original images, anonymous question/image uploads and batch import.
 Read docs/STUDY_INTEGRATION.md and deploy/nginx-shared.conf first.
 
 The current dist uses same-origin APIs. The public SEO domain remains sy.chexi.tech.
@@ -71,13 +80,15 @@ This package has not been uploaded or deployed to your server.
             if any(part in SKIP_DIRS for part in Path(name).parts) or Path(name).name.startswith('.env') or Path(name).suffix.lower() in SKIP_SUFFIXES:
                 raise SystemExit(f'Excluded file found in archive: {name}')
         bank = json.loads(bundle.read(PREFIX + 'study-room/data/questions.json'))
-        assert len(bank) == 361
-        assert sum(name.startswith(PREFIX + 'dist/study-assets/sources/') and name.endswith('.pdf') for name in entries) == 12
+        assert len(bank) == len({q['id'] for q in bank}) == sum(m['questionCount'] for m in materials)
+        for name in required:
+            assert bundle.read(PREFIX + name) == (ROOT / name).read_bytes(), name
+        assert sum(name.startswith(PREFIX + 'dist/study-assets/sources/') and name.endswith('.pdf') for name in entries) == len(materials)
     digest = sha256(archive.read_bytes()).hexdigest()
     checksum = archive.with_suffix('.zip.sha256')
     checksum.write_text(f'{digest}  {archive.name}\n', encoding='ascii')
     output.joinpath('DEPLOY_PACKAGE.txt').write_text(notes, encoding='utf-8')
-    print(json.dumps({'archive': str(archive), 'size_mib': round(archive.stat().st_size / 1024 / 1024, 2), 'file_count': len(entries), 'questions': len(bank), 'pdfs': 12, 'crc_verified': True, 'checksum': str(checksum)}, ensure_ascii=False))
+    print(json.dumps({'archive': str(archive), 'size_mib': round(archive.stat().st_size / 1024 / 1024, 2), 'file_count': len(entries), 'questions': len(bank), 'pdfs': len(materials), 'crc_verified': True, 'checksum': str(checksum)}, ensure_ascii=False))
 
 if __name__ == '__main__':
     main()

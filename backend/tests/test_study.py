@@ -19,11 +19,11 @@ def draft(q, **updates):
 
 def test_assets_question_bank_and_both_entrypoints(study):
     rows = study.get('/api/study/questions').json()['questions']
-    assert len(rows) == len({q['id'] for q in rows}) == 361
-    assert len({q['chapter'] for q in rows}) == 12
+    assert len(rows) == len({q['id'] for q in rows}) == 1000
+    assert len({q['chapter'] for q in rows}) == 17
     for q in rows:
         assert q['answer'] and q['explanation']
-        for url in [q['sourceUrl'], *q['figures']]:
+        for url in [q['sourceUrl'], *q['figures'], *q.get('answerFigures', [])]:
             assert (PROJECT_ROOT / 'study-room/public' / url.lstrip('/').split('#')[0]).is_file()
     # Build is required for production entry verification. / 页面检查以生产构建产物为准。
     study_page = study.get('/')
@@ -94,3 +94,37 @@ def test_email_links_keep_travel_prefix(monkeypatch):
         asyncio.run(email.send_verification_email('test@example.com', 'dummy', 'zh-CN'))
         asyncio.run(email.send_password_reset_email('test@example.com', 'dummy', 'zh-CN'))
     assert sent == ['https://example.com/shanyao/auth/verify?token=dummy', 'https://example.com/shanyao/auth/reset-password?token=dummy'] * 2
+
+
+def test_new_material_coverage_and_preserved_originals(study):
+    from collections import Counter
+    from hashlib import sha256
+    rows = json.loads((PROJECT_ROOT / 'study-room/data/questions.json').read_text(encoding='utf-8'))
+    old = [q for q in rows if q['chapter'] < 12]
+    audit = json.loads((PROJECT_ROOT / 'study-room/data/additions-20261013-report.json').read_text(encoding='utf-8'))
+    assert sha256(json.dumps(old, ensure_ascii=False, sort_keys=True).encode()).hexdigest() == audit['original361CanonicalSha256']
+    new = [q for q in rows if q['chapter'] > 12]
+    assert Counter(q['materialId'] for q in new) == {'exam-2024-10':31,'exam-2025-04':31,'exam-2025-10':31,'blanks':509,'calculation':37}
+    for slug in ['exam-2024-10','exam-2025-04','exam-2025-10']:
+        assert {q['id'] for q in new if q['materialId'] == slug} == {f'{slug}-q{n:03}' for n in range(1,32)}
+        assert all(q['answerSource'] == 'ai' and q['needsReview'] for q in new if q['materialId'] == slug)
+    assert all(q.get('answerFigures') for q in new if q['materialId'] == 'calculation')
+    q = study.get('/api/study/questions/calculation-p011').json()['history'][0]['question']
+    response = study.get(q['answerFigures'][0])
+    assert response.status_code == 200 and response.headers['content-type'] == 'image/webp'
+    saved = study.put('/api/study/questions/' + q['id'], json=draft(q, answerFigures=[], figures=[], materialId='bad')).json()['question']
+    assert saved['answerFigures'] == q['answerFigures'] and saved['materialId'] == 'calculation'
+    assert study.get('/study-assets/sources/blanks.pdf').headers['content-type'] == 'application/pdf'
+
+
+def test_new_fill_question_edit_and_import(study):
+    q = study.get('/api/study/questions/blanks-p002-q001').json()['history'][0]['question']
+    assert q['type'] == 'fill' and q['figuresContainAnswer']
+    saved = study.put('/api/study/questions/' + q['id'], json=draft(q, answer='核对后的答案')).json()['question']
+    assert saved['type'] == 'fill' and saved['answer'] == '核对后的答案' and saved['figuresContainAnswer']
+    record = {'题干':'填空：网络是________的集合。','题型':'填空题','答案':'结点','章节':17}
+    preview = study.post('/api/study/import/preview?filename=q.json', content=json.dumps([record]).encode()).json()
+    assert preview['errors'] == [] and preview['questions'][0]['type'] == 'fill'
+    response = study.post('/api/study/questions', json={'requestId':'new-fill-material-17','questions':preview['questions']})
+    assert response.status_code == 201
+    assert response.json()['questions'][0]['chapterTitle'] == '计算题总结 · 04741'

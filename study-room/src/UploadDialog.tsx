@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Check, Download, FileUp, ImagePlus, Upload, X } from "lucide-react";
 import Modal from "./Modal";
+import materials from "../data/materials.json";
 import Select from "./Select";
 import { Question, QuestionType, typeNames } from "./types";
 
@@ -16,7 +17,7 @@ function readDraft(): Draft {
     if (!value || typeof value !== "object") return blank;
     return { ...blank, ...Object.fromEntries(Object.entries(blank).filter(([key, sample]) => typeof value[key] === typeof sample).map(([key]) => [key, value[key]])),
       type: Object.hasOwn(typeNames, value.type) ? value.type : "short",
-      chapter: Number.isInteger(value.chapter) && value.chapter >= 0 && value.chapter <= 12 ? value.chapter : 12 };
+      chapter: Number.isInteger(value.chapter) && (value.chapter === 12 || materials.some(m => m.chapter === value.chapter)) ? value.chapter : 12 };
   } catch { return blank; }
 }
 function readImage(file: File): Promise<string> {
@@ -123,7 +124,7 @@ export default function UploadDialog({ chapters, onClose, onCreated }: {
       {error && <div className="form-error" role="alert">{error}</div>}
       <div className="form-footer"><span>文字草稿自动保留；关闭窗口后需重新选择图片</span><button type="button" className="secondary-button" disabled={locked} onClick={close}>稍后继续</button><button type="submit" className="primary-button" disabled={locked}><Upload size={16} />{busy ? "正在保存…" : reading ? "正在读取…" : "保存并公开"}</button></div>
     </form> : <div id="batch-panel" role="tabpanel" aria-labelledby="batch-tab" className="editor-form batch-form">
-      <div className="template-guide"><div><strong>先下载模板，再导入题目</strong><p>支持 CSV 与 JSON，一次 1–200 道、文件不超过 2 MB。CSV 请保存为 UTF-8；多条选项用 | 分隔。章节可填 0–11，或“自建题目”。图片题请使用手动录入。</p></div><div className="template-links"><a href="/study-assets/templates/questions.csv" download><Download size={15} />CSV 模板</a><a href="/study-assets/templates/questions.json" download><Download size={15} />JSON 模板</a></div></div>
+      <div className="template-guide"><div><strong>先下载模板，再导入题目</strong><p>支持 CSV 与 JSON，一次 1–200 道、文件不超过 2 MB。CSV 请保存为 UTF-8；多条选项用 | 分隔。章节可填 0–11；新资料编号为 13–17，也可填“自建题目”。图片题请使用手动录入。</p></div><div className="template-links"><a href="/study-assets/templates/questions.csv" download><Download size={15} />CSV 模板</a><a href="/study-assets/templates/questions.json" download><Download size={15} />JSON 模板</a></div></div>
       <label className="file-picker"><FileUp size={25} /><strong>{reading ? "正在校验文件…" : "选择要导入的文件"}</strong><span>{filename || "上传后先预览，确认后才会公开保存"}</span><input type="file" aria-label="选择批量导入文件" accept=".csv,.json" disabled={locked} onChange={event => { void readBatch(event.target.files?.[0]); event.target.value = ""; }} /></label>
       {preview && (preview.errors.length > 0 ? <div className="form-error" role="alert"><strong>发现 {preview.errors.length} 处问题，本次尚未导入</strong><ul>{preview.errors.map((message, index) => <li key={index}>{message}</li>)}</ul><p>请修正文件后重新选择，全部通过后才能保存。</p></div> : <div className="import-preview"><div className="import-summary"><Check size={17} /><strong>校验通过 · 共 {preview.total} 道题</strong><span>等待确认</span></div><div className="import-rows">{preview.questions.map((question, index) => <details key={index}><summary><span>{index + 1}</span><strong>{question.stem}</strong><small>{typeNames[question.type]}</small></summary><div>{question.options.length > 0 && <p>{question.options.join("\n")}</p>}<p><b>答案：</b>{question.answer || "待补充"}</p><p><b>解析：</b>{question.explanation || "待补充"}</p></div></details>)}</div></div>)}
       {error && <div className="form-error" role="alert">{error}</div>}
