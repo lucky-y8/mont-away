@@ -1,0 +1,20 @@
+.mnemonic-methods{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 15px}
+.mnemonic-methods button{padding:5px 11px;min-height:32px;border-radius:6px;background:transparent;border:1px solid transparent;font-size:12px;color:var(--muted)}
+.mnemonic-methods button:hover{background:var(--accent-hover)}
+.mnemonic-methods button[aria-pressed="true"]{color:var(--accent-ink);background:var(--accent-soft);border-color:var(--accent-border);font-weight:600}
+.mnemonic-content{overflow-wrap:anywhere}
+.mnemonic-cue{font-size:16px;font-weight:650;line-height:1.8;color:var(--text);white-space:pre-wrap;margin-bottom:9px}
+.mnemonic-note{display:flex;align-items:baseline;gap:8px;margin-top:13px;font-size:12px;line-height:1.8;color:var(--muted)}
+.mnemonic-note strong{font-size:11px;font-weight:500;flex-shrink:0;color:var(--accent-ink)}
+.mnemonic-warning{display:flex;gap:7px;font-size:12px;line-height:1.8;color:var(--warning-ink);background:var(--warning-bg);border-radius:6px;padding:8px 10px;margin-bottom:12px}
+.mnemonic-warning svg{margin-top:4px}
+.mnemonic-footer{margin-top:16px;padding-top:11px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
+.mnemonic-reference summary{cursor:pointer;display:flex;align-items:center;gap:6px;list-style:none;width:fit-content;max-width:100%;color:var(--accent-ink);border-radius:3px}
+.mnemonic-reference summary::-webkit-details-marker{display:none}
+.mnemonic-reference summary::after{content:'＋';font-size:12px;margin-left:3px}
+.mnemonic-reference[open] summary::after{content:'−'}
+.mnemonic-reference summary:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}
+.mnemonic-reference p{line-height:1.9;padding:8px 0 2px;overflow-wrap:anywhere}
+.mnemonic-source-line{display:flex;justify-content:space-between;gap:7px 15px;flex-wrap:wrap;font-size:10px;line-height:1.8;margin-top:5px}
+.mnemonic-source-line a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:450px){.mnemonic-cue{font-size:15px}.mnemonic-methods button{padding:6px 10px;min-height:36px}.mnemonic-note{display:block}.mnemonic-note strong{margin-right:7px}}

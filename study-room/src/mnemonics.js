@@ -1,69 +1,98 @@
 import { expectedChoices, responseOptions } from './grading.js';
+import { mnemonicRules } from './mnemonic-cues.js';
 
-// Short study cues, not an additional answer key. / 助记只辅助回忆，不参与判分。
-const cues = [
-  [/网络协议.*(?:要素|语法|语义|时序)|(?:语法|语义|时序).*网络协议/u, '记“法—义—序”：语法管格式，语义管含义与控制，时序管先后与速度。'],
-  [/互连.*自治|自治.*互连/u, '记“连得上，各自主”：互连表示能交换信息，自治表示每台计算机仍能独立工作。'],
-  [/星形.*拓扑|拓扑.*(?:中央|中心)结点/u, '把星形网络想成车轮：中心是轮轴，其他结点是辐条。记住“围绕中心”，再推导端口限制和中心故障的影响。'],
-  [/SMTP|POP3|IMAP/i, '记“SMTP 送，POP3 取，IMAP 管”：先区分发信和收信，再区分下载邮件与在服务器上管理邮件。'],
-  [/DNS|域名系统/i, '把 DNS 想成通讯录：看到名字，查出地址。记“域名 → IP 地址”，再区分查询过程中的服务器角色。'],
-  [/DHCP|动态主机配置/i, '把 DHCP 想成网络前台：设备刚到，先领取 IP 地址等配置。记“自动分配”，并留意租约。'],
-  [/ARP|地址解析协议/i, '记“已知 IP，找 MAC”：ARP 在本地链路上寻找对应的硬件地址。不要把它与 DNS 的“域名找 IP”混在一起。'],
-  [/TCP.*UDP|UDP.*TCP/i, '记“TCP 先连再传，UDP 直接发”：先抓住连接方式，再比较可靠性、首部开销与适用场景。'],
-  [/三次握手/u, '用对话记三次握手：“能听到吗？”→“能，你能听到吗？”→“能。”对应 SYN → SYN+ACK → ACK。'],
-  [/流量控制.*拥塞控制|拥塞控制.*流量控制/u, '记“流量看接收端，拥塞看整张网”：一个怕对方收不下，一个怕网络堵住。'],
-  [/CSMA\s*\/\s*CD/i, '记“先听再发，边发边听；冲突停发，退避重来”。CD 是冲突检测，抓住“发的时候仍在检测”。'],
-  [/CSMA\s*\/\s*CA/i, '记“CA 先避让”：无线网络尽量在发送前避免冲突。与 CD 的“边发边检测”对照记。'],
-  [/VLAN|虚拟局域网/i, '把 VLAN 想成在同一栋楼里划不同房间：物理设备可以共用，广播范围按逻辑分开。'],
-  [/Dijkstra|链路状态.*路由/i, '记“链路状态看地图，Dijkstra 找最短路”：先有网络拓扑，再从当前结点计算路径。'],
-  [/距离向量.*路由|路由.*距离向量/u, '记“问邻居，有多远”：距离向量根据邻居通告的距离更新路由；与链路状态的“看全图”对照。'],
-  [/奈奎斯特|奈氏|Nyquist/i, '奈氏先看“无噪声、码元种类”：速率上限 2B·log₂M。B 是带宽，M 是码元状态数。'],
-  [/香农|Shannon/i, '香农先看“噪声、信噪比”：C = B·log₂(1+S/N)。若给的是 dB，先换成线性信噪比再代入。'],
-  [/发送时延|传输时延|传播时延/u, '记“发多久看数据，走多久看距离”：发送时延 = 数据量 ÷ 速率；传播时延 = 距离 ÷ 传播速度。先统一单位。'],
-  [/差分.*曼彻斯特|差分双相/u, '记“中间跳变管同步，起点跳变管数据”：差分曼彻斯特编码用码元开始处是否跳变表示数据，0、1 的对应约定以题目为准。'],
-  [/曼彻斯特/u, '记“中间必跳变”：曼彻斯特编码每个码元中间都有跳变，用于同步；0、1 的跳变方向按题目约定判断。'],
-  [/CMI.*编码|编码.*CMI/i, '记“零用 01，一用同电平交替”：0 → 01；连续出现的 1 在 11 与 00 之间轮换。画图时逐个数 1。'],
-  [/(?<!非)对称.*(?:加密|密钥)/u, '记“同一把钥匙，双方共享”：对称加密的加密与解密使用同一密钥，重点联想密钥如何安全分发。'],
-  [/非对称.*(?:加密|密钥)|公钥.*私钥/u, '记“公私成对，各有用途”：加密和签名要分别记方向，不能把“用哪把钥匙”混为一谈。'],
-  [/数字签名/u, '记“私钥签，公钥验”：签名用于核验来源和完整性；需要保密时，还要考虑加密。'],
-  [/完整性.*机密性|机密性.*完整性/u, '记“密—整—用”：机密性防偷看，完整性防篡改，可用性保证需要时能使用。'],
-  [/防火墙/u, '把防火墙想成门卫：按照规则决定流量是否放行。题目问能力边界时，留意“所有、完全、任何”等绝对用语。'],
-  [/数字水印.*(?:盲|提取)/u, '按提取时需要多少原始信息来记：盲、半盲、非盲。把“能否不看原始载体”作为区分线索。'],
-  [/OSI.*(?:七|层)|七层.*(?:模型|体系)/i, '自下而上记“物—链—网—传—会—表—应”：物理、数据链路、网络、传输、会话、表示、应用。'],
-];
+const choiceTypes = ['single', 'multiple', 'truefalse'];
+const isNegative = q => /不包括|不属于|不正确|错误的|不符合|不能|不具备|不采用|不是|不支持|不需要|不成立|不恰当|不合理/u.test(q.stem || '');
+const isImageAnswer = answer => /请对照.*(?:原图|图片)|(?:答案|过程).*以原图为准/u.test(answer);
+const clean = value => String(value || '').replace(/\s+/gu, ' ').trim();
+const compact = (text, limit) => text.length <= limit ? text : text.slice(0, limit) + '…';
 
 function answerWords(q) {
-  if (['single', 'multiple', 'truefalse'].includes(q.type)) {
-    const letters = expectedChoices(q);
-    if (letters) return letters.map(letter => responseOptions(q)[letter.charCodeAt(0) - 65].replace(/^[A-L][.．、:：)）]\s*/u, '')).join('；');
+  if (choiceTypes.includes(q.type)) {
+    const question = { ...q, options: q.options || [] };
+    const letters = expectedChoices(question);
+    if (letters) return letters.map(letter => responseOptions(question)[letter.charCodeAt(0) - 65].replace(/^[A-L][.．、:：)）]\s*/u, '')).join('；');
+    // An unresolved letter is not a fact to memorize. / 无法解析的选项字母不能作概念。
+    if (/^[A-L](?:[\s,，、;；/]*[A-L])*$/iu.test(clean(q.answer))) return '';
   }
   return String(q.answer || '').trim();
 }
 
-export function automaticMnemonic(q) {
-  const answer = answerWords(q);
-  if (!answer) return '先对照原题补充参考答案，再用“关键词＋自己的例子”整理一句助记。';
-  const matched = cues.find(([pattern]) => pattern.test(q.stem));
-  const negative = /不包括|不属于|不正确|错误的是|错误的说法|不符合|不能/u.test(q.stem)
-    ? '先圈出题干中的否定词：本题要找的是例外或错误项。\n' : '';
-  if (matched) return negative + matched[1];
-  if (q.type === 'fill') {
-    const parts = answer.split(/[；;]/u).map(s => s.trim()).filter(Boolean);
-    if (parts.length > 1 && parts.length <= 12 && parts.every(s => s.length <= 45)) {
-      return `按参考答案顺序串联：${parts.join(' → ')}。\n先记这条关键词链，再遮住答案，按题干顺序补全各空。`;
-    }
-    if (answer.length <= 90) return `抓住关键词“${answer}”。\n把它代回原句读一遍，再遮住答案，看到题干时回想这个词。易混术语再写一个不同点。`;
+const exactAnswers = {
+  '语法': 'protocol', '语义': 'protocol', '时序': 'protocol',
+  '发送时延': 'delay', '传播时延': 'delay', '排队时延': 'delay',
+  'dns': 'dns', '域名系统': 'dns', 'dhcp': 'dhcp', 'nat': 'nat', 'icmp': 'icmp', 'arp': 'arp',
+  'smtp': 'email', 'pop3': 'email', 'imap': 'email', 'ftp': 'ftp', 'http': 'http', 'https': 'tls',
+  'rip': 'routes', 'ospf': 'routes', 'bgp': 'routes', 'vlan': 'vlan', 'ppp': 'ppp',
+  'csma/cd': 'csma-cd', 'csma/ca': 'csma-ca', '三次握手': 'tcp-handshake', '四次挥手': 'tcp-close',
+  'crc': 'crc', '循环冗余校验': 'crc', '汉明距离': 'hamming', 'cmi': 'cmi', 'ami': 'ami',
+  'pcm': 'pcm', '规程': 'physical-interface', '规程特性': 'physical-interface',
+  'des': 'des', 'aes': 'aes', 'rsa': 'rsa', 'md5': 'hash', 'sha-1': 'hash', 'sha1': 'hash',
+  '数字签名': 'signature', '数字证书': 'pki', 'pki': 'pki', 'pgp': 'pgp',
+  '基于角色的访问控制': 'access', 'rbac': 'access', '物理隔离': 'physical-security',
+};
+
+function matchRule(q, answer) {
+  const stem = String(q.stem || '');
+  const matches = mnemonicRules.filter(rule => rule.pattern.test(stem));
+  const exact = exactAnswers[clean(answer).normalize('NFKC').toLowerCase()];
+  // An exact answer can disambiguate a positive definition, but never a distractor.
+  // 正向定义题可用答案消歧；反选题不能按“错误项”匹配概念。
+  if (exact && !isNegative(q) && q.type !== 'truefalse' && !isImageAnswer(answer)) {
+    const matched = mnemonicRules.find(rule => rule.id === exact);
+    if (!matches.length || matches.some(rule => rule.id === exact)) return matched;
   }
-  if (q.type === 'calculation') return '按“已知量 → 求什么 → 公式 → 统一单位 → 代入 → 检查结果”这条线回忆。\n把最容易漏掉的条件或单位换算写成一句提醒，再独立重算一次。';
-  if (['single', 'multiple', 'truefalse'].includes(q.type) && answer.length <= 220) {
-    return `${negative}本题的记忆锚点：${answer}。\n结合解析说明它与题干的关系，再和易混项作对比；复习时记概念，避免只记选项字母。`;
-  }
-  const points = answer.split(/[\n；;。]/u).map(s => s.trim()).filter(s => s && s.length <= 55).slice(0, 4);
-  return points.length >= 2
-    ? `分组回忆：${points.join(' → ')}。\n先用这几个短语搭起答题顺序，再补充参考答案中的条件与细节。`
-    : '先把参考答案拆成“概念是什么、关键条件、与易混概念的区别”三部分。\n每部分提取一个关键词，用自己的例子串起来，再遮住答案复述。';
+  // A question asking for a hash algorithm may mention signatures as its use case.
+  if (/散列|哈希|摘要|MD5|SHA[-－]?1/i.test(stem) && /算法|函数|长度|不可逆|单向/u.test(stem)) return mnemonicRules.find(rule => rule.id === 'hash');
+  return matches[0];
 }
 
+function answerCard(q, answer, negative) {
+  if (!answer) return { kind: '提示', cue: '先补齐答案，再建立记忆。', meaning: '先对照原题补充参考答案，再用“关键词＋自己的例子”整理一句助记。', note: '' };
+  if (isImageAnswer(answer)) return { kind: '步骤', cue: '看原图：条件 → 公式 → 代入 → 结论。', meaning: '这道题的解答在资料原图里。先从图中找已知量和求解目标，统一单位后逐步复算，再遮住解答还原关键步骤。', note: '公式、图形和上下标以答案原图为准。' };
+  if (choiceTypes.includes(q.type)) return {
+    kind: '关键词', cue: compact(answer, 150),
+    meaning: negative ? '这是参考答案选中的例外或错误项。把它放回题干，说明它为什么不符合要求，再对照解析改正；不要把选中内容直接背成正确事实。' : q.type === 'truefalse' ? '先记住这道判断题的结论，再对照解析找出决定对错的条件；若判错，应把原句改正确后再记。' : '遮住选项字母，用这个概念回答题干。再挑一个最易混淆的选项，说明两者区别。', note: '' };
+  const fill = q.type === 'fill' || /_{3,}/u.test(q.stem || '');
+  if (fill) {
+    const parts = answer.split(/[；;]/u).map(clean).filter(Boolean);
+    if (parts.length >= 2 && parts.length <= 12 && parts.every(s => s.length <= 45)) return {
+      kind: '串联', cue: compact(parts.join(' → '), 220),
+      meaning: `按参考答案顺序串联${parts.length}个关键词。把每个词放回对应空格，再遮住答案按顺序复述。`, note: '箭头只表示填空顺序，不额外表示因果关系。' };
+    if (answer.length <= 90) return { kind: '关键词', cue: clean(answer), meaning: '把这个词放回题干：先读题干描述，再说出术语。下一遍反过来，看到术语就解释题干中的关键特征。', note: '' };
+  }
+  if (q.type === 'calculation') return { kind: '步骤', cue: '已知 → 所求 → 公式 → 单位 → 代入 → 验算。', meaning: '先把题目中的量填到对应公式里，每一步保留单位，最后检查结果的大小和含义。', note: '具体数值与推导请对照当前参考答案。' };
+  const points = answer.split(/[\n；;。]/u).map(s => clean(s).replace(/^(?:[（(]?\d+[）).、．]|[①②③④⑤⑥⑦⑧⑨⑩])\s*/u, '')).filter(Boolean);
+  const headings = points.map(s => {
+    const head = s.split(/[：:]/u)[0];
+    return head.length <= 24 ? head : s.length <= 36 ? s : '';
+  }).filter(Boolean);
+  if (headings.length >= 2) return { kind: '串联', cue: compact([...new Set(headings)].slice(0, 5).join(' → '), 200), meaning: '把这些答题要点想成沿路的几个站点：依次回忆，每站再补一句含义或条件。', note: '这是部分要点索引，完整内容仍以当前答案为准。' };
+  return { kind: '关键词', cue: compact(clean(answer), 120), meaning: '先记住这段话里的主体和动作，再把条件补回去。尝试用“它是什么 → 起什么作用 → 在什么条件下”复述。', note: answer.length > 120 ? '上面只摘出答案开头，展开参考答案查看全文。' : '' };
+}
+
+export function mnemonicDetails(q) {
+  const custom = typeof q.mnemonic === 'string' ? q.mnemonic.trim() : '';
+  if (custom) return { custom: true, cards: [{ kind: '自定义', cue: '', meaning: custom, note: '' }], warning: '', reference: null };
+  const answer = answerWords(q);
+  const negative = isNegative(q);
+  const warning = negative ? '先圈出否定词：本题找例外或错误项，选中的内容不一定是正确知识。' : q.type === 'truefalse' && /错误|错|false|×|✗/iu.test(answer) ? '这道题的判断为错，记忆前先对照解析改正原句。' : '';
+  const rule = answer ? matchRule(q, answer) : null;
+  const fallback = answerCard(q, answer, negative);
+  const cards = rule ? [...rule.cards.map(card => ({ ...card })), { ...fallback, kind: `本题${fallback.kind}` }] : [fallback];
+  return {
+    custom: false, ruleId: rule?.id || null, cards, warning,
+    reference: rule ? { title: rule.title, book: '计算机网络与信息安全（2024 年版，李全龙）', pages: [...rule.pages], pdfPages: rule.pages.map(page => page + 7) } : null,
+  };
+}
+
+// Compact text remains compatible with editor placeholders, history and exports.
+// 编辑框提示、历史版本等保留纯文本接口；实时取当前答案，不写回原始题库。
+export function automaticMnemonic(q) {
+  const details = mnemonicDetails({ ...q, mnemonic: '' });
+  const card = details.cards[0];
+  return [details.warning, card.cue, card.meaning, card.note].filter(Boolean).join('\n');
+}
 export function mnemonicText(q) {
   return q.mnemonic?.trim() || automaticMnemonic(q);
 }
