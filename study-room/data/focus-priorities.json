@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-13",
+  "updatedAt": "2026-10-14",
   "target": "2026 年 10 月",
   "book": {
     "title": "计算机网络与信息安全",
@@ -17,11 +17,12 @@
   "examTerms": [
     "2024-10",
     "2025-04",
-    "2025-10"
+    "2025-10",
+    "2026-04"
   ],
-  "examQuestionCount": 93,
+  "examQuestionCount": 124,
   "limitations": [
-    "仅采用已收录的三套完整真题；未纳入完整的 2026 年 4 月试卷。",
+    "仅采用已收录的 4 套完整真题，最新考期为 2026-04。",
     "汇总资料中的“某年真题”标注、教材例题及 04741 专项题均不增加真题复现次数。",
     "星级是考点层面的复习优先级，不是本题原题重考概率；少量样本不能提供可靠命中率。",
     "题型与数值可能变化；没有在样本中出现的考点也可能考查。"
@@ -128,11 +129,20 @@
           "type": "short",
           "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
           "page": 1
+        },
+        {
+          "id": "exam-2026-04-q001",
+          "term": "2026-04",
+          "number": 1,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
         }
       ],
       "examTerms": [
         "2024-10",
-        "2025-04"
+        "2025-04",
+        "2026-04"
       ],
       "stars": 5
     },
@@ -223,12 +233,21 @@
           "type": "single",
           "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
           "page": 1
+        },
+        {
+          "id": "exam-2026-04-q016",
+          "term": "2026-04",
+          "number": 16,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
         }
       ],
       "examTerms": [
-        "2025-04"
+        "2025-04",
+        "2026-04"
       ],
-      "stars": 4
+      "stars": 5
     },
     {
       "id": "performance",
@@ -295,11 +314,20 @@
           "type": "fill",
           "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
           "page": 1
+        },
+        {
+          "id": "exam-2026-04-q011",
+          "term": "2026-04",
+          "number": 11,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
         }
       ],
       "examTerms": [
         "2025-04",
-        "2025-10"
+        "2025-10",
+        "2026-04"
       ],
       "stars": 5
     },
@@ -495,12 +523,37 @@
           "type": "calculation",
           "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
           "page": 3
+        },
+        {
+          "id": "exam-2026-04-q012",
+          "term": "2026-04",
+          "number": 12,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q017",
+          "term": "2026-04",
+          "number": 17,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q031",
+          "term": "2026-04",
+          "number": 31,
+          "type": "calculation",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
         }
       ],
       "examTerms": [
-        "2024-10"
+        "2024-10",
+        "2026-04"
       ],
-      "stars": 4
+      "stars": 5
     },
     {
       "id": "email",
@@ -519,9 +572,28 @@
       "importance": "core",
       "level": "识记、领会",
       "advice": "掌握发送、转发和读取邮件时使用的协议。",
-      "evidence": [],
-      "examTerms": [],
-      "stars": 3
+      "evidence": [
+        {
+          "id": "exam-2026-04-q002",
+          "term": "2026-04",
+          "number": 2,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q027",
+          "term": "2026-04",
+          "number": 27,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ],
+      "examTerms": [
+        "2026-04"
+      ],
+      "stars": 4
     },
     {
       "id": "ftp",
@@ -728,12 +800,21 @@
           "type": "short",
           "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
           "page": 2
+        },
+        {
+          "id": "exam-2026-04-q018",
+          "term": "2026-04",
+          "number": 18,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
         }
       ],
       "examTerms": [
         "2024-10",
         "2025-04",
-        "2025-10"
+        "2025-10",
+        "2026-04"
       ],
       "stars": 5
     },
@@ -824,12 +905,21 @@
           "type": "single",
           "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
           "page": 2
+        },
+        {
+          "id": "exam-2026-04-q003",
+          "term": "2026-04",
+          "number": 3,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
         }
       ],
       "examTerms": [
-        "2024-10"
+        "2024-10",
+        "2026-04"
       ],
-      "stars": 4
+      "stars": 5
     },
     {
       "id": "tcp-congestion",
@@ -975,9 +1065,20 @@
       "importance": "core",
       "level": "识记、领会",
       "advice": "把流量感知、准入、调节与负载脱落联系起来。",
-      "evidence": [],
-      "examTerms": [],
-      "stars": 3
+      "evidence": [
+        {
+          "id": "exam-2026-04-q029",
+          "term": "2026-04",
+          "number": 29,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ],
+      "examTerms": [
+        "2026-04"
+      ],
+      "stars": 4
     },
     {
       "id": "ip-packet",
@@ -1033,11 +1134,28 @@
           "type": "calculation",
           "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
           "page": 2
+        },
+        {
+          "id": "exam-2026-04-q019",
+          "term": "2026-04",
+          "number": 19,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q030",
+          "term": "2026-04",
+          "number": 30,
+          "type": "calculation",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
         }
       ],
       "examTerms": [
         "2025-04",
-        "2025-10"
+        "2025-10",
+        "2026-04"
       ],
       "stars": 5
     },
@@ -1171,12 +1289,21 @@
           "type": "single",
           "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
           "page": 1
+        },
+        {
+          "id": "exam-2026-04-q004",
+          "term": "2026-04",
+          "number": 4,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
         }
       ],
       "examTerms": [
-        "2025-10"
+        "2025-10",
+        "2026-04"
       ],
-      "stars": 4
+      "stars": 5
     },
     {
       "id": "link-service",
@@ -1399,12 +1526,21 @@
           "type": "single",
           "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
           "page": 1
+        },
+        {
+          "id": "exam-2026-04-q020",
+          "term": "2026-04",
+          "number": 20,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
         }
       ],
       "examTerms": [
-        "2025-10"
+        "2025-10",
+        "2026-04"
       ],
-      "stars": 4
+      "stars": 5
     },
     {
       "id": "arp",
@@ -1431,12 +1567,21 @@
           "type": "single",
           "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
           "page": 2
+        },
+        {
+          "id": "exam-2026-04-q005",
+          "term": "2026-04",
+          "number": 5,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
         }
       ],
       "examTerms": [
-        "2024-10"
+        "2024-10",
+        "2026-04"
       ],
-      "stars": 4
+      "stars": 5
     },
     {
       "id": "lan",
@@ -1553,12 +1698,37 @@
           "type": "fill",
           "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
           "page": 2
+        },
+        {
+          "id": "exam-2026-04-q006",
+          "term": "2026-04",
+          "number": 6,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q021",
+          "term": "2026-04",
+          "number": 21,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q026",
+          "term": "2026-04",
+          "number": 26,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
         }
       ],
       "examTerms": [
         "2024-10",
         "2025-04",
-        "2025-10"
+        "2025-10",
+        "2026-04"
       ],
       "stars": 5
     },
@@ -1600,9 +1770,20 @@
       "importance": "core",
       "level": "领会、应用",
       "advice": "先区分有无噪声，将 dB 信噪比换成线性值再计算。",
-      "evidence": [],
-      "examTerms": [],
-      "stars": 3
+      "evidence": [
+        {
+          "id": "exam-2026-04-q013",
+          "term": "2026-04",
+          "number": 13,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        }
+      ],
+      "examTerms": [
+        "2026-04"
+      ],
+      "stars": 4
     },
     {
       "id": "line-code",
@@ -1645,12 +1826,21 @@
           "type": "calculation",
           "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
           "page": 2
+        },
+        {
+          "id": "exam-2026-04-q023",
+          "term": "2026-04",
+          "number": 23,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
         }
       ],
       "examTerms": [
         "2024-10",
         "2025-04",
-        "2025-10"
+        "2025-10",
+        "2026-04"
       ],
       "stars": 5
     },
@@ -1790,11 +1980,20 @@
           "type": "single",
           "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
           "page": 1
+        },
+        {
+          "id": "exam-2026-04-q007",
+          "term": "2026-04",
+          "number": 7,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
         }
       ],
       "examTerms": [
         "2024-10",
-        "2025-04"
+        "2025-04",
+        "2026-04"
       ],
       "stars": 5
     },
@@ -1949,12 +2148,21 @@
           "type": "single",
           "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
           "page": 2
+        },
+        {
+          "id": "exam-2026-04-q028",
+          "term": "2026-04",
+          "number": 28,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
         }
       ],
       "examTerms": [
-        "2024-10"
+        "2024-10",
+        "2026-04"
       ],
-      "stars": 4
+      "stars": 5
     },
     {
       "id": "traditional",
@@ -2038,12 +2246,21 @@
           "type": "fill",
           "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
           "page": 2
+        },
+        {
+          "id": "exam-2026-04-q008",
+          "term": "2026-04",
+          "number": 8,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
         }
       ],
       "examTerms": [
-        "2024-10"
+        "2024-10",
+        "2026-04"
       ],
-      "stars": 4
+      "stars": 5
     },
     {
       "id": "public-crypto",
@@ -2070,12 +2287,21 @@
           "type": "single",
           "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
           "page": 1
+        },
+        {
+          "id": "exam-2026-04-q022",
+          "term": "2026-04",
+          "number": 22,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
         }
       ],
       "examTerms": [
-        "2025-04"
+        "2025-04",
+        "2026-04"
       ],
-      "stars": 4
+      "stars": 5
     },
     {
       "id": "hash",
@@ -2254,11 +2480,20 @@
           "type": "fill",
           "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
           "page": 2
+        },
+        {
+          "id": "exam-2026-04-q014",
+          "term": "2026-04",
+          "number": 14,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
         }
       ],
       "examTerms": [
         "2025-04",
-        "2025-10"
+        "2025-10",
+        "2026-04"
       ],
       "stars": 5
     },
@@ -2319,12 +2554,21 @@
           "type": "fill",
           "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
           "page": 2
+        },
+        {
+          "id": "exam-2026-04-q009",
+          "term": "2026-04",
+          "number": 9,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
         }
       ],
       "examTerms": [
         "2024-10",
         "2025-04",
-        "2025-10"
+        "2025-10",
+        "2026-04"
       ],
       "stars": 5
     },
@@ -2476,11 +2720,20 @@
           "type": "single",
           "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
           "page": 1
+        },
+        {
+          "id": "exam-2026-04-q024",
+          "term": "2026-04",
+          "number": 24,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
         }
       ],
       "examTerms": [
         "2024-10",
-        "2025-10"
+        "2025-10",
+        "2026-04"
       ],
       "stars": 5
     },
@@ -2517,11 +2770,20 @@
           "type": "short",
           "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
           "page": 2
+        },
+        {
+          "id": "exam-2026-04-q010",
+          "term": "2026-04",
+          "number": 10,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
         }
       ],
       "examTerms": [
         "2025-04",
-        "2025-10"
+        "2025-10",
+        "2026-04"
       ],
       "stars": 5
     },
@@ -2550,12 +2812,21 @@
           "type": "single",
           "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
           "page": 1
+        },
+        {
+          "id": "exam-2026-04-q025",
+          "term": "2026-04",
+          "number": 25,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
         }
       ],
       "examTerms": [
-        "2025-04"
+        "2025-04",
+        "2026-04"
       ],
-      "stars": 4
+      "stars": 5
     },
     {
       "id": "protection",
@@ -2574,9 +2845,20 @@
       "importance": "core",
       "level": "识记、领会",
       "advice": "掌握等级划分、定级要素和测评流程。",
-      "evidence": [],
-      "examTerms": [],
-      "stars": 3
+      "evidence": [
+        {
+          "id": "exam-2026-04-q015",
+          "term": "2026-04",
+          "number": 15,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        }
+      ],
+      "examTerms": [
+        "2026-04"
+      ],
+      "stars": 4
     },
     {
       "id": "standards",
@@ -10214,6 +10496,192 @@
         "laws"
       ],
       "fingerprint": "9da639c3"
+    },
+    "exam-2026-04-q001": {
+      "topics": [
+        "protocol"
+      ],
+      "fingerprint": "498859a4"
+    },
+    "exam-2026-04-q002": {
+      "topics": [
+        "email"
+      ],
+      "fingerprint": "8e4af265"
+    },
+    "exam-2026-04-q003": {
+      "topics": [
+        "tcp-flow"
+      ],
+      "fingerprint": "0b227474"
+    },
+    "exam-2026-04-q004": {
+      "topics": [
+        "route-protocol"
+      ],
+      "fingerprint": "7316e1c0"
+    },
+    "exam-2026-04-q005": {
+      "topics": [
+        "arp"
+      ],
+      "fingerprint": "b5f1642a"
+    },
+    "exam-2026-04-q006": {
+      "topics": [
+        "communication"
+      ],
+      "fingerprint": "5ede2c3e"
+    },
+    "exam-2026-04-q007": {
+      "topics": [
+        "mobility"
+      ],
+      "fingerprint": "73640e84"
+    },
+    "exam-2026-04-q008": {
+      "topics": [
+        "symmetric"
+      ],
+      "fingerprint": "de251b66"
+    },
+    "exam-2026-04-q009": {
+      "topics": [
+        "content"
+      ],
+      "fingerprint": "d6389a56"
+    },
+    "exam-2026-04-q010": {
+      "topics": [
+        "ids"
+      ],
+      "fingerprint": "017c4356"
+    },
+    "exam-2026-04-q011": {
+      "topics": [
+        "layers"
+      ],
+      "fingerprint": "5a374e50"
+    },
+    "exam-2026-04-q012": {
+      "topics": [
+        "http"
+      ],
+      "fingerprint": "4a2b94d5"
+    },
+    "exam-2026-04-q013": {
+      "topics": [
+        "capacity"
+      ],
+      "fingerprint": "75f7fc75"
+    },
+    "exam-2026-04-q014": {
+      "topics": [
+        "access"
+      ],
+      "fingerprint": "a6030913"
+    },
+    "exam-2026-04-q015": {
+      "topics": [
+        "protection"
+      ],
+      "fingerprint": "9dcd625c"
+    },
+    "exam-2026-04-q016": {
+      "topics": [
+        "switching"
+      ],
+      "fingerprint": "8dde8afc"
+    },
+    "exam-2026-04-q017": {
+      "topics": [
+        "http"
+      ],
+      "fingerprint": "d5578be3"
+    },
+    "exam-2026-04-q018": {
+      "topics": [
+        "udp"
+      ],
+      "fingerprint": "3c9b5acd"
+    },
+    "exam-2026-04-q019": {
+      "topics": [
+        "subnet"
+      ],
+      "fingerprint": "0e774cff"
+    },
+    "exam-2026-04-q020": {
+      "topics": [
+        "ethernet"
+      ],
+      "fingerprint": "0008a58d"
+    },
+    "exam-2026-04-q021": {
+      "topics": [
+        "communication"
+      ],
+      "fingerprint": "43bc104f"
+    },
+    "exam-2026-04-q022": {
+      "topics": [
+        "public-crypto"
+      ],
+      "fingerprint": "39e8bd89"
+    },
+    "exam-2026-04-q023": {
+      "topics": [
+        "line-code"
+      ],
+      "fingerprint": "67be8108"
+    },
+    "exam-2026-04-q024": {
+      "topics": [
+        "firewall"
+      ],
+      "fingerprint": "a7744a63"
+    },
+    "exam-2026-04-q025": {
+      "topics": [
+        "risk"
+      ],
+      "fingerprint": "2fcae99c"
+    },
+    "exam-2026-04-q026": {
+      "topics": [
+        "communication"
+      ],
+      "fingerprint": "cd868d6e"
+    },
+    "exam-2026-04-q027": {
+      "topics": [
+        "email"
+      ],
+      "fingerprint": "2916cc7d"
+    },
+    "exam-2026-04-q028": {
+      "topics": [
+        "crypto-basics"
+      ],
+      "fingerprint": "fa1f8f06"
+    },
+    "exam-2026-04-q029": {
+      "topics": [
+        "network-congestion"
+      ],
+      "fingerprint": "644b0779"
+    },
+    "exam-2026-04-q030": {
+      "topics": [
+        "subnet"
+      ],
+      "fingerprint": "334924aa"
+    },
+    "exam-2026-04-q031": {
+      "topics": [
+        "http"
+      ],
+      "fingerprint": "4a3728e6"
     }
   },
   "examSources": [
@@ -10234,6 +10702,12 @@
       "title": "2025年10月真题",
       "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
       "sha256": "f1aa9fcfadd1d39c27c1d9d36dbc9431d5181b0799a0c2dd74ff5a94b9441159"
+    },
+    {
+      "id": "exam-2026-04",
+      "title": "2026年04月真题",
+      "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+      "sha256": "b3312f3e247103a5b369de280e1a9b19bd9b4904a0bb4355b83c583f19ffe74c"
     }
   ]
 }

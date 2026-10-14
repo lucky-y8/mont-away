@@ -22,6 +22,8 @@ def main():
     bank = json.loads((ROOT / 'study-room/data/questions.json').read_text(encoding='utf-8'))
     materials = json.loads((ROOT / 'study-room/data/materials.json').read_text(encoding='utf-8'))
     required.update({'study-room/data/materials.json', 'study-room/data/focus-priorities.json', 'study-room/src/FocusPriority.tsx', 'study-room/src/priorities.js', 'docs/STUDY_PRIORITIES.md', 'study-room/src/mnemonic-cues.js', 'study-room/src/MnemonicPanel.tsx', 'study-room/src/mnemonics.js', 'study-room/src/mnemonics.css'})
+    required.update({'study-room/data/predictions.json', 'study-room/src/prediction/PredictionMode.tsx', 'study-room/src/prediction/predictions.js', 'study-room/src/prediction/prediction.css'})
+    required.update({'study-room/data/prediction-learning.json', 'study-room/src/prediction/PredictionLearning.tsx', 'study-room/src/prediction/learning.js', 'study-room/src/prediction/learning.css'})
     for q in bank:
         for url in [q['sourceUrl'], *q['figures'], *q.get('answerFigures', [])]:
             required.add('dist/study-assets' + url)
@@ -46,7 +48,7 @@ def main():
 
 Routes: / = question practice; /shanyao/ = existing travel website.
 Includes source, production dist, {len(materials)} PDFs, {len(bank)} questions and original/solution images, CSV/JSON templates, FastAPI backend and deployment instructions.
-Study features: evidence-based 1-5 star study priorities, topic/star filters, textbook page references and deduplicated exam evidence; practice mode with visible answers, answer mode with instant click/typing feedback and retry, editable textbook-referenced mnemonic cards (associations, homophones, rhymes and worked-step reminders) that open with answers/explanations, local wrong-answer notebook, per-blank checks and self assessment, saved mode preference, personal themes, expanded original images, anonymous question/image uploads and batch import.
+Study features: 60 question-specific prediction mnemonics with recall practice, expandable explanations and transfer questions, guarded against stale public edits, plus subnet/HTTP tables and coding waveforms; exam-only prediction mode with a frozen 31-question paper, 60-question extended selection, four question types, six calculation templates, per-question exam evidence, historical coverage and a pending future result; evidence-based 1-5 star study priorities, topic/star filters, textbook page references and deduplicated exam evidence; practice mode with visible answers, answer mode with instant click/typing feedback and retry, editable textbook-referenced mnemonic cards (associations, homophones, rhymes and worked-step reminders) that open with answers/explanations, local wrong-answer notebook, per-blank checks and self assessment, saved mode preference, personal themes, expanded original images, anonymous question/image uploads and batch import.
 Read docs/STUDY_INTEGRATION.md and deploy/nginx-shared.conf first.
 
 The current dist uses same-origin APIs. The public SEO domain remains sy.chexi.tech.

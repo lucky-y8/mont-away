@@ -1,0 +1,48 @@
+.prediction-learning,.prediction-mnemonic{min-width:0;overflow-wrap:anywhere}
+.prediction-learning h3{font-size:17px;line-height:1.6;margin:0 0 10px;color:var(--text)}
+.prediction-learning h4{font-size:13px;margin:19px 0 10px;color:var(--accent-ink)}
+.learning-concept,.learning-steps,.learning-expand,.learning-recall{font-size:14px;line-height:1.95}
+.learning-concept{margin:0;color:var(--text)}
+.learning-steps{padding-left:23px;margin:0 0 17px}
+.learning-steps li{padding-left:5px;margin:9px 0}
+.learning-steps li::marker{color:var(--accent-ink);font-weight:600}
+.learning-expand{border-top:1px solid var(--line);padding:11px 0}
+.learning-expand summary,.learning-recall summary,.learning-sources summary{cursor:pointer;border-radius:3px;color:var(--accent-ink);font-weight:500;width:fit-content;max-width:100%}
+.learning-expand summary:focus-visible,.learning-recall summary:focus-visible,.learning-sources summary:focus-visible,.learning-scroll:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}
+.learning-expand p,.learning-expand ul{margin:10px 0 2px}
+.learning-expand ul{padding-left:22px}
+.learning-expand li{margin:7px 0}
+.learning-solution{margin-top:12px;border-left:2px solid var(--accent-border);padding:0 0 0 12px}
+.learning-original .panel-caption{margin:13px 0 8px}
+.learning-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;margin:15px 0;border-radius:5px}
+.learning-table{width:100%;border-collapse:collapse;font-size:12px;line-height:1.8;text-align:left}
+.learning-table caption{text-align:left;font-size:11px;color:var(--muted);padding-bottom:6px}
+.learning-table th,.learning-table td{padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.learning-table th{font-weight:600;background:var(--accent-soft);color:var(--accent-ink)}
+.learning-table tr:last-child td{border-bottom:0}
+.learning-wave{margin:15px 0 20px;max-width:100%}
+.learning-wave .learning-scroll{margin-bottom:7px;padding:8px 0;background:var(--accent-soft)}
+.learning-wave svg{display:block;width:100%;min-width:540px;max-width:none;height:auto;font:12px ui-monospace,monospace;fill:var(--text)}
+.wave-axis{stroke:var(--line);stroke-width:1}.wave-grid{stroke:var(--muted);stroke-width:.5;stroke-dasharray:3 4;opacity:.5}
+.wave-signal{fill:none;stroke:var(--accent-ink);stroke-width:2;stroke-linejoin:round}
+.learning-wave .wave-index{fill:var(--muted);font-size:10px}
+.learning-wave figcaption{font-size:11px;line-height:1.85;color:var(--muted)}
+.learning-cue-header{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.learning-cue-header>span{font-size:12px;color:var(--muted)}
+.learning-hide{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:transparent;border:1px solid var(--accent-border);color:var(--accent-ink);padding:6px 10px;border-radius:6px;font-size:12px;min-height:34px}
+.learning-hide:hover{background:var(--accent-soft)}
+.learning-mapping{padding-left:19px;font-size:13px;line-height:1.9;margin:0}
+.learning-mapping li{margin:5px 0}
+.learning-recall{margin-top:17px;padding-top:13px;border-top:1px solid var(--line)}
+.learning-recall>p{margin:6px 0 8px}
+.learning-recall details p{margin:8px 0;padding:10px 12px;background:var(--accent-soft);border-radius:5px}
+.learning-recall summary{font-size:12px}
+.learning-eyebrow{font-size:11px;color:var(--accent-ink);font-weight:600}
+.learning-small,.learning-cover{font-size:11px;color:var(--muted);line-height:1.85;margin-top:12px}
+.learning-cover{padding:12px;border:1px dashed var(--accent-border);border-radius:5px;font-size:13px}
+.learning-sources{font-size:11px;line-height:1.9;padding-top:11px;margin-top:12px;border-top:1px solid var(--line);color:var(--muted)}
+.learning-sources summary{display:flex;align-items:center;gap:6px;font-weight:400;list-style:none}
+.learning-sources summary::-webkit-details-marker{display:none}.learning-sources summary::after{content:'＋'}.learning-sources[open] summary::after{content:'−'}
+.learning-sources p{margin:7px 0}
+.learning-sources a{display:block;width:fit-content;color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;margin-top:5px}
+@media(max-width:450px){.learning-concept,.learning-steps,.learning-expand,.learning-recall{font-size:13px}.prediction-learning h3{font-size:16px}.learning-hide{min-height:38px}.learning-steps{padding-left:19px}.learning-table th,.learning-table td{padding:7px 8px}}

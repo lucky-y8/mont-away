@@ -2,7 +2,9 @@ import { expectedChoices, responseOptions } from './grading.js';
 import { mnemonicRules } from './mnemonic-cues.js';
 
 const choiceTypes = ['single', 'multiple', 'truefalse'];
-const isNegative = q => /不包括|不属于|不正确|错误的|不符合|不能|不具备|不采用|不是|不支持|不需要|不成立|不恰当|不合理/u.test(q.stem || '');
+// Only choice questions ask for an exception; calculation exclusions are conditions.
+// 反选提示仅用于选择题；计算题的“不包括”通常是在限定计算范围。
+const isNegative = q => ['single', 'multiple'].includes(q.type) && /不包括|不属于|不正确|错误的|不符合|不能|不具备|不采用|不是|不支持|不需要|不成立|不恰当|不合理/u.test(q.stem || '');
 const isImageAnswer = answer => /请对照.*(?:原图|图片)|(?:答案|过程).*以原图为准/u.test(answer);
 const clean = value => String(value || '').replace(/\s+/gu, ' ').trim();
 const compact = (text, limit) => text.length <= limit ? text : text.slice(0, limit) + '…';

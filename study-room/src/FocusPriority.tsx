@@ -38,7 +38,7 @@ export function FocusBadge({ q }: { q: Question }) {
           {q.materialId === "calculation" && <p className="focus-short-rule">本题来自 04741 专项资料，仅作为相同考点的迁移练习；其历史年份不计入 13017 真题频次。</p>}
           {assessment.topics.map(topic => <Evidence topic={topic} key={topic.id} />)}
         </>}
-        <p className="focus-source-note">依据：{focusData.book.author}《{focusData.book.title}》{focusData.book.edition}及书内大纲。样本截至 2025 年 10 月，共 3 套完整真题；汇总资料中的重复题不重复计数。</p>
+        <p className="focus-source-note">依据：{focusData.book.author}《{focusData.book.title}》{focusData.book.edition}及书内大纲。样本截至 {termLabel([...focusData.examTerms].sort().at(-1)!)}，共 {focusData.examTerms.length} 套完整真题；汇总资料中的重复题不重复计数。</p>
       </div>
     </Modal>}
   </div>;

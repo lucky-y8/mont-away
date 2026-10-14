@@ -1,0 +1,1993 @@
+{
+  "version": "2026-10-v1",
+  "target": "2026 年 10 月",
+  "frozenAt": "2026-10-14",
+  "examTerms": [
+    "2024-10",
+    "2025-04",
+    "2025-10",
+    "2026-04"
+  ],
+  "examQuestionCount": 124,
+  "method": "只依据四套完整试卷的考点、题型与重复问法人工选题；不使用教材权重。题目为已收录真题精选，星级和考期次数不代表未来命中概率。",
+  "questionOrigin": "历年真题精选",
+  "resultStatus": "pending",
+  "paperIds": [
+    "exam-2026-04-q001",
+    "exam-2025-04-q003",
+    "exam-2026-04-q003",
+    "exam-2026-04-q004",
+    "exam-2026-04-q005",
+    "exam-2026-04-q006",
+    "exam-2026-04-q008",
+    "exam-2025-04-q008",
+    "exam-2026-04-q009",
+    "exam-2026-04-q010",
+    "exam-2026-04-q011",
+    "exam-2026-04-q014",
+    "exam-2025-10-q015",
+    "exam-2026-04-q012",
+    "exam-2025-04-q014",
+    "exam-2025-10-q016",
+    "exam-2025-04-q018",
+    "exam-2026-04-q018",
+    "exam-2024-10-q021",
+    "exam-2025-04-q024",
+    "exam-2025-10-q025",
+    "exam-2025-10-q023",
+    "exam-2026-04-q024",
+    "exam-2026-04-q025",
+    "exam-2026-04-q019",
+    "exam-2025-04-q029",
+    "exam-2025-10-q028",
+    "exam-2025-04-q026",
+    "exam-2024-10-q027",
+    "exam-2025-04-q030",
+    "exam-2025-10-q031"
+  ],
+  "items": [
+    {
+      "id": "exam-2026-04-q001",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "498859a4",
+      "topics": [
+        "protocol"
+      ],
+      "reason": "协议定义和三要素在选择、简答之间切换，既要认得术语，也要能解释含义。"
+    },
+    {
+      "id": "exam-2025-04-q003",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "efe146b9",
+      "topics": [
+        "udp"
+      ],
+      "reason": "四套卷都出现 UDP，问法覆盖服务特点、校验和与应用选择。"
+    },
+    {
+      "id": "exam-2026-04-q003",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "0b227474",
+      "topics": [
+        "tcp-flow"
+      ],
+      "reason": "2024 年 10 月与 2026 年 4 月出现近似问法，不能因刚考过就排除。"
+    },
+    {
+      "id": "exam-2026-04-q004",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "7316e1c0",
+      "topics": [
+        "route-protocol"
+      ],
+      "reason": "最近两套都考 RIP，从最大跳数换成描述辨析，重点防止换问法。"
+    },
+    {
+      "id": "exam-2026-04-q005",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "b5f1642a",
+      "topics": [
+        "arp"
+      ],
+      "reason": "两套考了 ARP 请求的发送方式，区分请求与应答。"
+    },
+    {
+      "id": "exam-2026-04-q006",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "5ede2c3e",
+      "topics": [
+        "communication"
+      ],
+      "reason": "四个考期都有通信基础，涉及同步异步、单双工、信道与码元。"
+    },
+    {
+      "id": "exam-2026-04-q008",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "de251b66",
+      "topics": [
+        "symmetric"
+      ],
+      "reason": "IDEA 在两套卷出现，另有 AES 操作填空，适合对照算法类别与参数。"
+    },
+    {
+      "id": "exam-2025-04-q008",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "9509955a",
+      "topics": [
+        "public-crypto"
+      ],
+      "reason": "公开密钥密码在算法识别与密钥数量之间切换，注意术语辨析。"
+    },
+    {
+      "id": "exam-2026-04-q009",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "d6389a56",
+      "topics": [
+        "content"
+      ],
+      "reason": "四套都有内容安全相关题目，DRM、水印与内容监管轮换。"
+    },
+    {
+      "id": "exam-2026-04-q010",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "017c4356",
+      "topics": [
+        "ids"
+      ],
+      "reason": "两套连续出入侵检测简答，最新一期又改为实时检测方法选择题。"
+    },
+    {
+      "id": "exam-2026-04-q011",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "5a374e50",
+      "topics": [
+        "layers"
+      ],
+      "reason": "最近三套都考分层体系，从填层名换成模型层数。"
+    },
+    {
+      "id": "exam-2026-04-q014",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "a6030913",
+      "topics": [
+        "access"
+      ],
+      "reason": "最近三套均有访问控制，主体/客体与按行/按列是已有易混问法。"
+    },
+    {
+      "id": "exam-2025-10-q015",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "66594ac9",
+      "topics": [
+        "firewall"
+      ],
+      "reason": "三套卷考过防火墙，静态过滤和部署位置分类都值得准备。"
+    },
+    {
+      "id": "exam-2026-04-q012",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "4a2b94d5",
+      "topics": [
+        "http"
+      ],
+      "reason": "两套出 HTTP 综合题，分别改变图片数量、并行连接与持久连接条件。"
+    },
+    {
+      "id": "exam-2025-04-q014",
+      "type": "single",
+      "tier": "main",
+      "fingerprint": "7d20eaa2",
+      "topics": [
+        "risk"
+      ],
+      "reason": "风险评估已考过原则和评估层次，作为小题备考方向。"
+    },
+    {
+      "id": "exam-2025-10-q001",
+      "type": "single",
+      "tier": "backup",
+      "fingerprint": "1b59e4ba",
+      "topics": [
+        "topology"
+      ],
+      "reason": "两套选择题从星形换成网状，作为识图/描述辨析的备选。"
+    },
+    {
+      "id": "exam-2025-04-q005",
+      "type": "single",
+      "tier": "backup",
+      "fingerprint": "791612ff",
+      "topics": [
+        "crc"
+      ],
+      "reason": "两套选择题考 CRC；目前四套中没有 CRC 综合计算题的直接证据。"
+    },
+    {
+      "id": "exam-2025-04-q010",
+      "type": "single",
+      "tier": "backup",
+      "fingerprint": "5d5c51f6",
+      "topics": [
+        "ipsec"
+      ],
+      "reason": "两套选择题涉及 AH 与隧道封装，作为安全协议备选。"
+    },
+    {
+      "id": "exam-2024-10-q007",
+      "type": "single",
+      "tier": "backup",
+      "fingerprint": "8f725fa9",
+      "topics": [
+        "wireless"
+      ],
+      "reason": "无线网络的结构在选择与简答之间切换。"
+    },
+    {
+      "id": "exam-2025-10-q008",
+      "type": "single",
+      "tier": "backup",
+      "fingerprint": "a02fb39b",
+      "topics": [
+        "traditional"
+      ],
+      "reason": "两套考传统密码，替代与换位的名称和规则适合互换问法。"
+    },
+    {
+      "id": "exam-2025-10-q016",
+      "type": "fill",
+      "tier": "main",
+      "fingerprint": "305ac1d9",
+      "topics": [
+        "layers"
+      ],
+      "reason": "最近三套都考分层体系，从填层名换成模型层数。"
+    },
+    {
+      "id": "exam-2025-04-q018",
+      "type": "fill",
+      "tier": "main",
+      "fingerprint": "4c71d36e",
+      "topics": [
+        "transport"
+      ],
+      "reason": "前三套连续出现端口或套接字标识，准备二元组与四元组的区别。"
+    },
+    {
+      "id": "exam-2026-04-q018",
+      "type": "fill",
+      "tier": "main",
+      "fingerprint": "3c9b5acd",
+      "topics": [
+        "udp"
+      ],
+      "reason": "四套卷都出现 UDP，问法覆盖服务特点、校验和与应用选择。"
+    },
+    {
+      "id": "exam-2024-10-q021",
+      "type": "fill",
+      "tier": "main",
+      "fingerprint": "571396b4",
+      "topics": [
+        "communication"
+      ],
+      "reason": "四个考期都有通信基础，涉及同步异步、单双工、信道与码元。"
+    },
+    {
+      "id": "exam-2025-04-q024",
+      "type": "fill",
+      "tier": "main",
+      "fingerprint": "0d34f060",
+      "topics": [
+        "key-management"
+      ],
+      "reason": "两套卷在 PKI 的同一组基础技术中更换填空位置。"
+    },
+    {
+      "id": "exam-2025-10-q025",
+      "type": "fill",
+      "tier": "main",
+      "fingerprint": "ef729481",
+      "topics": [
+        "content"
+      ],
+      "reason": "四套都有内容安全相关题目，DRM、水印与内容监管轮换。"
+    },
+    {
+      "id": "exam-2025-10-q023",
+      "type": "fill",
+      "tier": "main",
+      "fingerprint": "d82a931f",
+      "topics": [
+        "traditional"
+      ],
+      "reason": "两套考传统密码，替代与换位的名称和规则适合互换问法。"
+    },
+    {
+      "id": "exam-2026-04-q024",
+      "type": "fill",
+      "tier": "main",
+      "fingerprint": "a7744a63",
+      "topics": [
+        "firewall"
+      ],
+      "reason": "三套卷考过防火墙，静态过滤和部署位置分类都值得准备。"
+    },
+    {
+      "id": "exam-2026-04-q025",
+      "type": "fill",
+      "tier": "main",
+      "fingerprint": "2fcae99c",
+      "topics": [
+        "risk"
+      ],
+      "reason": "风险评估已考过原则和评估层次，作为小题备考方向。"
+    },
+    {
+      "id": "exam-2026-04-q019",
+      "type": "fill",
+      "tier": "main",
+      "fingerprint": "0e774cff",
+      "topics": [
+        "subnet"
+      ],
+      "reason": "最近三套连续出子网综合题，覆盖按需求划分和已有主机地址分析。"
+    },
+    {
+      "id": "exam-2026-04-q016",
+      "type": "fill",
+      "tier": "backup",
+      "fingerprint": "8dde8afc",
+      "topics": [
+        "switching"
+      ],
+      "reason": "交换技术在选择与填空中出现，准备三种交换方式的名称。"
+    },
+    {
+      "id": "exam-2026-04-q017",
+      "type": "fill",
+      "tier": "backup",
+      "fingerprint": "d5578be3",
+      "topics": [
+        "http"
+      ],
+      "reason": "两套出 HTTP 综合题，分别改变图片数量、并行连接与持久连接条件。"
+    },
+    {
+      "id": "exam-2026-04-q020",
+      "type": "fill",
+      "tier": "backup",
+      "fingerprint": "0008a58d",
+      "topics": [
+        "ethernet"
+      ],
+      "reason": "最近两套分别考冲突检测含义和检测依据，适合换成另一种小题问法。"
+    },
+    {
+      "id": "exam-2026-04-q021",
+      "type": "fill",
+      "tier": "backup",
+      "fingerprint": "43bc104f",
+      "topics": [
+        "communication"
+      ],
+      "reason": "四个考期都有通信基础，涉及同步异步、单双工、信道与码元。"
+    },
+    {
+      "id": "exam-2026-04-q022",
+      "type": "fill",
+      "tier": "backup",
+      "fingerprint": "39e8bd89",
+      "topics": [
+        "public-crypto"
+      ],
+      "reason": "公开密钥密码在算法识别与密钥数量之间切换，注意术语辨析。"
+    },
+    {
+      "id": "exam-2026-04-q023",
+      "type": "fill",
+      "tier": "backup",
+      "fingerprint": "67be8108",
+      "topics": [
+        "line-code"
+      ],
+      "reason": "前三套连续出编码综合题，最新一期仍有归零码填空；准备画图、规则和特点。"
+    },
+    {
+      "id": "exam-2024-10-q017",
+      "type": "fill",
+      "tier": "backup",
+      "fingerprint": "27c9dee9",
+      "topics": [
+        "dns"
+      ],
+      "reason": "两套出现 DNS 小题，其中一套与 HTTP 合成综合题；先看题目是否计入解析时间。"
+    },
+    {
+      "id": "exam-2025-04-q022",
+      "type": "fill",
+      "tier": "backup",
+      "fingerprint": "dff8c6f6",
+      "topics": [
+        "wifi"
+      ],
+      "reason": "两套涉及 IEEE 802.11，基本组成与体系结构作为备选。"
+    },
+    {
+      "id": "exam-2024-10-q023",
+      "type": "fill",
+      "tier": "backup",
+      "fingerprint": "020f61c6",
+      "topics": [
+        "symmetric"
+      ],
+      "reason": "IDEA 在两套卷出现，另有 AES 操作填空，适合对照算法类别与参数。"
+    },
+    {
+      "id": "exam-2025-10-q022",
+      "type": "fill",
+      "tier": "backup",
+      "fingerprint": "9948ea56",
+      "topics": [
+        "cellular"
+      ],
+      "reason": "仅一套考过 5G 结构，列为扩展覆盖，不作为高频方向。"
+    },
+    {
+      "id": "exam-2025-04-q029",
+      "type": "short",
+      "tier": "main",
+      "fingerprint": "242e0883",
+      "topics": [
+        "ids"
+      ],
+      "reason": "两套连续出入侵检测简答，最新一期又改为实时检测方法选择题。"
+    },
+    {
+      "id": "exam-2025-10-q028",
+      "type": "short",
+      "tier": "main",
+      "fingerprint": "c67ec7df",
+      "topics": [
+        "udp"
+      ],
+      "reason": "四套卷都出现 UDP，问法覆盖服务特点、校验和与应用选择。"
+    },
+    {
+      "id": "exam-2025-04-q026",
+      "type": "short",
+      "tier": "main",
+      "fingerprint": "2b6c37f3",
+      "topics": [
+        "protocol"
+      ],
+      "reason": "协议定义和三要素在选择、简答之间切换，既要认得术语，也要能解释含义。"
+    },
+    {
+      "id": "exam-2024-10-q027",
+      "type": "short",
+      "tier": "main",
+      "fingerprint": "a75f03e1",
+      "topics": [
+        "mobility"
+      ],
+      "reason": "移动 IP 已考过简答与选择，重点练习代理发现、注册和路由过程。"
+    },
+    {
+      "id": "exam-2025-04-q028",
+      "type": "short",
+      "tier": "backup",
+      "fingerprint": "5ce7ea22",
+      "topics": [
+        "tcp-connection"
+      ],
+      "reason": "三次握手原因考过简答，断开连接考过选择，准备建立与释放的区别。"
+    },
+    {
+      "id": "exam-2025-10-q027",
+      "type": "short",
+      "tier": "backup",
+      "fingerprint": "1ed900ac",
+      "topics": [
+        "wireless"
+      ],
+      "reason": "无线网络的结构在选择与简答之间切换。"
+    },
+    {
+      "id": "exam-2026-04-q026",
+      "type": "short",
+      "tier": "backup",
+      "fingerprint": "cd868d6e",
+      "topics": [
+        "communication"
+      ],
+      "reason": "四个考期都有通信基础，涉及同步异步、单双工、信道与码元。"
+    },
+    {
+      "id": "exam-2026-04-q027",
+      "type": "short",
+      "tier": "backup",
+      "fingerprint": "2916cc7d",
+      "topics": [
+        "email"
+      ],
+      "reason": "最新一期同时考 SMTP 选择与邮件系统简答，列作备选，避免把同一期两题当成两个考期。"
+    },
+    {
+      "id": "exam-2026-04-q028",
+      "type": "short",
+      "tier": "backup",
+      "fingerprint": "fa1f8f06",
+      "topics": [
+        "crypto-basics"
+      ],
+      "reason": "密码基础已在选择与简答出现，五要素作为简答备选。"
+    },
+    {
+      "id": "exam-2026-04-q029",
+      "type": "short",
+      "tier": "backup",
+      "fingerprint": "644b0779",
+      "topics": [
+        "network-congestion"
+      ],
+      "reason": "最新一期首次在这四套样本中作为简答出现，列为扩展方向。"
+    },
+    {
+      "id": "exam-2025-10-q026",
+      "type": "short",
+      "tier": "backup",
+      "fingerprint": "584ab1f8",
+      "topics": [
+        "network-basics"
+      ],
+      "reason": "两套简答分别问网络定义、目的与功能，可以对照准备。"
+    },
+    {
+      "id": "exam-2024-10-q029",
+      "type": "short",
+      "tier": "backup",
+      "fingerprint": "cba0d3c6",
+      "topics": [
+        "authentication"
+      ],
+      "reason": "一套简答考身份认证与防重放，作为安全方向备选。"
+    },
+    {
+      "id": "exam-2025-04-q030",
+      "type": "calculation",
+      "tier": "main",
+      "fingerprint": "fb630343",
+      "topics": [
+        "subnet"
+      ],
+      "reason": "最近三套连续出子网综合题，覆盖按需求划分和已有主机地址分析。"
+    },
+    {
+      "id": "exam-2025-10-q031",
+      "type": "calculation",
+      "tier": "main",
+      "fingerprint": "d9e66347",
+      "topics": [
+        "line-code"
+      ],
+      "reason": "前三套连续出编码综合题，最新一期仍有归零码填空；准备画图、规则和特点。"
+    },
+    {
+      "id": "exam-2024-10-q030",
+      "type": "calculation",
+      "tier": "backup",
+      "fingerprint": "99367aa6",
+      "topics": [
+        "dns",
+        "http"
+      ],
+      "reason": "两套出现 DNS 小题，其中一套与 HTTP 合成综合题；先看题目是否计入解析时间。 两套出 HTTP 综合题，分别改变图片数量、并行连接与持久连接条件。"
+    },
+    {
+      "id": "exam-2024-10-q031",
+      "type": "calculation",
+      "tier": "backup",
+      "fingerprint": "903e1d9a",
+      "topics": [
+        "line-code"
+      ],
+      "reason": "前三套连续出编码综合题，最新一期仍有归零码填空；准备画图、规则和特点。"
+    },
+    {
+      "id": "exam-2025-04-q031",
+      "type": "calculation",
+      "tier": "backup",
+      "fingerprint": "ae502679",
+      "topics": [
+        "line-code"
+      ],
+      "reason": "前三套连续出编码综合题，最新一期仍有归零码填空；准备画图、规则和特点。"
+    },
+    {
+      "id": "exam-2025-10-q030",
+      "type": "calculation",
+      "tier": "backup",
+      "fingerprint": "2c79370b",
+      "topics": [
+        "subnet"
+      ],
+      "reason": "最近三套连续出子网综合题，覆盖按需求划分和已有主机地址分析。"
+    },
+    {
+      "id": "exam-2026-04-q030",
+      "type": "calculation",
+      "tier": "backup",
+      "fingerprint": "334924aa",
+      "topics": [
+        "subnet"
+      ],
+      "reason": "最近三套连续出子网综合题，覆盖按需求划分和已有主机地址分析。"
+    },
+    {
+      "id": "exam-2026-04-q031",
+      "type": "calculation",
+      "tier": "backup",
+      "fingerprint": "4a3728e6",
+      "topics": [
+        "http"
+      ],
+      "reason": "两套出 HTTP 综合题，分别改变图片数量、并行连接与持久连接条件。"
+    }
+  ],
+  "topics": [
+    {
+      "id": "network-basics",
+      "title": "网络定义与资源共享",
+      "examTerms": [
+        "2024-10",
+        "2025-10"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q026",
+          "term": "2024-10",
+          "number": 26,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 3
+        },
+        {
+          "id": "exam-2025-10-q026",
+          "term": "2025-10",
+          "number": 26,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "protocol",
+      "title": "网络协议与三要素",
+      "examTerms": [
+        "2024-10",
+        "2025-04",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q001",
+          "term": "2024-10",
+          "number": 1,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-04-q026",
+          "term": "2025-04",
+          "number": 26,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q001",
+          "term": "2026-04",
+          "number": 1,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "topology",
+      "title": "网络分类与拓扑",
+      "examTerms": [
+        "2025-04",
+        "2025-10"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-04-q001",
+          "term": "2025-04",
+          "number": 1,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q001",
+          "term": "2025-10",
+          "number": 1,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "switching",
+      "title": "电路、报文与分组交换",
+      "examTerms": [
+        "2025-04",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-04-q015",
+          "term": "2025-04",
+          "number": 15,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q016",
+          "term": "2026-04",
+          "number": 16,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "layers",
+      "title": "OSI、TCP/IP 与分层服务",
+      "examTerms": [
+        "2025-04",
+        "2025-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-04-q016",
+          "term": "2025-04",
+          "number": 16,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q016",
+          "term": "2025-10",
+          "number": 16,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q011",
+          "term": "2026-04",
+          "number": 11,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "dns",
+      "title": "DNS 域名结构与解析",
+      "examTerms": [
+        "2024-10",
+        "2025-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q017",
+          "term": "2024-10",
+          "number": 17,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2024-10-q030",
+          "term": "2024-10",
+          "number": 30,
+          "type": "calculation",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 3
+        },
+        {
+          "id": "exam-2025-04-q002",
+          "term": "2025-04",
+          "number": 2,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "http",
+      "title": "HTTP、连接方式与响应时间",
+      "examTerms": [
+        "2024-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q002",
+          "term": "2024-10",
+          "number": 2,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2024-10-q030",
+          "term": "2024-10",
+          "number": 30,
+          "type": "calculation",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 3
+        },
+        {
+          "id": "exam-2026-04-q012",
+          "term": "2026-04",
+          "number": 12,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q017",
+          "term": "2026-04",
+          "number": 17,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q031",
+          "term": "2026-04",
+          "number": 31,
+          "type": "calculation",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "title": "电子邮件、SMTP 与 POP",
+      "examTerms": [
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2026-04-q002",
+          "term": "2026-04",
+          "number": 2,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q027",
+          "term": "2026-04",
+          "number": 27,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "transport",
+      "title": "传输层端口、复用与分解",
+      "examTerms": [
+        "2024-10",
+        "2025-04",
+        "2025-10"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q003",
+          "term": "2024-10",
+          "number": 3,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-04-q018",
+          "term": "2025-04",
+          "number": 18,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q018",
+          "term": "2025-10",
+          "number": 18,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "udp",
+      "title": "UDP 特点、结构与应用选择",
+      "examTerms": [
+        "2024-10",
+        "2025-04",
+        "2025-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q018",
+          "term": "2024-10",
+          "number": 18,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2025-04-q003",
+          "term": "2025-04",
+          "number": 3,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q002",
+          "term": "2025-10",
+          "number": 2,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q028",
+          "term": "2025-10",
+          "number": 28,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q018",
+          "term": "2026-04",
+          "number": 18,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "tcp-connection",
+      "title": "TCP 连接建立与释放",
+      "examTerms": [
+        "2025-04",
+        "2025-10"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-04-q028",
+          "term": "2025-04",
+          "number": 28,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q003",
+          "term": "2025-10",
+          "number": 3,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "tcp-flow",
+      "title": "TCP 流量控制",
+      "examTerms": [
+        "2024-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q012",
+          "term": "2024-10",
+          "number": 12,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q003",
+          "term": "2026-04",
+          "number": 3,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "network-congestion",
+      "title": "网络层拥塞控制",
+      "examTerms": [
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2026-04-q029",
+          "term": "2026-04",
+          "number": 29,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "subnet",
+      "title": "IPv4 编址、子网与 CIDR",
+      "examTerms": [
+        "2025-04",
+        "2025-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-04-q030",
+          "term": "2025-04",
+          "number": 30,
+          "type": "calculation",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q030",
+          "term": "2025-10",
+          "number": 30,
+          "type": "calculation",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q019",
+          "term": "2026-04",
+          "number": 19,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q030",
+          "term": "2026-04",
+          "number": 30,
+          "type": "calculation",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "route-protocol",
+      "title": "RIP、OSPF 与 BGP",
+      "examTerms": [
+        "2025-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-10-q012",
+          "term": "2025-10",
+          "number": 12,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q004",
+          "term": "2026-04",
+          "number": 4,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "crc",
+      "title": "CRC 循环冗余校验",
+      "examTerms": [
+        "2024-10",
+        "2025-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q005",
+          "term": "2024-10",
+          "number": 5,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-04-q005",
+          "term": "2025-04",
+          "number": 5,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "ethernet",
+      "title": "以太网、CSMA/CD 与退避",
+      "examTerms": [
+        "2025-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-10-q005",
+          "term": "2025-10",
+          "number": 5,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q020",
+          "term": "2026-04",
+          "number": 20,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "arp",
+      "title": "MAC 地址与 ARP",
+      "examTerms": [
+        "2024-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q014",
+          "term": "2024-10",
+          "number": 14,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q005",
+          "term": "2026-04",
+          "number": 5,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "communication",
+      "title": "数据通信、码元与速率",
+      "examTerms": [
+        "2024-10",
+        "2025-04",
+        "2025-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q006",
+          "term": "2024-10",
+          "number": 6,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2024-10-q021",
+          "term": "2024-10",
+          "number": 21,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2025-04-q006",
+          "term": "2025-04",
+          "number": 6,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-04-q021",
+          "term": "2025-04",
+          "number": 21,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q006",
+          "term": "2025-10",
+          "number": 6,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q013",
+          "term": "2025-10",
+          "number": 13,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q021",
+          "term": "2025-10",
+          "number": 21,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q006",
+          "term": "2026-04",
+          "number": 6,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q021",
+          "term": "2026-04",
+          "number": 21,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q026",
+          "term": "2026-04",
+          "number": 26,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "line-code",
+      "title": "基带编码与波形",
+      "examTerms": [
+        "2024-10",
+        "2025-04",
+        "2025-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q031",
+          "term": "2024-10",
+          "number": 31,
+          "type": "calculation",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 3
+        },
+        {
+          "id": "exam-2025-04-q031",
+          "term": "2025-04",
+          "number": 31,
+          "type": "calculation",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q031",
+          "term": "2025-10",
+          "number": 31,
+          "type": "calculation",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q023",
+          "term": "2026-04",
+          "number": 23,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "wireless",
+      "title": "无线结构、模式与链路特征",
+      "examTerms": [
+        "2024-10",
+        "2025-10"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q007",
+          "term": "2024-10",
+          "number": 7,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q007",
+          "term": "2025-10",
+          "number": 7,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q027",
+          "term": "2025-10",
+          "number": 27,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "mobility",
+      "title": "移动寻址、路由与移动 IP",
+      "examTerms": [
+        "2024-10",
+        "2025-04",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q022",
+          "term": "2024-10",
+          "number": 22,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2024-10-q027",
+          "term": "2024-10",
+          "number": 27,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 3
+        },
+        {
+          "id": "exam-2025-04-q007",
+          "term": "2025-04",
+          "number": 7,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q007",
+          "term": "2026-04",
+          "number": 7,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "wifi",
+      "title": "IEEE 802.11 结构与地址",
+      "examTerms": [
+        "2024-10",
+        "2025-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q013",
+          "term": "2024-10",
+          "number": 13,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2025-04-q022",
+          "term": "2025-04",
+          "number": 22,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "cellular",
+      "title": "蜂窝网络与 3G、4G、5G",
+      "examTerms": [
+        "2025-10"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-10-q022",
+          "term": "2025-10",
+          "number": 22,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "crypto-basics",
+      "title": "密码分类与攻击模型",
+      "examTerms": [
+        "2024-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q015",
+          "term": "2024-10",
+          "number": 15,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q028",
+          "term": "2026-04",
+          "number": 28,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "traditional",
+      "title": "替代、换位与传统加密",
+      "examTerms": [
+        "2025-04",
+        "2025-10"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-04-q023",
+          "term": "2025-04",
+          "number": 23,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q008",
+          "term": "2025-10",
+          "number": 8,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q023",
+          "term": "2025-10",
+          "number": 23,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "symmetric",
+      "title": "对称加密、DES、AES 与 CBC",
+      "examTerms": [
+        "2024-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q008",
+          "term": "2024-10",
+          "number": 8,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2024-10-q023",
+          "term": "2024-10",
+          "number": 23,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q008",
+          "term": "2026-04",
+          "number": 8,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "public-crypto",
+      "title": "公钥原理、RSA 与密钥交换",
+      "examTerms": [
+        "2025-04",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-04-q008",
+          "term": "2025-04",
+          "number": 8,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q022",
+          "term": "2026-04",
+          "number": 22,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "authentication",
+      "title": "身份认证与重放防护",
+      "examTerms": [
+        "2024-10"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q029",
+          "term": "2024-10",
+          "number": 29,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 3
+        }
+      ]
+    },
+    {
+      "id": "key-management",
+      "title": "密钥分发、CA、KDC 与 PKI",
+      "examTerms": [
+        "2024-10",
+        "2025-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q009",
+          "term": "2024-10",
+          "number": 9,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2024-10-q024",
+          "term": "2024-10",
+          "number": 24,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2025-04-q024",
+          "term": "2025-04",
+          "number": 24,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "access",
+      "title": "访问控制、DAC、MAC 与 RBAC",
+      "examTerms": [
+        "2025-04",
+        "2025-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-04-q009",
+          "term": "2025-04",
+          "number": 9,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q024",
+          "term": "2025-10",
+          "number": 24,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q014",
+          "term": "2026-04",
+          "number": 14,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "content",
+      "title": "DRM、数字水印与内容监管",
+      "examTerms": [
+        "2024-10",
+        "2025-04",
+        "2025-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q025",
+          "term": "2024-10",
+          "number": 25,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2025-04-q012",
+          "term": "2025-04",
+          "number": 12,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-04-q025",
+          "term": "2025-04",
+          "number": 25,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q009",
+          "term": "2025-10",
+          "number": 9,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q025",
+          "term": "2025-10",
+          "number": 25,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q009",
+          "term": "2026-04",
+          "number": 9,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "ipsec",
+      "title": "VPN、IPSec、AH、ESP 与 IKE",
+      "examTerms": [
+        "2025-04",
+        "2025-10"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-04-q010",
+          "term": "2025-04",
+          "number": 10,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q010",
+          "term": "2025-10",
+          "number": 10,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "firewall",
+      "title": "防火墙分类、规则与部署",
+      "examTerms": [
+        "2024-10",
+        "2025-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2024-10-q010",
+          "term": "2024-10",
+          "number": 10,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2025-10-q015",
+          "term": "2025-10",
+          "number": 15,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q024",
+          "term": "2026-04",
+          "number": 24,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "ids",
+      "title": "入侵检测的方法与过程",
+      "examTerms": [
+        "2025-04",
+        "2025-10",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-04-q029",
+          "term": "2025-04",
+          "number": 29,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2025-10-q029",
+          "term": "2025-10",
+          "number": 29,
+          "type": "short",
+          "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+          "page": 2
+        },
+        {
+          "id": "exam-2026-04-q010",
+          "term": "2026-04",
+          "number": 10,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "risk",
+      "title": "网络风险分析与评估",
+      "examTerms": [
+        "2025-04",
+        "2026-04"
+      ],
+      "evidence": [
+        {
+          "id": "exam-2025-04-q014",
+          "term": "2025-04",
+          "number": 14,
+          "type": "single",
+          "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+          "page": 1
+        },
+        {
+          "id": "exam-2026-04-q025",
+          "term": "2026-04",
+          "number": 25,
+          "type": "fill",
+          "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+          "page": 2
+        }
+      ]
+    }
+  ],
+  "examSources": [
+    {
+      "id": "exam-2024-10",
+      "title": "2024年10月真题",
+      "sourceUrl": "/study-assets/sources/exam-2024-10.pdf",
+      "sha256": "786fd600694d0ed437df36fae982db8e9f7d70d02d8925b4cf6859309ae58ba1"
+    },
+    {
+      "id": "exam-2025-04",
+      "title": "2025年04月真题",
+      "sourceUrl": "/study-assets/sources/exam-2025-04.pdf",
+      "sha256": "a298d23ebdc30fa4cfb99dc063d6eb803280e995cb635c8badc8aec31955e07a"
+    },
+    {
+      "id": "exam-2025-10",
+      "title": "2025年10月真题",
+      "sourceUrl": "/study-assets/sources/exam-2025-10.pdf",
+      "sha256": "f1aa9fcfadd1d39c27c1d9d36dbc9431d5181b0799a0c2dd74ff5a94b9441159"
+    },
+    {
+      "id": "exam-2026-04",
+      "title": "2026年04月真题",
+      "sourceUrl": "/study-assets/sources/exam-2026-04.pdf",
+      "sha256": "b3312f3e247103a5b369de280e1a9b19bd9b4904a0bb4355b83c583f19ffe74c"
+    }
+  ],
+  "calculationHistory": [
+    {
+      "term": "2024-10",
+      "questions": [
+        {
+          "id": "exam-2024-10-q030",
+          "topics": [
+            "dns",
+            "http"
+          ]
+        },
+        {
+          "id": "exam-2024-10-q031",
+          "topics": [
+            "line-code"
+          ]
+        }
+      ]
+    },
+    {
+      "term": "2025-04",
+      "questions": [
+        {
+          "id": "exam-2025-04-q030",
+          "topics": [
+            "subnet"
+          ]
+        },
+        {
+          "id": "exam-2025-04-q031",
+          "topics": [
+            "line-code"
+          ]
+        }
+      ]
+    },
+    {
+      "term": "2025-10",
+      "questions": [
+        {
+          "id": "exam-2025-10-q030",
+          "topics": [
+            "subnet"
+          ]
+        },
+        {
+          "id": "exam-2025-10-q031",
+          "topics": [
+            "line-code"
+          ]
+        }
+      ]
+    },
+    {
+      "term": "2026-04",
+      "questions": [
+        {
+          "id": "exam-2026-04-q030",
+          "topics": [
+            "subnet"
+          ]
+        },
+        {
+          "id": "exam-2026-04-q031",
+          "topics": [
+            "http"
+          ]
+        }
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "title": "按需求设计子网",
+      "tier": "主押",
+      "text": "部门数、每个子网主机数 → 借位与掩码 → 网络地址、广播地址、可用主机数。",
+      "questionId": "exam-2025-04-q030"
+    },
+    {
+      "title": "判断同网段与分配地址",
+      "tier": "主押",
+      "text": "IP 与掩码按位与；新主机地址要排除网络地址、广播地址和已占用地址。",
+      "questionId": "exam-2026-04-q030"
+    },
+    {
+      "title": "画出编码波形",
+      "tier": "主押",
+      "text": "按指定的单极/双极、归零/不归零规则画图，再说明区别和缺点。",
+      "questionId": "exam-2025-10-q031"
+    },
+    {
+      "title": "读图、补表与 AMI 规则",
+      "tier": "主押",
+      "text": "从图中读取码元，补全信息码/AMI 码，说明规则与优缺点。",
+      "questionId": "exam-2025-04-q031"
+    },
+    {
+      "title": "HTTP 串行与并行",
+      "tier": "备押",
+      "text": "先取 HTML，再按图片数量和并行连接数量分批计算，注意题目是否忽略发送时间。",
+      "questionId": "exam-2026-04-q031"
+    },
+    {
+      "title": "持久连接与 DNS 组合",
+      "tier": "备押",
+      "text": "区分流水与非流水；只有题目要求计入时，才加入 DNS 解析的往返时间。",
+      "questionId": "exam-2024-10-q030"
+    }
+  ],
+  "historicalBankSha256": "9e7d80d7e2a34777f28b37366ef3dddf91b9e2af39ec9460a37bfa2a3a396372"
+}

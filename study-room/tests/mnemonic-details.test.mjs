@@ -93,3 +93,16 @@ test('the full bank has valid cards; citation ranges are bounded and source obje
   assert.equal(JSON.stringify(bank), before);
   assert.equal(new Set(mnemonicRules.map(r => r.id)).size, mnemonicRules.length);
 });
+
+test('April exam calculation exclusions are conditions, while reverse choices keep the warning', () => {
+  const bank = JSON.parse(readFileSync(new URL('../data/questions.json', import.meta.url), 'utf8'));
+  const byId = Object.fromEntries(bank.map(q => [q.id, q]));
+  const http = mnemonicDetails(byId['exam-2026-04-q031']);
+  assert.equal(http.warning, '');
+  assert.ok(http.reference && http.cards.some(c => c.meaning.includes('持久连接')));
+  const protocol = mnemonicDetails(byId['exam-2026-04-q001']);
+  assert.equal(protocol.ruleId, 'protocol');
+  assert.match(protocol.warning, /否定词/);
+  assert.ok(protocol.cards.some(c => c.kind === '谐音'));
+  assert.match(mnemonicDetails(byId['exam-2026-04-q009']).warning, /否定词/);
+});

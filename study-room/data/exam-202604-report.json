@@ -1,0 +1,119 @@
+{
+  "importedAt": "2026-10-14",
+  "materialId": "exam-2026-04",
+  "originalQuestionCount": 1259,
+  "original1259CanonicalSha256": "bb9d39779150d358911888cdd8f8895764b902d8e9b1c7bdef64ccfaf911f3e8",
+  "sourceFile": "13017计算机网络与信息安全_2026年04月真题.pdf",
+  "sourceSha256": "b3312f3e247103a5b369de280e1a9b19bd9b4904a0bb4355b83c583f19ffe74c",
+  "sourceBytes": 2061232,
+  "sourcePdfPageCount": 2,
+  "printedPageCount": 4,
+  "sourceHasAnswers": false,
+  "questionCount": 31,
+  "questionNumbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "typeCounts": {
+    "single": 15,
+    "fill": 10,
+    "short": 4,
+    "calculation": 2
+  },
+  "pageAudit": [
+    {
+      "page": 1,
+      "printedPages": [
+        1,
+        2
+      ],
+      "textExtracted": false,
+      "imageOnly": true,
+      "questionIds": [
+        "exam-2026-04-q001",
+        "exam-2026-04-q002",
+        "exam-2026-04-q003",
+        "exam-2026-04-q004",
+        "exam-2026-04-q005",
+        "exam-2026-04-q006",
+        "exam-2026-04-q007",
+        "exam-2026-04-q008",
+        "exam-2026-04-q009",
+        "exam-2026-04-q010",
+        "exam-2026-04-q011",
+        "exam-2026-04-q012",
+        "exam-2026-04-q013",
+        "exam-2026-04-q014",
+        "exam-2026-04-q015"
+      ],
+      "classification": "question",
+      "reviewed": true
+    },
+    {
+      "page": 2,
+      "printedPages": [
+        3,
+        4
+      ],
+      "textExtracted": false,
+      "imageOnly": true,
+      "questionIds": [
+        "exam-2026-04-q016",
+        "exam-2026-04-q017",
+        "exam-2026-04-q018",
+        "exam-2026-04-q019",
+        "exam-2026-04-q020",
+        "exam-2026-04-q021",
+        "exam-2026-04-q022",
+        "exam-2026-04-q023",
+        "exam-2026-04-q024",
+        "exam-2026-04-q025",
+        "exam-2026-04-q026",
+        "exam-2026-04-q027",
+        "exam-2026-04-q028",
+        "exam-2026-04-q029",
+        "exam-2026-04-q030",
+        "exam-2026-04-q031"
+      ],
+      "classification": "question",
+      "reviewed": true
+    }
+  ],
+  "reviewNotes": [
+    "核对全部题干、选项、表格、分问与原题截图；原 1259 题不改写。",
+    "教材版次：李全龙《计算机网络与信息安全》2024 年版；解析给出书内页码。",
+    "第 12 题按教材第 83 页的 HTTP/1.1 模型作答。",
+    "第 30 题核对 /28 网段、可用地址、已有主机占用和广播地址。",
+    "第 31 题不计 DNS 时间；14、4、3 RTT 的结果采用忽略对象发送时间等开销的教材模型。",
+    "答案为 AI 参考，非官方标准答案，全部保留待核对标记。"
+  ]
+}

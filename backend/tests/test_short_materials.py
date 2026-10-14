@@ -19,8 +19,8 @@ def test_short_material_counts_original_preservation_and_page_coverage():
     rows = load('questions.json')
     audit = load('short-additions-20261013-report.json')
     new = [q for q in rows if q.get('materialId') in audit['materialCounts']]
-    old = [q for q in rows if q not in new]
-    assert len(rows) == len({q['id'] for q in rows}) == 1259
+    old = [q for q in rows if q['chapter'] < 18]
+    assert len(rows) == len({q['id'] for q in rows}) == 1290
     assert len(old) == 1000
     assert sha256(json.dumps(old, ensure_ascii=False, sort_keys=True).encode()).hexdigest() == audit['original1000CanonicalSha256']
     assert Counter(q['materialId'] for q in new) == {'short-summary': 133, 'short-homework': 126}
@@ -37,8 +37,8 @@ def test_short_material_counts_original_preservation_and_page_coverage():
         seen = {q for p in m['pageAudit'] for q in p['questionIds']}
         assert seen == {q['id'] for q in new if q['materialId'] == m['materialId']}
     materials = load('materials.json')
-    assert len(materials) == 19 and sum(m['pageCount'] for m in materials) == 547
-    assert sum(m['questionCount'] for m in materials) == 1259
+    assert len(materials) == 20 and sum(m['pageCount'] for m in materials) == 549
+    assert sum(m['questionCount'] for m in materials) == 1290
     for record in audit['sourceChecks']:
         assert record['originalUnchanged']
         assert sha256((ASSETS / 'sources' / (record['materialId'] + '.pdf')).read_bytes()).hexdigest() == record['readableSha256']

@@ -10,11 +10,15 @@ import UploadDialog from "./UploadDialog";
 import AnswerExercise from "./AnswerExercise";
 import { automaticMnemonic, mnemonicText } from "./mnemonics.js";
 import MnemonicPanel from "./MnemonicPanel";
+import { QuestionExplanation } from "./prediction/PredictionLearning";
 import materials from "../data/materials.json";
 import { FocusBadge, FocusGuide } from "./FocusPriority";
 import { assessQuestion, matchesFocus, compareFocus, focusData, topicById } from "./priorities.js";
 
-type StudyMode = "practice" | "answer";
+import { PredictionPlan, PredictionReason } from "./prediction/PredictionMode";
+import { predictionData, predictionTypes, selectPredictionQuestions, predictionRanges } from "./prediction/predictions.js";
+
+type StudyMode = "practice" | "answer" | "prediction";
 type Scope = "all" | "favorites" | "wrong" | "uploads";
 type Personal = { favorites: string[]; wrong: string[]; mastered: string[]; seen: string[]; choices: Record<string, string[]> };
 type Draft = { stem: string; options: string; answer: string; explanation: string; mnemonic: string; type: QuestionType; revision: number; editor: string; reviewed: boolean };
@@ -47,21 +51,21 @@ function QuestionCard({ q, index, total, studyMode, personal, onFavorite, onMark
   const favorite = personal.favorites.includes(q.id);
   const choice = personal.choices[q.id] || [];
   return <article className="question-card" id={`question-${q.id}`}>
-    <div className="question-top"><div className="question-labels"><span className="type-badge">{typeNames[q.type]}</span><span className="question-number">{String(index + 1).padStart(2, "0")} <span>/ {total}</span></span>{personal.mastered.includes(q.id) && <span className="mastered-label"><CheckCircle2 size={13} /> 已掌握</span>}</div>
+    <div className="question-top"><div className="question-labels"><span className="type-badge">{studyMode === "prediction" && q.type === "calculation" ? "综合题 · 15 分" : typeNames[q.type]}</span><span className="question-number">{String(index + 1).padStart(2, "0")} <span>/ {total}</span></span>{personal.mastered.includes(q.id) && <span className="mastered-label"><CheckCircle2 size={13} /> 已掌握</span>}</div>
       <div className="card-tools"><button className={`icon-button ${favorite ? "is-favorite" : ""}`} aria-label={favorite ? "取消收藏" : "收藏题目"} title={favorite ? "取消收藏" : "收藏题目"} onClick={() => onFavorite(q.id)}><Bookmark size={18} fill={favorite ? "currentColor" : "none"} /></button><button className="icon-button" aria-label="编辑题目" title="编辑题目" onClick={() => onEdit(q)}><Pencil size={17} /></button><button className="icon-button" aria-label="历史版本" title="历史版本" onClick={() => onHistory(q)}><History size={18} /></button></div>
     </div>
-    <FocusBadge q={q} />
+    {studyMode === "prediction" ? <PredictionReason q={q} /> : <FocusBadge q={q} />}
     <div className="question-stem">{q.stem}</div>
-    {q.figures.length > 0 && <details ref={originalFigure} className="original-figure" open={!(studyMode === "answer" && q.figuresContainAnswer)}><summary><FileText size={14} /><span>{q.origin === "upload" ? "查看上传的题目图片" : q.figuresContainAnswer ? "对照原题图（含答案）" : "对照资料原题图"}</span><small>{q.figuresContainAnswer ? "原图含答案，作答后查看" : "公式与配图以原图为准"}</small><ChevronRight size={14} /></summary><div className="question-figures">{q.figures.map((url, i) => <button key={url} onClick={() => onImage(url)} className="figure-button" aria-label={`放大第 ${i + 1} 张原题图片`}><img src={url} alt={`原题配图 ${i + 1}`} loading="lazy" /><span><Maximize2 size={13} /> 放大原图</span></button>)}</div></details>}
-    <AnswerExercise q={q} active={studyMode === "answer"} choice={choice} onChoice={letters => onChoice(q.id, letters)} onWrong={() => onWrong(q.id)} onReveal={show => {
+    {q.figures.length > 0 && <details ref={originalFigure} className="original-figure" open={!(studyMode !== "practice" && q.figuresContainAnswer)}><summary><FileText size={14} /><span>{q.origin === "upload" ? "查看上传的题目图片" : q.figuresContainAnswer ? "对照原题图（含答案）" : "对照资料原题图"}</span><small>{q.figuresContainAnswer ? "原图含答案，作答后查看" : "公式与配图以原图为准"}</small><ChevronRight size={14} /></summary><div className="question-figures">{q.figures.map((url, i) => <button key={url} onClick={() => onImage(url)} className="figure-button" aria-label={`放大第 ${i + 1} 张原题图片`}><img src={url} alt={`原题配图 ${i + 1}`} loading="lazy" /><span><Maximize2 size={13} /> 放大原图</span></button>)}</div></details>}
+    <AnswerExercise q={q} active={studyMode !== "practice"} choice={choice} onChoice={letters => onChoice(q.id, letters)} onWrong={() => onWrong(q.id)} onReveal={show => {
       setAnswerOpen(show);
       if (show) { onSeen(q.id); setMnemonicOpen(true); }
       else { setExplanationOpen(false); setMnemonicOpen(false); if (q.figuresContainAnswer && originalFigure.current) originalFigure.current.open = false; }
     }} />
     <div className="answer-actions"><button className={`primary-button ${answerOpen ? "button-active" : ""}`} aria-expanded={answerOpen} onClick={() => { setAnswerOpen(!answerOpen); if (!answerOpen) setMnemonicOpen(true); }}><Eye size={17} />{answerOpen ? "收起答案" : "查看答案"}</button><button className={`secondary-button ${explanationOpen ? "button-active" : ""}`} aria-expanded={explanationOpen} onClick={() => { setExplanationOpen(!explanationOpen); if (!explanationOpen) setMnemonicOpen(true); onSeen(q.id); }}><Lightbulb size={17} />{explanationOpen ? "收起解析" : "答案解析"}</button><button className={`secondary-button ${mnemonicOpen ? "button-active" : ""}`} aria-expanded={mnemonicOpen} aria-controls={`mnemonic-${q.id}`} onClick={() => setMnemonicOpen(!mnemonicOpen)}><Sparkles size={17} />{mnemonicOpen ? "收起助记" : "助记"}</button></div>
     {answerOpen && <section className="answer-panel" ref={answerPanel}><div className="panel-caption"><CheckCheck size={16} /><strong>参考答案</strong><span>{sourceNames[q.answerSource]}{q.needsReview && q.answerSource !== "course" ? " · 待核对" : ""}</span></div><div className="text-content">{q.answer || "这道题还没有答案，欢迎点击右上角编辑补充。"}</div>{q.answerFigures?.length > 0 && <div className="answer-figures"><span className="small-label">资料中的答案与解题过程</span>{q.answerFigures.map((url, i) => <button className="figure-button" key={url} onClick={() => onImage(url)} aria-label={`放大第 ${i + 1} 张答案原图`}><img src={url} alt={`答案原图 ${i + 1}`} loading="lazy" /><span><Maximize2 size={13} />放大答案原图</span></button>)}</div>}{choice.length > 0 && <div className="your-choice">我的选择：{choice.join("、")}</div>}</section>}
-    {explanationOpen && <section className="explanation-panel"><div className="panel-caption"><Sparkles size={16} /><strong>思路与解析</strong><span>{sourceNames[q.explanationSource]}{q.needsReview && q.explanationSource !== "course" ? " · 待核对" : ""}</span></div><div className="text-content">{q.explanation || "解析待补充。你可以把自己的解题思路写进来。"}</div></section>}
-    {mnemonicOpen && <MnemonicPanel q={q} />}
+    {explanationOpen && <QuestionExplanation q={q} prediction={studyMode === "prediction"} />}
+    {mnemonicOpen && <MnemonicPanel q={q} prediction={studyMode === "prediction"} />}
     <div className="question-bottom">{q.origin === "upload" ? <span className="source-link"><Upload size={14} />同学上传{q.editor ? ` · ${q.editor}` : ""}</span> : <a href={`${q.sourceUrl}#page=${q.pages[0]}`} target="_blank" rel="noreferrer" className="source-link" title={q.sourceFile}><FileText size={14} />资料 · 第 {q.pages.join("、")} 页<ArrowUpRight size={13} /></a>}<div className="self-mark"><button className={personal.wrong.includes(q.id) ? "marked-wrong" : ""} aria-pressed={personal.wrong.includes(q.id)} onClick={() => onMark(q.id, "wrong")}><CircleAlert size={15} />{personal.wrong.includes(q.id) ? "已入错题" : "加入错题"}</button><button className={personal.mastered.includes(q.id) ? "marked-mastered" : ""} aria-pressed={personal.mastered.includes(q.id)} onClick={() => onMark(q.id, "mastered")}><CheckCircle2 size={15} />{personal.mastered.includes(q.id) ? "已掌握" : "我掌握了"}</button></div></div>
   </article>;
 }
@@ -116,6 +120,7 @@ export default function StudyApp({ initialQuestions }: { initialQuestions: Quest
   const [themeOpen, setThemeOpen] = useState(false);
   const [uploadOpen, setUploadOpen] = useState(false);
   const [studyMode, setStudyMode] = useState<StudyMode>("practice");
+  const [predictionRange, setPredictionRange] = useState("paper");
   const [personal, setPersonal] = useState<Personal>(emptyPersonal);
   const [chapter, setChapter] = useState<number | null>(null); const [scope, setScope] = useState<Scope>("all");
   const [query, setQuery] = useState(""); const [type, setType] = useState("all"); const [mode, setMode] = useState<"single" | "list">("single");
@@ -129,19 +134,20 @@ export default function StudyApp({ initialQuestions }: { initialQuestions: Quest
   const chapters = useMemo(() => questions.some(q => q.chapter === 12) ? [...fileChapters, { id: 12, title: "自建题目", count: questions.filter(q => q.chapter === 12).length }] : fileChapters, [questions, fileChapters]);
   const assessments = useMemo(() => new Map(questions.map(q => [q.id, assessQuestion(q)])), [questions]);
   const filtered = useMemo(() => {
-    const result = questions.filter(q => (chapter === null || q.chapter === chapter) && (type === "all" || q.type === type)
-      && (scope === "all" || (scope === "uploads" ? q.origin === "upload" : personal[scope].includes(q.id)))
-      && matchesFocus(assessments.get(q.id), focusLevel, focusTopic)
+    const pool = studyMode === "prediction" ? selectPredictionQuestions(questions, predictionRange) : questions;
+    const result = pool.filter(q => (studyMode === "prediction" || chapter === null || q.chapter === chapter) && (type === "all" || q.type === type)
+      && (studyMode === "prediction" || scope === "all" || (scope === "uploads" ? q.origin === "upload" : personal[scope].includes(q.id)))
+      && (studyMode === "prediction" || matchesFocus(assessments.get(q.id), focusLevel, focusTopic))
       && (!query.trim() || `${q.stem} ${q.options.join(" ")} ${q.tags.join(" ")} ${q.id}`.toLowerCase().includes(query.trim().toLowerCase())));
-    return focusSort === "priority" ? result.sort((a, b) => compareFocus(assessments.get(a.id), assessments.get(b.id))) : result;
-  }, [questions, chapter, type, scope, personal, query, assessments, focusLevel, focusTopic, focusSort]);
+    return studyMode !== "prediction" && focusSort === "priority" ? result.sort((a, b) => compareFocus(assessments.get(a.id), assessments.get(b.id))) : result;
+  }, [questions, chapter, type, scope, personal, query, assessments, focusLevel, focusTopic, focusSort, studyMode, predictionRange]);
   const index = Math.max(0, filtered.findIndex(q => q.id === currentId)); const current = filtered[index];
-  useEffect(() => { try { const saved = JSON.parse(localStorage.getItem(STORAGE) || "null"); if (saved) { const p = saved.personal; if (p && ["favorites", "wrong", "mastered", "seen"].every(k => Array.isArray(p[k]))) setPersonal({ ...emptyPersonal, ...p }); if (saved.mode === "list") setMode("list"); if (saved.studyMode === "answer") setStudyMode("answer"); if (Number.isInteger(saved.chapter) && (saved.chapter === 12 || materials.some(m => m.chapter === saved.chapter))) setChapter(saved.chapter); if (typeof saved.currentId === "string") setCurrentId(saved.currentId); if (["all", "favorites", "wrong", "uploads"].includes(saved.scope)) setScope(saved.scope); if (["all", "5", "4+", "3+", "2", "1", "unrated"].includes(saved.focusLevel)) setFocusLevel(saved.focusLevel); if (saved.focusSort === "priority") setFocusSort("priority"); if (topicById[saved.focusTopic]) setFocusTopic(saved.focusTopic); } } catch { setToast("本机记录无法读取，已使用默认设置。"); } setReady(true); }, []);
-  useEffect(() => { if (ready) try { localStorage.setItem(STORAGE, JSON.stringify({ personal, mode, studyMode, chapter, currentId, scope, focusLevel, focusSort, focusTopic })); } catch { setToast("浏览器未允许保存记录，当前进度将在关闭页面后丢失。"); } }, [ready, personal, mode, studyMode, chapter, currentId, scope, focusLevel, focusSort, focusTopic]);
+  useEffect(() => { try { const saved = JSON.parse(localStorage.getItem(STORAGE) || "null"); if (saved) { const p = saved.personal; if (p && ["favorites", "wrong", "mastered", "seen"].every(k => Array.isArray(p[k]))) setPersonal({ ...emptyPersonal, ...p }); if (saved.mode === "list") setMode("list"); if (["answer", "prediction"].includes(saved.studyMode)) setStudyMode(saved.studyMode); if (predictionRanges.includes(saved.predictionRange)) setPredictionRange(saved.predictionRange); if (Number.isInteger(saved.chapter) && (saved.chapter === 12 || materials.some(m => m.chapter === saved.chapter))) setChapter(saved.chapter); if (typeof saved.currentId === "string") setCurrentId(saved.currentId); if (["all", "favorites", "wrong", "uploads"].includes(saved.scope)) setScope(saved.scope); if (["all", "5", "4+", "3+", "2", "1", "unrated"].includes(saved.focusLevel)) setFocusLevel(saved.focusLevel); if (saved.focusSort === "priority") setFocusSort("priority"); if (topicById[saved.focusTopic]) setFocusTopic(saved.focusTopic); } } catch { setToast("本机记录无法读取，已使用默认设置。"); } setReady(true); }, []);
+  useEffect(() => { if (ready) try { localStorage.setItem(STORAGE, JSON.stringify({ personal, mode, studyMode, predictionRange, chapter, currentId, scope, focusLevel, focusSort, focusTopic })); } catch { setToast("浏览器未允许保存记录，当前进度将在关闭页面后丢失。"); } }, [ready, personal, mode, studyMode, predictionRange, chapter, currentId, scope, focusLevel, focusSort, focusTopic]);
   const refresh = useCallback(async () => { try { const res = await fetch("/api/study/questions", { cache: "no-store" }); const data = await res.json() as { questions: Question[] }; if (!res.ok) throw new Error(); setQuestions(data.questions); setSync("ok"); } catch { setSync("error"); } }, []);
   useEffect(() => { void refresh(); const timer = setInterval(() => { if (document.visibilityState === "visible") void refresh(); }, 30000); const onFocus = () => { void refresh(); }; window.addEventListener("focus", onFocus); return () => { clearInterval(timer); window.removeEventListener("focus", onFocus); }; }, [refresh]);
   useEffect(() => { if (toast) { const timer = setTimeout(() => setToast(""), 4500); return () => clearTimeout(timer); } }, [toast]);
-  useEffect(() => { setListLimit(20); }, [chapter, scope, query, type, focusLevel, focusSort, focusTopic]);
+  useEffect(() => { setListLimit(20); }, [chapter, scope, query, type, focusLevel, focusSort, focusTopic, studyMode, predictionRange]);
   useEffect(() => { if (mode === "list" && currentId) { const at = filtered.findIndex(q => q.id === currentId); if (at >= 20) setListLimit(Math.ceil((at + 1) / 20) * 20); const timer = setTimeout(() => document.getElementById(`question-${currentId}`)?.scrollIntoView({ block: "start" }), 50); return () => clearTimeout(timer); } }, [mode]);
   const seen = useCallback((id: string) => setPersonal(p => p.seen.includes(id) ? p : { ...p, seen: [...p.seen, id] }), []);
   const favorite = (id: string) => setPersonal(p => ({ ...p, favorites: p.favorites.includes(id) ? p.favorites.filter(v => v !== id) : [...p.favorites, id] }));
@@ -149,15 +155,26 @@ export default function StudyApp({ initialQuestions }: { initialQuestions: Quest
   // Set membership, never toggle: retries must not remove earlier mistakes. / 重复答错仍保留在错题本。
   const recordWrong = (id: string) => setPersonal(p => ({ ...p, wrong: p.wrong.includes(id) ? p.wrong : [...p.wrong, id], mastered: p.mastered.filter(value => value !== id) }));
   const choose = (id: string, letters: string[]) => setPersonal(p => ({ ...p, choices: { ...p.choices, [id]: letters } }));
-  const navigate = (next: number) => { if (!filtered[next]) return; setCurrentId(filtered[next].id); window.scrollTo({ top: 220, behavior: "smooth" }); };
-  const selectChapter = (id: number | null) => { setChapter(id); setCurrentId(""); setMenuOpen(false); };
-  const selectScope = (next: Scope) => { setScope(next); setChapter(null); setQuery(""); setType("all"); setFocusLevel("all"); setFocusTopic(""); setFocusSort("original"); setCurrentId(""); setMenuOpen(false); };
+  const scrollToQuestion = (id: string) => { setTimeout(() => document.getElementById(`question-${id}`)?.scrollIntoView({ block: "start", behavior: "smooth" }), 50); };
+  const navigate = (next: number) => { if (!filtered[next]) return; setCurrentId(filtered[next].id); if (studyMode === "prediction") scrollToQuestion(filtered[next].id); else window.scrollTo({ top: 220, behavior: "smooth" }); };
+  const selectChapter = (id: number | null) => { if (studyMode === "prediction") { setStudyMode("practice"); setType("all"); setQuery(""); } setChapter(id); setCurrentId(""); setMenuOpen(false); };
+  const selectScope = (next: Scope) => { if (studyMode === "prediction") setStudyMode("practice"); setScope(next); setChapter(null); setQuery(""); setType("all"); setFocusLevel("all"); setFocusTopic(""); setFocusSort("original"); setCurrentId(""); setMenuOpen(false); };
+  const changeStudyMode = (next: StudyMode) => {
+    // Enter a clean exam-only pool; preserve personal progress and shared edits.
+    // 进入独立押题范围，保留个人进度及共享修改。
+    if (next === "prediction" || studyMode === "prediction") {
+      setScope("all"); setChapter(null); setQuery(""); setType("all");
+      setFocusLevel("all"); setFocusTopic(""); setFocusSort("original"); setCurrentId("");
+    }
+    setStudyMode(next);
+  };
+  const choosePredictionQuestion = (id: string) => { setPredictionRange("extended"); setType("calculation"); setQuery(""); setMode("single"); setCurrentId(id); scrollToQuestion(id); };
   const chooseFocusTopic = (id: string) => { selectScope("all"); setFocusTopic(id); setFocusSort("priority"); setFocusGuideOpen(false); window.scrollTo({ top: 220, behavior: "smooth" }); };
   const startHighPriority = () => { selectScope("all"); setFocusLevel("4+"); setFocusSort("priority"); };
   const shuffle = () => { if (!filtered.length) return; const candidates = filtered.filter(q => q.id !== current?.id); setCurrentId((candidates[Math.floor(Math.random() * candidates.length)] || current).id); setMode("single"); setToast("已为你随机选择一道题"); };
   const progress = questions.length ? Math.round(personal.mastered.filter(id => questions.some(q => q.id === id)).length / questions.length * 100) : 0;
   const cardProps = { studyMode, personal, onFavorite: favorite, onMark: mark, onSeen: seen, onChoice: choose, onWrong: recordWrong, onEdit: (q: Question) => setEditing({ q }), onHistory: setHistoryQ, onImage: setImage };
-  const heading = scope === "favorites" ? "我的收藏" : scope === "wrong" ? "错题再练一次" : scope === "uploads" ? "同学上传题目" : chapter !== null ? chapters.find(ch => ch.id === chapter)?.title || "自建题目" : "今天，也向前一步。";
+  const heading = studyMode === "prediction" ? `${predictionData.target} · 押题练习` : scope === "favorites" ? "我的收藏" : scope === "wrong" ? "错题再练一次" : scope === "uploads" ? "同学上传题目" : chapter !== null ? chapters.find(ch => ch.id === chapter)?.title || "自建题目" : "今天，也向前一步。";
 
   return <div className="app-shell" style={currentThemeStyle}>
     {menuOpen && <button className="mobile-backdrop" aria-label="关闭导航" onClick={() => setMenuOpen(false)} />}
@@ -179,28 +196,30 @@ export default function StudyApp({ initialQuestions }: { initialQuestions: Quest
         <section className="welcome"><div><div className="eyebrow"><span />LEARN A LITTLE, EVERY DAY</div><h1>{heading}</h1><p>{scope === "favorites" ? "值得再看一遍的题目，都在这里。" : scope === "wrong" ? "把每一次卡住，变成下一次进步。" : "把知识连成网络，让每一道题都有收获。"}</p></div><div className="course-label"><span>自考课程</span><strong>{chapter === 17 ? "04741" : "13017"}</strong><span>{chapter === 17 ? "计算题专项练习" : "课件与真题练习"}</span></div></section>
         <section className="overview" aria-label="学习概况"><div><span className="stat-icon mint"><Layers3 size={20} /></span><div><span className="stat-title">共享题库</span><strong>{questions.length}<small>道题</small></strong></div></div><div><span className="stat-icon blue"><BookOpen size={20} /></span><div><span className="stat-title">全部资料</span><strong>{materials.length}<small>份 · {totalPages} 页</small></strong></div></div><div><span className="stat-icon amber"><CheckCheck size={20} /></span><div><span className="stat-title">我的已复习</span><strong>{personal.seen.length}<small>道题</small></strong></div><span className="progress-mini">慢慢来，也很快</span></div></section>
         {sync === "error" && <div className="sync-error" role="status"><CircleAlert size={16} /><span>共享题库暂时连接不上，当前显示已载入的内容。</span><button onClick={refresh}><RefreshCw size={14} />重新连接</button></div>}
-        <section className="focus-banner" aria-label="考点星级">
+        {studyMode !== "prediction" && <section className="focus-banner" aria-label="考点星级">
           <span className="focus-banner-icon"><Star size={21} /></span>
-          <div className="focus-banner-copy"><strong>{focusData.target} · 重点复习</strong><p>{focusData.topics.length} 个考点 · 3 套完整真题 · 星越多，复习优先级越高，不代表命题概率</p></div>
+          <div className="focus-banner-copy"><strong>{focusData.target} · 重点复习</strong><p>{focusData.topics.length} 个考点 · {focusData.examTerms.length} 套完整真题 · 星越多，复习优先级越高，不代表命题概率</p></div>
           <div className="focus-banner-actions"><button className="secondary-button" onClick={() => setFocusGuideOpen(true)}>查看重点分布<ChevronRight size={14} /></button><button className="primary-button" onClick={startHighPriority}>先练高星题</button></div>
-        </section>
+        </section>}
         <section className="practice-section">
-          <div className="section-heading"><div><h2>{chapter === null ? "开始练习" : (chapter === 0 ? "导学课练习" : chapter === 12 ? "自建题目练习" : chapter >= 13 ? materials.find(m => m.chapter === chapter)?.title : `第 ${chapter} 章练习`)}</h2><span>{filtered.length} 道题目</span></div><div className="view-switch" role="group" aria-label="题目显示方式"><button className={mode === "single" ? "selected" : ""} aria-pressed={mode === "single"} aria-label="单题显示" title="单题显示" onClick={() => setMode("single")}><RectangleHorizontal size={16} /><span>单题显示</span></button><button className={mode === "list" ? "selected" : ""} aria-pressed={mode === "list"} aria-label="列表显示" title="列表显示" onClick={() => setMode("list")}><LayoutList size={16} /><span>列表显示</span></button></div></div>
+          <div className="section-heading"><div><h2>{studyMode === "prediction" ? (predictionRange === "paper" ? "31 题押题卷" : "扩展题单") : chapter === null ? "开始练习" : (chapter === 0 ? "导学课练习" : chapter === 12 ? "自建题目练习" : chapter >= 13 ? materials.find(m => m.chapter === chapter)?.title : `第 ${chapter} 章练习`)}</h2><span>{filtered.length} 道题目</span></div><div className="view-switch" role="group" aria-label="题目显示方式"><button className={mode === "single" ? "selected" : ""} aria-pressed={mode === "single"} aria-label="单题显示" title="单题显示" onClick={() => setMode("single")}><RectangleHorizontal size={16} /><span>单题显示</span></button><button className={mode === "list" ? "selected" : ""} aria-pressed={mode === "list"} aria-label="列表显示" title="列表显示" onClick={() => setMode("list")}><LayoutList size={16} /><span>列表显示</span></button></div></div>
           <div className="study-mode-bar">
             <div className="study-mode-switch" role="group" aria-label="学习模式">
-              <button aria-pressed={studyMode === "practice"} onClick={() => setStudyMode("practice")}><BookOpen size={17} />练习模式</button>
-              <button aria-pressed={studyMode === "answer"} onClick={() => setStudyMode("answer")}><Pencil size={17} />答题模式</button>
+              <button aria-pressed={studyMode === "practice"} onClick={() => changeStudyMode("practice")}><BookOpen size={17} />练习模式</button>
+              <button aria-pressed={studyMode === "answer"} onClick={() => changeStudyMode("answer")}><Pencil size={17} />答题模式</button>
+              <button aria-pressed={studyMode === "prediction"} onClick={() => changeStudyMode("prediction")}><Sparkles size={17} />押题模式</button>
             </div>
-            <p>{studyMode === "practice" ? "直接展示答案，边看边学" : "点击或输入，自动核对答案"}</p>
+            <p>{studyMode === "practice" ? "直接展示答案，边看边学" : studyMode === "prediction" ? "真题精选，先作答再看答案" : "点击或输入，自动核对答案"}</p>
           </div>
-          <div className="filter-bar"><label className="search-box"><Search size={18} /><input aria-label="搜索题目" placeholder="搜索题目、关键词…" value={query} onChange={e => { setQuery(e.target.value); setCurrentId(""); }} />{query && <button onClick={() => setQuery("")} aria-label="清除搜索"><X size={15} /></button>}</label><label className="type-select"><SlidersHorizontal size={15} /><Select label="筛选题型" value={type} options={[{ value: "all", label: "全部题型" }, ...Object.entries(typeNames).map(([value, label]) => ({ value, label }))]} onChange={value => { setType(value); setCurrentId(""); }} /></label><button className="shuffle-button" onClick={shuffle} disabled={!filtered.length}><Shuffle size={17} />随机一题</button></div>
-          <div className="focus-filters" aria-label="重点筛选">
+          {studyMode === "prediction" && <PredictionPlan questions={questions} range={predictionRange} type={type} onRange={value => { setPredictionRange(value); setCurrentId(""); setQuery(""); }} onType={value => { setType(value); setCurrentId(""); setQuery(""); }} onQuestion={choosePredictionQuestion} />}
+          <div className="filter-bar"><label className="search-box"><Search size={18} /><input aria-label="搜索题目" placeholder="搜索题目、关键词…" value={query} onChange={e => { setQuery(e.target.value); setCurrentId(""); }} />{query && <button onClick={() => setQuery("")} aria-label="清除搜索"><X size={15} /></button>}</label><label className="type-select"><SlidersHorizontal size={15} /><Select label="筛选题型" value={type} options={[{ value: "all", label: "全部题型" }, ...Object.entries(studyMode === "prediction" ? predictionTypes : typeNames).map(([value, label]) => ({ value, label }))]} onChange={value => { setType(value); setCurrentId(""); }} /></label><button className="shuffle-button" onClick={shuffle} disabled={!filtered.length}><Shuffle size={17} />随机一题</button></div>
+          {studyMode !== "prediction" && <div className="focus-filters" aria-label="重点筛选">
             <span><Star size={14} />复习重点</span>
             <Select label="筛选星级" value={focusLevel} options={[{value:"all",label:"全部星级"},{value:"5",label:"★★★★★ 高频重点"},{value:"4+",label:"4 星及以上"},{value:"3+",label:"3 星及以上"},{value:"2",label:"★★ 基础覆盖"},{value:"1",label:"★ 拓展了解"},{value:"unrated",label:"待评估"}]} onChange={value => { setFocusLevel(value); setCurrentId(""); }} />
             <Select label="题目排序" value={focusSort} options={[{value:"original",label:"按资料顺序"},{value:"priority",label:"星级从高到低"}]} onChange={value => { setFocusSort(value); setCurrentId(""); }} />
             {focusTopic && <button className="focus-topic-chip" onClick={() => { setFocusTopic(""); setCurrentId(""); }} aria-label="清除考点筛选"><span>{topicById[focusTopic]?.title}</span><X size={13} /></button>}
             {(focusLevel !== "all" || focusTopic || focusSort !== "original") && <button className="focus-clear" onClick={() => { setFocusLevel("all"); setFocusTopic(""); setFocusSort("original"); setCurrentId(""); }}>清除重点筛选</button>}
-          </div>
+          </div>}
           <div className="practice-layout"><div className="questions-column">
             {!ready ? <div className="loading-state">正在恢复学习设置…</div> : !filtered.length ? <div className="empty-state"><Search size={32} /><h3>{scope === "favorites" ? "还没有收藏题目" : scope === "wrong" ? "错题本还是空的" : "这里还没有匹配的题目"}</h3><p>{scope === "favorites" ? "点击题目右上角的书签，下次就能快速找到。" : scope === "wrong" ? "遇到需要巩固的题目，点「加入错题」留给下次复习。" : "试试其他关键词、题型或章节。"}</p><button className="secondary-button" onClick={() => selectScope("all")}>回到全部题库<ChevronRight size={16} /></button></div> : mode === "single" ? <><QuestionCard key={`${studyMode}-${current.id}-${current.revision || 0}`} q={current} index={index} total={filtered.length} {...cardProps} /><div className="question-pager"><button className="secondary-button" disabled={index === 0} onClick={() => navigate(index - 1)}><ChevronLeft size={17} />上一题</button><span>第 <strong>{index + 1}</strong> / {filtered.length} 题</span><button className="primary-button" disabled={index >= filtered.length - 1} onClick={() => navigate(index + 1)}>下一题<ChevronRight size={17} /></button></div></> : <><div className="list-note"><LayoutList size={15} />{studyMode === "practice" ? "连续浏览，答案已直接展示，解析可按需展开" : "连续作答，逐题查看答案与解析"}</div>{filtered.slice(0, listLimit).map((q, i) => <div key={q.id} onPointerDown={() => setCurrentId(q.id)}><QuestionCard key={`${studyMode}-${q.id}-${q.revision || 0}`} q={q} index={i} total={filtered.length} {...cardProps} /></div>)}{listLimit < filtered.length && <button className="load-more secondary-button" onClick={() => setListLimit(n => n + 20)}>继续加载 {Math.min(20, filtered.length - listLimit)} 道题<ChevronRight size={16} /></button>}</>}
           </div><aside className="study-rail"><div className="progress-card"><div className="rail-title"><span>一点一滴的进步</span><CheckCircle2 size={17} /></div><div className="progress-number">{progress}<span>%</span><small>已掌握</small></div><div className="progress-track"><span style={{ width: `${progress}%` }} /></div><p>已掌握 {personal.mastered.length} 道 / 共 {questions.length} 道</p><div className="rail-divider" /><div className="rail-row"><span><Bookmark size={14} />我的收藏</span><strong>{personal.favorites.length}</strong></div><div className="rail-row"><span><CircleAlert size={14} />待巩固错题</span><strong>{personal.wrong.length}</strong></div><small className="local-note">进度与收藏保存在当前浏览器</small></div>
@@ -219,7 +238,7 @@ export default function StudyApp({ initialQuestions }: { initialQuestions: Quest
     {themeOpen && <ThemeSettings theme={theme} onChange={setTheme} onClose={() => setThemeOpen(false)} />}
     {uploadOpen && <UploadDialog chapters={fileChapters} onClose={() => setUploadOpen(false)} onCreated={added => {
       setQuestions(previous => [...previous.filter(q => !added.some(item => item.id === q.id)), ...added]);
-      setUploadOpen(false); setScope("all"); setChapter(null); setQuery(""); setType("all"); setFocusLevel("all"); setFocusTopic(""); setFocusSort("original"); setMode("single"); setCurrentId(added[0].id); setMenuOpen(false); setToast(`已公开添加 ${added.length} 道题目`); window.scrollTo({ top: 0 });
+      setUploadOpen(false); if (studyMode === "prediction") setStudyMode("practice"); setScope("all"); setChapter(null); setQuery(""); setType("all"); setFocusLevel("all"); setFocusTopic(""); setFocusSort("original"); setMode("single"); setCurrentId(added[0].id); setMenuOpen(false); setToast(`已公开添加 ${added.length} 道题目`); window.scrollTo({ top: 0 });
     }} />}
     {toast && <div className="toast" role="status"><CheckCircle2 size={17} />{toast}<button aria-label="关闭提示" onClick={() => setToast("")}><X size={15} /></button></div>}
   </div>;

@@ -1,20 +1,20 @@
 {
-  "version": 3,
-  "sourcePdfCount": 19,
-  "sourcePageCount": 547,
-  "questionCount": 1259,
-  "questionsWithOriginalImages": 1227,
+  "version": 4,
+  "sourcePdfCount": 20,
+  "sourcePageCount": 549,
+  "questionCount": 1290,
+  "questionsWithOriginalImages": 1258,
   "answerSourceCounts": {
     "course": 1151,
-    "ai": 108
+    "ai": 139
   },
   "explanationSourceCounts": {
-    "ai": 696,
+    "ai": 727,
     "course": 563
   },
   "allPagesExamined": true,
   "allQuestionsRequireReview": true,
-  "method": "保留原 361 题；新增 5 份 PDF 经逐页文本、嵌入图像与中文 OCR 提取，保留原题、答案截图及 PDF。三套真题逐套核对 1–31 题；填空题按章节小节与题号核对覆盖；计算题独立关联题干与解答页。题库全部标记待核对，不代表教师审定。 本次另增 2 份扫描版简答题资料，逐页 OCR 并按原文红色题干分割，核对章节、题号及跨页答案；原 1000 题不变。",
+  "method": "保留原 361 题；新增 5 份 PDF 经逐页文本、嵌入图像与中文 OCR 提取，保留原题、答案截图及 PDF。三套真题逐套核对 1–31 题；填空题按章节小节与题号核对覆盖；计算题独立关联题干与解答页。题库全部标记待核对，不代表教师审定。 本次另增 2 份扫描版简答题资料，逐页 OCR 并按原文红色题干分割，核对章节、题号及跨页答案；原 1000 题不变。 追加 2026 年 4 月完整真题：2 个 PDF 物理页拼接 4 个印刷页，逐题核对 1–31 题及原图；试卷无答案，按 2024 年版教材补充 AI 参考答案与页码，保留待核对标记。",
   "limitations": [
     "OCR 文字仍可能有个别错字，以原题截图与 PDF 为准。",
     "课件重复出现的题目按出现位置分别保留。",
@@ -6317,6 +6317,82 @@
         }
       ],
       "answerNote": "原文答案及题干、解答图已保留。两处已发现的原资料错误在文字答案与解析中说明；OCR 与补充内容待核对。"
+    },
+    {
+      "chapter": 20,
+      "chapterTitle": "2026年04月真题",
+      "sourceFile": "13017计算机网络与信息安全_2026年04月真题.pdf",
+      "sourceUrl": "/sources/exam-2026-04.pdf",
+      "pageCount": 2,
+      "printedPageCount": 4,
+      "questionCount": 31,
+      "questionPages": [
+        1,
+        2
+      ],
+      "reviewIssues": [
+        "试卷未附标准答案，全部参考答案与解析为 AI 辅助整理，待核对。"
+      ],
+      "pageAudit": [
+        {
+          "page": 1,
+          "printedPages": [
+            1,
+            2
+          ],
+          "textExtracted": false,
+          "imageOnly": true,
+          "questionIds": [
+            "exam-2026-04-q001",
+            "exam-2026-04-q002",
+            "exam-2026-04-q003",
+            "exam-2026-04-q004",
+            "exam-2026-04-q005",
+            "exam-2026-04-q006",
+            "exam-2026-04-q007",
+            "exam-2026-04-q008",
+            "exam-2026-04-q009",
+            "exam-2026-04-q010",
+            "exam-2026-04-q011",
+            "exam-2026-04-q012",
+            "exam-2026-04-q013",
+            "exam-2026-04-q014",
+            "exam-2026-04-q015"
+          ],
+          "classification": "question",
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "printedPages": [
+            3,
+            4
+          ],
+          "textExtracted": false,
+          "imageOnly": true,
+          "questionIds": [
+            "exam-2026-04-q016",
+            "exam-2026-04-q017",
+            "exam-2026-04-q018",
+            "exam-2026-04-q019",
+            "exam-2026-04-q020",
+            "exam-2026-04-q021",
+            "exam-2026-04-q022",
+            "exam-2026-04-q023",
+            "exam-2026-04-q024",
+            "exam-2026-04-q025",
+            "exam-2026-04-q026",
+            "exam-2026-04-q027",
+            "exam-2026-04-q028",
+            "exam-2026-04-q029",
+            "exam-2026-04-q030",
+            "exam-2026-04-q031"
+          ],
+          "classification": "question",
+          "reviewed": true
+        }
+      ],
+      "sha256": "b3312f3e247103a5b369de280e1a9b19bd9b4904a0bb4355b83c583f19ffe74c"
     }
   ],
   "emptyAnswerCount": 0,

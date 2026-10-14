@@ -47,7 +47,7 @@ test('ambiguous blanks and free responses ask for self assessment', () => {
 test('all existing choice answers remain gradable; known OCR mismatch is not marked wrong', () => {
   const bank=JSON.parse(readFileSync(new URL('../data/questions.json',import.meta.url),'utf8'));
   const choices=bank.filter(q=>q.type==='single');
-  assert.equal(choices.length,301);
+  assert.equal(choices.length,316);
   for(const q of choices) assert.equal(gradeResponse(q,[q.answer]).status,'correct',q.id);
   const q=bank.find(q=>q.id==='blanks-p002-q005');
   assert.equal(gradeResponse(q,[],['ISP','互联网']).status,'review');

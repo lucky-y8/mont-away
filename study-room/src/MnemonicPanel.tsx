@@ -3,15 +3,19 @@ import { BookOpen, CircleAlert, Sparkles } from 'lucide-react';
 import { Question } from './types';
 import { mnemonicDetails } from './mnemonics.js';
 import './mnemonics.css';
+import { predictionMnemonic } from './prediction/learning.js';
+import { PredictionMnemonic } from './prediction/PredictionLearning';
 
 const pages = (range: number[]) => range[0] === range[1] ? String(range[0]) : range.join('–');
 
-export default function MnemonicPanel({ q }: { q: Question }) {
+export default function MnemonicPanel({ q, prediction = false }: { q: Question; prediction?: boolean }) {
   const details = useMemo(() => mnemonicDetails(q), [q]);
   const [selected, setSelected] = useState('');
   const cards = details.cards.map((card, i) => ({ ...card, key: `${details.ruleId || 'answer'}-${i}`, label: card.kind }));
   const active = cards.find(card => card.key === selected) || cards[0];
   const reference = details.reference;
+  const lesson = prediction ? predictionMnemonic(q) : null;
+  if (lesson) return <PredictionMnemonic key={q.id} q={q} lesson={lesson} />;
   const original = q.origin !== 'upload' && q.sourceUrl?.startsWith('/study-assets/') && q.pages?.length;
   return <section id={`mnemonic-${q.id}`} className="mnemonic-panel" aria-label="助记提示">
     <div className="panel-caption"><Sparkles size={16} /><strong>助记提示</strong><span>{details.custom ? '同学共同完善' : reference ? '结合教材整理' : '根据当前答案整理'}</span></div>

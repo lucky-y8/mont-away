@@ -1,7 +1,7 @@
 """Build an auditable, separate topic index; never rewrite question records.
 
-The three full exam papers are manually indexed. Summary PDFs do not vote.
-教材/大纲依据与三套完整真题独立存档；关键词只用于把题库题目关联到考点。
+The supplied full exam papers are manually indexed. Summary PDFs do not vote.
+教材/大纲依据与完整真题独立存档；关键词只用于把题库题目关联到考点。
 """
 import argparse, hashlib, json, re, sys
 from collections import Counter
@@ -106,6 +106,7 @@ EXAM_MAP = {
 '2024-10': '''protocol http transport network-service crc communication wireless symmetric key-management firewall pgp tcp-flow wifi arp crypto-basics performance dns udp router link-service communication mobility symmetric key-management content network-basics mobility reliable authentication dns+http line-code'''.split(),
 '2025-04': '''topology dns udp network-service crc communication mobility public-crypto access ipsec ftp content network-service risk switching layers app-communication transport network-service link-service communication wifi traditional key-management content protocol csma-ca tcp-connection ids subnet line-code'''.split(),
 '2025-10': '''topology udp tcp-connection network-service ethernet communication wireless traditional content ipsec multiplex route-protocol communication error-code firewall layers app-structure transport network-service error-code communication cellular traditional access content network-basics wireless udp ids subnet line-code'''.split(),
+'2026-04': '''protocol email tcp-flow route-protocol arp communication mobility symmetric content ids layers http capacity access protection switching http udp subnet ethernet communication public-crypto line-code firewall risk communication email crypto-basics network-congestion subnet http'''.split(),
 }
 
 def clean(text): return re.sub(r'\s+','',text).replace('／','/').upper()
@@ -207,12 +208,12 @@ def main():
         assert all(i in topics for i in ids),(q['id'],ids)
         mapped[q['id']]=dict(topics=ids,fingerprint=fingerprint(q))
         audit.append(f"{q['id']}\t{chapter_of(q)}\t{','.join(ids) or 'UNMAPPED'}\t{q['stem']}\t{q['answer'][:100]}")
-    data=dict(version=1,updatedAt='2026-10-13',target='2026 年 10 月',
+    data=dict(version=1,updatedAt='2026-10-14',target='2026 年 10 月',
         book=dict(title='计算机网络与信息安全',author='李全龙',edition='2024年版',publisher='机械工业出版社',pageCount=450,pdfPageOffset=7,sha256=hashlib.sha256(args.book.read_bytes()).hexdigest() if args.book else json.loads((args.project/'study-room/data/focus-priorities.json').read_text(encoding='utf-8'))['book']['sha256'],
         readScope='核对全书目录、各章学习目标/教师导读及书内大纲的考核要求；教材页码为对应知识节的定位。',
         catalogueUrl='https://www.shmeea.edu.cn/download/20260520/2.pdf',catalogueNote='上海市教育考试院 2026 年 10 月教材目录列明相同版本；其他地区与考期以当地公告为准。'),
-        examTerms=list(EXAM_MAP),examQuestionCount=93,
-        limitations=['仅采用已收录的三套完整真题；未纳入完整的 2026 年 4 月试卷。','汇总资料中的“某年真题”标注、教材例题及 04741 专项题均不增加真题复现次数。','星级是考点层面的复习优先级，不是本题原题重考概率；少量样本不能提供可靠命中率。','题型与数值可能变化；没有在样本中出现的考点也可能考查。'],
+        examTerms=list(EXAM_MAP),examQuestionCount=sum(len(items) for items in EXAM_MAP.values()),
+        limitations=[f'仅采用已收录的 {len(EXAM_MAP)} 套完整真题，最新考期为 {max(EXAM_MAP)}。','汇总资料中的“某年真题”标注、教材例题及 04741 专项题均不增加真题复现次数。','星级是考点层面的复习优先级，不是本题原题重考概率；少量样本不能提供可靠命中率。','题型与数值可能变化；没有在样本中出现的考点也可能考查。'],
         rules=[dict(stars=5,label='高频重点',description='教材/大纲重点，且同一考点出现于至少 2 个已收录考期。'),dict(stars=4,label='优先复习',description='重点考点在 1 个考期出现，或一般考点在至少 2 个考期出现。'),dict(stars=3,label='核心巩固',description='教材/大纲重点但样本未出现，或一般考点在 1 个考期出现。'),dict(stars=2,label='基础覆盖',description='一般考核内容，样本中尚未出现。'),dict(stars=1,label='拓展了解',description='教材背景或拓展内容；不据此判定不会考。')],
         topics=list(topics.values()),questions=mapped)
     materials=json.loads((args.project/'study-room/data/materials.json').read_text(encoding='utf-8'))

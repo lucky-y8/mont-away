@@ -19,8 +19,8 @@ def draft(q, **updates):
 
 def test_assets_question_bank_and_both_entrypoints(study):
     rows = study.get('/api/study/questions').json()['questions']
-    assert len(rows) == len({q['id'] for q in rows}) == 1259
-    assert len({q['chapter'] for q in rows}) == 19
+    assert len(rows) == len({q['id'] for q in rows}) == 1290
+    assert len({q['chapter'] for q in rows}) == 20
     for q in rows:
         assert q['answer'] and q['explanation']
         for url in [q['sourceUrl'], *q['figures'], *q.get('answerFigures', [])]:

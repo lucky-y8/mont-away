@@ -7,7 +7,7 @@ const bank = JSON.parse(readFileSync(new URL('../data/questions.json', import.me
 const byId = Object.fromEntries(bank.map(q => [q.id, q]));
 
 test('every original question has a matching content fingerprint and supported topic', () => {
-  assert.equal(bank.length, 1259);
+  assert.equal(bank.length, 1290);
   assert.deepEqual(new Set(Object.keys(focusData.questions)), new Set(bank.map(q => q.id)));
   for (const q of bank) {
     const a = assessQuestion(q);
@@ -16,7 +16,7 @@ test('every original question has a matching content fingerprint and supported t
     assert.ok(a.topics.length > 0 && a.topics.every(t => topicById[t.id]), q.id);
   }
 });
-test('evidence covers exactly 93 full-paper questions, never summary duplicates or 04741', () => {
+test('evidence covers exactly 124 full-paper questions, never summary duplicates or 04741', () => {
   const allRefs = new Set();
   for (const topic of focusData.topics) {
     assert.equal(new Set(topic.evidence.map(e => e.id)).size, topic.evidence.length);
@@ -32,9 +32,11 @@ test('evidence covers exactly 93 full-paper questions, never summary duplicates 
       allRefs.add(e.id);
     }
   }
-  assert.equal(allRefs.size, 93);
+  assert.equal(allRefs.size, 124);
   assert.deepEqual([...allRefs].sort(), bank.filter(q => q.materialId?.startsWith('exam-')).map(q => q.id).sort());
-  assert.equal(topicById['network-congestion'].examTerms.length, 0, 'secondary 2026 summary does not become a full paper');
+  assert.deepEqual(topicById['network-congestion'].examTerms, ['2026-04']);
+  assert.deepEqual(topicById['network-congestion'].evidence.map(e => e.id), ['exam-2026-04-q029']);
+  assert.deepEqual(focusData.questions['exam-2026-04-q031'].topics, ['http'], 'DNS is expressly excluded from the question');
 });
 test('ratings are determined by distinct terms and syllabus importance, not question count', () => {
   for (const t of focusData.topics) {
@@ -43,8 +45,9 @@ test('ratings are determined by distinct terms and syllabus importance, not ques
     assert.equal(t.stars, expected, t.id);
   }
   assert.equal(topicById.subnet.stars, 5);
-  assert.equal(topicById['line-code'].examTerms.length, 3);
-  assert.equal(topicById.http.stars, 4, 'two HTTP questions in one term still count as one term');
+  assert.equal(topicById['line-code'].examTerms.length, 4);
+  assert.equal(topicById.http.stars, 5);
+  assert.deepEqual(topicById.http.examTerms, ['2024-10', '2026-04'], 'multiple HTTP questions in one term count once');
   assert.equal(topicById.window.stars, 3, 'past 04741 calculations do not inflate 13017 frequency');
 });
 test('book references stay within verified printed sections and PDF offset', () => {

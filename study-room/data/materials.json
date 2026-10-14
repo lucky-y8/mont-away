@@ -165,6 +165,17 @@
     "courseCode": "13017"
   },
   {
+    "id": "exam-2026-04",
+    "chapter": 20,
+    "title": "2026年04月真题",
+    "sourceFile": "13017计算机网络与信息安全_2026年04月真题.pdf",
+    "sourceUrl": "/sources/exam-2026-04.pdf",
+    "pageCount": 2,
+    "questionCount": 31,
+    "kind": "exam",
+    "courseCode": "13017"
+  },
+  {
     "id": "blanks",
     "chapter": 16,
     "title": "填空题总结",
