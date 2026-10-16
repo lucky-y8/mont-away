@@ -67,7 +67,7 @@ def test_image_upload_shared_edit_and_history(client):
     with TestClient(app) as other:
         assert other.get(url).json()['history'][0]['revision'] == 2
         assert other.get(q['figures'][0]).content == image.content
-        assert len(other.get('/api/study/questions').json()['questions']) == len(store.originals()) + 1
+        assert other.get('/api/study/questions').json()['total'] == len(store.originals()) + 1
 
 
 def test_atomic_validation_no_orphan_images(client):

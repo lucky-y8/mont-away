@@ -1,0 +1,12 @@
+.question-pagination { margin-top: 4px; }
+.page-jump { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; color: var(--study-muted-bg, var(--muted)); font-size: 12px; }
+.page-jump input { width: 64px; min-width: 0; height: 34px; padding: 5px 7px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); color: var(--ink); text-align: center; font-variant-numeric: tabular-nums; box-shadow: none; }
+.page-jump input[aria-invalid="true"] { border-color: var(--error-ink); }
+.page-jump .secondary-button { min-height: 34px; padding: 6px 12px; font-size: 12px; box-shadow: none; }
+.page-jump small { font-size: 10px; margin-left: 3px; }
+.page-jump-error { text-align: center; color: var(--error-ink); font-size: 12px; margin-top: 8px; }
+@media (max-width: 450px) {
+  .page-jump { gap: 7px; font-size: 11px; }
+  .page-jump input { height: 36px; font-size: 16px; }
+  .page-jump .secondary-button { min-height: 36px; font-size: 11px; }
+}

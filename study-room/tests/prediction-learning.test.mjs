@@ -3,11 +3,13 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import bank from '../data/questions.json' with { type: 'json' };
-import { predictionLearning, predictionLesson, predictionMnemonic, wavePoints } from '../src/prediction/learning.js';
+import predictionLearning from "../data/prediction-learning.json" with {type:"json"};
+import { predictionLesson, predictionMnemonic, wavePoints } from '../src/prediction/learning.js';
 import { selectPredictionQuestions } from '../src/prediction/predictions.js';
 
-const questions = selectPredictionQuestions(bank,'extended');
-const get = suffix => bank.find(q=>q.id===`exam-${suffix}`);
+const withLearning = q => ({...q, learning:predictionLearning.items.find(x=>x.id===q.id)});
+const questions = selectPredictionQuestions(bank,'extended').map(withLearning);
+const get = suffix => withLearning(bank.find(q=>q.id===`exam-${suffix}`));
 test('60 selected questions all have a question-specific lesson, short cue and recall/transfer tasks',()=>{
   assert.equal(questions.length,60);
   assert.equal(predictionLearning.items.length,60);

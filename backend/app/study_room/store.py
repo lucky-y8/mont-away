@@ -33,6 +33,20 @@ def database():
             db.execute('CREATE TABLE IF NOT EXISTS question_uploads (question_id TEXT PRIMARY KEY, content TEXT NOT NULL, created_at TEXT NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS question_images (image_id TEXT PRIMARY KEY, content BLOB NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS question_submissions (request_id TEXT PRIMARY KEY, fingerprint TEXT NOT NULL, question_ids TEXT NOT NULL)')
+            db.execute('CREATE TABLE IF NOT EXISTS study_sync_clock (singleton INTEGER PRIMARY KEY CHECK(singleton=1), epoch TEXT NOT NULL, sequence INTEGER NOT NULL)')
+            db.execute('INSERT OR IGNORE INTO study_sync_clock VALUES (1, ?, 0)', (uuid.uuid4().hex,))
+            db.execute('CREATE TABLE IF NOT EXISTS study_changes (question_id TEXT PRIMARY KEY, sequence INTEGER NOT NULL UNIQUE)')
+            # Record only committed mutations in the same transaction. / 变更游标与题目原子提交。
+            for table in ('question_uploads', 'question_edits'):
+                for operation in ('INSERT', 'UPDATE', 'DELETE'):
+                    alias = 'OLD' if operation == 'DELETE' else 'NEW'
+                    db.execute(f"""CREATE TRIGGER IF NOT EXISTS sync_{table}_{operation.lower()} AFTER {operation} ON {table}
+                        BEGIN
+                          UPDATE study_sync_clock SET sequence=sequence+1 WHERE singleton=1;
+                          INSERT INTO study_changes(question_id, sequence)
+                          VALUES ({alias}.question_id, (SELECT sequence FROM study_sync_clock WHERE singleton=1))
+                          ON CONFLICT(question_id) DO UPDATE SET sequence=excluded.sequence;
+                        END""")
         yield db
     finally:
         db.close()

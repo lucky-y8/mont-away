@@ -44,13 +44,8 @@ export function FocusBadge({ q }: { q: Question }) {
   </div>;
 }
 
-export function FocusGuide({ questions, onClose, onChoose }: { questions: Question[]; onClose: () => void; onChoose: (id: string) => void }) {
+export function FocusGuide({ counts, onClose, onChoose }: { counts: Record<string, number>; onClose: () => void; onChoose: (id: string) => void }) {
   const [chapter, setChapter] = useState("all");
-  const counts = useMemo(() => {
-    const result: Record<string, number> = {};
-    for (const q of questions) for (const topic of assessQuestion(q).topics) result[topic.id] = (result[topic.id] || 0) + 1;
-    return result;
-  }, [questions]);
   const topics = [...focusData.topics].filter(t => chapter === "all" || t.chapter === Number(chapter))
     .sort((a, b) => b.stars - a.stars || b.examTerms.length - a.examTerms.length || a.chapter - b.chapter);
   return <Modal title="教材重点与真题分布" subtitle={`${focusData.target} · ${focusData.topics.length} 个考点 · 更新于 ${focusData.updatedAt}`} wide onClose={onClose}>

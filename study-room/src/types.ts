@@ -7,6 +7,7 @@ export interface Question {
   pages: number[]; figures: string[]; tags: string[]; needsReview: boolean;
   origin?: "upload";
   mnemonic?: string;
+  learning?: (typeof import("../data/prediction-learning.json"))["items"][number];
   answerFigures?: string[]; figuresContainAnswer?: boolean; materialId?: string; sourceQuestion?: string;
   revision?: number; editor?: string; editedAt?: string;
 }

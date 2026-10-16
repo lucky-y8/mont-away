@@ -4,10 +4,10 @@ import re
 from hashlib import sha256
 import logging
 import sqlite3
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Query
 from fastapi.responses import JSONResponse, Response
 from starlette.concurrency import run_in_threadpool
-from . import store, importing
+from . import store, importing, catalog
 router = APIRouter(prefix='/api/study', tags=['study'])
 logger = logging.getLogger(__name__)
 
@@ -19,8 +19,37 @@ def unavailable():
     return result({'error': '共享题库暂时无法连接，请稍后重试。'}, 503)
 
 @router.get('/questions')
-def questions():
-    try: return result({'questions': store.questions()})
+def questions(offset: int = Query(0, ge=0), limit: int = Query(20, ge=1, le=100)):
+    try:
+        rows = store.questions()
+        return result({'questions': rows[offset:offset+limit], 'total': len(rows),
+                       'nextOffset': offset+limit if offset+limit < len(rows) else None})
+    except (sqlite3.Error, OSError): return unavailable()
+
+@router.get('/sync')
+def sync(cursor: str = Query('', max_length=200)):
+    try:
+        changes = catalog.changes(cursor)
+        return Response(status_code=204, headers={'Cache-Control':'no-store'}) if changes is None else result(changes)
+    except (sqlite3.Error, OSError): return unavailable()
+
+@router.post('/query')
+async def question_query(request: Request):
+    try:
+        body = json.loads(await limited_body(request, 700000))
+        if not catalog.validate_filters(body): return result({'error':'题库筛选条件无效'},400)
+        return result(await run_in_threadpool(catalog.query, body))
+    except (OverflowError, ValueError, UnicodeError): return result({'error':'题库查询格式无效或过大'},400)
+    except (sqlite3.Error, OSError): return unavailable()
+
+@router.post('/batch')
+async def question_batch(request: Request):
+    try:
+        body = json.loads(await limited_body(request, 10000))
+        if not isinstance(body, dict) or not catalog.validate_ids(body.get('ids')):
+            return result({'error':'每批最多加载 20 道题，请检查题目编号'},400)
+        return result(await run_in_threadpool(catalog.batch, body['ids']))
+    except (OverflowError, ValueError, UnicodeError): return result({'error':'取题格式无效或过大'},400)
     except (sqlite3.Error, OSError): return unavailable()
 
 @router.get('/questions/{question_id}')

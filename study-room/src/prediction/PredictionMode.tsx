@@ -1,16 +1,15 @@
 import { ArrowUpRight, ChevronRight, FileText, Layers3, ListChecks, Target } from 'lucide-react';
 import type { Question } from '../types';
 import { termLabel } from '../priorities.js';
-import { predictionData, predictionTypes, predictionTopicById, predictionEntry, predictionCoverage, selectPredictionQuestions } from './predictions.js';
+import { predictionData, predictionTypes, predictionTopicById, predictionEntry, predictionCoverage } from './predictions.js';
 import './prediction.css';
 
-export function PredictionPlan({ questions, range, type, onRange, onType, onQuestion }: {
-  questions: Question[]; range: string; type: string; onRange: (value: string) => void;
+export function PredictionPlan({ counts, loaded, range, type, onRange, onType, onQuestion }: {
+  counts: {paper: {id:string; type:string}[]; extended: {id:string; type:string}[]}; loaded: boolean; range: string; type: string; onRange: (value: string) => void;
   onType: (value: string) => void; onQuestion: (id: string) => void;
 }) {
-  const selected = selectPredictionQuestions(questions, range);
-  const core = selectPredictionQuestions(questions, 'paper');
-  const extended = selectPredictionQuestions(questions, 'extended');
+  const core = counts.paper, extended = counts.extended;
+  const selected = range === 'paper' ? core : extended;
   const missing = predictionData.items.length - extended.length;
   const mainCoverage = predictionCoverage(), allCoverage = predictionCoverage(true);
   const available = new Set(extended.map(q => q.id));
@@ -22,7 +21,7 @@ export function PredictionPlan({ questions, range, type, onRange, onType, onQues
     </div>
     <div className="prediction-type-heading"><span>按题型练习</span><button className={type === 'all' ? 'selected' : ''} aria-pressed={type === 'all'} onClick={() => onType('all')}>全部 {selected.length} 题</button></div>
     <div className="prediction-types" role="group" aria-label="押题题型">{Object.entries(predictionTypes).map(([key, label], i) => <button key={key} aria-pressed={type === key} onClick={() => onType(key)}><small>0{i + 1}</small><strong>{label}</strong><span>{selected.filter(q => q.type === key).length} 题{key === 'calculation' ? ' · 每题 15 分' : ''}</span><ChevronRight size={15} /></button>)}</div>
-    {missing > 0 && <p className="prediction-change-note" role="status">{missing} 道精选题已被修订或暂不可用，已暂停其押题关联；当前数量以上方实际可用题数为准。</p>}
+    {loaded && missing > 0 && <p className="prediction-change-note" role="status">{missing} 道精选题已被修订或暂不可用，已暂停其押题关联；当前数量以上方实际可用题数为准。</p>}
     <details className="prediction-method"><summary><FileText size={15} />押题依据与历史覆盖<ChevronRight size={15} /></summary><div className="prediction-method-body">
       <p>样本：{predictionData.examTerms.map(termLabel).join('、')}，共 {predictionData.examQuestionCount} 道题。选题只参考试卷，不使用教材权重；答案、解析与助记沿用题库的来源标注。</p>
       <div className="prediction-coverage"><div><small>综合题 · 主押子网与编码</small><strong>{mainCoverage.covered}/{mainCoverage.total}<span>历史题目覆盖</span></strong><p>{mainCoverage.percent}% · {mainCoverage.fullPapers}/4 套两道均覆盖</p></div><div><small>综合题 · 加入 HTTP 备选</small><strong>{allCoverage.covered}/{allCoverage.total}<span>历史题目覆盖</span></strong><p>{allCoverage.percent}% · {allCoverage.fullPapers}/4 套两道均覆盖</p></div><div><small>{predictionData.target} · 实际命中</small><strong className="prediction-pending">待考后核对</strong><p>选题版本冻结于 {predictionData.frozenAt}</p></div></div>

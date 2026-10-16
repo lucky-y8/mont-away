@@ -24,6 +24,8 @@ def main():
     required.update({'study-room/data/materials.json', 'study-room/data/focus-priorities.json', 'study-room/src/FocusPriority.tsx', 'study-room/src/priorities.js', 'docs/STUDY_PRIORITIES.md', 'study-room/src/mnemonic-cues.js', 'study-room/src/MnemonicPanel.tsx', 'study-room/src/mnemonics.js', 'study-room/src/mnemonics.css'})
     required.update({'study-room/data/predictions.json', 'study-room/src/prediction/PredictionMode.tsx', 'study-room/src/prediction/predictions.js', 'study-room/src/prediction/prediction.css'})
     required.update({'study-room/data/prediction-learning.json', 'study-room/src/prediction/PredictionLearning.tsx', 'study-room/src/prediction/learning.js', 'study-room/src/prediction/learning.css'})
+    required.update({'backend/app/study_room/catalog.py', 'study-room/src/question-feed/feed.js', 'study-room/src/question-feed/useQuestionFeed.ts'})
+    required.update({'study-room/src/QuestionPager.tsx', 'study-room/src/pagination.css'})
     for q in bank:
         for url in [q['sourceUrl'], *q['figures'], *q.get('answerFigures', [])]:
             required.add('dist/study-assets' + url)
@@ -48,7 +50,7 @@ def main():
 
 Routes: / = question practice; /shanyao/ = existing travel website.
 Includes source, production dist, {len(materials)} PDFs, {len(bank)} questions and original/solution images, CSV/JSON templates, FastAPI backend and deployment instructions.
-Study features: 60 question-specific prediction mnemonics with recall practice, expandable explanations and transfer questions, guarded against stale public edits, plus subnet/HTTP tables and coding waveforms; exam-only prediction mode with a frozen 31-question paper, 60-question extended selection, four question types, six calculation templates, per-question exam evidence, historical coverage and a pending future result; evidence-based 1-5 star study priorities, topic/star filters, textbook page references and deduplicated exam evidence; practice mode with visible answers, answer mode with instant click/typing feedback and retry, editable textbook-referenced mnemonic cards (associations, homophones, rhymes and worked-step reminders) that open with answers/explanations, local wrong-answer notebook, per-blank checks and self assessment, saved mode preference, personal themes, expanded original images, anonymous question/image uploads and batch import.
+Study features: direct page-number jump with filter-aware bounds and Enter submission; bounded 20-question loading, server-side search/filter counts, a persistent 240-question browser cache, transactional incremental sync with empty 204 replies when unchanged, and per-question teaching supplements (no full question bank in the frontend bundle); 60 question-specific prediction mnemonics with recall practice, expandable explanations and transfer questions, guarded against stale public edits, plus subnet/HTTP tables and coding waveforms; exam-only prediction mode with a frozen 31-question paper, 60-question extended selection, four question types, six calculation templates, per-question exam evidence, historical coverage and a pending future result; evidence-based 1-5 star study priorities, topic/star filters, textbook page references and deduplicated exam evidence; practice mode with visible answers, answer mode with instant click/typing feedback and retry, editable textbook-referenced mnemonic cards (associations, homophones, rhymes and worked-step reminders) that open with answers/explanations, local wrong-answer notebook, per-blank checks and self assessment, saved mode preference, personal themes, expanded original images, anonymous question/image uploads and batch import.
 Read docs/STUDY_INTEGRATION.md and deploy/nginx-shared.conf first.
 
 The current dist uses same-origin APIs. The public SEO domain remains sy.chexi.tech.
@@ -59,6 +61,7 @@ Set SHANYAO_STUDY_DATABASE_PATH to a persistent writable path, e.g. /srv/shanyao
 The study database is independent of the existing travel database and is initialized on first use.
 Online revisions from the separate Sites/Cloudflare website are not included in the initial question bank.
 
+Deploy both dist and backend/study source files together. Restart FastAPI to load the new sync/query/batch endpoints and source version. Existing open browser tabs must refresh. The old GET /api/study/questions now returns a page (default 20, maximum 100).
 Install backend/requirements.txt into the server Python environment. Run the existing FastAPI service.
 Configure the proxy to preserve paths, including /shanyao/. The old all-paths-to-index fallback is unsuitable.
 This package has not been uploaded or deployed to your server.

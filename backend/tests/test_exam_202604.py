@@ -54,8 +54,8 @@ def test_april_reference_calculations_have_valid_subnet_boundaries_and_rtt_assum
 def test_april_questions_and_source_assets_are_available_through_api(tmp_path, monkeypatch):
     monkeypatch.setattr(settings, 'study_database_path', str(tmp_path / 'study.sqlite3'))
     with TestClient(app) as client:
-        result = client.get('/api/study/questions').json()['questions']
-        assert len([q for q in result if q.get('materialId') == 'exam-2026-04']) == 31
+        result = client.post('/api/study/query', json={'chapter':20}).json()['ids']
+        assert len(result) == 31 and all(id.startswith('exam-2026-04-') for id in result)
         q = client.get('/api/study/questions/exam-2026-04-q030').json()['history'][0]['question']
         assert q['chapter'] == 20 and q['chapterTitle'] == '2026年04月真题'
         assert client.get(q['figures'][0]).headers['content-type'] == 'image/webp'
