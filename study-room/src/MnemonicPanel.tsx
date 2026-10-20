@@ -28,7 +28,7 @@ export default function MnemonicPanel({ q, prediction = false }: { q: Question; 
     </div>
     {!details.custom && <div className="mnemonic-footer">
       {reference && <details className="mnemonic-reference"><summary><BookOpen size={13} /><span>教材依据 · 第 {pages(reference.pages)} 页</span></summary><p>{reference.book}<br />{reference.title} · PDF 第 {pages(reference.pdfPages)} 页<br />口诀和联想为辅助记忆的改写，不是教材原句。</p></details>}
-      <div className="mnemonic-source-line"><span>{reference ? '先记线索，再还原知识点' : '关键词随答案更新'}{q.needsReview ? ' · 答案待核对' : ''}</span>{original && <a href={`${q.sourceUrl}#page=${q.pages[0]}`} target="_blank" rel="noreferrer">对照本题资料 ↗</a>}</div>
+      <div className="mnemonic-source-line"><span>{reference ? '先记线索，再还原知识点' : '关键词随答案更新'}{q.needsReview ? ' · 答案待核对' : ''}</span>{original && <a href={`${q.sourceUrl}#page=${q.pages[0]}`} target="_blank" rel="noreferrer">{q.practicePaper ? "对照命题结构参考 ↗" : "对照本题资料 ↗"}</a>}</div>
     </div>}
   </section>;
 }

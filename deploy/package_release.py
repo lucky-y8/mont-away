@@ -26,6 +26,8 @@ def main():
     required.update({'study-room/data/prediction-learning.json', 'study-room/src/prediction/PredictionLearning.tsx', 'study-room/src/prediction/learning.js', 'study-room/src/prediction/learning.css'})
     required.update({'backend/app/study_room/catalog.py', 'study-room/src/question-feed/feed.js', 'study-room/src/question-feed/useQuestionFeed.ts'})
     required.update({'study-room/src/QuestionPager.tsx', 'study-room/src/pagination.css'})
+    practice = json.loads((ROOT / 'study-room/data/april-2026/questions.json').read_text(encoding='utf-8'))
+    required.update({'study-room/data/april-2026/plan.json', 'study-room/data/april-2026/questions.json', 'study-room/src/prediction/AprilPattern.tsx', 'study-room/src/prediction/april-plan.js', 'study-room/src/prediction/april-pattern.css'})
     for q in bank:
         for url in [q['sourceUrl'], *q['figures'], *q.get('answerFigures', [])]:
             required.add('dist/study-assets' + url)
@@ -49,8 +51,8 @@ def main():
     notes = f'''SHANYAO + STUDY DEPLOYMENT PACKAGE
 
 Routes: / = question practice; /shanyao/ = existing travel website.
-Includes source, production dist, {len(materials)} PDFs, {len(bank)} questions and original/solution images, CSV/JSON templates, FastAPI backend and deployment instructions.
-Study features: direct page-number jump with filter-aware bounds and Enter submission; bounded 20-question loading, server-side search/filter counts, a persistent 240-question browser cache, transactional incremental sync with empty 204 replies when unchanged, and per-question teaching supplements (no full question bank in the frontend bundle); 60 question-specific prediction mnemonics with recall practice, expandable explanations and transfer questions, guarded against stale public edits, plus subnet/HTTP tables and coding waveforms; exam-only prediction mode with a frozen 31-question paper, 60-question extended selection, four question types, six calculation templates, per-question exam evidence, historical coverage and a pending future result; evidence-based 1-5 star study priorities, topic/star filters, textbook page references and deduplicated exam evidence; practice mode with visible answers, answer mode with instant click/typing feedback and retry, editable textbook-referenced mnemonic cards (associations, homophones, rhymes and worked-step reminders) that open with answers/explanations, local wrong-answer notebook, per-blank checks and self assessment, saved mode preference, personal themes, expanded original images, anonymous question/image uploads and batch import.
+Includes source, production dist, {len(materials)} PDFs, {len(bank)} source questions plus {len(practice)} independent simulated questions and original/solution images, CSV/JSON templates, FastAPI backend and deployment instructions.
+Study features: a separate 31-question / 100-point simulated expansion following the April 2026 chapter pattern, with original scenarios, answers, detailed teaching, mnemonics and transfer tasks; direct page-number jump with filter-aware bounds and Enter submission; bounded 20-question loading, server-side search/filter counts, a persistent 240-question browser cache, transactional incremental sync with empty 204 replies when unchanged, and per-question teaching supplements (no full question bank in the frontend bundle); 60 question-specific prediction mnemonics with recall practice, expandable explanations and transfer questions, guarded against stale public edits, plus subnet/HTTP tables and coding waveforms; exam-only prediction mode with a frozen 31-question paper, 60-question extended selection, four question types, six calculation templates, per-question exam evidence, historical coverage and a pending future result; evidence-based 1-5 star study priorities, topic/star filters, textbook page references and deduplicated exam evidence; practice mode with visible answers, answer mode with instant click/typing feedback and retry, editable textbook-referenced mnemonic cards (associations, homophones, rhymes and worked-step reminders) that open with answers/explanations, local wrong-answer notebook, per-blank checks and self assessment, saved mode preference, personal themes, expanded original images, anonymous question/image uploads and batch import.
 Read docs/STUDY_INTEGRATION.md and deploy/nginx-shared.conf first.
 
 The current dist uses same-origin APIs. The public SEO domain remains sy.chexi.tech.
@@ -86,6 +88,9 @@ This package has not been uploaded or deployed to your server.
                 raise SystemExit(f'Excluded file found in archive: {name}')
         bank = json.loads(bundle.read(PREFIX + 'study-room/data/questions.json'))
         assert len(bank) == len({q['id'] for q in bank}) == sum(m['questionCount'] for m in materials)
+        packed_practice = json.loads(bundle.read(PREFIX + 'study-room/data/april-2026/questions.json'))
+        assert len(packed_practice) == 31
+        assert len({q['id'] for q in bank + packed_practice}) == len(bank) + len(packed_practice)
         for name in required:
             assert bundle.read(PREFIX + name) == (ROOT / name).read_bytes(), name
         assert sum(name.startswith(PREFIX + 'dist/study-assets/sources/') and name.endswith('.pdf') for name in entries) == len(materials)
@@ -93,7 +98,7 @@ This package has not been uploaded or deployed to your server.
     checksum = archive.with_suffix('.zip.sha256')
     checksum.write_text(f'{digest}  {archive.name}\n', encoding='ascii')
     output.joinpath('DEPLOY_PACKAGE.txt').write_text(notes, encoding='utf-8')
-    print(json.dumps({'archive': str(archive), 'size_mib': round(archive.stat().st_size / 1024 / 1024, 2), 'file_count': len(entries), 'questions': len(bank), 'pdfs': len(materials), 'crc_verified': True, 'checksum': str(checksum)}, ensure_ascii=False))
+    print(json.dumps({'archive': str(archive), 'size_mib': round(archive.stat().st_size / 1024 / 1024, 2), 'file_count': len(entries), 'questions': len(bank) + len(practice), 'source_questions': len(bank), 'simulated_questions': len(practice), 'pdfs': len(materials), 'crc_verified': True, 'checksum': str(checksum)}, ensure_ascii=False))
 
 if __name__ == '__main__':
     main()

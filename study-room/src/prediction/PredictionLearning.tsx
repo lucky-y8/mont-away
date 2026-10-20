@@ -9,9 +9,9 @@ function LearningSources({ q, lesson }: { q: Question; lesson: Lesson }) {
   const pageLabel = lesson.bookPages.length ? (lesson.bookPages[0] === lesson.bookPages[1] ? String(lesson.bookPages[0]) : lesson.bookPages.join('–')) : '';
   return <details className="learning-sources">
     <summary><BookOpen size={13} />核对依据与说明</summary>
-    <p>本题原卷与当前参考答案是对应依据。口诀、推导与变式由 AI 整理；不代表官方评分答案。</p>
+    <p>{q.practicePaper ? "本题是依据2026年4月命题结构编写的模拟变式，链接用于对照考点与题型，并非本题原文。答案、口诀和推导由AI辅助整理，可共同完善。" : "本题原卷与当前参考答案是对应依据。口诀、推导与变式由 AI 整理；不代表官方评分答案。"}</p>
     {pageLabel && <p>教材定位：李全龙《计算机网络与信息安全》（2024 年版），书内第 {pageLabel} 页。口诀是辅助改写，教材定位不作为押题入选权重。</p>}
-    <a href={`${q.sourceUrl}#page=${q.pages[0]}`} target="_blank" rel="noreferrer">对照本题原卷 ↗</a>
+    <a href={`${q.sourceUrl}#page=${q.pages[0]}`} target="_blank" rel="noreferrer">{q.practicePaper ? "对照命题结构参考卷 ↗" : "对照本题原卷 ↗"}</a>
     {lesson.links?.map(link => <a key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.title} ↗</a>)}
   </details>;
 }
@@ -21,7 +21,7 @@ export function PredictionMnemonic({ q, lesson }: { q: Question; lesson: Lesson 
   return <section id={`mnemonic-${q.id}`} className="mnemonic-panel prediction-mnemonic" aria-label="助记提示">
     <div className="panel-caption"><Sparkles size={16} /><strong>助记提示</strong><span>AI 逐题整理</span></div>
     <div className="learning-cue-header"><span>{lesson.title}</span><button type="button" className="learning-hide" aria-pressed={hidden} onClick={() => setHidden(v => !v)}>{hidden ? <Eye size={14} /> : <EyeOff size={14} />}{hidden ? '再看口诀' : '遮住口诀自测'}</button></div>
-    {!hidden && <div className="mnemonic-content"><p className="mnemonic-cue">{lesson.cue}</p><ul className="learning-mapping">{lesson.mapping.map(line => <li key={line}>{line}</li>)}</ul></div>}
+    {!hidden && <div className="mnemonic-content"><p className="mnemonic-cue">{lesson.cue}</p><ul className="learning-mapping">{lesson.mapping.map(line => <li key={line}>{line}</li>)}</ul>{lesson.memoryScene && <div className="learning-memory-scene"><strong>联想一下</strong><p>{lesson.memoryScene}</p></div>}</div>}
     {hidden && <p className="learning-cover" role="status">口诀已遮住。先用自己的话回答下面的问题，再展开核对。</p>}
     <div className="learning-recall"><span className="learning-eyebrow">快速回忆</span><p>{lesson.recall.prompt}</p><details key={String(hidden)}><summary>展开回忆答案</summary><p>{lesson.recall.answer}</p></details></div>
     <p className="learning-small">先记短句 → 还原正式术语 → 遮住自测。能独立说清，比只觉得熟悉更有用。</p>
@@ -45,9 +45,11 @@ export function QuestionExplanation({ q, prediction }: { q: Question; prediction
   return <section className="explanation-panel" aria-label="答案解析">
     {lesson ? <div className="prediction-learning">
       <div className="panel-caption"><Lightbulb size={16}/><strong>思路与解析</strong><span>AI 补充 · 可展开自测</span></div>
-      <h3>{lesson.title}</h3><p className="learning-concept">{lesson.concept}</p>
+      <h3>{lesson.title}</h3>{lesson.trigger && <p className="learning-trigger"><strong>先抓题眼</strong>{lesson.trigger}</p>}<p className="learning-concept">{lesson.concept}</p>
       <h4>{q.type === 'calculation' ? '逐步推导与验算' : q.type === 'short' ? '答题要点，逐项展开' : '怎样得到答案'}</h4>
       <ol className="learning-steps">{lesson.steps.map(line => <li key={line}>{line}</li>)}</ol>
+      {lesson.optionAnalysis && <details className="learning-expand"><summary>逐项看选项 · 为什么选 / 不选</summary><ul>{lesson.optionAnalysis.map(line => <li key={line}>{line}</li>)}</ul></details>}
+      {lesson.answerFrame && <details className="learning-expand"><summary>考场答题骨架 · 按顺序写要点</summary><ol>{lesson.answerFrame.map(line => <li key={line}>{line}</li>)}</ol><p className="learning-small">这是本模拟题的作答建议，不是官方评分细则。</p></details>}
       {lesson.table && <div className="learning-scroll" tabIndex={0} role="region" aria-label="计算结果对照表，可横向滚动"><table className="learning-table"><caption>本题结果对照</caption><thead><tr>{lesson.table.headers.map(h=><th scope="col" key={h}>{h}</th>)}</tr></thead><tbody>{lesson.table.rows.map((row,i)=><tr key={i}>{row.map((cell,j)=><td key={j}>{cell}</td>)}</tr>)}</tbody></table></div>}
       {lesson.wave && <Waveform wave={lesson.wave}/>}
       <details className="learning-expand"><summary>易错辨析 · {lesson.pitfalls.length} 个提醒</summary><ul>{lesson.pitfalls.map(line=><li key={line}>{line}</li>)}</ul></details>

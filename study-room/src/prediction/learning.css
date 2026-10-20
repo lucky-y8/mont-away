@@ -46,3 +46,9 @@
 .learning-sources p{margin:7px 0}
 .learning-sources a{display:block;width:fit-content;color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;margin-top:5px}
 @media(max-width:450px){.learning-concept,.learning-steps,.learning-expand,.learning-recall{font-size:13px}.prediction-learning h3{font-size:16px}.learning-hide{min-height:38px}.learning-steps{padding-left:19px}.learning-table th,.learning-table td{padding:7px 8px}}
+
+.learning-memory-scene{margin-top:13px;padding-top:12px;border-top:1px solid var(--line);font-size:12px;line-height:1.9;color:var(--text)}
+.learning-memory-scene>strong{font-size:11px;color:var(--accent-ink);font-weight:600}
+.learning-memory-scene>p{margin-top:5px}
+.learning-trigger{display:flex;flex-direction:column;gap:5px;padding:11px 13px;margin:10px 0;border-left:2px solid var(--accent-ink);background:var(--surface-alt);font-size:12px;line-height:1.8;color:var(--text)}
+.learning-trigger>strong{font-size:11px;color:var(--accent-ink)}

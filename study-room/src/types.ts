@@ -6,8 +6,9 @@ export interface Question {
   answerSource: Source; explanationSource: Source; sourceFile: string; sourceUrl: string;
   pages: number[]; figures: string[]; tags: string[]; needsReview: boolean;
   origin?: "upload";
+  practicePaper?: "april-2026";
   mnemonic?: string;
-  learning?: (typeof import("../data/prediction-learning.json"))["items"][number];
+  learning?: (typeof import("../data/prediction-learning.json"))["items"][number] & { trigger?: string; memoryScene?: string; optionAnalysis?: string[]; answerFrame?: string[] };
   answerFigures?: string[]; figuresContainAnswer?: boolean; materialId?: string; sourceQuestion?: string;
   revision?: number; editor?: string; editedAt?: string;
 }

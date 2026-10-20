@@ -25,7 +25,7 @@ def test_bounded_loading_and_small_idle_response(client):
     assert idle.status_code==204 and idle.content==b''
     assert idle.headers['cache-control']=='no-store'
     index=query(client)
-    assert len(index['ids'])==index['summary']['total']==1290
+    assert len(index['ids'])==index['summary']['total']==1321
     assert not {'questions','answer','stem'} & index.keys()
     assert index['version']==initial['cursor']
     page=client.post('/api/study/batch', json={'ids':index['ids'][:20]}).json()
@@ -114,7 +114,7 @@ def test_uploads_and_idempotency_are_incremental(client):
     changed=delta(client,before).json()
     assert changed['changed']==[id]
     assert query(client,scope='uploads')['ids']==[id]
-    assert query(client)['summary']['total']==1291
+    assert query(client)['summary']['total']==1322
     assert client.post('/api/study/questions',json=body).status_code==201
     assert delta(client,changed['cursor']).status_code==204
 

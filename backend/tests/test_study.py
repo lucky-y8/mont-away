@@ -18,8 +18,8 @@ def draft(q, **updates):
     return {**q, 'editor': '接口验证', **updates}
 
 def test_assets_question_bank_and_both_entrypoints(study):
-    rows = [q for offset in range(0, 1290, 100) for q in study.get(f'/api/study/questions?offset={offset}&limit=100').json()['questions']]
-    assert len(rows) == len({q['id'] for q in rows}) == 1290
+    rows = [q for offset in range(0, 1321, 100) for q in study.get(f'/api/study/questions?offset={offset}&limit=100').json()['questions']]
+    assert len(rows) == len({q['id'] for q in rows}) == 1321
     assert len({q['chapter'] for q in rows}) == 20
     for q in rows:
         assert q['answer'] and q['explanation']

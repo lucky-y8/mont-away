@@ -1,0 +1,17 @@
+.prediction-range>.april-range-button{grid-column:1/-1}
+.april-guide{margin-top:16px;padding:16px;border:1px solid var(--line);border-radius:9px;background:var(--surface-alt)}
+.april-guide-heading{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.april-guide-heading strong{font-size:13px;color:var(--ink);font-weight:600}
+.april-guide-heading>span{font-size:11px;color:var(--accent-ink)}
+.april-guide>p{font-size:12px;color:var(--muted);line-height:1.85;margin:9px 0}
+.april-outline{display:grid;gap:8px;margin:14px 0}
+.april-outline>div{display:grid;grid-template-columns:70px minmax(0,1fr);gap:8px;font-size:12px;line-height:1.8}
+.april-outline dt{color:var(--muted)}
+.april-outline dd{margin:0;color:var(--text);overflow-wrap:anywhere}
+.april-table-scroll{max-width:100%;overflow:auto}
+.april-table-scroll table{border-collapse:collapse;width:100%;font-size:11px;line-height:1.8;text-align:left}
+.april-table-scroll th,.april-table-scroll td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+.april-table-scroll th:first-child,.april-table-scroll td:first-child{white-space:nowrap}
+.april-table-scroll td:nth-child(2){min-width:85px}
+.april-reason>summary>span:not(.prediction-tier){min-width:0;overflow-wrap:anywhere}
+@media(max-width:600px){.april-guide{padding:12px}.april-outline>div{grid-template-columns:1fr;gap:0}.april-guide .prediction-method>summary{font-size:11px}.april-reason>summary{gap:6px}}

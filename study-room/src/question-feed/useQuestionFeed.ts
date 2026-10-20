@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Question } from '../types';
 import { QuestionFeed } from './feed.js';
 
-const emptySummary = { total: 0, mastered: 0, uploads: 0, chapters: {} as Record<string,number>, sourceCounts: {} as Record<string,number>, topics: {} as Record<string,number>, prediction: { paper: [], extended: [] } };
+const emptySummary = { total: 0, mastered: 0, uploads: 0, chapters: {} as Record<string,number>, sourceCounts: {} as Record<string,number>, topics: {} as Record<string,number>, prediction: { paper: [], extended: [], "april-2026": [] } };
 
 export function useQuestionFeed({ ready, filters, currentId, mode, listLimit }: { ready: boolean; filters: object; currentId: string; mode: string; listLimit: number }) {
   const client = useRef<QuestionFeed | null>(null);

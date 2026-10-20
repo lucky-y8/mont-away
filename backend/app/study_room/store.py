@@ -14,6 +14,7 @@ _initialization_lock = Lock()
 @lru_cache
 def originals():
     rows = json.loads((PROJECT_ROOT / 'study-room/data/questions.json').read_text(encoding='utf-8-sig'))
+    rows += json.loads((PROJECT_ROOT / 'study-room/data/april-2026/questions.json').read_text(encoding='utf-8'))
     return {q['id']: {**q, 'sourceUrl': '/study-assets' + q['sourceUrl'],
                      'figures': ['/study-assets' + p for p in q['figures']],
                      'answerFigures': ['/study-assets' + p for p in q.get('answerFigures', [])], 'revision': 0} for q in rows}

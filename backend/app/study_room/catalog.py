@@ -11,9 +11,13 @@ PAGE_SIZE = 20
 @lru_cache
 def resources():
     folder = PROJECT_ROOT / 'study-room/data'
-    names = ['questions.json', 'focus-priorities.json', 'predictions.json', 'prediction-learning.json']
+    names = ['questions.json', 'focus-priorities.json', 'predictions.json', 'prediction-learning.json', 'april-2026/plan.json', 'april-2026/questions.json']
     raw = [(folder / name).read_bytes() for name in names]
     return (sha256(b''.join(raw)).hexdigest()[:20], json.loads(raw[1]), json.loads(raw[2]))
+
+@lru_cache
+def april_plan():
+    return json.loads((PROJECT_ROOT / 'study-room/data/april-2026/plan.json').read_bytes())
 
 @lru_cache
 def lessons():
@@ -78,14 +82,19 @@ def query(filters):
         if not q.get('origin') and p and fp == p['fingerprint']: available[q['id']] = q
     extended = [available[e['id']] for e in prediction['items'] if e['id'] in available]
     core = [available[id] for id in prediction['paperIds'] if id in available]
+    april_by_id = {e['id']: e for e in april_plan()['items']}
+    april_available = {q['id']: q for q in rows if q.get('practicePaper') == 'april-2026' and not q.get('origin')
+                       and q['id'] in april_by_id and fingerprint(q) == april_by_id[q['id']]['fingerprint']}
+    april = [april_available[e['id']] for e in april_plan()['items'] if e['id'] in april_available]
     mastered = set(filters.get('mastered', []))
     summary = {'total': len(rows), 'mastered': sum(q['id'] in mastered for q in rows), 'uploads': sum(q.get('origin') == 'upload' for q in rows),
                'chapters': dict(Counter(q['chapter'] for q in rows)),
-               'sourceCounts': dict(Counter(q['chapter'] for q in rows if not q.get('origin'))),
+               'sourceCounts': dict(Counter(q['chapter'] for q in rows if not q.get('origin') and not q.get('practicePaper'))),
                'topics': dict(Counter(t for a in assessments.values() for t in a[1])),
                'prediction': {'paper': [{'id': q['id'], 'type': q['type']} for q in core],
-                              'extended': [{'id': q['id'], 'type': q['type']} for q in extended]}}
-    pool = core if filters.get('prediction') == 'paper' else extended if filters.get('prediction') == 'extended' else rows
+                              'extended': [{'id': q['id'], 'type': q['type']} for q in extended],
+                              'april-2026': [{'id': q['id'], 'type': q['type']} for q in april]}}
+    pool = core if filters.get('prediction') == 'paper' else extended if filters.get('prediction') == 'extended' else april if filters.get('prediction') == 'april-2026' else rows
     chosen_ids = set(filters.get('ids', []))
     term = filters.get('query', '').strip().lower()
     def matches(q):
@@ -132,7 +141,7 @@ def validate_filters(body):
     if not isinstance(body, dict): return False
     if body.get('chapter') is not None and (type(body['chapter']) is not int or not 0 <= body['chapter'] <= 1000): return False
     choices = {'scope': ['all','uploads','favorites','wrong'], 'type': ['all','single','multiple','truefalse','fill','short','calculation'],
-               'focusLevel': ['all','5','4+','3+','2','1','unrated'], 'focusSort': ['original','priority'], 'prediction': [None,'paper','extended']}
+               'focusLevel': ['all','5','4+','3+','2','1','unrated'], 'focusSort': ['original','priority'], 'prediction': [None,'paper','extended','april-2026']}
     for key, options in choices.items():
         if key in body and body[key] not in options: return False
     return all(isinstance(body.get(k,''),str) and len(body.get(k,'')) <= limit for k,limit in [('query',1000),('focusTopic',100)]) and all(validate_ids(body.get(k,[]),5000) for k in ('ids','mastered'))
