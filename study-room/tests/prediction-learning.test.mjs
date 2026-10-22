@@ -1,6 +1,5 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import bank from '../data/questions.json' with { type: 'json' };
 import predictionLearning from "../data/prediction-learning.json" with {type:"json"};
@@ -92,7 +91,10 @@ test('HTTP formulas retain HTML dependency, parallel batches, DNS exclusion and 
   assert.match(dns.steps.join(''),/1 次本地往返＋4 次外部查询/);
 });
 test('teaching supplements never mutate the historical source bank or prediction selection',()=>{
-  const bytes=fs.readFileSync(new URL('../data/questions.json',import.meta.url));
+  // Exclude only later fill mnemonics and reproduce the original CRLF audit format on any OS.
+  // 仅排除后加填空助记，并统一原审计的 CRLF 格式；原题字段与哈希不变。
+  const historical=bank.map(q=>Object.fromEntries(Object.entries(q).filter(([key])=>!(q.materialId==='blanks' && key==='mnemonic'))));
+  const bytes=(JSON.stringify(historical,null,2)+'\n').replaceAll('\n','\r\n');
   assert.equal(createHash('sha256').update(bytes).digest('hex'),'9e7d80d7e2a34777f28b37366ef3dddf91b9e2af39ec9460a37bfa2a3a396372');
   const before=JSON.stringify(bank);
   bank.forEach(predictionLesson);

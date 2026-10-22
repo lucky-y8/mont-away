@@ -22,7 +22,10 @@ def test_short_material_counts_original_preservation_and_page_coverage():
     old = [q for q in rows if q['chapter'] < 18]
     assert len(rows) == len({q['id'] for q in rows}) == 1290
     assert len(old) == 1000
-    assert sha256(json.dumps(old, ensure_ascii=False, sort_keys=True).encode()).hexdigest() == audit['original1000CanonicalSha256']
+    # Audit source content independently of the later fill-question memory aids.
+    # 填空助记是后加字段；其余原题字段仍使用原始审计哈希保护。
+    historical = [{k: v for k, v in q.items() if not (q.get('materialId') == 'blanks' and k == 'mnemonic')} for q in old]
+    assert sha256(json.dumps(historical, ensure_ascii=False, sort_keys=True).encode()).hexdigest() == audit['original1000CanonicalSha256']
     assert Counter(q['materialId'] for q in new) == {'short-summary': 133, 'short-homework': 126}
     for q in new:
         assert q['type'] == 'short' and q['answer'] and q['explanation']

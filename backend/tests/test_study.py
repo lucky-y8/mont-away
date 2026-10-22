@@ -128,3 +128,30 @@ def test_new_fill_question_edit_and_import(study):
     response = study.post('/api/study/questions', json={'requestId':'new-fill-material-17','questions':preview['questions']})
     assert response.status_code == 201
     assert response.json()['questions'][0]['chapterTitle'] == '计算题总结 · 04741'
+
+
+def test_fill_mnemonics_batches_preserve_edits_clearing_and_history(study):
+    fills = [q for q in store.originals().values() if q.get('materialId') == 'blanks']
+    assert len(fills) == 509
+    # Check all new aids through bounded batches; never touch the production database.
+    # 分批验证全部新增助记，仅使用隔离数据库，不写线上题库。
+    for offset in range(0, len(fills), 20):
+        chunk = fills[offset:offset + 20]
+        response = study.post('/api/study/batch', json={'ids': [q['id'] for q in chunk]})
+        assert response.status_code == 200
+        assert [q['mnemonic'] for q in response.json()['questions']] == [q['mnemonic'] for q in chunk]
+
+    q = fills[0]
+    url = '/api/study/questions/' + q['id']
+    legacy = draft(q)
+    legacy.pop('mnemonic')
+    saved = study.put(url, json=legacy).json()['question']
+    assert saved['mnemonic'] == q['mnemonic']
+    saved = study.put(url, json=draft(saved, mnemonic='同学自己的记忆方法')).json()['question']
+    assert study.post('/api/study/batch', json={'ids': [q['id']]}).json()['questions'][0]['mnemonic'] == '同学自己的记忆方法'
+    saved = study.put(url, json=draft(saved, mnemonic='')).json()['question']
+    assert study.post('/api/study/batch', json={'ids': [q['id']]}).json()['questions'][0]['mnemonic'] == ''
+    history = study.get(url).json()['history']
+    assert history[-1]['question']['mnemonic'] == q['mnemonic']
+    restored = study.put(url, json=draft(history[-1]['question'], revision=saved['revision'])).json()['question']
+    assert restored['mnemonic'] == q['mnemonic']

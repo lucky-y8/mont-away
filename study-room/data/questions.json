@@ -13091,7 +13091,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「相互融合」\n\n联想记忆：把“计算机网络”拆成两半：计算机负责处理，通信负责连接；两门技术融合成网络。"
   },
   {
     "id": "blanks-p002-q002",
@@ -13121,7 +13122,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「互连位置不同」\n\n联想记忆：想象把远处电脑接起来：先有通信设备，再铺通信链路，链路连成通信网络；按“设备→线→网”回忆三空。"
   },
   {
     "id": "blanks-p002-q003",
@@ -13151,7 +13153,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「计算机的集合」\n\n联想记忆：一群电脑要成网，既要彼此连上，又要各自能作主；“连上＋自主”对应互连、自治。"
   },
   {
     "id": "blanks-p002-q004",
@@ -13181,7 +13184,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「最大的」\n\n联想记忆：把各地小网络都连在一起，形成全球的“网中之网”；想到Internet，也就是因特网。"
   },
   {
     "id": "blanks-p002-q005",
@@ -13211,7 +13215,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「通过有线或无线方式连接」\n\n联想记忆：手机、电脑上网都先找“提供上网服务的商家”；把服务提供商译成Internet Service Provider，缩写ISP。"
   },
   {
     "id": "blanks-p002-q006",
@@ -13241,7 +13246,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「规则或约定」\n\n联想记忆：两台机器交流前先“约法三章”；网络中的交流约定就叫网络协议。"
   },
   {
     "id": "blanks-p002-q007",
@@ -13271,7 +13277,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「三要素」\n\n联想记忆：交流先约定三件事：“怎么写、什么意思、何时说”；依次展开为语法、语义、时序。"
   },
   {
     "id": "blanks-p002-q008",
@@ -13301,7 +13308,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「格式与结构」\n\n联想记忆：看到“格式”就想到作文的语法规则；信息怎样组织、怎样写，对应语法。"
   },
   {
     "id": "blanks-p002-q009",
@@ -13331,7 +13339,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「控制信息、差错检测」\n\n联想记忆：控制消息要表达什么、错误后要做什么，都是消息的“意思”；由“意思”想到语义。"
   },
   {
     "id": "blanks-p002-q010",
@@ -13361,7 +13370,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「顺序」\n\n联想记忆：顺序与速度都要对上“时间表”；时间有先后顺序，故为时序，也称同步。"
   },
   {
     "id": "blanks-p002-q011",
@@ -13391,7 +13401,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「不同主机之间」\n\n联想记忆：两台主机快速互通有无，交换的是信息；“主机间互通”落到信息交换。"
   },
   {
     "id": "blanks-p002-q012",
@@ -13421,7 +13432,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 12",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「核心功能」\n\n联想记忆：联网后打印机、软件、资料可以大家用；“大家一起用”就是资源共享。"
   },
   {
     "id": "blanks-p002-q013",
@@ -13451,7 +13463,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 13",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「资源共享功能」\n\n联想记忆：共享一间机房：打印机是硬件，程序是软件，文档是信息；按“硬、软、信”展开三种资源共享。"
   },
   {
     "id": "blanks-p002-q014",
@@ -13481,7 +13494,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 14",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「硬件共享」\n\n联想记忆：把CPU算力和硬盘空间搬到云端出租：CPU对应云计算，硬盘对应云存储。"
   },
   {
     "id": "blanks-p002-q015",
@@ -13511,7 +13525,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 15",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「软件共享」\n\n联想记忆：软件不必每人买一套，改成在线订阅服务；Software as a Service，软件即服务，记SaaS。"
   },
   {
     "id": "blanks-p002-q016",
@@ -13541,7 +13556,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 16",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「信息共享」\n\n联想记忆：你把信息发给我、我把信息发给你；共享信息靠信息交换。"
   },
   {
     "id": "blanks-p002-q017",
@@ -13571,7 +13587,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 17",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「覆盖范围」\n\n联想记忆：想象从身边往外放大四圈：“个人→局部→城市→广阔地区”；对应PAN、LAN、MAN、WAN。"
   },
   {
     "id": "blanks-p002-q018",
@@ -13601,7 +13618,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 18",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「个人设备」\n\n联想记忆：题干已经给了“个人”，直接抓“个”字：个人身边的小网络是个域网PAN。"
   },
   {
     "id": "blanks-p002-q019",
@@ -13631,7 +13649,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 19",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「办公室、厂区、校园」\n\n联想记忆：这三处都属于一个局部区域；看到“局部”就想到局域网LAN。"
   },
   {
     "id": "blanks-p002-q020",
@@ -13661,7 +13680,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 20",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「一个城市」\n\n联想记忆：题干的“城市”直接锁定“城域网”；英文Metropolitan Area Network，缩写MAN。"
   },
   {
     "id": "blanks-p002-q021",
@@ -13691,7 +13711,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 21",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「异地城域网或局域网」\n\n联想记忆：把不同城市、不同局域网接到更广的范围；“跨地、跨城”想到广域网WAN。"
   },
   {
     "id": "blanks-p003-q001",
@@ -13721,7 +13742,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 22",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「物理连接关系与布局」\n\n联想记忆：不问传什么，而问设备“摆成什么形状、怎样接线”；这张连接布局图就是网络拓扑。"
   },
   {
     "id": "blanks-p003-q002",
@@ -13751,7 +13773,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 23",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「按照拓扑分类」\n\n联想记忆：画六幅接线图：星星、一根总线、圆环、渔网、大树、拼接图；依次对应星、总线、环、网、树、混合。"
   },
   {
     "id": "blanks-p003-q003",
@@ -13781,7 +13804,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 24",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「点对点通信链路」\n\n联想记忆：把各条线画成向中心放射的星星：中间是中央结点，整体是星形拓扑。"
   },
   {
     "id": "blanks-p003-q004",
@@ -13811,7 +13835,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 25",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「网络规模受限」\n\n联想记忆：把中央结点想成插线板：插孔用完就接不下更多设备；插孔对应端口，限制来自端口数量。"
   },
   {
     "id": "blanks-p003-q005",
@@ -13841,7 +13866,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 26",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「所有结点均与总线连接」\n\n联想记忆：全班共听一条“大喇叭线路”：公共信道是广播信道，共挂一根线是总线型拓扑。"
   },
   {
     "id": "blanks-p003-q006",
@@ -13871,7 +13897,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 27",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「同时」\n\n联想记忆：多人同时抢着说话会互相干扰；“同时发送＋干扰失败”就是冲突。"
   },
   {
     "id": "blanks-p003-q007",
@@ -13901,7 +13928,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 28",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「闭合的环」\n\n联想记忆：题干已经画出一个圆环；把“环”补成环形拓扑即可。"
   },
   {
     "id": "blanks-p003-q008",
@@ -13931,7 +13959,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 29",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「多条链路」\n\n联想记忆：每个结点都有多条线连向别处，像交错的渔网；由“多线交错”想到网状拓扑。"
   },
   {
     "id": "blanks-p003-q009",
@@ -13961,7 +13990,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 30",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「扩展」\n\n联想记忆：从主干向外分叉、分叉再接结点，像长出树枝；总线或星形的分层扩展记树形拓扑。"
   },
   {
     "id": "blanks-p003-q010",
@@ -13991,7 +14021,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 31",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两种以上」\n\n联想记忆：两种以上形状拼在一起，关键词是“混在一起”；对应混合拓扑。"
   },
   {
     "id": "blanks-p003-q011",
@@ -14021,7 +14052,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 32",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「数据转接」\n\n联想记忆：把数据像包裹一样逐站转手，最终交给目的结点；这个转接过程叫数据交换。"
   },
   {
     "id": "blanks-p003-q012",
@@ -14051,7 +14083,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 33",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「数据交换技术」\n\n联想记忆：寄东西有三种比喻：先占专线、整封信转交、拆成小包转交；对应电路、报文、分组交换。"
   },
   {
     "id": "blanks-p003-q013",
@@ -14081,7 +14114,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 34",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「用户属性」\n\n联想记忆：先问“给谁用”：给公众用叫公用，只给内部用叫私用。"
   },
   {
     "id": "blanks-p003-q014",
@@ -14111,7 +14145,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 35",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「面向公众」\n\n联想记忆：题干直接给“公众”，取“公”字：公用网；收费与否不改变这个分类。"
   },
   {
     "id": "blanks-p003-q015",
@@ -14141,7 +14176,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第一节计算机网络基本概念 · 原题 36",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「不向公众开放」\n\n联想记忆：门只对组织内部开，外人进不了；“内部专用”对应私用网。"
   },
   {
     "id": "blanks-p003-q016",
@@ -14171,7 +14207,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第二节计算机网络结构 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「结构包括」\n\n联想记忆：从家里上网走一遍：“终端在边缘→接入线路进网→核心转发”；按边、接、核补全三部分。"
   },
   {
     "id": "blanks-p003-q017",
@@ -14201,7 +14238,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第二节计算机网络结构 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「所有端系统」\n\n联想记忆：终端是网络对用户伸出的“边缘”；所有端系统合起来构成网络边缘。"
   },
   {
     "id": "blanks-p003-q018",
@@ -14231,7 +14269,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第二节计算机网络结构 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「中继与转发」\n\n联想记忆：中途收到再转给下一站，需要交换数据；由“中继转发”想到数据交换。"
   },
   {
     "id": "blanks-p003-q019",
@@ -14261,7 +14300,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第二节计算机网络结构 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「网络边缘中的主机之间」\n\n联想记忆：核心像物流中转站，替边缘主机接力运送；接力叫中继，送下一站叫转发。"
   },
   {
     "id": "blanks-p003-q020",
@@ -14291,7 +14331,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第二节计算机网络结构 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「分组交换设备」\n\n联想记忆：局部路口靠交换机，跨网选路靠路由器；两者都是替分组接力的设备。"
   },
   {
     "id": "blanks-p003-q021",
@@ -14321,7 +14362,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第三节数据交换技术 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「大规模网络核心」\n\n联想记忆：核心不是终端直接拉一条线到底，而是逐站交换；传输的技术基础记数据交换。"
   },
   {
     "id": "blanks-p003-q022",
@@ -14351,7 +14393,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第三节数据交换技术 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「最早出现」\n\n联想记忆：想起老式电话：通话前先接通一条电路；最早的交换方式记电路交换。"
   },
   {
     "id": "blanks-p003-q023",
@@ -14381,7 +14424,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第三节数据交换技术 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「三个阶段」\n\n联想记忆：按打电话顺序记：“接通→说话→挂断”；展开就是建立电路、传输数据、拆除电路。"
   },
   {
     "id": "blanks-p004-q001",
@@ -14411,7 +14455,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第三节数据交换技术 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「实时性强」\n\n联想记忆：按本题传统交换方式对比，实时业务希望先有固定通路、传输时不逐包排队；联想到电路交换。\n\n辨清：按课程对传统交换方式的对比记忆；现实的实时音视频也广泛运行在分组网络上，不能推出“实时业务只能电路交换”。"
   },
   {
     "id": "blanks-p004-q002",
@@ -14441,7 +14486,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第三节数据交换技术 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「不采用」\n\n联想记忆：在本题两种方式对比中，整份报文一次搬太占等待时间；被舍去的是报文交换，别与分组串题。\n\n辨清：此处是课程对报文交换与分组交换的比较，不宜扩大成所有现代系统一概不存在整报文存储转发。"
   },
   {
     "id": "blanks-p004-q003",
@@ -14471,7 +14517,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第三节数据交换技术 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「采用」\n\n联想记忆：把大报文拆成小分组轮流送，适合现代分组网络；“采用”选分组交换。"
   },
   {
     "id": "blanks-p004-q004",
@@ -14501,7 +14548,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第三节数据交换技术 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「公平」\n\n联想记忆：大家轮流拿一个小包上路，大文件不一直霸占通道；小包轮流对应分组交换。"
   },
   {
     "id": "blanks-p004-q005",
@@ -14531,7 +14579,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第三节数据交换技术 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「广泛采用」\n\n联想记忆：把上网数据想成许多小包逐站前进；小包就是分组，因此填分组交换。"
   },
   {
     "id": "blanks-p004-q006",
@@ -14561,7 +14610,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第三节数据交换技术 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「分组传输过程」\n\n联想记忆：中转站先把包收好，再往下一站发；“先存、后转”展开为存储-转发。"
   },
   {
     "id": "blanks-p004-q007",
@@ -14591,7 +14641,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第四节计算机网络主要性能指标 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「单位时间内」\n\n联想记忆：题干给了“数据量÷时间”的样子，像路程÷时间叫速度；这里叫速率，全称数据传输速率。"
   },
   {
     "id": "blanks-p004-q008",
@@ -14621,7 +14672,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第四节计算机网络主要性能指标 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「二进制数据」\n\n联想记忆：二进制的一位只能是0或1；“一位”就是一个比特bit。"
   },
   {
     "id": "blanks-p004-q009",
@@ -14651,7 +14703,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第四节计算机网络主要性能指标 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「所需的时间」\n\n联想记忆：从这站到那站要等多久，问的是时间上的延迟；合成词就是时延。"
   },
   {
     "id": "blanks-p004-q010",
@@ -14681,7 +14734,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第四节计算机网络主要性能指标 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「直接链路」\n\n联想记忆：从一个结点直接跨到下一个结点，像跳一步；一条直接链路就是一跳。"
   },
   {
     "id": "blanks-p004-q011",
@@ -14711,7 +14765,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第四节计算机网络主要性能指标 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「每跳传输过程」\n\n联想记忆：把分组当快递：“检查→排队→装上路→沿路跑”；对应处理、排队、传输、传播四种时延。"
   },
   {
     "id": "blanks-p004-q012",
@@ -14741,7 +14796,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第四节计算机网络主要性能指标 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「常常被忽略」\n\n联想记忆：按本题估算口径，设备检查分组往往很快，常忽略这一小段；检查对应结点处理时延。\n\n辨清：这是常见简化计算口径；具体题目若给出处理时延，仍须按条件计入。"
   },
   {
     "id": "blanks-p004-q013",
@@ -14771,7 +14827,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第四节计算机网络主要性能指标 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「传输时延」\n\n联想记忆：传输时延是把整组比特“推入链路”的时间；要推多少看分组长度，推多快看链路带宽，记L/R。"
   },
   {
     "id": "blanks-p004-q014",
@@ -14801,7 +14858,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第四节计算机网络主要性能指标 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「乘积」\n\n联想记忆：题干明确说“时延×带宽”；乘起来叫积，把两个量连起来就是时延带宽积。"
   },
   {
     "id": "blanks-p004-q015",
@@ -14831,7 +14889,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第四节计算机网络主要性能指标 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「管道」\n\n联想记忆：把比特当水滴：管里能同时装多少滴，就是按比特数衡量的管道长度；本空填链路长度。"
   },
   {
     "id": "blanks-p004-q016",
@@ -14861,7 +14920,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第四节计算机网络主要性能指标 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「丢包率」\n\n联想记忆：路堵了，队列塞满，包就被丢掉；“丢包→堵车→网络拥塞”，两个空填同一词。"
   },
   {
     "id": "blanks-p004-q017",
@@ -14891,7 +14951,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第四节计算机网络主要性能指标 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「实际送达」\n\n联想记忆：不看路标宣称多快，数目的端真正收到多少；“实际吞进去的数据量”叫吞吐量。"
   },
   {
     "id": "blanks-p004-q018",
@@ -14921,7 +14982,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第四节计算机网络主要性能指标 · 原题 12",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「理想情况下」\n\n联想记忆：一排水管接起来，最细的一段限制流量；最细那段就是瓶颈链路。"
   },
   {
     "id": "blanks-p004-q019",
@@ -14951,7 +15013,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第五节计算机网络体系结构 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「层次以及各层次协议的集合」\n\n联想记忆：层次像楼层，协议像每层规章；楼层加规章组成整套设计，叫计算机网络体系结构。"
   },
   {
     "id": "blanks-p004-q020",
@@ -14981,7 +15044,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第五节计算机网络体系结构 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「典型的层次化」\n\n联想记忆：记“三套楼层图”：OSI七层图、TCP/IP四层图、教学用五层图；三套模型名称都要展开。"
   },
   {
     "id": "blanks-p004-q021",
@@ -15011,7 +15075,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第五节计算机网络体系结构 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「由低层至高层」\n\n联想记忆：从电线往应用爬楼：“物、数、网、传、会、表、应”；逐字展开七层，不颠倒上下顺序。"
   },
   {
     "id": "blanks-p004-q022",
@@ -15041,7 +15106,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第五节计算机网络体系结构 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「最上层」\n\n联想记忆：最上面直接服务应用，最下面接触物理线路；“顶上应用，脚下物理”。"
   },
   {
     "id": "blanks-p005-q001",
@@ -15071,7 +15137,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第五节计算机网络体系结构 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「建立、维持和释放」\n\n联想记忆：对链路从建到用再到撤，管完它的一生；这一整套叫链路管理。"
   },
   {
     "id": "blanks-p005-q002",
@@ -15101,7 +15168,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第五节计算机网络体系结构 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「对等层」\n\n联想记忆：两边同一层按协议交换单位；抓“协议＋数据＋单元”，缩写PDU。"
   },
   {
     "id": "blanks-p005-q003",
@@ -15131,7 +15199,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第五节计算机网络体系结构 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「相邻层间」\n\n联想记忆：楼上楼下通过一个服务窗口交接；“访问服务的点”就是服务访问点SAP。"
   },
   {
     "id": "blanks-p005-q004",
@@ -15161,7 +15230,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第五节计算机网络体系结构 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两种形式」\n\n联想记忆：先打电话接通再说，叫面向连接；像寄明信片直接送，叫无连接。"
   },
   {
     "id": "blanks-p005-q005",
@@ -15191,7 +15261,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第五节计算机网络体系结构 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「没有建立和拆除」\n\n联想记忆：连“建立连接、拆除连接”都没有，直接扣住“无”；对应无连接服务。"
   },
   {
     "id": "blanks-p005-q006",
@@ -15221,7 +15292,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第五节计算机网络体系结构 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「由低层至高层」\n\n联想记忆：TCP/IP四层从网卡到应用：“接口→互联网络→传输→应用”；记“接、网、传、应”。\n\n辨清：原资料此处写“7层”，与其列出的四层不符；正确为“4层”，记网、网、传、应。"
   },
   {
     "id": "blanks-p005-q007",
@@ -15251,7 +15323,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第五节计算机网络体系结构 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「目的网络或主机」\n\n联想记忆：要把分组送到哪个网络、哪台主机，负责跨网寻址的是互联网络层。"
   },
   {
     "id": "blanks-p005-q008",
@@ -15281,7 +15354,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第六节信息安全概述 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「安全属性」\n\n联想记忆：把资料放保险柜：“不泄密、不被改、能使用、能控制、不能赖账”；对应机密、完整、可用、可控、不可否认。"
   },
   {
     "id": "blanks-p005-q009",
@@ -15311,7 +15385,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第七节互联网的安全性 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「未授权」\n\n联想记忆：攻击者能从破口钻进来，说明系统有缺口；漏洞的本质就是缺陷。"
   },
   {
     "id": "blanks-p005-q010",
@@ -15341,7 +15416,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第八节信息安全体系结构 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「CIA」\n\n联想记忆：C像保密柜，I像完整封条，A像可用的钥匙；分别是机密性、完整性、可用性。"
   },
   {
     "id": "blanks-p005-q011",
@@ -15371,7 +15447,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第八节信息安全体系结构 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「安全服务」\n\n联想记忆：把资源室管理员的工作串起来：“验身份、管进门、防泄密、防篡改、防赖账”；展开五种服务。"
   },
   {
     "id": "blanks-p005-q012",
@@ -15401,7 +15478,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第八节信息安全体系结构 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「用于实施」\n\n联想记忆：服务是“要实现什么”，机制是“用什么办法实现”；实施安全服务的办法就是安全机制。"
   },
   {
     "id": "blanks-p005-q013",
@@ -15431,7 +15509,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第八节信息安全体系结构 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「系统部分」\n\n联想记忆：系统既要机器实体安全，也要运行过程安全；“实体＋运转”对应物理安全、运行安全。\n\n辨清：本题只把系统部分的两项挖空；整段还列出数据安全、内容安全与管理安全。"
   },
   {
     "id": "blanks-p005-q014",
@@ -15461,7 +15540,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第八节信息安全体系结构 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「物理安全」\n\n联想记忆：守机房要防四件事：“天灾、电磁外泄、设备故障、违规接入”；记灾、电、故、接，逐项补防范。"
   },
   {
     "id": "blanks-p005-q015",
@@ -15491,7 +15571,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第八节信息安全体系结构 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「非法的信息内容」\n\n联想记忆：合法内容要保护，非法内容要盯住、审查、处置；后一种工作叫监管。"
   },
   {
     "id": "blanks-p005-q016",
@@ -15523,7 +15604,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第八节信息安全体系结构 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「人的信息行为」\n\n联想记忆：机器要维护，人要管理；看到“人的行为、规范约束”就锁定管理安全。"
   },
   {
     "id": "blanks-p006-q001",
@@ -15553,7 +15635,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第八节信息安全体系结构 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「实体本身的身份」\n\n联想记忆：查的是“你本人是谁”，不是数据从哪来；查实体本人就是实体鉴别。"
   },
   {
     "id": "blanks-p006-q002",
@@ -15583,7 +15666,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第八节信息安全体系结构 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「非授权访问」\n\n联想记忆：访问控制像门禁，保护门后可被访问的对象；这些受保护对象统称资源。"
   },
   {
     "id": "blanks-p006-q003",
@@ -15613,7 +15697,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第八节信息安全体系结构 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「抗抵赖性」\n\n联想记忆：“抵赖”就是否认自己做过；抵抗否认，换个说法就是不可否认性。"
   },
   {
     "id": "blanks-p006-q004",
@@ -15643,7 +15728,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第八节信息安全体系结构 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「国际标准化组织」\n\n联想记忆：前面已有加密、签名等机制，最后想“请第三方作证”；第三方证明对应公证。"
   },
   {
     "id": "blanks-p006-q005",
@@ -15673,7 +15759,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第一章计算机网络与信息安全概述 · 第八节信息安全体系结构 · 原题 12",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「路径」\n\n联想记忆：选路时每站都找可靠的接力人；安全路线上的结点应当可信任。"
   },
   {
     "id": "blanks-p007-q001",
@@ -15703,7 +15790,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第一节网络应用体系结构 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「三类」\n\n联想记忆：想三种餐饮方式：顾客找店家是C/S，邻居互换是纯P2P，两者搭配是混合结构。"
   },
   {
     "id": "blanks-p007-q002",
@@ -15733,7 +15821,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第一节网络应用体系结构 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「最典型、最基本」\n\n联想记忆：最熟悉的上网场景是客户发请求、服务器提供服务；对应客户/服务器，也写C/S。"
   },
   {
     "id": "blanks-p007-q003",
@@ -15763,7 +15852,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第一节网络应用体系结构 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「被动地等待」\n\n联想记忆：柜台服务员等顾客来，服务器端的“服务员”就是服务器进程。"
   },
   {
     "id": "blanks-p007-q004",
@@ -15793,7 +15883,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第一节网络应用体系结构 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「不进行直接通信」\n\n联想记忆：顾客都找柜台办事，彼此不直接交易；不直接通信的是客户与客户。"
   },
   {
     "id": "blanks-p007-q005",
@@ -15823,7 +15914,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第一节网络应用体系结构 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「不存在传统」\n\n联想记忆：纯P2P强调对等、没有中央店长；不存在的是中心服务器。"
   },
   {
     "id": "blanks-p007-q006",
@@ -15853,7 +15945,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第一节网络应用体系结构 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「被动通信」\n\n联想记忆：主动找人办事像客户，被动等人来像服务员；后者表现为服务器。"
   },
   {
     "id": "blanks-p007-q007",
@@ -15883,7 +15976,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第一节网络应用体系结构 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「引入了传统的中心服务器」\n\n联想记忆：同伴之间互传文件，但先问中央通讯录“去哪找”；中央服务器帮助解决查找问题。"
   },
   {
     "id": "blanks-p007-q008",
@@ -15913,7 +16007,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第二节网络应用通信基本原理 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「编程接口」\n\n联想记忆：把应用接入网络想成把插头接上插座；程序用的这个“插座”叫套接字Socket。"
   },
   {
     "id": "blanks-p007-q009",
@@ -15943,7 +16038,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第二节网络应用通信基本原理 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「TCP服务模型」\n\n联想记忆：像先拨通再核对收件：先接通对应面向连接，确认可靠送达对应可靠数据传输。"
   },
   {
     "id": "blanks-p007-q010",
@@ -15973,7 +16069,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第二节网络应用通信基本原理 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「标识网络应用进程」\n\n联想记忆：IP找楼，端口找房间；要找到某台机器里的具体进程，两个地址层次都要有。"
   },
   {
     "id": "blanks-p007-q011",
@@ -16003,7 +16100,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第二节网络应用通信基本原理 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「通信端点」\n\n联想记忆：全网定位一个收件窗口：IP定位主机，端口定位进程；“主机＋进程”记IP地址＋端口号。"
   },
   {
     "id": "blanks-p007-q012",
@@ -16033,7 +16131,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第三节域名解析系统 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「域名映射为」\n\n联想记忆：把好记的名字翻成数字地址；“解析名字”对应域名解析。"
   },
   {
     "id": "blanks-p007-q013",
@@ -16063,7 +16162,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第三节域名解析系统 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「命名方法」\n\n联想记忆：DNS展开为Domain Name System；域名一层套一层，像树的层级，所以命名方法是层次结构。"
   },
   {
     "id": "blanks-p007-q014",
@@ -16093,7 +16193,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第三节域名解析系统 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「作用和保存信息」\n\n联想记忆：按本课程四类记“根、顶、权、中”：树根指路、顶级分区、权威掌握记录、中间继续承接解析。"
   },
   {
     "id": "blanks-p007-q015",
@@ -16123,7 +16224,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第三节域名解析系统 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「最重要」\n\n联想记忆：域名树从根长出各分支；按本题口径，最基础、最重要的一类记根域名服务器。"
   },
   {
     "id": "blanks-p007-q016",
@@ -16153,7 +16255,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第三节域名解析系统 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「本地域名服务器不能直接响应」\n\n联想记忆：想象本地没有可用指路信息，需要从域名树的根往下找；本题填根，实际可利用缓存省略此步。\n\n辨清：按资料的无可用缓存等简化解析流程记。实际解析可利用缓存，不一定每次从根服务器开始。"
   },
   {
     "id": "blanks-p007-q017",
@@ -16183,7 +16286,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第三节域名解析系统 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「所有二级域名」\n\n联想记忆：二级上面是谁？顶级；管理二级域名这一层关系，直接想到顶级域名服务器。"
   },
   {
     "id": "blanks-p008-q001",
@@ -16213,7 +16317,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第三节域名解析系统 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「解析过程」\n\n联想记忆：递归像“你替我查到底”，迭代像“你给线索我再查”；背成代办到底、逐站问路两种方式。"
   },
   {
     "id": "blanks-p008-q002",
@@ -16243,7 +16348,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第三节域名解析系统 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「不会」\n\n联想记忆：迭代查询只告诉下一步去哪，不替你跑腿；“替人跑腿”就是代理，所以不会代理。"
   },
   {
     "id": "blanks-p008-q003",
@@ -16273,7 +16379,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「Web应用主要包括」\n\n联想记忆：看网页需要三样：服务器存网页，浏览器看网页，HTTP负责传网页；记“存、看、传”。"
   },
   {
     "id": "blanks-p008-q004",
@@ -16303,7 +16410,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「存储并管理」\n\n联想记忆：想网站仓库：负责把网页存好、管理好，再应请求提供出去；这边的软件叫Web服务器。"
   },
   {
     "id": "blanks-p008-q005",
@@ -16333,7 +16441,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「客户端软件」\n\n联想记忆：用户坐在客户端“浏览”网页；工具按动作命名，叫浏览器。"
   },
   {
     "id": "blanks-p008-q006",
@@ -16363,7 +16472,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「客户端软件」\n\n联想记忆：电脑上打开网页的窗口在用户这一端；客户端用来浏览，所以填浏览器。"
   },
   {
     "id": "blanks-p008-q007",
@@ -16393,7 +16503,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「解释并显示」\n\n联想记忆：拿到网页代码后把它解释成可见页面，就像翻译加展示；这是浏览器的工作。"
   },
   {
     "id": "blanks-p008-q008",
@@ -16423,7 +16534,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「寻址」\n\n联想记忆：找网页要它的网址；网址的正式名称是统一资源定位符，缩写URL。"
   },
   {
     "id": "blanks-p008-q009",
@@ -16453,7 +16565,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「存放对象」\n\n联想记忆：网购找货先找哪家店，再找货架位置；对应服务器主机域名/IP地址、对象的路径名。"
   },
   {
     "id": "blanks-p008-q010",
@@ -16483,7 +16596,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「WWW服务」\n\n联想记忆：普通网页用HTTP，默认端口记80；把“网页HTTP→80”当成一张配对卡，不与HTTPS的443混。"
   },
   {
     "id": "blanks-p008-q011",
@@ -16513,7 +16627,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「不存在」\n\n联想记忆：把404读成“找不到”的专用标签；看到请求对象不存在，立即回想HTTP 404。"
   },
   {
     "id": "blanks-p008-q012",
@@ -16543,7 +16658,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「每传输一个对象都新建」\n\n联想记忆：每次来都重开一条连接，留不住旧连接；“留不住”就是非持久。"
   },
   {
     "id": "blanks-p008-q013",
@@ -16573,7 +16689,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「连续传输多个对象」\n\n联想记忆：同一条连接用完还接着用，能持续保留；因此叫持久连接。"
   },
   {
     "id": "blanks-p008-q014",
@@ -16603,7 +16720,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 12",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「HTTP/1.0」\n\n联想记忆：版本记“1.0常换线，1.1常留线”：默认分别是非持久连接、持久连接。"
   },
   {
     "id": "blanks-p008-q015",
@@ -16633,7 +16751,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 13",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两类」\n\n联想记忆：网页交流一问一答：客户提出请求，服务器给出响应；两类就是请求报文、响应报文。"
   },
   {
     "id": "blanks-p008-q016",
@@ -16663,7 +16782,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 14",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「四部分」\n\n联想记忆：把报文当信件：“开头→说明栏→空一行→正文”；依次为起始行、首部行、空白行、报文主体。"
   },
   {
     "id": "blanks-p008-q017",
@@ -16693,7 +16813,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 15",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「Cookie机制」\n\n联想记忆：网站给浏览器发一张小票，下次凭票认出访问者；小票帮助用户跟踪。"
   },
   {
     "id": "blanks-p008-q018",
@@ -16723,7 +16844,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 16",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「无状态特性」\n\n联想记忆：网站原本“转身就忘”，于是给浏览器留一块Cookie当记号；看到跟踪客户状态就想Cookie。"
   },
   {
     "id": "blanks-p008-q019",
@@ -16753,7 +16875,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 17",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「进一步区分」\n\n联想记忆：保留连接之后，还要看是否等上一响应：等完再发叫非流水，不等便连续发叫流水。"
   },
   {
     "id": "blanks-p008-q020",
@@ -16783,7 +16906,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第四节Web应用 · 原题 18",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「HTTP/1.1默认」\n\n联想记忆：默认先记“不断线”：HTTP/1.1默认持久连接；像流水线一样不等回应便发下一请求，才是可选的流水方式。\n\n辨清：原资料将“流水”写成HTTP/1.1默认方式。默认的是持久连接，流水线为可选机制；原资料题干保留，按此处说明区分。核对：RFC 9112，第9.3及9.3.2节。"
   },
   {
     "id": "blanks-p008-q021",
@@ -16813,7 +16937,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第五节Internet电子邮件 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「电子邮件系统」\n\n联想记忆：寄信画四物：“邮局、送信规则、写信工具、取信规则”；对应邮件服务器、SMTP、用户代理、邮件读取协议。"
   },
   {
     "id": "blanks-p008-q022",
@@ -16843,7 +16968,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第五节Internet电子邮件 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「SMTP的服务器端」\n\n联想记忆：SMTP负责投递，把它想成“二十五号投递窗口”；默认端口25，连同SMTP一起记。"
   },
   {
     "id": "blanks-p008-q023",
@@ -16873,7 +16999,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第五节Internet电子邮件 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「发送协议」\n\n联想记忆：S想成Send提示发信，正式协议名是SMTP；传统基本内容是ASCII文本，别把MIME当发送协议。"
   },
   {
     "id": "blanks-p008-q024",
@@ -16903,7 +17030,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第五节Internet电子邮件 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「部分内容」\n\n联想记忆：把IMAP想成邮箱目录，先看目录再取指定部分；题眼“只读部分”锁定IMAP。"
   },
   {
     "id": "blanks-p008-q025",
@@ -16933,7 +17061,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第五节Internet电子邮件 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「邮件读取协议」\n\n联想记忆：取信有POP3、IMAP两类常见方式，用网页邮箱还会用HTTP；最后问Web邮件，仍填HTTP。"
   },
   {
     "id": "blanks-p008-q026",
@@ -16963,7 +17092,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第五节Internet电子邮件 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「默认熟知端口号」\n\n联想记忆：想一扇写着“POP3取信”的110号门；把协议与默认端口110成对记住。"
   },
   {
     "id": "blanks-p009-q001",
@@ -16993,7 +17123,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第五节Internet电子邮件 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「编码转换」\n\n联想记忆：MIME把其他内容包成SMTP能直接处理的传统文本；题干反复出现的目标格式就是7位ASCII。"
   },
   {
     "id": "blanks-p009-q002",
@@ -17023,7 +17154,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第五节Internet电子邮件 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「主动请求」\n\n联想记忆：发信的一方主动把邮件送过去，像把包裹推给对方；主动投递对应推动。"
   },
   {
     "id": "blanks-p009-q003",
@@ -17053,7 +17185,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第六节文件传输 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「文件传输协议」\n\n联想记忆：逐词取英文首字母：File文件、Transfer传输、Protocol协议，合起来FTP。"
   },
   {
     "id": "blanks-p009-q004",
@@ -17083,7 +17216,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第六节文件传输 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「客户与服务器」\n\n联想记忆：题干已出现客户和服务器，取Client/Server首字母；结构直接填C/S。"
   },
   {
     "id": "blanks-p009-q005",
@@ -17113,7 +17247,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第六节文件传输 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两个并行」\n\n联想记忆：一条线“下命令”，一条线“搬文件”；下命令是控制连接，搬文件是数据连接。"
   },
   {
     "id": "blanks-p009-q006",
@@ -17143,7 +17278,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第六节文件传输 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「命令」\n\n联想记忆：FTP两个相邻窗口：21号管命令，20号常用于主动数据；本题问命令，填21。"
   },
   {
     "id": "blanks-p009-q007",
@@ -17173,7 +17309,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第六节文件传输 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「文件内容」\n\n联想记忆：FTP主动模式的文件货运口记20；与控制21组成“控21、主动数20”配对。\n\n辨清：20是FTP主动模式服务器数据连接的默认端口；被动模式的数据端口由协商确定。"
   },
   {
     "id": "blanks-p009-q008",
@@ -17203,7 +17340,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第六节文件传输 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「控制连接」\n\n联想记忆：控制线说“怎么做”，传控制信息；数据线运“真正的货”，传文件内容。"
   },
   {
     "id": "blanks-p009-q009",
@@ -17233,7 +17371,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第六节文件传输 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「分开传输」\n\n联想记忆：命令走到数据通道外面，另开一条路；“在数据带之外控制”叫带外控制。"
   },
   {
     "id": "blanks-p009-q010",
@@ -17263,7 +17402,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第六节文件传输 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「用于传输命令」\n\n联想记忆：控制通道要一直留着继续下命令；不用每条命令重建，所以它是持久的。"
   },
   {
     "id": "blanks-p009-q011",
@@ -17293,7 +17433,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第八节Socket编程基础 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「网络应用编程接口」\n\n联想记忆：程序的网络插座叫Socket，编程接口叫API；合起来就是Socket API。"
   },
   {
     "id": "blanks-p009-q012",
@@ -17323,7 +17464,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第八节Socket编程基础 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「创建套接字」\n\n联想记忆：要创建socket，就调用同名socket函数；创建出来真正收发报文的通道仍是socket套接字。"
   },
   {
     "id": "blanks-p009-q013",
@@ -17353,7 +17495,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第八节Socket编程基础 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「绑定」\n\n联想记忆：bind这个英文动词就是“绑定”；看到给UDP套接字绑定端口，直接对应bind函数。"
   },
   {
     "id": "blanks-p009-q014",
@@ -17383,7 +17526,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第八节Socket编程基础 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「原始套接字」\n\n联想记忆：原始套接字能接触较底层报文，课程常用管理员作权限提示；Linux管理员名root。\n\n辨清：此处保留课程常见的root答案。实际Linux通常以CAP_NET_RAW能力控制创建权限，并非只能由root进程创建。"
   },
   {
     "id": "blanks-p009-q015",
@@ -17413,7 +17557,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第八节Socket编程基础 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「三种类型」\n\n联想记忆：想三种形态：“一包一包、连续流水、底层原样”；对应数据报、流式、原始套接字。"
   },
   {
     "id": "blanks-p009-q016",
@@ -17443,7 +17588,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第八节Socket编程基础 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「权限限制」\n\n联想记忆：三种里面能碰到底层原始报文的那一种最特殊；权限限制指向原始套接字。"
   },
   {
     "id": "blanks-p009-q017",
@@ -17473,7 +17619,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第八节Socket编程基础 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「DGRAM类型套接字」\n\n联想记忆：DGRAM是Datagram数据报的缩写；数据报联想UDP，STREAM字节流则联想TCP。"
   },
   {
     "id": "blanks-p009-q018",
@@ -17503,7 +17650,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第二章网络应用与应用层协议 · 第八节Socket编程基础 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「绑定本地」\n\n联想记忆：绑定就是给这个网络窗口登记本地位置；登记的“IP＋端口”合称端点地址。"
   },
   {
     "id": "blanks-p010-q001",
@@ -17533,7 +17681,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第一节传输层的基本服务 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「端到端」\n\n联想记忆：把两端想成正在对话的应用程序，中间看作一条逻辑通道；管这条通道的是传输层，对象是应用进程，通信是逻辑的。"
   },
   {
     "id": "blanks-p010-q002",
@@ -17563,7 +17712,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第一节传输层的基本服务 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「核心功能」\n\n联想记忆：送快递要“找门牌、分收件人、保证送达、照顾收件速度、避开路堵”；依次对应寻址、复用分解、可靠传输、流量控制、拥塞控制。"
   },
   {
     "id": "blanks-p010-q003",
@@ -17593,7 +17743,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第一节传输层的基本服务 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「真正端点」\n\n联想记忆：主机像楼，真正交流的是楼里的住户；住户对应应用进程，别停在主机这一层。"
   },
   {
     "id": "blanks-p010-q004",
@@ -17623,7 +17774,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第一节传输层的基本服务 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「端到端」\n\n联想记忆：传输层两端的“使用者”是应用程序；端到端指应用进程之间，不只是两台机器之间。"
   },
   {
     "id": "blanks-p010-q005",
@@ -17653,7 +17805,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第一节传输层的基本服务 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「端口号」\n\n联想记忆：端口像房间号，找到房号就知道把消息交给哪个住户；住户就是应用进程。"
   },
   {
     "id": "blanks-p010-q006",
@@ -17683,7 +17836,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第一节传输层的基本服务 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「编号」\n\n联想记忆：给网络通信窗口编个“门牌号”；这个门的编号叫端口号。"
   },
   {
     "id": "blanks-p010-q007",
@@ -17713,7 +17867,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第一节传输层的基本服务 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「服务器端」\n\n联想记忆：服务器常用两类门牌：人人熟悉的熟知端口、正式注册的登记端口；记“熟、登”。"
   },
   {
     "id": "blanks-p010-q008",
@@ -17743,7 +17898,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第一节传输层的基本服务 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「端口号」\n\n联想记忆：端口有16位，编号数算2的16次方＝65536；前1024个是熟知，随后到49151是登记。"
   },
   {
     "id": "blanks-p010-q009",
@@ -17773,7 +17929,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第一节传输层的基本服务 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「默认端口号」\n\n联想记忆：四张配对卡顺序背：“FTP控21，网页80，发信25，域名53”；每个数字都绑住协议名。"
   },
   {
     "id": "blanks-p010-q010",
@@ -17803,7 +17960,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第一节传输层的基本服务 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「端到端」\n\n联想记忆：应用程序想交给另一端的一整条消息叫报文；传输层负责把这种报文送过去。"
   },
   {
     "id": "blanks-p010-q011",
@@ -17833,7 +17991,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第二节传输层的复用与分解 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「共用同一个」\n\n联想记忆：很多住户共用大厅寄出，叫多路复用；收件按门牌分回各家，叫多路分解，简称复用与分解。"
   },
   {
     "id": "blanks-p010-q012",
@@ -17863,7 +18022,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第二节传输层的复用与分解 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「端口号」\n\n联想记忆：端口像分拣门牌：发出时多人汇合是复用，收到时分给各户是分解。"
   },
   {
     "id": "blanks-p010-q013",
@@ -17893,7 +18053,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第二节传输层的复用与分解 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「多路复用与多路分解」\n\n联想记忆：分拣快递先认哪栋楼，再认哪个房间；两把定位钥匙是IP地址和端口号。"
   },
   {
     "id": "blanks-p010-q014",
@@ -17923,7 +18084,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第二节传输层的复用与分解 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「唯一标识」\n\n联想记忆：数据要准确落到某个通信窗口，窗口本体叫套接字；先认准窗口才能分发。"
   },
   {
     "id": "blanks-p010-q015",
@@ -17953,7 +18115,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第二节传输层的复用与分解 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两大类」\n\n联想记忆：把通信分成寄明信片和先打通电话：前者无连接，后者面向连接。"
   },
   {
     "id": "blanks-p010-q016",
@@ -17983,7 +18146,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第二节传输层的复用与分解 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「无连接服务」\n\n联想记忆：UDP不先握手建连接，拿到数据报便可发送；看到无连接传输层就想到UDP。"
   },
   {
     "id": "blanks-p010-q017",
@@ -18013,7 +18177,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第二节传输层的复用与分解 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「面向连接服务」\n\n联想记忆：TCP先握手再传输，像电话先接通；连接服务锁定TCP。"
   },
   {
     "id": "blanks-p010-q018",
@@ -18043,7 +18208,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第二节传输层的复用与分解 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「唯一标识套接字」\n\n联想记忆：IP是楼址，端口是房号；找到哪栋楼的哪个通信窗口，需要IP地址＋端口号。"
   },
   {
     "id": "blanks-p010-q019",
@@ -18073,7 +18239,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第二节传输层的复用与分解 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「二元组」\n\n联想记忆：UDP按课程模型只看信封的“收件楼址＋收件房号”；都是目的方，填目的IP、目的端口。"
   },
   {
     "id": "blanks-p010-q020",
@@ -18103,7 +18270,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第二节传输层的复用与分解 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「绑定」\n\n联想记忆：bind就是绑定；把端口固定到套接字上，用bind（）函数。"
   },
   {
     "id": "blanks-p011-q001",
@@ -18133,7 +18301,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第二节传输层的复用与分解 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「四元组」\n\n联想记忆：TCP要分清谁与谁的这一次连接；寄件IP＋寄件端口＋收件IP＋收件端口，源目各一对。"
   },
   {
     "id": "blanks-p011-q002",
@@ -18163,7 +18332,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第三节停-等协议与滑动窗口协议 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「可靠数据传输」\n\n联想记忆：可靠快递五件套：“验坏没、签收、补寄、编号、看表”；对应差错检测、确认、重传、序号、计时器。"
   },
   {
     "id": "blanks-p011-q003",
@@ -18193,7 +18363,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第三节停-等协议与滑动窗口协议 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「ARQ」\n\n联想记忆：ARQ重传有三种做法：“发一等一、退回一批、挑着重发”；对应停-等、GBN、SR。"
   },
   {
     "id": "blanks-p011-q004",
@@ -18223,7 +18394,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第三节停-等协议与滑动窗口协议 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「流水线」\n\n联想记忆：窗口里可同时放多份未确认分组，窗口随确认向前滑；这叫滑动窗口，典型两支是GBN、SR。"
   },
   {
     "id": "blanks-p011-q005",
@@ -18253,7 +18425,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第三节停-等协议与滑动窗口协议 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「GBN」\n\n联想记忆：GBN的确认像说“到这一号为止都收到了”；不是只认一份，而是累积确认。"
   },
   {
     "id": "blanks-p011-q006",
@@ -18283,7 +18456,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第三节停-等协议与滑动窗口协议 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「另外一个重要的问题」\n\n联想记忆：窗口限制一次能发多少，让发送方别把接收方压垮；这是流量控制。"
   },
   {
     "id": "blanks-p011-q007",
@@ -18313,7 +18487,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第三节停-等协议与滑动窗口协议 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「接收窗口」\n\n联想记忆：GBN接收方只等“下一个应该来的”，窗口只留一个位置；所以接收窗口为1。"
   },
   {
     "id": "blanks-p011-q008",
@@ -18343,7 +18518,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第三节停-等协议与滑动窗口协议 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「超时」\n\n联想记忆：GBN像带着未签收的一批包裹退回重送；重发对象是已发未确认的分组，不是整个文件。"
   },
   {
     "id": "blanks-p011-q009",
@@ -18373,7 +18549,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第三节停-等协议与滑动窗口协议 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「独立确认」\n\n联想记忆：SR给每个包独立账本和计时器；谁超时就只补谁，因此填该分组。"
   },
   {
     "id": "blanks-p011-q010",
@@ -18403,7 +18580,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第三节停-等协议与滑动窗口协议 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「大小之和」\n\n联想记忆：发送窗和接收窗要在编号圈里分得清新旧；它们的和不能超过可用的序号空间。"
   },
   {
     "id": "blanks-p011-q011",
@@ -18433,7 +18611,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第四节UDP · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「UDP提供」\n\n联想记忆：像普通明信片：“不接通、不保到、尽力送”；展开为无连接、不可靠、尽力传输。"
   },
   {
     "id": "blanks-p011-q012",
@@ -18463,7 +18642,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第四节UDP · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「校验和」\n\n联想记忆：校验和像验货码，检查数据有没有出错；它提供差错检测，不自动纠错。"
   },
   {
     "id": "blanks-p011-q013",
@@ -18493,7 +18673,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第四节UDP · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「四个字段」\n\n联想记忆：UDP小包标签写四项：“从哪门来、到哪门去、多长、验货码”；对应源端口、目的端口、长度、校验和。"
   },
   {
     "id": "blanks-p011-q014",
@@ -18523,7 +18704,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第四节UDP · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「伪首部、UDP首部」\n\n联想记忆：校验不仅查标签，也得查里面的货；伪首部＋UDP首部之外，最后一项是数据。"
   },
   {
     "id": "blanks-p011-q015",
@@ -18553,7 +18735,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「TCP是」\n\n联想记忆：TCP像有回执的连续账本：“先连、可靠、按序、一字节接一字节”；对应连接、可靠、有序、字节流。"
   },
   {
     "id": "blanks-p011-q016",
@@ -18583,7 +18766,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「建立连接」\n\n联想记忆：建立时想三句对话：“我要连→收到且我也要连→收到”；对应三次握手。"
   },
   {
     "id": "blanks-p011-q017",
@@ -18613,7 +18797,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「释放连接」\n\n联想记忆：双方各有一个发送方向要关闭，按课程常见流程各发FIN、各确认；两对动作记四次挥手。\n\n辨清：四次挥手是课程常见关闭流程；实际报文可能合并，不代表每次都恰好四个报文。"
   },
   {
     "id": "blanks-p011-q018",
@@ -18643,7 +18828,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「最大首部长度」\n\n联想记忆：TCP首部长度字段4位，最大15；每单位4字节，15×4＝60字节。"
   },
   {
     "id": "blanks-p011-q019",
@@ -18673,7 +18859,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「字段值为6」\n\n联想记忆：TCP首部长度单位不是1字节，而是4字节；见6就算6×4＝24字节。"
   },
   {
     "id": "blanks-p011-q020",
@@ -18703,7 +18890,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「基本思想」\n\n联想记忆：无堵时一点点加，堵了按比例减；加法增大AI、乘法减小MD，合成AIMD。"
   },
   {
     "id": "blanks-p011-q021",
@@ -18735,7 +18923,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「基本方法」\n\n联想记忆：车辆上路先慢启、随后避堵；发现丢包快重传、之后快恢复；记“慢启、拥避、快传、快恢”。"
   },
   {
     "id": "blanks-p012-q001",
@@ -18765,7 +18954,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「32MSS」\n\n联想记忆：本题常用模型中阈值按原窗口减半；32÷2＝16MSS，问阈值而不是重启后的拥塞窗口。\n\n辨清：按本题简化模型，ssthresh取32MSS的一半；不要把阈值16MSS误写成超时后重新开始的拥塞窗口。"
   },
   {
     "id": "blanks-p012-q002",
@@ -18795,7 +18985,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「3次重复ACK」\n\n联想记忆：三个重复确认像三次催“这个号还没到”，不等计时器就赶紧重传；所以是快速重传。"
   },
   {
     "id": "blanks-p012-q003",
@@ -18825,7 +19016,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「调整发送速率」\n\n联想记忆：要管网络拥塞，就拧“拥塞窗口”这个阀门；与接收方通告的接收窗口区分。"
   },
   {
     "id": "blanks-p012-q004",
@@ -18855,7 +19047,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「空耗一个」\n\n联想记忆：SYN、FIN虽是控制标志，也占一个编号位置；消耗的是序号。\n\n辨清：原资料“均不携带数据”过于绝对。此题应记SYN、FIN各占一个序号；协议允许控制标志与数据同段。核对：RFC 9293，第3.4节。"
   },
   {
     "id": "blanks-p012-q005",
@@ -18885,7 +19078,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 12",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「确认序号」\n\n联想记忆：收件人确认时说的是“下一个我想要几号”，不是最后收到几号；所以叫期望序号。"
   },
   {
     "id": "blanks-p012-q006",
@@ -18915,7 +19109,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 13",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「剩余缓存空间」\n\n联想记忆：接收方说“我还能装多少”，让对方别发太快；这是照顾接收能力的流量控制。"
   },
   {
     "id": "blanks-p012-q007",
@@ -18945,7 +19140,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 14",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「网络出现拥塞」\n\n联想记忆：道路堵了就收油门，不能继续加速；拥塞窗口应减小。"
   },
   {
     "id": "blanks-p012-q008",
@@ -18975,7 +19171,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 15",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「每收到1个确认段」\n\n联想记忆：慢启动按本题简化模型是“每确认，加一份”；一份是1MSS，别误记成每轮只加1。"
   },
   {
     "id": "blanks-p012-q009",
@@ -19005,7 +19202,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第三章传输层服务与协议 · 第五节TCP · 原题 16",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「全部得到确认后」\n\n联想记忆：拥塞避免一整轮才奖励一份；“一轮一份”就是每轮增加1MSS。"
   },
   {
     "id": "blanks-p013-q001",
@@ -19035,7 +19233,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第一节网络层服务 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「网络核心」\n\n联想记忆：普通路由转发的核心设备把分组处理到网络层；在本题分层模型里，它就是核心的最高层。"
   },
   {
     "id": "blanks-p013-q002",
@@ -19065,7 +19264,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第一节网络层服务 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两个重要功能」\n\n联想记忆：先决定走哪条路，再把包送往下一站；“选路＋送出”对应路由选择、转发，按题序填写。"
   },
   {
     "id": "blanks-p013-q003",
@@ -19095,7 +19295,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第一节网络层服务 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「路由器」\n\n联想记忆：把路由器当路口调度员：查地图选路线，再把包转交出去；两项功能是转发、路由选择。"
   },
   {
     "id": "blanks-p013-q004",
@@ -19125,7 +19326,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第一节网络层服务 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「面向连接服务」\n\n联想记忆：一般网络要转发、选路；面向连接还得先把路线接起来，因此再加连接建立。"
   },
   {
     "id": "blanks-p013-q005",
@@ -19155,7 +19357,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第二节虚电路网络与数据报网络 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「前者需建立连接」\n\n联想记忆：先预约路线的是虚电路，像寄独立信件、不预约的是数据报；依次填虚电路网络、数据报网络。"
   },
   {
     "id": "blanks-p013-q006",
@@ -19185,7 +19388,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第二节虚电路网络与数据报网络 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「完整的」\n\n联想记忆：每个包都独立问路，信封必须写全“送到哪里”；完整地址是目的地址。"
   },
   {
     "id": "blanks-p013-q007",
@@ -19215,7 +19419,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第二节虚电路网络与数据报网络 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「虚电路分组交换」\n\n联想记忆：一条一直保留，一条按需建立；“长驻＋临时接通”对应永久型、交换型虚电路。"
   },
   {
     "id": "blanks-p013-q008",
@@ -19245,7 +19450,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第二节虚电路网络与数据报网络 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「数据传输前」\n\n联想记忆：既然叫虚电路网络，发数据前先把那条逻辑电路建好；要建立的是虚电路。"
   },
   {
     "id": "blanks-p013-q009",
@@ -19275,7 +19481,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第二节虚电路网络与数据报网络 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「路径上建立」\n\n联想记忆：虚电路是在网络中沿路设置转发关系，不是应用程序间的TCP连接；层次填网络层。"
   },
   {
     "id": "blanks-p013-q010",
@@ -19305,7 +19512,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第二节虚电路网络与数据报网络 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「同一对源和目的主机」\n\n联想记忆：虚电路先约好一条路，后续沿约定路线走；所以这些分组途经相同路径。"
   },
   {
     "id": "blanks-p013-q011",
@@ -19335,7 +19543,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第二节虚电路网络与数据报网络 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「不同的路由器」\n\n联想记忆：不同包走不同路线，快慢可能不一样，后发先到；到达顺序可能乱序。"
   },
   {
     "id": "blanks-p013-q012",
@@ -19365,7 +19574,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第三节网络互连与网络互连设备 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「异构网络」\n\n联想记忆：两套网络“干活手段不同、交流规则不同”；对应通信技术、运行协议不同。"
   },
   {
     "id": "blanks-p013-q013",
@@ -19395,7 +19605,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第三节网络互连与网络互连设备 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「异构网络互连」\n\n联想记忆：不同语言的人交流：要么请翻译，要么约定共同语言层；对应协议转换、构建虚拟互联网络。"
   },
   {
     "id": "blanks-p013-q014",
@@ -19425,7 +19636,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第三节网络互连与网络互连设备 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「异地同构」\n\n联想记忆：两头类型一样，中间经过别的网络，像两地之间打隧道；同构跨异地记隧道技术。"
   },
   {
     "id": "blanks-p013-q015",
@@ -19455,7 +19667,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第三节网络互连与网络互连设备 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「关键设备」\n\n联想记忆：交换设备先记路由器、交换机；问跨异构网络的关键，抓住“跨网选路”，再填路由器。"
   },
   {
     "id": "blanks-p013-q016",
@@ -19485,7 +19698,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第三节网络互连与网络互连设备 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「分组交换设备」\n\n联想记忆：包裹在网络中靠路由器跨网、靠交换机转接；两种典型设备都要写。"
   },
   {
     "id": "blanks-p013-q017",
@@ -19515,7 +19729,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第三节网络互连与网络互连设备 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「路由器可以分为」\n\n联想记忆：把路由器画成车站：“进站口→站内换乘→出站口”，另有调度室；对应输入端口、交换结构、输出端口、路由处理器。"
   },
   {
     "id": "blanks-p013-q018",
@@ -19545,7 +19760,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第三节网络互连与网络互连设备 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「交换结构」\n\n联想记忆：三种内部搬运路径：先借内存、共走总线、走交换网络；记“存、线、网”。"
   },
   {
     "id": "blanks-p014-q001",
@@ -19575,7 +19791,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第三节网络互连与网络互连设备 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「性能」\n\n联想记忆：按本题典型结构对比，内存来回复制慢，交换网络能并行；最低内存，最高网络。"
   },
   {
     "id": "blanks-p014-q002",
@@ -19605,7 +19822,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第三节网络互连与网络互连设备 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「网络层互连设备」\n\n联想记忆：设备名字中直接带“路由”的就是网络层选路能手；填路由器。"
   },
   {
     "id": "blanks-p014-q003",
@@ -19635,7 +19853,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第四节网络层拥塞控制 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两大类」\n\n联想记忆：治堵分“未堵先防”和“堵了再消”；分别展开拥塞预防、拥塞消除。"
   },
   {
     "id": "blanks-p014-q004",
@@ -19665,7 +19884,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第四节网络层拥塞控制 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两个方面」\n\n联想记忆：路堵了两条思路：拓宽道路，少放车辆；对应增加网络资源、减少网络负载。"
   },
   {
     "id": "blanks-p014-q005",
@@ -19695,7 +19915,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第四节网络层拥塞控制 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「预防拥塞」\n\n联想记忆：没堵之前先看哪条路流量小，再控制谁能入场；对应流量感知路由、准入控制。"
   },
   {
     "id": "blanks-p014-q006",
@@ -19725,7 +19946,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第四节网络层拥塞控制 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「消除拥塞」\n\n联想记忆：已经堵了，先让来车减速，再必要时卸掉部分负担；对应流量调节、负载脱落。"
   },
   {
     "id": "blanks-p014-q007",
@@ -19755,7 +19977,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第四节网络层拥塞控制 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「策略包括」\n\n联想记忆：按“事前两招、事后两招”记：事前看流量选路、控制准入；事后调节流量、脱落负载。"
   },
   {
     "id": "blanks-p014-q008",
@@ -19785,7 +20008,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第四节网络层拥塞控制 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「虚电路网络」\n\n联想记忆：虚电路要先申请建立，适合在入口说“现在能不能进”；这道门槛就是准入控制。"
   },
   {
     "id": "blanks-p014-q009",
@@ -19815,7 +20039,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第四节网络层拥塞控制 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「通知上游结点」\n\n联想记忆：堵点通知前方少送货：一招发抑制分组，一招压力逐站向后传，叫背压。"
   },
   {
     "id": "blanks-p014-q010",
@@ -19845,7 +20070,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第四节网络层拥塞控制 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「总需求超过」\n\n联想记忆：像剧场座位有限，人太多超过承载上限；网络固有的承载上限叫容量。"
   },
   {
     "id": "blanks-p014-q011",
@@ -19875,7 +20101,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「IPv4」\n\n联想记忆：用对象绑数字：“地址32位，总长16位，首长4位，片偏移8字节一格”；四空单位不同，整组配对背。"
   },
   {
     "id": "blanks-p014-q012",
@@ -19905,7 +20132,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「动态主机配置」\n\n联想记忆：Dynamic动态、Host主机、Configuration配置、Protocol协议，四词首字母合成DHCP。"
   },
   {
     "id": "blanks-p014-q013",
@@ -19935,7 +20163,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「DHCP」\n\n联想记忆：新主机先申请配置，常从广播发现开始；传输层用UDP，记“动态配地址→UDP”。"
   },
   {
     "id": "blanks-p014-q014",
@@ -19965,7 +20194,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「网络地址转换」\n\n联想记忆：Network Address Translation取首字母NAT；多个私网设备共用较少公网地址，缓解地址短缺。"
   },
   {
     "id": "blanks-p014-q015",
@@ -19995,7 +20225,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「ICMP」\n\n联想记忆：把ICMP当网络传话员：一类报“出错了”，一类问“能到吗”；对应差错报告、网络探询。"
   },
   {
     "id": "blanks-p014-q016",
@@ -20025,7 +20256,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「主机或路由器间」\n\n联想记忆：网络设备需要报警和探路；报警是差错报告，探路是网络探询。"
   },
   {
     "id": "blanks-p014-q017",
@@ -20055,7 +20287,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「网络层差错报告」\n\n联想记忆：看到“网络层＋报错、探测”就找网络传话员ICMP；不要与应用层邮件协议混。"
   },
   {
     "id": "blanks-p014-q018",
@@ -20085,7 +20318,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「基本首部」\n\n联想记忆：IPv6基本首部是一张固定40字节的表；记“六版基本头，固定四十”，不含扩展首部。"
   },
   {
     "id": "blanks-p014-q019",
@@ -20115,7 +20349,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「连续的多组」\n\n联想记忆：一长串全零压成两个点对“::”；符号名字就是两个冒号，同一地址只能用一次这种省略。"
   },
   {
     "id": "blanks-p014-q020",
@@ -20145,7 +20380,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「IPv4网络」\n\n联想记忆：IPv6包要穿过IPv4地段，像坐进外层IPv4车厢；这条通道叫IPv6隧道。"
   },
   {
     "id": "blanks-p014-q021",
@@ -20175,7 +20411,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「私有地址上网」\n\n联想记忆：私网门牌出公网前要换成可路由的门牌；换地址是网络地址转换，缩写NAT。"
   },
   {
     "id": "blanks-p014-q022",
@@ -20207,7 +20444,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 12",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「多个相对较小」\n\n联想记忆：把一张大网切成多个“小网”，小网正式名称就是子网。"
   },
   {
     "id": "blanks-p015-q001",
@@ -20237,7 +20475,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 13",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「减少路由表项数」\n\n联想记忆：把多条类似地址合成一条，表变短、查得快；提高的是路由效率。"
   },
   {
     "id": "blanks-p015-q002",
@@ -20267,7 +20506,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第五节Internet网络层 · 原题 14",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「地址空间巨大」\n\n联想记忆：IPv6地址空间很大，针对的就是原来地址不够用的问题；“不够用”填不足。"
   },
   {
     "id": "blanks-p015-q003",
@@ -20297,7 +20537,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「直接相连」\n\n联想记忆：家门口负责出网的整台设备叫默认路由器；面对本子网的那个接口叫默认网关。"
   },
   {
     "id": "blanks-p015-q004",
@@ -20327,7 +20568,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「全局信息」\n\n联想记忆：手握整张地图叫全局式，各结点靠分散信息协作叫分布式；按地图掌握范围区分。"
   },
   {
     "id": "blanks-p015-q005",
@@ -20357,7 +20599,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「第二种分类标准」\n\n联想记忆：路线固定配置叫静态，随网络变化调整叫动态；想“固定地图、实时导航”。"
   },
   {
     "id": "blanks-p015-q006",
@@ -20387,7 +20630,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「典型路由算法」\n\n联想记忆：三种看地图方式：“看所有链路状态、听邻居报距离、按区域分层”；对应链路状态、距离向量、层次化。"
   },
   {
     "id": "blanks-p015-q007",
@@ -20417,7 +20661,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「全局式」\n\n联想记忆：要知道全网地图，就收集各条链路状态；全局式对应链路状态LS。"
   },
   {
     "id": "blanks-p015-q008",
@@ -20447,7 +20692,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「分布式」\n\n联想记忆：各结点不拿整张图，主要和邻居交换“到各地多远”；对应距离向量。"
   },
   {
     "id": "blanks-p015-q009",
@@ -20477,7 +20723,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「Dijkstra」\n\n联想记忆：Dijkstra要有带权地图才能算最短路；提供这张地图的是链路状态算法。"
   },
   {
     "id": "blanks-p015-q010",
@@ -20507,7 +20754,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「异步的、迭代的分布式」\n\n联想记忆：邻居陆续报距离，你不断更新自己的估计；“邻居距离反复更新”对应距离向量。"
   },
   {
     "id": "blanks-p015-q011",
@@ -20537,7 +20785,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两个层」\n\n联想记忆：把自治系统想成国家：国内走内路，跨国走间路；两层是自治系统内、自治系统间。"
   },
   {
     "id": "blanks-p015-q012",
@@ -20567,7 +20816,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「自治系统间」\n\n联想记忆：“系统间”就是走到外部；外部External提示E，类别缩写EGP，区别于具体协议BGP。"
   },
   {
     "id": "blanks-p015-q013",
@@ -20597,7 +20847,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「自治系统内」\n\n联想记忆：“系统内”就是内部；Interior提示I，内部网关协议这一类别缩写IGP。"
   },
   {
     "id": "blanks-p015-q014",
@@ -20627,7 +20878,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 12",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「典型的路由协议」\n\n联想记忆：内部两位同事RIP、OSPF，边界对外找BGP；记“内R/O，间B”。"
   },
   {
     "id": "blanks-p015-q015",
@@ -20657,7 +20909,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 13",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「最大有效跳数」\n\n联想记忆：RIP把16当不可达，所以还能走的最大有效值是15；两个空都填15。"
   },
   {
     "id": "blanks-p015-q016",
@@ -20687,7 +20940,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 14",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「较小规模」\n\n联想记忆：RIP用跳数衡量距离，最多有效15跳，适合较小网络；由“小规模＋跳数有限”想到RIP。"
   },
   {
     "id": "blanks-p015-q017",
@@ -20717,7 +20971,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 15",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「骨干ISP」\n\n联想记忆：骨干网络较大，需要较完善的链路状态选路；这一题的典型协议是OSPF。"
   },
   {
     "id": "blanks-p015-q018",
@@ -20747,7 +21002,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 16",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「RIP基于」\n\n联想记忆：RIP问邻居“多远”，所以距离向量；OSPF收全网链路地图，所以链路状态。"
   },
   {
     "id": "blanks-p015-q019",
@@ -20777,7 +21033,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 17",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「众多AS互连」\n\n联想记忆：自治系统像许多国家，BGP负责边界之间交流可达路线；跨AS全球互连找BGP。"
   },
   {
     "id": "blanks-p015-q020",
@@ -20807,7 +21064,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第四章网络层服务与协议 · 第六节路由算法与路由协议 · 原题 18",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「封装」\n\n联想记忆：给三位选路员配交通工具：“RIP坐UDP，OSPF直接坐IP，BGP坐TCP”；一对一记，别统称都走传输层。"
   },
   {
     "id": "blanks-p016-q001",
@@ -20837,7 +21095,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第一节数据链路层服务 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「封装」\n\n联想记忆：链路层给网络层的数据报加一个传输“外框”；有了这一框，就叫帧。"
   },
   {
     "id": "blanks-p016-q002",
@@ -20867,7 +21126,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第一节数据链路层服务 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「提供的服务」\n\n联想记忆：帧的旅程：“打包、上路、送到、查错、控速”；对应组帧、链路接入、可靠交付、差错控制、流量控制。"
   },
   {
     "id": "blanks-p016-q003",
@@ -20897,7 +21157,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第一节数据链路层服务 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「相邻结点间」\n\n联想记忆：链路层替上一层搬运货物，接手的货就是网络层数据报；本题问搬什么，填数据报。"
   },
   {
     "id": "blanks-p016-q004",
@@ -20927,7 +21188,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第一节数据链路层服务 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「控制」\n\n联想记忆：相邻设备也有快慢差异，要防止发送压垮接收；限制送入多少，对应流量控制。"
   },
   {
     "id": "blanks-p016-q005",
@@ -20957,7 +21219,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第一节数据链路层服务 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两大类」\n\n联想记忆：一条线只有两端叫点对点，多人共听一个信道叫广播；另一类填广播链路。"
   },
   {
     "id": "blanks-p016-q006",
@@ -20987,7 +21250,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第二节差错控制 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「噪声」\n\n联想记忆：想两种干扰：“突然猛撞一下”和“零散随机出现”；对应冲击噪声、随机噪声。"
   },
   {
     "id": "blanks-p016-q007",
@@ -21017,7 +21281,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第二节差错控制 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「第一位错误与最后一位错误」\n\n联想记忆：一阵干扰突然爆发，从第一错位量到最后错位；这段跨度叫突发长度。"
   },
   {
     "id": "blanks-p016-q008",
@@ -21047,7 +21312,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第二节差错控制 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「4种基本方式」\n\n联想记忆：查出坏包后四种处理：“重寄、自己修、回传核对、扔掉”；展开检错重发、前向纠错、反馈校验、检错丢弃。"
   },
   {
     "id": "blanks-p016-q009",
@@ -21077,7 +21343,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第二节差错控制 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「直接丢弃」\n\n联想记忆：题干已给动作：先检出错误，再丢弃；把两步连起来就是检错丢弃。"
   },
   {
     "id": "blanks-p016-q010",
@@ -21107,7 +21374,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第二节差错控制 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「编码分类」\n\n联想记忆：一类只告诉你错了，一类还能把错修好；分别是检错编码、纠错编码。"
   },
   {
     "id": "blanks-p016-q011",
@@ -21137,7 +21405,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第二节差错控制 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「检错或纠错能力」\n\n联想记忆：合法码字离得越开，越能识别偏离；衡量这种“相隔多少位”的量是编码集的汉明距离。"
   },
   {
     "id": "blanks-p016-q012",
@@ -21167,7 +21436,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第二节差错控制 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「典型的差错编码」\n\n联想记忆：记三个验货标记：“数奇偶、汉明距离、循环做余数”；对应奇偶校验码、汉明码、循环冗余码CRC。"
   },
   {
     "id": "blanks-p016-q013",
@@ -21197,7 +21467,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第二节差错控制 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「循环冗余检测」\n\n联想记忆：Cyclic循环、Redundancy冗余、Check校验；取首字母CRC。"
   },
   {
     "id": "blanks-p016-q014",
@@ -21227,7 +21498,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第二节差错控制 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「d=r+1」\n\n联想记忆：检错要留出一位安全间隔；可检位数是d-1，代入d=r＋1得到r。"
   },
   {
     "id": "blanks-p016-q015",
@@ -21257,7 +21529,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第二节差错控制 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「d=2r+1」\n\n联想记忆：纠错要同时防止两边靠近，间隔需2r＋1；反算(d-1)/2，得到r。"
   },
   {
     "id": "blanks-p016-q016",
@@ -21287,7 +21560,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第三节多路访问控制协议 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「3种类型」\n\n联想记忆：共用会议室有三招：“分时分区、谁来谁抢、听主持安排”；对应信道划分、随机访问、受控接入。"
   },
   {
     "id": "blanks-p016-q017",
@@ -21317,7 +21591,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第三节多路访问控制协议 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「多路复用」\n\n联想记忆：把通道按“频率、时间、光波长、编码”分给用户；依次是FDM、TDM、WDM、CDM。"
   },
   {
     "id": "blanks-p016-q018",
@@ -21347,7 +21622,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第三节多路访问控制协议 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「光纤通信」\n\n联想记忆：一根光纤同时走不同“颜色”的光，颜色对应波长；因此是波分多路复用WDM。"
   },
   {
     "id": "blanks-p016-q019",
@@ -21377,7 +21653,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第三节多路访问控制协议 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「随机访问」\n\n联想记忆：随机争用从“直接发”到“先听再发”到“边发边查冲突”；依次联想ALOHA、CSMA、CSMA/CD。"
   },
   {
     "id": "blanks-p017-q001",
@@ -21407,7 +21684,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第三节多路访问控制协议 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「成功发送的平均帧数」\n\n联想记忆：数系统真正成功吞进、送出的帧；成功发送量按帧时间衡量，叫吞吐率。"
   },
   {
     "id": "blanks-p017-q002",
@@ -21437,7 +21715,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第三节多路访问控制协议 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「时隙ALOHA」\n\n联想记忆：时隙ALOHA最大值记1/e≈0.368；转换成百分数是36.8%，与纯ALOHA的约18.4%区分。"
   },
   {
     "id": "blanks-p017-q003",
@@ -21467,7 +21746,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第三节多路访问控制协议 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「指数退避」\n\n联想记忆：冲突后可选等待范围按2的幂扩大；底数是2，名字叫二进制指数退避。"
   },
   {
     "id": "blanks-p017-q004",
@@ -21497,7 +21777,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第三节多路访问控制协议 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「随机访问协议」\n\n联想记忆：传统共享式半双工以太网“先听、再发、检测冲突”；Detect对应D，记CSMA/CD。\n\n辨清：适用于传统共享式半双工以太网；现代交换式全双工以太网不依靠CSMA/CD处理冲突。"
   },
   {
     "id": "blanks-p017-q005",
@@ -21527,7 +21808,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第三节多路访问控制协议 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「服从一定的控制」\n\n联想记忆：受控发言可以由一个主持人管，也可由各人按规则协作管；对应集中式、分散式控制。"
   },
   {
     "id": "blanks-p017-q006",
@@ -21557,7 +21839,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第三节多路访问控制协议 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「最严重的两种错误」\n\n联想记忆：环网像传话筒：话筒丢了没人能讲，旧消息绕圈停不下；对应令牌丢失、数据帧无法撤销。"
   },
   {
     "id": "blanks-p017-q007",
@@ -21587,7 +21870,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第三节多路访问控制协议 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「负载特别轻」\n\n联想记忆：信道预先分给很多人，但大部分人没数据，份额就闲着；轻负载下利用率最低。"
   },
   {
     "id": "blanks-p017-q008",
@@ -21617,7 +21901,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两个子层」\n\n联想记忆：上层管逻辑链路，下层管谁能碰介质；对应LLC逻辑链路控制、MAC介质访问控制。"
   },
   {
     "id": "blanks-p017-q009",
@@ -21647,7 +21932,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「有关的内容」\n\n联想记忆：和媒介接入有关找MAC；与具体媒介无关的逻辑管理找LLC；用“介质/逻辑”直接配名称。"
   },
   {
     "id": "blanks-p017-q010",
@@ -21677,7 +21963,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「IP地址获取其MAC地址」\n\n联想记忆：知道网络门牌，问出本地网卡门牌；把一种地址解析成另一种，叫地址解析协议ARP。"
   },
   {
     "id": "blanks-p017-q011",
@@ -21707,7 +21994,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「局域网寻址」\n\n联想记忆：局域网找网卡要MAC地址；知道IP后请ARP来问，故两空是MAC地址、ARP协议。"
   },
   {
     "id": "blanks-p017-q012",
@@ -21737,7 +22025,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「ARP查询」\n\n联想记忆：不知道目标网卡在哪，就向本网大家喊“这个IP是谁”；向大家喊是广播。"
   },
   {
     "id": "blanks-p017-q013",
@@ -21767,7 +22056,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「IP地址解析为」\n\n联想记忆：ARP把IP门牌翻成本地网卡门牌；网卡门牌正式叫MAC地址。"
   },
   {
     "id": "blanks-p017-q014",
@@ -21797,7 +22087,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「有线局域网技术」\n\n联想记忆：看到最典型的有线局域网，就想到电脑插网线的以太网。"
   },
   {
     "id": "blanks-p017-q015",
@@ -21827,7 +22118,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「MAC协议」\n\n联想记忆：按传统共享式半双工以太网记“能检测冲突D”；对应CSMA/CD，不与无线的CA混。\n\n辨清：同样限定传统共享式半双工以太网。"
   },
   {
     "id": "blanks-p017-q016",
@@ -21857,7 +22149,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「数据字段最少」\n\n联想记忆：基本以太网最小帧64字节，去掉首部14和校验4：64-14-4＝46字节。"
   },
   {
     "id": "blanks-p017-q017",
@@ -21887,7 +22180,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「基本工作方式」\n\n联想记忆：本题默认交换机先把帧收进来，再发出去；“先存后转”就是存储-转发。\n\n辨清：本题采用存储-转发工作方式；交换机也存在直通等实现方式。"
   },
   {
     "id": "blanks-p017-q018",
@@ -21917,7 +22211,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「构建交换表」\n\n联想记忆：交换机看收到帧的源地址，自己记住从哪个口来；一边收一边学，叫自学习。"
   },
   {
     "id": "blanks-p017-q019",
@@ -21947,7 +22242,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 12",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「局域网常见技术」\n\n联想记忆：把两组绑住：“传统共享有线以太→检测D，无线802.11→避免A”；协议分别为CSMA/CD、CSMA/CA。\n\n辨清：其中以太网的CSMA/CD对应传统共享式半双工场景；无线网络采用冲突避免机制。"
   },
   {
     "id": "blanks-p017-q020",
@@ -21977,7 +22273,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 13",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「逻辑分割广播域」\n\n联想记忆：线缆不必搬家，逻辑上划成不同小局域网；Virtual LAN缩写VLAN。"
   },
   {
     "id": "blanks-p017-q021",
@@ -22007,7 +22304,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 14",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「只支持全双工」\n\n联想记忆：全双工双方可同时各发各的，不再抢同一共享信道；因此不需要检测冲突的CSMA/CD。"
   },
   {
     "id": "blanks-p017-q022",
@@ -22037,7 +22335,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 15",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「没有对应表项」\n\n联想记忆：交换机不知收件人在哪，就向其他端口都转一份；像水漫开一样，叫泛洪。"
   },
   {
     "id": "blanks-p017-q023",
@@ -22067,7 +22366,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 16",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「主机全部通过交换机互连」\n\n联想记忆：每台主机独占一个交换机端口的小段；按本题模型，一个冲突域最多一台主机。"
   },
   {
     "id": "blanks-p017-q024",
@@ -22097,7 +22397,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 17",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「无环路」\n\n联想记忆：把图里的环切开，只剩分叉且无环的形状，就是树；因此构成树状结构。"
   },
   {
     "id": "blanks-p018-q001",
@@ -22127,7 +22428,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第四节局域网 · 原题 18",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「逻辑分割」\n\n联想记忆：VLAN把“一喊所有人都听见”的范围切小；被分割的正是广播域。"
   },
   {
     "id": "blanks-p018-q002",
@@ -22157,7 +22459,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第五节点对点链路协议 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「透明传输」\n\n联想记忆：PPP异步字节流遇特殊字节要先报“转义”：转义字节0x7D＝01111101，做法叫字节填充。\n\n辨清：原资料只写插入转义字节，不够完整。0x7E应编码成0x7D、0x5E。核对：RFC 1662，第4.2节。"
   },
   {
     "id": "blanks-p018-q003",
@@ -22187,7 +22490,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第五节点对点链路协议 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「点对点链路协议」\n\n联想记忆：两个典型名字先记PPP、HDLC；HDLC在连续比特中塞位避开特殊标志，所以用位填充。"
   },
   {
     "id": "blanks-p018-q004",
@@ -22217,7 +22521,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第五节点对点链路协议 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「三种帧类型」\n\n联想记忆：HDLC三类用途：“送信息、管监督、做无编号控制”；按资料名称填信息帧、管理帧、无序号帧。\n\n辨清：“管理帧”在其他资料中常称监督帧；HDLC常见三类为I帧、S帧、U帧。这里保留原资料用词。"
   },
   {
     "id": "blanks-p018-q005",
@@ -22247,7 +22552,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第五节点对点链路协议 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「允许」\n\n联想记忆：连线后除了协商地址，还要核实“你是谁”；核实身份就是身份认证。"
   },
   {
     "id": "blanks-p018-q006",
@@ -22277,7 +22583,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第五章数据链路层服务与局域网 · 第五节点对点链路协议 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「LCP」\n\n联想记忆：把线路从开到关管一遍：“启动→检测→协商→关闭”；四个动词逐项展开即可。"
   },
   {
     "id": "blanks-p019-q001",
@@ -22307,7 +22614,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第一节数据通信基础 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「最底层」\n\n联想记忆：楼底下接物理线路，只负责把0和1的比特流传过去；两空是物理层、比特流。"
   },
   {
     "id": "blanks-p019-q002",
@@ -22337,7 +22645,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第一节数据通信基础 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「时间间隔相同的符号」\n\n联想记忆：把时间切成一格格，每格放一个信号符号；每格中的信号单位叫码元，不必只代表1比特。"
   },
   {
     "id": "blanks-p019-q003",
@@ -22367,7 +22676,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第一节数据通信基础 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「数据通信系统」\n\n联想记忆：想快递路线：“来源→发货设备→运输系统→收货设备→归宿”；对应信源、发送设备、传输系统、接收设备、信宿。"
   },
   {
     "id": "blanks-p019-q004",
@@ -22397,7 +22707,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第一节数据通信基础 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「模拟通信和数字通信」\n\n联想记忆：类型跟着名字走：模拟通信配模拟信号，数字通信配数字信号，顺序不交换。"
   },
   {
     "id": "blanks-p019-q005",
@@ -22427,7 +22738,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第一节数据通信基础 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「信源和信宿端」\n\n联想记忆：两端处理0、1，所以是二进制数据；中途载体可用连续模拟信号，也可用数字信号。"
   },
   {
     "id": "blanks-p019-q006",
@@ -22457,7 +22769,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第一节数据通信基础 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「方向」\n\n联想记忆：想广播、对讲机、电话：“只一方说、双方轮流说、双方同时说”；对应单向、双向交替、双向同时。"
   },
   {
     "id": "blanks-p019-q007",
@@ -22487,7 +22800,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第一节数据通信基础 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「时空顺序」\n\n联想记忆：多条路并排送是并行，一条路排队串着送是串行；抓“并排/成串”回想。"
   },
   {
     "id": "blanks-p019-q008",
@@ -22517,7 +22831,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第一节数据通信基础 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「步调一致」\n\n联想记忆：统一节拍一起走是同步；不用连续统一节拍、借边界等协调的是异步；按题序填异步、同步。"
   },
   {
     "id": "blanks-p019-q009",
@@ -22547,7 +22862,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第一节数据通信基础 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「双向交替」\n\n联想记忆：两边都能说，但每次只一边说，双向只用一半；联想到半双工。"
   },
   {
     "id": "blanks-p019-q010",
@@ -22577,7 +22893,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第一节数据通信基础 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「同时发送和接收」\n\n联想记忆：双方两个方向都能同时工作，功能全开；所以是全双工。"
   },
   {
     "id": "blanks-p019-q011",
@@ -22607,7 +22924,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第一节数据通信基础 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「广义信道」\n\n联想记忆：狭义只有“路”，广义还包括路两端转换信号的设备；空中补变换。"
   },
   {
     "id": "blanks-p019-q012",
@@ -22637,7 +22955,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第二节物理介质 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「物理介质」\n\n联想记忆：沿实物导线、光纤走，叫导引型；在空间传播而无这种引导，叫非导引型。"
   },
   {
     "id": "blanks-p019-q013",
@@ -22667,7 +22986,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第二节物理介质 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「有线信道」\n\n联想记忆：从老到新画四根线：“空中明线、拧成双股、同轴电缆、发光纤维”；对应架空明线、双绞线、同轴电缆、光纤。"
   },
   {
     "id": "blanks-p019-q014",
@@ -22697,7 +23017,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第二节物理介质 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「双绞线」\n\n联想记忆：双绞线外面可有防护屏，也可没有；两类是屏蔽、非屏蔽。"
   },
   {
     "id": "blanks-p019-q015",
@@ -22727,7 +23048,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第二节物理介质 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「英文缩写」\n\n联想记忆：S＝Shielded屏蔽，U＝Unshielded非屏蔽，TP＝Twisted Pair双绞线；合成STP、UTP。"
   },
   {
     "id": "blanks-p019-q016",
@@ -22757,7 +23079,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第二节物理介质 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「全反射」\n\n联想记忆：想光在透明纤维中不断反射前进；装它的是光纤，携带信息的是光波。"
   },
   {
     "id": "blanks-p019-q017",
@@ -22787,7 +23110,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第二节物理介质 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「空间的传播」\n\n联想记忆：无线靠电磁波；传播路线想“直着看见、贴地面、借天空”，对应视线、地波、天波。"
   },
   {
     "id": "blanks-p020-q001",
@@ -22817,7 +23141,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第三节信道与信道容量 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「发送端与接收端」\n\n联想记忆：连接两端的信号通路叫信道；算上相关变换设备是广义，只算物理介质是狭义。"
   },
   {
     "id": "blanks-p020-q002",
@@ -22847,7 +23172,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第三节信道与信道容量 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「容量」\n\n联想记忆：容量问“最多能装多少”，不是实际装了多少；信道容量对应最大平均信息速率。"
   },
   {
     "id": "blanks-p020-q003",
@@ -22877,7 +23203,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第三节信道与信道容量 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「调制器的输出端」\n\n联想记忆：调制负责装上载波，对端要解开；与调制器配对的是解调器。"
   },
   {
     "id": "blanks-p020-q004",
@@ -22907,7 +23234,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第三节信道与信道容量 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「编码器输出端」\n\n联想记忆：编码端把信息编成码，另一端把码译回来；对应译码器。"
   },
   {
     "id": "blanks-p020-q005",
@@ -22937,7 +23265,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第四节基带传输 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两种方式」\n\n联想记忆：基础信号直接送叫基带传输；先搬到载波频带上送叫频带传输。"
   },
   {
     "id": "blanks-p020-q006",
@@ -22967,7 +23296,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第四节基带传输 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「信源」\n\n联想记忆：源头信息按连续变化与离散数字分两类；分别叫模拟信源、数字信源。"
   },
   {
     "id": "blanks-p020-q007",
@@ -22997,7 +23327,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第四节基带传输 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「直接传输」\n\n联想记忆：没有搬到其他载波频带，直接送原来的数字基带信号；题眼“直接”锁定数字基带。"
   },
   {
     "id": "blanks-p020-q008",
@@ -23027,7 +23358,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第四节基带传输 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「AMI编码」\n\n联想记忆：AMI里0最老实，保持零电平；交替正负的是1，别把两者颠倒。"
   },
   {
     "id": "blanks-p020-q009",
@@ -23057,7 +23389,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第四节基带传输 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「抽样判决器」\n\n联想记忆：抽样时刻要踩准节拍，接收端得取出同步信息；最后一项记同步提取。"
   },
   {
     "id": "blanks-p020-q010",
@@ -23087,7 +23420,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第四节基带传输 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「差分码」\n\n联想记忆：前面已列单极、双极、差分等，再想到不只两种信号状态的“多元”；填多元码。"
   },
   {
     "id": "blanks-p020-q011",
@@ -23117,7 +23451,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第五节频带传输 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「频带传输」\n\n联想记忆：给数字基带数据穿上模拟载波外衣；穿衣过程是调制，变换前数字，变换后模拟。"
   },
   {
     "id": "blanks-p020-q012",
@@ -23147,7 +23482,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第五节频带传输 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「三种基本调制」\n\n联想记忆：波可以改高低、疏密、起始角度；对应幅A、频F、相P，分别是2ASK、2FSK、2PSK。"
   },
   {
     "id": "blanks-p020-q013",
@@ -23177,7 +23513,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第五节频带传输 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「二进制数字调制」\n\n联想记忆：先背幅A、频F、相P三种，再加看前后相位差的差分DPSK；四种前面都带2。"
   },
   {
     "id": "blanks-p020-q014",
@@ -23207,7 +23544,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第五节频带传输 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「频带传输的基本方式」\n\n联想记忆：最基础的数字信息只有0、1两种，所以基本方式是二进制数字调制。"
   },
   {
     "id": "blanks-p020-q015",
@@ -23237,7 +23575,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第五节频带传输 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「多个比特信息」\n\n联想记忆：更多状态挤进同一码元，要更容易分清，通常需提高信号强度；本空填信号功率。\n\n辨清：M进制每码元携带log2(M)比特；若M＝2^k，则每码元k比特。信号功率需求还与误码率等条件有关。"
   },
   {
     "id": "blanks-p020-q016",
@@ -23267,7 +23606,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第五节频带传输 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「矢量端点图」\n\n联想记忆：把每种幅值和相位画成一个点，点点像夜空星星；这张图叫星座图。"
   },
   {
     "id": "blanks-p020-q017",
@@ -23297,7 +23637,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第五节频带传输 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「最小距离越大」\n\n联想记忆：两个点离得远，噪声推偏一点也不易认错；增强的是抗噪声性能。"
   },
   {
     "id": "blanks-p020-q018",
@@ -23327,7 +23668,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第六节物理层接口规程 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「接口特性」\n\n联想记忆：看插口四件事：“形状、用电、各脚用途、动作顺序”；对应机械、电气、功能、规程。"
   },
   {
     "id": "blanks-p020-q019",
@@ -23357,7 +23699,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第六章 物理层 · 第六节物理层接口规程 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「合法顺序」\n\n联想记忆：题干问“全过程、事件顺序”，就是接口办事的操作流程；流程规则对应规程特性。"
   },
   {
     "id": "blanks-p022-q001",
@@ -23387,7 +23730,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第一节无线网络 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「基本组成」\n\n联想记忆：想手机上网全景：“手机→无线空气路→基站→后方网络”；对应无线主机、无线链路、基站、网络基础设施，按题序填写。"
   },
   {
     "id": "blanks-p022-q002",
@@ -23417,7 +23761,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第一节无线网络 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「链路层」\n\n联想记忆：无线主机和后方网络之间需要接力站；站是基站，接力作用叫中继。"
   },
   {
     "id": "blanks-p022-q003",
@@ -23447,7 +23792,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第一节无线网络 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「模式包括」\n\n联想记忆：有现成设施可依靠，叫基础设施模式；没有基站、大家自己组网，叫自组网模式。"
   },
   {
     "id": "blanks-p022-q004",
@@ -23477,7 +23823,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第一节无线网络 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「自组网没有」\n\n联想记忆：基础设施模式有“站长”，自组网自己组织；这个站长就是基站。"
   },
   {
     "id": "blanks-p022-q005",
@@ -23507,7 +23854,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第一节无线网络 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「主机自身提供」\n\n联想记忆：不靠基站，主机自己组织、自己选路；题眼“自身”直接想到自组网。"
   },
   {
     "id": "blanks-p022-q006",
@@ -23537,7 +23885,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第一节无线网络 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「没有基站」\n\n联想记忆：没有管理站，主机要自己指路、自己发门牌；对应路由选择、地址分配。"
   },
   {
     "id": "blanks-p022-q007",
@@ -23567,7 +23916,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第一节无线网络 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「不同于有线网络」\n\n联想记忆：有些无线主机互相听不到，却会同时干扰同一接收方；彼此“隐藏”，叫隐藏站问题。"
   },
   {
     "id": "blanks-p022-q008",
@@ -23597,7 +23947,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第二节移动网络 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「移动结点寻址」\n\n联想记忆：找出门的人，要么先经他家转交，要么直接找新住处；对应间接、直接路由选择。"
   },
   {
     "id": "blanks-p022-q009",
@@ -23627,7 +23978,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第二节移动网络 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「永久居所」\n\n联想记忆：永久居所就是“老家”；正式名称归属网络，俗称家网。"
   },
   {
     "id": "blanks-p022-q010",
@@ -23657,7 +24009,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第二节移动网络 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「移动跟踪与管理」\n\n联想记忆：人在外地，家里和外地各有一位联系人；家里是归属代理，外地是外部代理。"
   },
   {
     "id": "blanks-p022-q011",
@@ -23687,7 +24040,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第二节移动网络 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「代理发现」\n\n联想记忆：先听代理通告，辨认家里还是外地；到了外地向外部代理报永久地址，再向归属代理报转交地址。三个空按“归属、外部、归属”落下。"
   },
   {
     "id": "blanks-p022-q012",
@@ -23717,7 +24071,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第二节移动网络 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「保持不变」\n\n联想记忆：人可以移动，老家地址不随位置变化；不变的就是永久地址。"
   },
   {
     "id": "blanks-p022-q013",
@@ -23747,7 +24102,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第二节移动网络 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「外部网络获得」\n\n联想记忆：到外地拿到供家里转寄的临时收件地址；叫转交地址COA。"
   },
   {
     "id": "blanks-p022-q014",
@@ -23777,7 +24133,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第二节移动网络 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「间接路由选择」\n\n联想记忆：通信方先找家，再由家转给外地，三点绕行画成三角；问题叫三角路由。"
   },
   {
     "id": "blanks-p022-q015",
@@ -23807,7 +24164,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第二节移动网络 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「直接路由选择」\n\n联想记忆：直接找新住址，通信方必须知道对方移动后的地址；对通信方就不透明。"
   },
   {
     "id": "blanks-p022-q016",
@@ -23837,7 +24195,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「基本构件」\n\n联想记忆：把无线小区想成一位站长加一组成员；站长是基站，小组叫基本服务集。"
   },
   {
     "id": "blanks-p022-q017",
@@ -23867,7 +24226,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「配置AP」\n\n联想记忆：AP是提供接入服务的现成设施；有AP就归入基础设施无线局域网。"
   },
   {
     "id": "blanks-p022-q018",
@@ -23897,7 +24257,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「一个AP以及与之关联」\n\n联想记忆：一个AP带一群关联主机，构成最基本的一组服务范围；名称基本服务集BSS。"
   },
   {
     "id": "blanks-p022-q019",
@@ -23927,7 +24288,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「介质访问控制协议」\n\n联想记忆：无线难以像共享有线那样边发边检测，重点是避免冲突；Avoidance取A，记CSMA/CA。"
   },
   {
     "id": "blanks-p022-q020",
@@ -23957,7 +24319,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「三种类型」\n\n联想记忆：无线帧分三类工作：“控制收发、运输数据、管理网络”；对应控制帧、数据帧、管理帧。"
   },
   {
     "id": "blanks-p023-q001",
@@ -23987,7 +24350,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「无线局域网技术」\n\n联想记忆：看到无线局域网，就想常见Wi-Fi所属的IEEE 802.11系列。"
   },
   {
     "id": "blanks-p023-q002",
@@ -24017,7 +24381,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「隐藏站问题」\n\n联想记忆：题目从避免无线冲突切入，先锁定CSMA/CA；隐藏站的缓解还要联想RTS/CTS配合。\n\n辨清：CSMA/CA不能无条件消除隐藏站；RTS/CTS可缓解部分隐藏站引起的冲突。"
   },
   {
     "id": "blanks-p023-q003",
@@ -24047,7 +24412,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「避免隐藏站」\n\n联想记忆：先举手问“能发吗”RTS，再听接收方说“可以发”CTS；两边通知让附近站点避让。"
   },
   {
     "id": "blanks-p023-q004",
@@ -24077,7 +24443,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「替代以太网交换机」\n\n联想记忆：原来插网线找交换机，换无线后主机靠无线入口接入；入口叫接入点AP。"
   },
   {
     "id": "blanks-p023-q005",
@@ -24107,7 +24474,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「与AP进行关联」\n\n联想记忆：自己发探测请求是主动扫描，安静听AP广播信标是被动扫描；记“开口问、静静听”。"
   },
   {
     "id": "blanks-p023-q006",
@@ -24137,7 +24505,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「有线网络与无线网络」\n\n联想记忆：换的是实际信号介质和访问介质的规则；对应物理层、数据链路层，按题序填链路层在前。"
   },
   {
     "id": "blanks-p023-q007",
@@ -24167,7 +24536,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 12",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「包括移动」\n\n联想记忆：一部手机通过空气连AP，再接后方网络；对应主机、AP、无线链路、网络基础设施。"
   },
   {
     "id": "blanks-p023-q008",
@@ -24197,7 +24567,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 13",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「成功接收」\n\n联想记忆：收到后回一张“已收”小票，这张回执就是确认帧。"
   },
   {
     "id": "blanks-p023-q009",
@@ -24227,7 +24598,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第三节无线局域网IEEE802.11标准 · 原题 14",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「4个地址字段」\n\n联想记忆：无线分布系统中跨AP转送，还要区分最终源、目的与当前收发端；四地址联想WDS，不笼统记自组网。\n\n辨清：原资料答案“自组网”不准确。To DS和From DS都为1时使用四地址格式，典型用于WDS。核对：Wireshark的802.11四地址帧结构说明。"
   },
   {
     "id": "blanks-p023-q010",
@@ -24257,7 +24629,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第四节蜂窝网络 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「5G网络架构」\n\n联想记忆：从终端走入接入网，由核心网组织服务；把计算搬近用户叫边缘计算。按题序记“核、接、边”。"
   },
   {
     "id": "blanks-p023-q011",
@@ -24287,7 +24660,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第四节蜂窝网络 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「移动终端」\n\n联想记忆：手机先找无线站点，最终连到后方网络；两空分别是基站、基础设施网络。"
   },
   {
     "id": "blanks-p023-q012",
@@ -24317,7 +24691,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第四节蜂窝网络 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「蜂窝网络移动性管理」\n\n联想记忆：按本题传统模型，先借归属信息找到移动用户，再转接过去；属于间接路由选择。\n\n辨清：此处按教材中的传统蜂窝移动管理模型记忆。"
   },
   {
     "id": "blanks-p023-q013",
@@ -24347,7 +24722,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第四节蜂窝网络 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「管理的实体」\n\n联想记忆：Home老家登记册是HLR，Visitor访客登记册是VLR；想“家册＋客册”。"
   },
   {
     "id": "blanks-p023-q014",
@@ -24377,7 +24753,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第五节移动IP网络 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「三部分」\n\n联想记忆：移动IP出门三步：“找代理→向家里报到→家里转寄数据”；展开代理发现、归属注册、间接路由。"
   },
   {
     "id": "blanks-p023-q015",
@@ -24407,7 +24784,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第五节移动IP网络 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「通过扩展」\n\n联想记忆：代理通告借用网络控制报文，扩展的是Internet控制报文协议ICMP。"
   },
   {
     "id": "blanks-p023-q016",
@@ -24437,7 +24815,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第五节移动IP网络 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「主要组成」\n\n联想记忆：一个出门的人，加家里联系人、外地联系人；对应移动结点、归属代理、外部代理。"
   },
   {
     "id": "blanks-p023-q017",
@@ -24467,7 +24846,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第五节移动IP网络 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「移动性管理」\n\n联想记忆：把移动IP想成出门寄信：家乡代理收信，外地代理接应，二者共同管理移动性。"
   },
   {
     "id": "blanks-p023-q018",
@@ -24497,7 +24877,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第五节移动IP网络 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「采用」\n\n联想记忆：按本题经典移动IP流程，先到家乡再转外地；绕家转交所以叫间接路由选择。"
   },
   {
     "id": "blanks-p023-q019",
@@ -24527,7 +24908,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第七章无线网络与移动网络 · 第六节其他典型无线网络简介 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「电缆替代」\n\n联想记忆：身边耳机、鼠标把短线换成无线，距离近功耗低；想到蓝牙网络。"
   },
   {
     "id": "blanks-p024-q001",
@@ -24557,7 +24939,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第一节密码学概述 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「保证信息安全」\n\n联想记忆：把密码技术当核心锁具：锁住秘密、防改内容、签字不赖、辨认身份；对应核心、机密性、完整性、不可否认性、身份识别。"
   },
   {
     "id": "blanks-p024-q002",
@@ -24587,7 +24970,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第一节密码学概述 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「网络环境下」\n\n联想记忆：按原资料列项记“藏得住、改不了、能使用、不赖账”；对应保密、完整、可用、抗抵赖。可用性还要其他机制保障。\n\n辨清：这里保留原资料列项。密码机制可服务于多种安全目标，但不能单独解决可用性；还需要资源、冗余、抗攻击等措施。"
   },
   {
     "id": "blanks-p024-q003",
@@ -24617,7 +25001,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第一节密码学概述 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两部分」\n\n联想记忆：密码学一方研究“怎样设计编码”，另一方研究“怎样分析破解”；对应密码编码学、密码分析学。"
   },
   {
     "id": "blanks-p024-q004",
@@ -24647,7 +25032,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第一节密码学概述 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「加密算法一般分为」\n\n联想记忆：按资料分类记“传统老办法、双方同钥、公开一把钥”；对应传统、对称密钥、公开密钥。"
   },
   {
     "id": "blanks-p024-q005",
@@ -24677,7 +25063,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第一节密码学概述 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「密钥使用方式」\n\n联想记忆：加解密用相同密钥是对称，用一对不同密钥是公开密钥体系；两种分类绑住钥匙关系。"
   },
   {
     "id": "blanks-p024-q006",
@@ -24707,7 +25094,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第一节密码学概述 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「现代密码」\n\n联想记忆：一把共享钥匙叫对称，一对不同钥匙叫非对称；非对称又叫公开密钥密码。"
   },
   {
     "id": "blanks-p024-q007",
@@ -24737,7 +25125,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第二节传统加密算法 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「传统密码学」\n\n联想记忆：改字母本身像换演员，叫替代；字母不变只换座位，叫换位。"
   },
   {
     "id": "blanks-p024-q008",
@@ -24767,7 +25156,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第二节传统加密算法 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「常见的加密模型」\n\n联想记忆：想三种代数操作：“加一个数、乘一个数、先乘后加”；对应移位、乘数、仿射密码。"
   },
   {
     "id": "blanks-p024-q009",
@@ -24797,7 +25187,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第二节传统加密算法 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「k=4」\n\n联想记忆：解密每字母往前退4格：r→n、i→e、x→t、a→w、s→o、v→r、o→k；拼回network。"
   },
   {
     "id": "blanks-p024-q010",
@@ -24827,7 +25218,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第二节传统加密算法 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「network」\n\n联想记忆：加密把每字母后移4格：n→r、e→i、t→x、w→a、o→s、r→v、k→o；拼成rixasvo。"
   },
   {
     "id": "blanks-p024-q011",
@@ -24857,7 +25249,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第二节传统加密算法 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「按列换位」\n\n联想记忆：列先后顺序不能随便定，要看那把“排序钥匙”；规定顺序的是密钥。"
   },
   {
     "id": "blanks-p024-q012",
@@ -24887,7 +25280,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第二节传统加密算法 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「重新排列明文」\n\n联想记忆：字母本身没换，只把位置重新排；换位又称置换密码。"
   },
   {
     "id": "blanks-p024-q013",
@@ -24917,7 +25311,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第二节传统加密算法 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「value」\n\n联想记忆：按value排五列，列内容是to、el、co、hg、ny；按a、e、l、u、v读列，接成elnycohgto。\n\n辨清：原资料“elnycohyto”误把g写成y。按两行五列排表并依密钥字母顺序读列，可核得elnycohgto；正确密文见本条联想。"
   },
   {
     "id": "blanks-p024-q014",
@@ -24947,7 +25342,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第三节对称密钥加密算法 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「对称密钥密码」\n\n联想记忆：把数据一组组切块加密，或像水流连续处理；两类叫分组密码、流密码。"
   },
   {
     "id": "blanks-p024-q015",
@@ -24977,7 +25373,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第三节对称密钥加密算法 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「固定长度组」\n\n联想记忆：题干已经说“划成组”，直接锁定分组密码。"
   },
   {
     "id": "blanks-p024-q016",
@@ -25007,7 +25404,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第三节对称密钥加密算法 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「密钥流」\n\n联想记忆：密钥像水流逐项到来，明文也逐项处理；抓住“流”字，就是流密码。"
   },
   {
     "id": "blanks-p024-q017",
@@ -25037,7 +25435,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第三节对称密钥加密算法 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「分组密码包括」\n\n联想记忆：按资料串成七站：“Feistel框架→DES→CBC链接→三重DES→RC5→AES→IDEA”；CBC是模式，Feistel是结构，名称别误当同类算法。\n\n辨清：这是原资料的混合清单：Feistel是结构，CBC是工作模式，DES等才是具体算法，不能都叫同一类别的算法。"
   },
   {
     "id": "blanks-p025-q001",
@@ -25067,7 +25466,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第三节对称密钥加密算法 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「DES」\n\n联想记忆：数字绑对象：“有效钥56，明文块64，轮数16”；DES是对称密码。钥匙64位表示中含8位校验，56才是有效位。"
   },
   {
     "id": "blanks-p025-q002",
@@ -25097,7 +25497,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第三节对称密钥加密算法 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「IDEA」\n\n联想记忆：IDEA一块64位，钥匙比块长一倍即128位；记“块六四，钥翻倍”。"
   },
   {
     "id": "blanks-p025-q003",
@@ -25127,7 +25528,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第三节对称密钥加密算法 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「AES」\n\n联想记忆：AES每块固定128位；把“块128”独立记，别与可选的128/192/256位密钥长度串起来。"
   },
   {
     "id": "blanks-p025-q004",
@@ -25157,7 +25559,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第三节对称密钥加密算法 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「4种操作」\n\n联想记忆：给一张字节表加工：“换字节、挪行、混列、加轮钥”；展开字节替代、行移位、列混淆、轮密钥加。"
   },
   {
     "id": "blanks-p025-q005",
@@ -25187,7 +25590,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第三节对称密钥加密算法 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「面向字节流」\n\n联想记忆：资料里的“RC4”配流，“RC5”在分组名单里；看到字节流、随机置换，两个空都填RC4。\n\n辨清：RC4是历史算法例子；这里用于课程识记，不作为新系统的安全选型建议。"
   },
   {
     "id": "blanks-p025-q006",
@@ -25217,7 +25621,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第三节对称密钥加密算法 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「对称」\n\n联想记忆：对称像镜子两侧用同样的钥匙；加密钥、解密钥相同。"
   },
   {
     "id": "blanks-p025-q007",
@@ -25247,7 +25652,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第三节对称密钥加密算法 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「明文分组」\n\n联想记忆：明文经过多轮加工，输出当然已经变密；结果叫密文。"
   },
   {
     "id": "blanks-p025-q008",
@@ -25277,7 +25683,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第四节公开密钥加密算法 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「最大的问题」\n\n联想记忆：双方要用同一把秘密钥匙，难在一开始怎么安全交给对方；这就是密钥分发问题。"
   },
   {
     "id": "blanks-p025-q009",
@@ -25307,7 +25714,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第四节公开密钥加密算法 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「欧拉定理以及大整数因子分解」\n\n联想记忆：看到数论、欧拉、大整数分解这组标签，锁定RSA密码。"
   },
   {
     "id": "blanks-p025-q010",
@@ -25337,7 +25745,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第四节公开密钥加密算法 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「公开密钥密码」\n\n联想记忆：公开钥匙负责一侧，秘密钥匙负责另一侧；加解密钥不同，才不是共享同钥。"
   },
   {
     "id": "blanks-p025-q011",
@@ -25367,7 +25776,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第四节公开密钥加密算法 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「交换」\n\n联想记忆：Diffie-Hellman让双方协商共同的秘密，目标不是直接传消息；交换的是密钥。"
   },
   {
     "id": "blanks-p025-q012",
@@ -25397,7 +25807,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第四节公开密钥加密算法 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「每轮」\n\n联想记忆：DES总有效钥56位，每轮挑出48位作子钥；记“总钥56，轮钥48”，别把轮钥当分组长度。"
   },
   {
     "id": "blanks-p025-q013",
@@ -25427,7 +25838,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第四节公开密钥加密算法 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「计算困难性」\n\n联想记忆：两个大素数相乘较容易，把大整数拆回因子很难；RSA联想大整数因子分解。"
   },
   {
     "id": "blanks-p025-q014",
@@ -25457,7 +25869,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第四节公开密钥加密算法 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「计算量一般很大」\n\n联想记忆：公钥方法负责小量密钥，批量数据交给较快的对称方法；搭档是对称密钥密码。"
   },
   {
     "id": "blanks-p025-q015",
@@ -25487,7 +25900,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第五节散列函数 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「消息摘要」\n\n联想记忆：把长消息压成固定长度指纹；这个摘要还叫散列值，空中补散列。"
   },
   {
     "id": "blanks-p025-q016",
@@ -25517,7 +25931,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第五节散列函数 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「MD5」\n\n联想记忆：把MD5摘要固定绑到128位，也就是16字节；记“MD5→128位摘要”。"
   },
   {
     "id": "blanks-p025-q017",
@@ -25547,7 +25962,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第五节散列函数 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「SHA-1」\n\n联想记忆：SHA-1摘要固定160位，也就是20字节；和MD5的128位并排对照背。"
   },
   {
     "id": "blanks-p025-q018",
@@ -25577,7 +25993,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第五节散列函数 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「散列函数」\n\n联想记忆：本资料常见两例是MD5与SHA-1；把它们放在“摘要指纹”一栏，不放进加密算法栏。\n\n辨清：MD5、SHA-1是本资料中的历史常见例子，不应因“使用广泛”而认为适合现代抗碰撞安全用途。"
   },
   {
     "id": "blanks-p025-q019",
@@ -25607,7 +26024,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第六节密码学新进展 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「量子密码」\n\n联想记忆：把名称拆开：密码来自密码学，量子来自量子力学；两门学科组合。"
   },
   {
     "id": "blanks-p025-q020",
@@ -25637,7 +26055,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第八章密码学基础 · 第六节密码学新进展 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「量子通道」\n\n联想记忆：本题关注量子密钥分发：量子态帮助双方共享秘密钥匙；传送的是密钥。"
   },
   {
     "id": "blanks-p026-q001",
@@ -25667,7 +26086,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第一节消息完整性与数字签名 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「消息完整性检测」\n\n联想记忆：给消息做一枚内容指纹，内容改动时用来比对；这种指纹来自密码散列函数。\n\n辨清：面对主动篡改，仅比对未受保护的散列值不够；参考摘要本身应可信，或使用MAC、签名等机制。"
   },
   {
     "id": "blanks-p026-q002",
@@ -25697,7 +26117,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第一节消息完整性与数字签名 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「完成」\n\n联想记忆：检查消息是否被改、是否来自声称的来源，是在认证这份报文；任务叫报文认证。"
   },
   {
     "id": "blanks-p026-q003",
@@ -25727,7 +26148,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第一节消息完整性与数字签名 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两种方法」\n\n联想记忆：一条路用双方共享密钥生成认证码，一条路用发送者私钥签名；对应报文认证码、数字签名。"
   },
   {
     "id": "blanks-p026-q004",
@@ -25757,7 +26179,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第一节消息完整性与数字签名 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「特性」\n\n联想记忆：好指纹应“难倒推、难仿指定一枚、难找任意一对相同”；依次对应单向、抗弱碰撞、抗强碰撞。"
   },
   {
     "id": "blanks-p026-q005",
@@ -25787,7 +26210,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第一节消息完整性与数字签名 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「数字签名」\n\n联想记忆：签名证明“谁签的、有没有改、签后能否赖”；对应身份认证、消息完整性、不可否认性。\n\n辨清：原资料还笼统提及“匿名性”。普通数字签名不直接保证匿名性；特殊匿名签名方案另论。"
   },
   {
     "id": "blanks-p026-q006",
@@ -25817,7 +26241,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第一节消息完整性与数字签名 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「否认发送」\n\n联想记忆：让发送者在消息上留下可验证的签字，日后难以赖账；对应数字签名。"
   },
   {
     "id": "blanks-p026-q007",
@@ -25847,7 +26272,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第一节消息完整性与数字签名 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「预防」\n\n联想记忆：来源、篡改之外，本题最后还问“事后不承认”的问题；不承认就是抵赖。\n\n辨清：本段按广义报文认证语境列目标。单纯完整性校验本身不自动提供来源认证或不可否认性。"
   },
   {
     "id": "blanks-p026-q008",
@@ -25877,7 +26303,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第一节消息完整性与数字签名 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「报文认证码和数字签名」\n\n联想记忆：MAC是共享密钥的“验货章”，数字签名像私钥签字、公钥验签；证书再把公钥与身份绑定，联想公钥基础设施PKI。\n\n辨清：原题将“MAC不依赖加密、数字签名依赖PKI”写成绝对关系，不严谨。MAC可基于分组密码，如AES-CMAC；数字签名也不必然依赖PKI。核对：RFC 4493及公钥信任模型。"
   },
   {
     "id": "blanks-p026-q009",
@@ -25907,7 +26334,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第一节消息完整性与数字签名 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「比较有效」\n\n联想记忆：长文件逐字签效率低，先提取短指纹再签；签的这个指纹叫报文摘要。"
   },
   {
     "id": "blanks-p026-q010",
@@ -25937,7 +26365,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第二节身份认证 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「证明其身份」\n\n联想记忆：向对方证明“我是谁”，名称直接由动作组成：身份认证，也称身份鉴别。"
   },
   {
     "id": "blanks-p026-q011",
@@ -25967,7 +26396,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第二节身份认证 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「重放攻击」\n\n联想记忆：旧口令录像不能回答这次新问题；每次发一个只用一次的新随机挑战，就是nonce。"
   },
   {
     "id": "blanks-p026-q012",
@@ -25997,7 +26427,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第三节密钥管理与分发 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「大家都信赖」\n\n联想记忆：每对用户单独送钥匙太麻烦，找共同信任的发钥匙中心；叫密钥分发中心KDC。"
   },
   {
     "id": "blanks-p026-q013",
@@ -26027,7 +26458,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第三节密钥管理与分发 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「公钥与特定实体绑定」\n\n联想记忆：给公钥发一张实名身份证，需要可信发证机关；认证中心Certificate Authority，缩写CA。"
   },
   {
     "id": "blanks-p026-q014",
@@ -26057,7 +26489,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第三节密钥管理与分发 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「安全基础平台」\n\n联想记忆：公钥技术不只是算法，还要证书和管理规范形成基础平台；这套基础设施就是PKI。"
   },
   {
     "id": "blanks-p026-q015",
@@ -26087,7 +26520,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第三节密钥管理与分发 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「基础技术」\n\n联想记忆：想五件工具：“锁、签、验、封、双签”；展开加密、数字签名、数据完整性机制、数字信封、双重数字签名。"
   },
   {
     "id": "blanks-p026-q016",
@@ -26117,7 +26551,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第三节密钥管理与分发 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「密钥管理与分发」\n\n联想记忆：共享钥匙找KDC，证书绑定找CA；CA属于公钥基础设施PKI，记“发钥、发证、证书体系”。"
   },
   {
     "id": "blanks-p027-q001",
@@ -26147,7 +26582,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第四节访问控制 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「访问控制直接支持」\n\n联想记忆：资源门禁要防泄露、防乱改、让合法用户能用；再加依法使用，对应保密、完整、可用、合法使用。"
   },
   {
     "id": "blanks-p027-q002",
@@ -26177,7 +26613,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第四节访问控制 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「限制其使用数据资源能力」\n\n联想记忆：根据身份和策略限制“谁能用什么”，就是在控制访问；英文Access Control，缩写AC。"
   },
   {
     "id": "blanks-p027-q003",
@@ -26207,7 +26644,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第四节访问控制 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「3个要素」\n\n联想记忆：问一扇门三件事：“谁来、访问什么、准不准”；对应主体、客体、访问控制策略。"
   },
   {
     "id": "blanks-p027-q004",
@@ -26237,7 +26675,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第四节访问控制 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「主流的访问控制策略」\n\n联想记忆：权限由主人自主决定、由系统强制规定、按岗位角色分配；对应自主、强制、基于角色。"
   },
   {
     "id": "blanks-p027-q005",
@@ -26267,7 +26706,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第四节访问控制 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「每个主体」\n\n联想记忆：权限矩阵中一行列出一个主体能访问哪些客体；“按人看一整行”，本空填行。\n\n辨清：本题按访问矩阵“一行对应主体，一列对应客体”的约定理解。"
   },
   {
     "id": "blanks-p027-q006",
@@ -26297,7 +26737,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第四节访问控制 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「防止」\n\n联想记忆：门禁拦的是“没被批准”的访问，而非所有访问；没批准正式说法是未授权。"
   },
   {
     "id": "blanks-p027-q007",
@@ -26327,7 +26768,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第四节访问控制 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「既是」\n\n联想记忆：数据在网络上传输要管，在主机里由系统分配资源也要管；对应通信安全、操作系统安全。"
   },
   {
     "id": "blanks-p027-q008",
@@ -26357,7 +26799,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第四节访问控制 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「7个方面」\n\n联想记忆：前面已管入网、权限、目录、属性、服务器、监测锁定，最后想到守网络边界的墙；填防火墙。"
   },
   {
     "id": "blanks-p027-q009",
@@ -26387,7 +26830,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第五节内容安全 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「内容保护」\n\n联想记忆：保护内容两条路：“把意思加密、把存在藏起来”；分别依靠密码学、隐写术。"
   },
   {
     "id": "blanks-p027-q010",
@@ -26417,7 +26861,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第五节内容安全 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「内容安全」\n\n联想记忆：合法内容要护住，违规内容要管住；两部分是内容保护、内容监管。"
   },
   {
     "id": "blanks-p027-q011",
@@ -26447,7 +26892,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第五节内容安全 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「数字水印方案」\n\n联想记忆：盖水印的顺序：“先做印→印进去→验有没有”；对应形成、嵌入、检测。"
   },
   {
     "id": "blanks-p027-q012",
@@ -26477,7 +26923,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第五节内容安全 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「提取方式」\n\n联想记忆：按资料三类，想“看不见原始参照、看得到、看部分”；联想盲、非盲、半盲，别和三个制作步骤混。\n\n辨清：此处按资料三类提取方式记；不同文献对“半盲”所需辅助信息的界定会有差异。"
   },
   {
     "id": "blanks-p027-q013",
@@ -26507,7 +26954,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第五节内容安全 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「检测方式」\n\n联想记忆：检测时按是否需要原始参照来区分，记“盲检、非盲检”；两空是盲、非盲。"
   },
   {
     "id": "blanks-p027-q014",
@@ -26537,7 +26985,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第五节内容安全 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「数据获取」\n\n联想记忆：自己主动出去取，叫主动式；等待或监听收进来，叫被动式。抓取数据的方法看“主动/被动”。"
   },
   {
     "id": "blanks-p027-q015",
@@ -26567,7 +27016,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第五节内容安全 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「监管系统」\n\n联想记忆：先定“按什么规则管”，再做“具体怎么处理”；对应监管策略、监管处理。"
   },
   {
     "id": "blanks-p027-q016",
@@ -26597,7 +27047,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第五节内容安全 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「敏感特征搜索」\n\n联想记忆：搜到可疑特征还没结束，先判定是否违规，再执行处理；两步填违规判定、违规处理。"
   },
   {
     "id": "blanks-p027-q017",
@@ -26627,7 +27078,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第六节物理安全 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「物理安全」\n\n联想记忆：守机房四道事：“环境安全、屏蔽电磁、物理隔开、人员管理”；对应环境安全、电磁保护、物理隔离、安全管理。"
   },
   {
     "id": "blanks-p027-q018",
@@ -26659,7 +27111,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第六节物理安全 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「OAM&P」\n\n联想记忆：O看Operation运行，A看Administration管理，M看Maintenance维护，P看Provisioning服务提供；按缩写逐字展开。"
   },
   {
     "id": "blanks-p028-q001",
@@ -26689,7 +27142,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第九章信息安全防护基本原理 · 第六节物理安全 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「五大功能」\n\n联想记忆：网管值班五件事：“修故障、配设备、看性能、保安全、算费用”；展开故障、配置、性能、安全、计费管理。"
   },
   {
     "id": "blanks-p029-q001",
@@ -26719,7 +27173,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第一节安全电子邮件 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「安全电子邮件」\n\n联想记忆：一封安全信应“内容不泄、内容不改、认清写信人、写完不能赖”；对应机密、完整、身份认证、抗抵赖。"
   },
   {
     "id": "blanks-p029-q002",
@@ -26749,7 +27204,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第一节安全电子邮件 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「1991年」\n\n联想记忆：把“1991安全邮件”与PGP做年代配对；PGP展开Pretty Good Privacy，名称里就有隐私保护。"
   },
   {
     "id": "blanks-p029-q003",
@@ -26779,7 +27235,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第一节安全电子邮件 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「PGP」\n\n联想记忆：想PGP给信封上锁、给信件签名；它的典型应用就是安全电子邮件。"
   },
   {
     "id": "blanks-p029-q004",
@@ -26809,7 +27266,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第一节安全电子邮件 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「提供」\n\n联想记忆：PGP的信件三件套：“加密封口、验内容完整、给发送者签名”；对应邮件加密、报文完整性、数字签名。"
   },
   {
     "id": "blanks-p029-q005",
@@ -26839,7 +27297,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第二节SSL/TLS · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「位于」\n\n联想记忆：应用要下楼去传输之前，先穿SSL/TLS安全外衣；它夹在应用层与传输层之间。"
   },
   {
     "id": "blanks-p029-q006",
@@ -26869,7 +27328,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第二节SSL/TLS · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「安全HTTP」\n\n联想记忆：HTTP加Security的S变HTTPS；默认端口换成443，记“安全网页HTTPS→443”。"
   },
   {
     "id": "blanks-p029-q007",
@@ -26899,7 +27359,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第二节SSL/TLS · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「安全服务」\n\n联想记忆：安全连接要保密、防篡改、认身份；依次填机密性、完整性、身份认证。"
   },
   {
     "id": "blanks-p029-q008",
@@ -26929,7 +27390,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第二节SSL/TLS · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「协议栈」\n\n联想记忆：按资料传统SSL/TLS结构：“记录装数据、握手谈参数、警告报情况、变更密码规范启用参数”；记录、握、警、变。\n\n辨清：本题列的是传统SSL/TLS协议栈口径；较新TLS版本的实际流程与报文语义有变化。"
   },
   {
     "id": "blanks-p029-q009",
@@ -26959,7 +27421,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第二节SSL/TLS · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「套接字接口」\n\n联想记忆：本题SSL/TLS保护的是可靠连接上的字节流，底下对应TCP；不要把SSL和UDP直接配对。"
   },
   {
     "id": "blanks-p029-q010",
@@ -26989,7 +27452,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第三节虚拟专用网络（VPN）和IP安全协议（IPSeC） · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「VPN」\n\n联想记忆：Virtual虚拟、Private专用、Network网络；逐词翻译就是虚拟专用网络。"
   },
   {
     "id": "blanks-p029-q011",
@@ -27019,7 +27483,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第三节虚拟专用网络（VPN）和IP安全协议（IPSeC） · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「关键技术」\n\n联想记忆：VPN画成隧道：隧道通路，加密货物，认证进门，管理钥匙，控制访问，管理网络；核心仍是隧道技术。"
   },
   {
     "id": "blanks-p029-q012",
@@ -27049,7 +27514,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第三节虚拟专用网络（VPN）和IP安全协议（IPSeC） · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「三种协议」\n\n联想记忆：隧道像运输：“乘客坐进封装车厢，再由外部道路承载”；三层依次是乘客、封装、承载协议。"
   },
   {
     "id": "blanks-p029-q013",
@@ -27079,7 +27545,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第三节虚拟专用网络（VPN）和IP安全协议（IPSeC） · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「4种组合」\n\n联想记忆：两协议AH、ESP，各配两模式传输、隧道；画2×2表，四种组合就不会漏。"
   },
   {
     "id": "blanks-p029-q014",
@@ -27109,7 +27576,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第三节虚拟专用网络（VPN）和IP安全协议（IPSeC） · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「体系结构」\n\n联想记忆：两位保镖ESP、AH，一份约定SA，一位谈钥匙的IKE；四个缩写分别记角色。"
   },
   {
     "id": "blanks-p029-q015",
@@ -27139,7 +27607,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第三节虚拟专用网络（VPN）和IP安全协议（IPSeC） · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两个关键协议」\n\n联想记忆：IPSec的两位协议保镖：AH侧重认证完整性，ESP还能提供机密性；两个名字AH、ESP。"
   },
   {
     "id": "blanks-p029-q016",
@@ -27169,7 +27638,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第三节虚拟专用网络（VPN）和IP安全协议（IPSeC） · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「交换密钥」\n\n联想记忆：Internet Key Exchange三个词直指“互联网密钥交换”；取首字母IKE。"
   },
   {
     "id": "blanks-p029-q017",
@@ -27199,7 +27669,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第三节虚拟专用网络（VPN）和IP安全协议（IPSeC） · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「自动管理SA」\n\n联想记忆：把安全关联当一份合同：“建立→协商→修改→删除”；IKE管理它的整个生命周期。"
   },
   {
     "id": "blanks-p029-q018",
@@ -27231,7 +27702,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第三节虚拟专用网络（VPN）和IP安全协议（IPSeC） · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「数据库」\n\n联想记忆：一册记已经建立的关联，一册记应该遵守的策略；分别是安全关联数据库、安全策略数据库。"
   },
   {
     "id": "blanks-p030-q001",
@@ -27261,7 +27733,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第三节虚拟专用网络（VPN）和IP安全协议（IPSeC） · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「AH协议」\n\n联想记忆：AH像防伪封条：认发送来源、查有没有改动；两项是源认证和鉴别、数据完整性检验。"
   },
   {
     "id": "blanks-p030-q002",
@@ -27291,7 +27764,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第三节虚拟专用网络（VPN）和IP安全协议（IPSeC） · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「ESP协议」\n\n联想记忆：ESP在认证、完整性之外还能加密隐藏内容；三项记“认源、验整、保密”，具体服务组合依配置。\n\n辨清：ESP可提供这些安全服务，但启用的组合取决于安全关联和算法配置。核对：RFC 4303，第2节。"
   },
   {
     "id": "blanks-p030-q003",
@@ -27321,7 +27795,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「屏障」\n\n联想记忆：墙立在自家内网与外面的公共网络之间；两侧名称是内部网络、外部公共网络。"
   },
   {
     "id": "blanks-p030-q004",
@@ -27351,7 +27826,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「3个部分」\n\n联想记忆：分布式防护有“网络门卫、主机门卫、统一指挥室”；对应网络防火墙、主机防火墙、中心管理服务器。"
   },
   {
     "id": "blanks-p030-q005",
@@ -27381,7 +27857,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「软、硬件形式」\n\n联想记忆：防火墙可装成软件、做成硬件盒子、嵌入芯片；三类按载体记软件、硬件、芯片级。"
   },
   {
     "id": "blanks-p030-q006",
@@ -27411,7 +27888,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「过滤的层次」\n\n联想记忆：由浅到深看“单个包、连接电路、应用内容”；对应包过滤、电路级网关、应用层网关。"
   },
   {
     "id": "blanks-p030-q007",
@@ -27441,7 +27919,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「部署位置」\n\n联想记忆：防护墙放在网络边界、个人电脑，或两处搭配；分别叫边界、个人、混合式。"
   },
   {
     "id": "blanks-p030-q008",
@@ -27471,7 +27950,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「4种技术」\n\n联想记忆：门卫四问：“什么服务、哪个方向、哪个用户、做什么行为”；逐项加控制二字。"
   },
   {
     "id": "blanks-p030-q009",
@@ -27501,7 +27981,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「两种基本的技术」\n\n联想记忆：一招检查包再放行，一招由代理替你对外交流；对应数据包过滤、代理服务。"
   },
   {
     "id": "blanks-p030-q010",
@@ -27531,7 +28012,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「无状态分组过滤器」\n\n联想记忆：按资料口径，它守内部网络及边缘出入口；出入口的设备叫网络边缘路由器。"
   },
   {
     "id": "blanks-p030-q011",
@@ -27561,7 +28043,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「代理型」\n\n联想记忆：代理可以看懂具体应用，也可主要转接通信电路；两类是应用层网关、电路级网关。"
   },
   {
     "id": "blanks-p030-q012",
@@ -27591,7 +28074,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 10",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「体系结构」\n\n联想记忆：想三个防护布局：“多网口主机守门、屏蔽一台主机、屏蔽整个子网”；依次展开三种体系结构。"
   },
   {
     "id": "blanks-p030-q013",
@@ -27621,7 +28105,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 11",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「重要数据」\n\n联想记忆：个人防火墙监视通信，是为重要数据挡风险；落到题尾的词就是安全保护。"
   },
   {
     "id": "blanks-p030-q014",
@@ -27651,7 +28136,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 12",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「信赖域和非信赖域之间」\n\n联想记忆：信任区和不信任区不直接碰在一起，中间留过渡带；DMZ是安全缓冲区域。"
   },
   {
     "id": "blanks-p030-q015",
@@ -27681,7 +28167,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第四节防火墙 · 原题 13",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「统一制定安全策略」\n\n联想记忆：中心负责发命令，各防火墙节点照命令办事；节点做的是执行。"
   },
   {
     "id": "blanks-p030-q016",
@@ -27711,7 +28198,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第五节入侵检测系统 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「不仅针对TCP/IP首部」\n\n联想记忆：不只看信封头，还往包里深入检查；深度后面接包检测。"
   },
   {
     "id": "blanks-p030-q017",
@@ -27741,7 +28229,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第五节入侵检测系统 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「一般过程」\n\n联想记忆：先取线索，再分析可疑，再作反应；对应信息收集、数据分析、响应三步。"
   },
   {
     "id": "blanks-p030-q018",
@@ -27771,7 +28260,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第五节入侵检测系统 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「功能上」\n\n联想记忆：像人体工作：“感官取信息、大脑分析、管理者调度”；对应感应器、分析器、管理器。"
   },
   {
     "id": "blanks-p030-q019",
@@ -27801,7 +28291,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第五节入侵检测系统 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「检测方法」\n\n联想记忆：“对照已知特征、看统计异常、请规则专家判断”；对应特征检测、统计检测、专家系统。"
   },
   {
     "id": "blanks-p031-q001",
@@ -27831,7 +28322,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第五节入侵检测系统 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「数据源」\n\n联想记忆：线索来自一台主机、网络流量，或多处分散汇总；对应基于主机、基于网络、分布式。"
   },
   {
     "id": "blanks-p031-q002",
@@ -27861,7 +28353,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第五节入侵检测系统 · 原题 6",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「分析方法」\n\n联想记忆：看行为是否偏离平常，是异常检测；看是否符合已知攻击用法，是误用检测。"
   },
   {
     "id": "blanks-p031-q003",
@@ -27891,7 +28384,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第五节入侵检测系统 · 原题 7",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「响应方式」\n\n联想记忆：发现后主动采取动作，或主要告警记录让人处理；两类是主动、被动入侵检测。"
   },
   {
     "id": "blanks-p031-q004",
@@ -27921,7 +28415,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第五节入侵检测系统 · 原题 8",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「及时识别」\n\n联想记忆：不等损害完全发生才知道，先识别、及时报警；按资料用语记主动防御，不等于一定能自动阻断。\n\n辨清：主动发现、报警不等于一定会自动阻断；不要把IDS所有实现都等同于IPS。"
   },
   {
     "id": "blanks-p031-q005",
@@ -27951,7 +28446,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十章 网络安全协议与技术措施 · 第五节入侵检测系统 · 原题 9",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「DoS（拒绝服务）」\n\n联想记忆：网络映射、扫描、拒绝服务都可作为检测线索；此处把这些威胁行为归到攻击。"
   },
   {
     "id": "blanks-p032-q001",
@@ -27981,7 +28477,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第一节网络风险分析与评估 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「统一」\n\n联想记忆：安全产品各管一摊还不够，需要有人统一管、相互协调；两项是管理、协调。"
   },
   {
     "id": "blanks-p032-q002",
@@ -28011,7 +28508,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第一节网络风险分析与评估 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「4个方面」\n\n联想记忆：网络“门开着、身有弱点、威胁到处有、管理不容易”；对应开放性、脆弱性、普遍性、困难性。"
   },
   {
     "id": "blanks-p032-q003",
@@ -28041,7 +28539,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第一节网络风险分析与评估 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「风险评估」\n\n联想记忆：想暴雨撞上漏水屋顶：“外面什么威胁、进水有什么影响、屋顶哪里脆弱”；对应威胁、影响、脆弱性。"
   },
   {
     "id": "blanks-p032-q004",
@@ -28071,7 +28570,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第一节网络风险分析与评估 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「评估」\n\n联想记忆：做评估先问“评什么目标、评多大范围、按什么原则”，再看实施过程，最后提出加固建议；五项按办事顺序背。"
   },
   {
     "id": "blanks-p032-q005",
@@ -28101,7 +28601,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第一节网络风险分析与评估 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「基础性工作」\n\n联想记忆：评估先指出风险和改进方向，像修建安全系统的导航；因此称建设的指南。"
   },
   {
     "id": "blanks-p032-q006",
@@ -28131,7 +28632,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第二节等级保护与测评 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「等级保护」\n\n联想记忆：把本题等级画成五级台阶；“等保五级”连成一个固定配对，别与四个测评活动混。"
   },
   {
     "id": "blanks-p032-q007",
@@ -28161,7 +28663,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第二节等级保护与测评 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「4个基本测评活动」\n\n联想记忆：像做一次调研：“先准备→写方案→去现场→分析写报告”；对应四个基本测评活动。"
   },
   {
     "id": "blanks-p032-q008",
@@ -28191,7 +28694,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第四节信息安全法律法规概述 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「基本原则」\n\n联想记忆：五问串联：“谁负责、抓重点、先预防、能审计、管风险”；展开谁主管谁负责、突出重点、预防为主、安全审计、风险管理。"
   },
   {
     "id": "blanks-p032-q009",
@@ -28221,7 +28725,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第四节信息安全法律法规概述 · 原题 2",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「3个层次」\n\n联想记忆：按本资料列举由上往下记：“法律→行政法规→部门规章”；想法、行、部三层标签。\n\n辨清：保留原资料列出的三类。它是本题的简化分类，不是对我国所有法律规范层级的完整枚举。"
   },
   {
     "id": "blanks-p032-q010",
@@ -28251,7 +28756,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第四节信息安全法律法规概述 · 原题 3",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「法规」\n\n联想记忆：题干已经说“法规”，提供的当然是法律上的保障；抓住法字填法律。"
   },
   {
     "id": "blanks-p032-q011",
@@ -28281,7 +28787,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第四节信息安全法律法规概述 · 原题 4",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「数据安全法」\n\n联想记忆：这一组法律从电子签名、网络、数据，接到“个人的信息”；第四部叫个人信息保护法。"
   },
   {
     "id": "blanks-p032-q012",
@@ -28311,7 +28818,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第四节信息安全法律法规概述 · 原题 5",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「法律依据和」\n\n联想记忆：常见配对是“依据＋保证”；依据让执法有据，保证让保护有保障，本空填法律保证。"
   },
   {
     "id": "blanks-p033-q001",
@@ -28341,7 +28849,8 @@
     ],
     "needsReview": true,
     "sourceQuestion": "第十一章信息安全管理与法律法规 · 第六节我国信息安全相关法律法规 · 原题 1",
-    "figuresContainAnswer": true
+    "figuresContainAnswer": true,
+    "mnemonic": "题干线索：看到「上升至」\n\n联想记忆：数据安全不只关个人和企业，题干说上升到更高层面；本空为国家安全。"
   },
   {
     "id": "calculation-p011",

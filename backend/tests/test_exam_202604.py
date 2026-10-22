@@ -20,7 +20,10 @@ def test_april_exam_preserves_earlier_bank_and_covers_all_source_questions():
     new = [q for q in rows if q.get('materialId') == 'exam-2026-04']
     old = [q for q in rows if q not in new]
     assert len(old) == 1259 and len(rows) == len({q['id'] for q in rows}) == 1290
-    assert sha256(json.dumps(old, ensure_ascii=False, sort_keys=True).encode()).hexdigest() == audit['original1259CanonicalSha256']
+    # Only the later fill-question mnemonics are supplemental; keep the original audit hash.
+    # 仅排除后加的填空助记，题干、答案、来源等继续与原始审计哈希比对。
+    historical = [{k: v for k, v in q.items() if not (q.get('materialId') == 'blanks' and k == 'mnemonic')} for q in old]
+    assert sha256(json.dumps(historical, ensure_ascii=False, sort_keys=True).encode()).hexdigest() == audit['original1259CanonicalSha256']
     assert [q['id'] for q in new] == [f'exam-2026-04-q{n:03}' for n in range(1, 32)]
     assert Counter(q['type'] for q in new) == {'single': 15, 'fill': 10, 'short': 4, 'calculation': 2}
     assert {qid for p in audit['pageAudit'] for qid in p['questionIds']} == {q['id'] for q in new}
